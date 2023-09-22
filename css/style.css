@@ -2,7 +2,7 @@ body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-size: 19px;
   font-weight: 300;
-  color: #f36439;
+  color: #f9a03f;
   position: relative;
 }
 
@@ -77,20 +77,20 @@ p {
 .tm-nav li {
   list-style: none;
   display: inline-block;
-  border: 1px solid #f36439;
+  border: 1px solid #f9a03f;
   float: left;
   margin: 10px;
 }
 
 .tm-nav-link {
-  color: #f36439;
+  color: #f9a03f;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 165px;
   height: 165px;
   text-align: center;
-  border: 1px solid #f36439;
+  border: 1px solid #f9a03f;
   cursor: pointer;
   position: relative;
 }
@@ -138,6 +138,7 @@ p {
 .product {
   position: relative;
   cursor: pointer;
+  background-color: #f25d39;
 }
 
 .product__bg {
@@ -215,7 +216,7 @@ p {
   margin: 1em;
   cursor: pointer;
   font-size: 0.85em;
-  color: #f36439;
+  color: #f9a03f;
   z-index: 1001;
 }
 
@@ -232,7 +233,7 @@ p {
 
 .slick-dots li button:before {
   font-size: 20px;
-  color: #f36439;
+  color: #f9a03f;
   opacity: 1;
 }
 
@@ -257,7 +258,7 @@ p {
   border-radius: 0;
   border: none;
   background-color: #353541;
-  color: #f36439;
+  color: #f9a03f;
   padding: 0.75rem;
 }
 
@@ -277,12 +278,12 @@ p {
 
 .tm-btn-gray {
   background-color: #494752;
-  color: #f36439;
+  color: #f9a03f;
 }
 
 .tm-btn-gray:hover {
   background-color: #77757d;
-  color: #f36439;
+  color: #f9a03f;
 }
 
 .btn {
@@ -310,7 +311,7 @@ footer {
 }
 
 .tm-text-highlight {
-  color: #f36439;
+  color: #f9a03f;
 }
 .tm-text-highlight:hover {
   color: red;
