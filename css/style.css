@@ -4,8 +4,12 @@ body {
   font-weight: 300;
   color: #f9a03f;
   position: relative;
+  background-color: #262626;  
 }
-
+.baner-body {
+  --bs-bg-opacity: 1;
+  background-color: #262626;  
+}
 h1 {
   font-size: 2.8rem;
 }
