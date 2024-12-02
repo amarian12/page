@@ -6983,3 +6983,43 @@ https://joaquinito02.es/vavoo/3112950329.m3u8
 #EXTVLCOPT:http-user-agent=VAVOO/1.0
 #EXTVLCOPT:http-referrer=https://vavoo.to/
 https://joaquinito02.es/vavoo/97535420.m3u8
+#EXTINF:-1 xui-id="489793" tvg-name="Emily in Paris S03E01" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/uq5OSDjAKZqsp8E1EP50CE2iDw.jpg" group-title="NETFLIX",Emily in Paris S03E01
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqklATF4Pu0MZtvjNcnETanr
+#EXTINF:-1 xui-id="489794" tvg-name="Emily in Paris S03E02" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/pk9qJ0XtCKdkJGJRCf4MCAhl1yM.jpg" group-title="NETFLIX",Emily in Paris S03E02
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqllZ1XMmnGHQ7cWlpMw-Iac
+#EXTINF:-1 xui-id="489795" tvg-name="Emily in Paris S03E03" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/dzNWeSwTxegJCdUPFGxipymOO6p.jpg" group-title="NETFLIX",Emily in Paris S03E03
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqmxCKv9kXswsEAL5iHmvk7W
+#EXTINF:-1 xui-id="489796" tvg-name="Emily in Paris S03E04" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/jP8Z4B07otjQMrOhHd1Vk76UdUA.jpg" group-title="NETFLIX",Emily in Paris S03E04
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqm65qD8v-7c-CVd7EAw6xwf
+#EXTINF:-1 xui-id="489797" tvg-name="Emily in Paris S03E05" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/y4XugPik9TilZB6rTcpEQY4YVtU.jpg" group-title="NETFLIX",Emily in Paris S03E05
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqnL3WwnehT3OXWCqdRTDTsP
+#EXTINF:-1 xui-id="489798" tvg-name="Emily in Paris S03E06" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/f3v76o82i7qohy1mayHTQJP40G5.jpg" group-title="NETFLIX",Emily in Paris S03E06
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqlb9ujCaPPUliiSSc1PfNI6
+#EXTINF:-1 xui-id="489799" tvg-name="Emily in Paris S03E07" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/nnxvV06DniyWu3MiAdAXPmPNA2W.jpg" group-title="NETFLIX",Emily in Paris S03E07
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqkdXhXBjeDedh3OJBmWU6m2
+#EXTINF:-1 xui-id="489800" tvg-name="Emily in Paris S03E08" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/7BA86LVUXcWCNIKjCtR5lEeAMsB.jpg" group-title="NETFLIX",Emily in Paris S03E08
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqnGu8on1aKLWud3PvNMPbb5
+#EXTINF:-1 xui-id="489801" tvg-name="Emily in Paris S03E09" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/lEbEdQoYyYlPhM7bYVYKjyK6Hbr.jpg" group-title="NETFLIX",Emily in Paris S03E09
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqmLxUxqrfZQAkBTinGK-z66
+#EXTINF:-1 xui-id="489802" tvg-name="Emily in Paris S03E10" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/21clMQDwZigbQT994qASshzMjAq.jpg" group-title="NETFLIX",Emily in Paris S03E10
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqmz1Q6ThNVkfzOUFsYTW2eo
+#EXTINF:-1 xui-id="1444070" tvg-name="Emily in Paris S04E01" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/jjpn557IHDYqQKBuK5EhbHCQVsM.jpg" group-title="NETFLIX",Emily in Paris S04E01
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqlpgU_Q87MhVzb0vqxfVKHd
+#EXTINF:-1 xui-id="1444071" tvg-name="Emily in Paris S04E02" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/9fmEOw3zdYa5OVOjZaHC0zOituW.jpg" group-title="NETFLIX",Emily in Paris S04E02
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqkzfwA5E0vO2sBx3bsBMCrO
+#EXTINF:-1 xui-id="1444072" tvg-name="Emily in Paris S04E03" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/ikH9Uvi3duDV8tJIyaiFjx5Rvyi.jpg" group-title="NETFLIX",Emily in Paris S04E03
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqmjeEsG07FCje6AC6P-SMz5
+#EXTINF:-1 xui-id="1444073" tvg-name="Emily in Paris S04E04" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/fhB5VuOLzDS3AJjVPIYhkXELgt3.jpg" group-title="NETFLIX",Emily in Paris S04E04
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqmLbu4K69PNivddoLLmHCE_
+#EXTINF:-1 xui-id="1444074" tvg-name="Emily in Paris S04E05" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/zkLroLy3kYxMxeWtBBN8rh3bJE.jpg" group-title="NETFLIX",Emily in Paris S04E05
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqkGNzHXUTlUOR2rqgnnj5bF
+#EXTINF:-1 xui-id="1449490" tvg-name="Emily in Paris S04E06" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/weXskv1u94ZqDMsg6y5q9rmPjQm.jpg" group-title="NETFLIX",Emily in Paris S04E06
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqnS-V_YXJKOFUiRFel7W3YW
+#EXTINF:-1 xui-id="1449491" tvg-name="Emily in Paris S04E07" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/6vk09B7stlC4deC73Xn0BqoUJ0F.jpg" group-title="NETFLIX",Emily in Paris S04E07
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqnwCBP-ZvRu7CgBLnRH3mTk
+#EXTINF:-1 xui-id="1449492" tvg-name="Emily in Paris S04E08" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/bWM87JN0YnLYDEgaWnpZBguz7i7.jpg" group-title="NETFLIX",Emily in Paris S04E08
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqk3vUZIlGcjq4q_QkAtJgAV
+#EXTINF:-1 xui-id="1449493" tvg-name="Emily in Paris S04E09" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/eDocOzeQBFXjpTR4pY6WwNBPmpB.jpg" group-title="NETFLIX",Emily in Paris S04E09
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqllpmBPZesewuFmxpNSKopv
+#EXTINF:-1 xui-id="1449494" tvg-name="Emily in Paris S04E10" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/qZko5RaH3wI7ZbFuN8JPv10EYpa.jpg" group-title="NETFLIX",Emily in Paris S04E10
+http://178.156.154.204:80/play/wXddRQ0CGIiWdf3shRj-pf07Xwgb0NcZ_oxnBommYqm7HvPBYUU3AMVvyDMY1zN_
