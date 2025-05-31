@@ -107,6 +107,7 @@
         .text-gray-800 { color: #212529; }
         .text-gray-700 { color: #343A40; } /* Slightly lighter than dark gray */
         .text-gray-600 { color: #495057; } /* Even lighter */
+		section {min-height: 100vh;}
     </style>
 </head>
 <body class="bg-white">
@@ -131,11 +132,11 @@
                     </div>
                     <div class="ml-4">
                         <select id="language-select" class="lang-select">
-                            <option value="en">English</option>
-                            <option value="ro">Română</option>
-                            <option value="nl">Nederlands</option>
-                            <option value="de">Deutsch</option>
-                            <option value="fr">Français</option>
+                            <option value="en" data-flag="us">English</option>
+                            <option value="ro" data-flag="us">Română</option>
+                            <option value="nl" data-flag="us">Nederlands</option>
+                            <option value="de" data-flag="us">Deutsch</option>
+                            <option value="fr" data-flag="us">Français</option>
                         </select>
                     </div>
                     <div class="md:hidden ml-4">
