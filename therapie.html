@@ -1234,14 +1234,14 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Cache DOM elements for better performance
             const langSelect = document.getElementById('language-select');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            const filterButtons = document.querySelectorAll('#filter-buttons .pill-button');
+            const filterButtonsContainer = document.getElementById('filter-buttons'); // Parent for event delegation
             const navLinks = document.querySelectorAll('nav a');
             const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
-            // Removed themeToggle and htmlElement related to dark mode
-
+            
             // Set initial language based on browser or default to 'en'
             const userLang = navigator.language.split('-')[0];
             let initialLang = 'en';
@@ -1251,14 +1251,12 @@
             langSelect.value = initialLang;
             applyTranslation(initialLang);
 
-            // No theme persistence or initial application for dark mode
-
-            // No updateChartColors function call here as it's now handled directly in updateCharts
-
+            // Event listener for language selection
             langSelect.addEventListener('change', (event) => {
                 applyTranslation(event.target.value);
             });
 
+            // Event listener for mobile menu toggle
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
@@ -1270,33 +1268,33 @@
                 });
             });
 
-            filterButtons.forEach(button => {
-                button.addEventListener('click', (event) => {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    event.target.classList.add('active');
-                    updateConditionsGrid(event.target.dataset.filter, langSelect.value);
-                });
+            // Event delegation for filter buttons
+            filterButtonsContainer.addEventListener('click', (event) => {
+                // Check if the clicked element or its parent is a pill-button
+                const clickedButton = event.target.closest('.pill-button');
+                if (clickedButton) {
+                    // Remove 'active' class from all buttons
+                    Array.from(filterButtonsContainer.children).forEach(btn => btn.classList.remove('active'));
+                    // Add 'active' class to the clicked button
+                    clickedButton.classList.add('active');
+                    // Update the conditions grid based on the filter
+                    updateConditionsGrid(clickedButton.dataset.filter, langSelect.value);
+                }
             });
 
-            // Smooth scrolling for navigation links
-            navLinks.forEach(link => {
+            // Smooth scrolling for navigation links (desktop and mobile)
+            [...navLinks, ...mobileNavLinks].forEach(link => {
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-
-            // Removed Theme toggle functionality
         });
     </script>
 </body>
