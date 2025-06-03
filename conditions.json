@@ -727,8 +727,6 @@
         "description_nl": "Ondersteunt postpartaal herstel (natuurlijke bevalling of keizersnede), perineale genezing, pijnverlichting en bekkenuitlijning. Het helpt nieuwe moeders zich fysiek en emotioneel aan te passen aan de eisen van het moederschap, pakt vermoeidheid, rugpijn aan en bevordert het algehele welzijn tijdens de herstelperiode.",
         "testimonial_nl": "“Bowen hielp mijn lichaam snel te herstellen na de bevalling en verlichtte zelfs de schouderpijn van het borstvoeden.”"
     },
-
-    // Respiratory & Digestive Disorders
     {
         "id": "allergies-respiratory",
         "filter": "systemic",
