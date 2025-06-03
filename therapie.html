@@ -161,6 +161,7 @@
         }
         .form-button:hover {
             background-color: #17A37B; /* Darker green on hover */
+            transform: translateY(-3px); /* Match scroll-to-top hover */
         }
     </style>
 </head>
@@ -191,22 +192,34 @@
             <a href="#introduction" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navIntroduction">Introduction</a>
             <a href="#benefits" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navBenefits">Benefits</a>
             <a href="#how-it-works" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navHowItWorks">How it Works</a>
+																																											  
+            <a href="#session" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navSession">Session</a>
           </div>
         </li>
 
         <li class="relative">
-          <button type="button" class="dropdown-toggle flex items-center text-gray-700 hover:text-accent transition-colors" data-dropdown="evidence" data-i18n="navEvidence">
-            Evidence
+          <button type="button" class="dropdown-toggle flex items-center text-gray-700 hover:text-accent transition-colors" data-dropdown="applications" data-i18n="navApplications">
+            Applications
             <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
             </svg>
           </button>
-          <div id="evidence" class="dropdown hidden absolute left-0 mt-2 w-48 rounded-xl bg-white/75 backdrop-blur-lg shadow-xl p-2 z-50">
-            <a href="#evidence" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navEvidence">Evidence</a>
+          <div id="applications" class="dropdown hidden absolute left-0 mt-2 w-48 rounded-xl bg-white/75 backdrop-blur-lg shadow-xl p-2 z-50">
             <a href="#conditions" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navConditions">Conditions</a>
-            <a href="#session" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navSession">Session</a>
             <a href="#sport" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navSport">In Sport</a>
             <a href="#animals" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navAnimals">For Animals</a>
+          </div>
+        </li>
+
+        <li class="relative">
+          <button type="button" class="dropdown-toggle flex items-center text-gray-700 hover:text-accent transition-colors" data-dropdown="more" data-i18n="navMore">
+            More
+            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+          <div id="more" class="dropdown hidden absolute left-0 mt-2 w-48 rounded-xl bg-white/75 backdrop-blur-lg shadow-xl p-2 z-50">
+            <a href="#evidence" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navEvidence">Evidence</a>
             <a href="#safety" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navSafety">Safety</a>
             <a href="#training" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navTraining">Training</a>
           </div>
@@ -244,6 +257,7 @@
     <a href="#evidence" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navEvidence">Evidence</a>
     <a href="#conditions" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navConditions">Conditions</a>
     <a href="#session" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navSession">Session</a>
+																																							
     <a href="#sport" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navSport">In Sport</a>
     <a href="#animals" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navAnimals">For Animals</a>
     <a href="#safety" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navSafety">Safety</a>
@@ -262,6 +276,7 @@
                 <a href="#conditions" class="bg-white text-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-transparent hover:text-white hover:border-2  hover:border-white transition-colors shadow-lg" data-i18n="heroExploreConditions">Explore Conditions</a>
                 <a href="#principles" class="bg-white text-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-transparent hover:text-white hover:border-2  hover:border-white transition-colors shadow-lg" data-i18n="heroLearnPrinciples">Learn the Principles</a>
             </div>
+																																																																												
         </section>
 
         <section id="introduction" class="container mx-auto px-4 py-20">
@@ -375,36 +390,42 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
                 <div class="card">
+                    <img src="https://images.unsplash.com/photo-1548651877-24a90938f36c?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Nervous system illustration" class="w-full h-40 object-cover rounded-md mb-4">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="mechanismANS">Autonomic Nervous System (ANS) Modulation</h3>
                     <p data-i18n="mechanismANSText">
                         Bowen moves send sensory input to the brain, influencing the ANS. This triggers a shift from sympathetic ("fight/flight") to parasympathetic ("rest/repair") dominance, which is crucial for healing and deep relaxation. Observable signs include deep relaxation and audible peristalsis.
                     </p>
                 </div>
                 <div class="card">
+                    <img src="https://images.unsplash.com/photo-1603522244439-d375d045d625?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Connective tissue network illustration" class="w-full h-40 object-cover rounded-md mb-4">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="mechanismFascia">The Fascial System: A Body-Wide Network</h3>
                     <p data-i18n="mechanismFasciaText">
                         Bowen targets fascia, the connective tissue rich in mechanoreceptors. Releasing fascial tension improves posture, movement, and organ function, as restrictions can impact the entire body. It promotes fluid dynamics (circulation, lymphatic flow).
                     </p>
                 </div>
                 <div class="card">
+                    <img src="https://images.unsplash.com/photo-1577903808404-58e100c5c329?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Person stretching, symbolizing proprioception" class="w-full h-40 object-cover rounded-md mb-4">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="mechanismProprioceptive">Proprioceptive & Neuromuscular Reset</h3>
-                    <p data-i18n="mechanismProprioceptiveText">
+                    <p data-i16n="mechanismProprioceptiveText">
                         Moves reset muscle spindle cells and Golgi tendon organs, vital for sensing muscle length and tension. This normalizes muscle tone, reduces guarding, and restores proper joint mechanics, leading to reduced pain and improved mobility.
                     </p>
                 </div>
                 <div class="card">
+                    <img src="https://images.unsplash.com/photo-1558231221-50e588373e44?auto=format&fit=crop&q=80&w=1935&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Abstract energy flow or organ representation" class="w-full h-40 object-cover rounded-md mb-4">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="mechanismEnergetic">Energetic & Visceral Response</h3>
                     <p data-i18n="mechanismEnergeticText">
                         Many moves overlap with acupuncture points and meridians, potentially influencing "Chi" or energy flow. Somatic input from moves can also positively impact visceral (organ) functions and stimulate endorphin release for pain relief and well-being.
                     </p>
                 </div>
                 <div class="card md:col-span-2 lg:col-span-2">
+                    <img src="https://images.unsplash.com/photo-1596706798083-d5d1c9f4d7b7?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="DNA double helix or cellular structure" class="w-full h-40 object-cover rounded-md mb-4">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="mechanismCellularMemory">Cellular Memory & Healing Blueprint</h3>
                     <p data-i18n="mechanismCellularMemoryText">
                         Some theories suggest Bowen movements help the body access its "original blueprint" or cellular memory of a healthy state, triggering a return to optimal function and balance.
                     </p>
                 </div>
                 <div class="card md:col-span-2 lg:col-span-2">
+                    <img src="https://images.unsplash.com/photo-1627916568910-c08169116e6d?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Muscle knots or pain points illustration" class="w-full h-40 object-cover rounded-md mb-4">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="mechanismTriggerPoints">Trigger Points & Pain Loops</h3>
                     <p data-i18n="mechanismTriggerPointsText">
                         Bowen moves often coincide with trigger points. By addressing these points, the technique can interrupt dysfunctional pain-muscle-spasm cycles, leading to relief and improved coordination.
@@ -656,6 +677,7 @@
 
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="card">
+																																																																								
                         <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="sportBenefitsTitle">How Bowen Benefits Athletes</h3>
                         <p class="mb-4" data-i18n="sportBenefitsIntro">
                             Bowen Therapy is increasingly recognized in the athletic community for its ability to enhance performance, speed up recovery, and aid in injury prevention. Its gentle, holistic approach works with the body's natural healing capabilities, making it suitable for athletes of all levels.
@@ -685,6 +707,7 @@
                         </ul>
                     </div>
                     <div class="card">
+																																																																										  
                         <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="sportApplicationTitle">Applications & Testimonials in Sport</h3>
                         <p class="mb-4" data-i18n="sportApplicationIntro">
                             Bowen Therapy's application in sport ranges from acute injury management to long-term performance enhancement, as evidenced by testimonials from various athletes and coaches.
@@ -716,6 +739,7 @@
 
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="card bg-white text-dark-gray">
+																																																																					 
                         <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="animalsBenefitsTitle">How Bowen Benefits Animals</h3>
                         <p class="mb-4" data-i18n="animalsBenefitsIntro">
                             Just like humans, animals can experience physical and emotional imbalances that affect their well-being and performance. Bowen Therapy offers a gentle, non-invasive, and effective way to support their natural healing processes. It is suitable for a wide range of animals, including horses, dogs, cats, and livestock.
@@ -745,6 +769,7 @@
                         </ul>
                     </div>
                     <div class="card bg-white text-dark-gray">
+																																																																							   
                         <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="animalsApplicationTitle">Common Applications & Approach</h3>
                         <p class="mb-4" data-i18n="animalsApplicationIntro">
                             Bowen Therapy for animals is typically performed in their familiar environment (e.g., stable, home) to ensure maximum comfort and receptiveness. Sessions are gentle, with frequent pauses to allow the animal's body to integrate the subtle signals.
@@ -780,6 +805,7 @@
                 </div>
             </div>
         </section>
+
         <section id="safety" class="bg-primary text-white py-20 px-4">
             <div class="container mx-auto">
                 <h2 class="section-title text-white" data-i18n="safetyTitle">Safety & Finding a Qualified Practitioner</h2>
@@ -1070,6 +1096,7 @@
                     if (c.filter === 'womens-health') return currentLangTranslations.benefitsPediatricTitle.split(' ')[0]; // Using Pediatric title for general women's health for benefits chart mapping
                     if (c.filter === 'pediatric') return currentLangTranslations.benefitsPediatricTitle.split(' ')[0];
                     if (c.filter === 'systemic') return currentLangTranslations.benefitsHormonalTitle.split(' ')[0]; // Using Hormonal title for general systemic for benefits chart mapping
+																	   
                     return title.split(' ')[0]; // Fallback to first word
                 })
                 .filter((value, index, self) => self.indexOf(value) === index); // Get unique labels
@@ -1298,5 +1325,6 @@
     });
   });
 </script>
+
 </body>
 </html>
