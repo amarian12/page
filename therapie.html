@@ -163,6 +163,34 @@
             background-color: #17A37B; /* Darker green on hover */
             transform: translateY(-3px); /* Match scroll-to-top hover */
         }
+        /* Accordion styling for FAQ */
+        .accordion-item {
+            border: 1px solid #E0E6ED;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+        .accordion-header {
+            background-color: #f0f4f8; /* Light gray for header */
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #333333;
+        }
+        .accordion-body {
+            padding: 1rem 1.5rem;
+            background-color: #ffffff;
+            border-top: 1px solid #E0E6ED;
+        }
+        .accordion-toggle-icon {
+            transition: transform 0.2s ease-in-out;
+        }
+        .accordion-header[aria-expanded="true"] .accordion-toggle-icon {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body class="bg-secondary text-dark-gray">
@@ -218,6 +246,7 @@
             </svg>
           </button>
           <div id="more" class="dropdown hidden absolute left-0 mt-2 w-48 rounded-xl bg-white/75 backdrop-blur-lg shadow-xl p-2 z-50">
+            <a href="#faq" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navFAQ">FAQ</a>
             <a href="#evidence" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navEvidence">Evidence</a>
             <a href="#safety" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navSafety">Safety</a>
             <a href="#training" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navTraining">Training</a>
@@ -258,6 +287,7 @@
     <a href="#session" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navSession">Session</a>
     <a href="#sport" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navSport">In Sport</a>
     <a href="#animals" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navAnimals">For Animals</a>
+    <a href="#faq" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navFAQ">FAQ</a>
     <a href="#safety" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navSafety">Safety</a>
     <a href="#training" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navTraining">Training</a>
     <a href="#contact" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navContact">Contact</a>
@@ -798,6 +828,330 @@
             </div>
         </section>
 
+        <section id="faq" class="bg-gray-100 py-20 px-4">
+            <div class="container mx-auto">
+                <h2 class="section-title" data-i18n="faqTitle">Frequently Asked Questions</h2>
+                <p class="section-subtitle" data-i18n="faqSubtitle">Find answers to common questions about Bowen Therapy.</p>
+
+                <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white text-primary" data-inactive-classes="text-gray-900" class="max-w-3xl mx-auto">
+
+                    <h3 data-i18n="faqCategoryGeneral" class="text-xl font-semibold mt-8 mb-4 text-primary">General Questions</h3>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-1">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-1" aria-expanded="false" aria-controls="accordion-flush-body-1">
+                                <span data-i18n="faqQ1">What is Bowen Therapy?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-1" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-1">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA1">Bowen Therapy is a gentle, hands-on technique involving subtle movements over muscles, tendons, and fascia. It works by stimulating the body's innate healing mechanisms, often leading to deep relaxation, pain reduction, and improved function.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-2">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-2" aria-expanded="false" aria-controls="accordion-flush-body-2">
+                                <span data-i18n="faqQ2">Who can benefit from Bowen Therapy?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-2" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-2">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA2">Bowen Therapy is extremely gentle and considered safe for everyone, from newborns to the elderly, including pregnant women. It can address a wide range of conditions, both acute and chronic, and is often used for general well-being and stress reduction.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-3">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-3" aria-expanded="false" aria-controls="accordion-flush-body-3">
+                                <span data-i18n="faqQ3">How does Bowen Therapy work?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-3" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-3">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA3">It works by stimulating the body's Autonomic Nervous System (ANS), encouraging a shift from 'fight or flight' to 'rest and repair'. This facilitates relaxation, reduces muscle tension, improves circulation, and activates the body’s self-healing mechanisms. Bowen moves also affect fascia and proprioceptors.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-4">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-4" aria-expanded="false" aria-controls="accordion-flush-body-4">
+                                <span data-i18n="faqQ4">What does a typical session involve?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-4" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-4">
+																						
+                            <p class="mb-2 text-gray-500" data-i18n="faqA4">A session typically lasts 45-60 minutes. The client lies on a massage table or sits in a chair. The therapist makes gentle rolling moves over specific points, followed by pauses, allowing the body to integrate the signals. Clients often experience deep relaxation.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-5">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-5" aria-expanded="false" aria-controls="accordion-flush-body-5">
+                                <span data-i18n="faqQ5">What should I wear?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-5" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-5">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA5">Light, loose-fitting clothing is recommended, as Bowen moves can be performed through clothing. However, moves can also be performed directly on skin if preferred.</p>
+																																																																																		  
+                        </div>
+                    </div>
+
+                    <h3 data-i18n="faqCategorySession" class="text-xl font-semibold mt-8 mb-4 text-primary">Session Experience & Aftercare</h3>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-6">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-6" aria-expanded="false" aria-controls="accordion-flush-body-6">
+                                <span data-i18n="faqQ6">What will I feel during a session?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-6" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-6">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA6">Many clients experience deep relaxation, sometimes falling asleep. You might feel subtle sensations like tingling, warmth, or mild aches as the body responds. These are often signs of the body initiating its healing process.</p>
+																																																																																							
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-7">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-7" aria-expanded="false" aria-controls="accordion-flush-body-7">
+                                <span data-i18n="faqQ7">What is a 'healing response' or 'aggravation'?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-7" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-7">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA7">These are temporary reactions that indicate the body is processing the treatment. They might include temporary aches or stiffness in treated or new areas, fatigue, mild flu-like symptoms (attributed to toxin release), emotional releases, or increased thirst. These are usually mild and short-lived.</p>
+																																																																																													  
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-8">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-8" aria-expanded="false" aria-controls="accordion-flush-body-8">
+                                <span data-i18n="faqQ8">How many sessions will I need?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-8" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-8">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA8">Many conditions respond within 2-3 sessions, often spaced about a week apart. Chronic or long-standing issues may require more sessions. Your therapist will discuss a treatment plan with you.</p>
+																																																																																																											
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-9">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-9" aria-expanded="false" aria-controls="accordion-flush-body-9">
+                                <span data-i18n="faqQ9">Why the 'pauses' during the session?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-9" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-9">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA9">The pauses are a unique and crucial aspect of Bowen Therapy. They allow the body time to process the gentle signals given by the moves, initiate its own adjustments, and shift into a 'rest and repair' state without interference.</p>
+																																																																																																																					 
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-10">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-10" aria-expanded="false" aria-controls="accordion-flush-body-10">
+                                <span data-i18n="faqQ10">Is Bowen Therapy safe for pregnant women?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-10" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-10">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA10">Yes, Bowen Therapy is very gentle and considered safe for pregnant women at all stages. It can effectively address common pregnancy discomforts like back pain, sciatica, and swelling.</p>
+																																																																																																																									   
+                        </div>
+                    </div>
+
+                    <h3 data-i18n="faqCategoryNot" class="text-xl font-semibold mt-8 mb-4 text-primary">What Bowen Therapy is NOT</h3>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-11">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-11" aria-expanded="false" aria-controls="accordion-flush-body-11">
+                                <span data-i18n="faqQ11">Is Bowen Therapy a type of massage?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-11" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-11">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA11">No, Bowen Therapy is distinct from massage. It involves very light, specific rolling moves rather than deep tissue manipulation or prolonged rubbing. The practitioner often leaves the room between sets of moves, allowing the body to process.</p>
+																																																																										
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-12">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-12" aria-expanded="false" aria-controls="accordion-flush-body-12">
+                                <span data-i18n="faqQ12">Is Bowen Therapy like chiropractic or osteopathy?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-12" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-12">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA12">No, Bowen Therapy does not involve any forceful manipulation, cracking, or adjustment of bones or joints. It works on the soft tissues (muscles, fascia) to encourage the body to make its own gentle realignments.</p>
+																																																																																																																		  
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-13">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-13" aria-expanded="false" aria-controls="accordion-flush-body-13">
+                                <span data-i18n="faqQ13">Does it diagnose or treat specific conditions?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-13" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-13">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA13">Bowen Therapy is a holistic complementary therapy that facilitates the body’s innate healing. Practitioners do not diagnose or treat medical conditions. It is recommended to consult a doctor for diagnosis and medical treatment.</p>
+																																																																																																									  
+                        </div>
+                    </div>
+
+                    <h3 data-i18n="faqCategoryPractitioner" class="text-xl font-semibold mt-8 mb-4 text-primary">Practitioner & Safety</h3>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-14">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-14" aria-expanded="false" aria-controls="accordion-flush-body-14">
+                                <span data-i18n="faqQ14">How do I find a qualified Bowen Therapist?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-14" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-14">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA14">It is important to choose a therapist who has completed accredited training and is typically registered with a professional association in their country. Look for qualifications, professional insurance, and adherence to a code of conduct.</p>
+																																																																																													 
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-15">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-15" aria-expanded="false" aria-controls="accordion-flush-body-15">
+                                <span data-i18n="faqQ15">Are there any contraindications or situations to be cautious about?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-15" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-15">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA15">Bowen Therapy is very safe. However, certain situations require caution or modification by the therapist, including intoxication, fevers, deep vein thrombosis (DVT), certain types of cancer (especially lymphatic system), and aortic aneurysm. Always inform your therapist of your full medical history.</p>
+																																																																																																				  
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-16">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-16" aria-expanded="false" aria-controls="accordion-flush-body-16">
+                                <span data-i18n="faqQ16">Can Bowen Therapy be combined with other therapies?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-16" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-16">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA16">It is generally recommended to avoid other manipulative therapies (like massage, chiropractic, physiotherapy) for 5-7 days after a Bowen session to allow the body to fully integrate the work. Other gentle therapies, like acupuncture, might be acceptable, but always discuss with your Bowen therapist.</p>
+																																																																																												
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-17">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-17" aria-expanded="false" aria-controls="accordion-flush-body-17">
+                                <span data-i18n="faqQ17">Does Bowen Therapy replace medical care?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-17" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-17">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA17">No, Bowen Therapy is a complementary modality and is not intended to replace conventional medical diagnosis or treatment. Always consult with your doctor or a qualified healthcare professional for any health concerns and appropriate treatment options.</p>
+																																																																																																																																												 
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-18">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-18" aria-expanded="false" aria-controls="accordion-flush-body-18">
+                                <span data-i18n="faqQ18">What kind of training do Bowen Therapists have?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-18" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-18">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA18">Qualified Bowen Therapists complete accredited training programs from recognized institutions (e.g., Bowtech, ECBS, American Bowen Academy). This typically involves comprehensive study of Bowen techniques, anatomy & physiology, first aid, and adherence to professional standards and ongoing CPD.</p>
+																																																																																																																																					   
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-19">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-19" aria-expanded="false" aria-controls="accordion-flush-body-19">
+                                <span data-i18n="faqQ19">Can Bowen Therapy help with chronic conditions?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-19" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-19">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA19">Yes, Bowen Therapy is frequently used to support individuals with chronic conditions such as fibromyalgia, MS, Parkinson's, and long-standing pain. While it may not cure the condition, it often helps manage symptoms, reduce pain, improve mobility, and enhance overall quality of life.</p>
+																																																																																																																											
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-20">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-20" aria-expanded="false" aria-controls="accordion-flush-body-20">
+                                <span data-i18n="faqQ20">Is there scientific evidence for Bowen Therapy?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-20" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-20">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA20">While a large body of high-quality randomized controlled trials (RCTs) is still developing, preliminary research and smaller studies suggest promising areas, particularly for stress reduction, pain management, and flexibility. Patient testimonials also consistently report positive outcomes. It's important to note regulatory bodies may have specific guidelines on claims.</p>
+																																																																																																																					 
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-21">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-21" aria-expanded="false" aria-controls="accordion-flush-body-21">
+                                <span data-i18n="faqQ21">Can children and babies receive Bowen Therapy?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-21" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-21">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA21">Yes, Bowen Therapy is extremely gentle and effective for children and babies, often with very quick results due to their highly responsive systems. It can help with conditions like colic, reflux, sleep issues, bedwetting, and developmental challenges.</p>
+																																																																																																													 
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 id="accordion-flush-heading-22">
+                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-22" aria-expanded="false" aria-controls="accordion-flush-body-22">
+                                <span data-i18n="faqQ22">What are the 'rules' for after a Bowen session?</span>
+                                <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-22" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-22">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA22">Aftercare is crucial. It includes staying well-hydrated, engaging in gentle movement (avoiding prolonged sitting/lying), avoiding other manipulative therapies for 5-7 days, avoiding extreme temperatures (hot/cold packs, hot baths) for 48 hours, and communicating any 'healing responses' to your therapist. These guidelines help maximize the treatment's effectiveness.</p>
+																																																																																																																																						
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+		
         <section id="safety" class="bg-primary text-white py-20 px-4">
             <div class="container mx-auto">
                 <h2 class="section-title text-white" data-i18n="safetyTitle">Safety & Finding a Qualified Practitioner</h2>
