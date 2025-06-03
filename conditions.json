@@ -1,5 +1,4 @@
 [
-    // Musculoskeletal & Pain
     {
         "id": "chronic-back-pain",
         "filter": "musculoskeletal",
@@ -23,7 +22,7 @@
         "description_ro": "Eficientă pentru rigiditatea gâtului, durerile cronice de gât, whiplash, torticolis, umărul blocat (capsulita adezivă), impingementul umărului, cotul de tenis, cotul de golf și leziunile prin efort repetitiv (RSI). Încurajează blând eliberarea fasciilor și mușchilor restricționați din partea superioară a spatelui, gât și brațe, îmbunătățind amplitudinea de mișcare și reducând disconfortul. Afecțiuni precum sindromul de tunel carpian, \"gâtul de text\", degetul în resort și slăbiciunea generală a brațelor sau a mâinilor pot, de asemenea, să înregistreze îmbunătățiri.",
         "testimonial_ro": "“Umărul meu blocat îmi limitase mișcarea luni de zile. După câteva sesiuni Bowen, am recăpătat aproape întreaga mobilitate și mi-am redus rigiditatea cronică a gâtului.”",
         "title_nl": "Nek-, Schouder- & Armpijn",
-        "description_nl": "Effectief bij stijve nek, chronische nekpijn, whiplash, torticollis, frozen shoulder (adhesieve capsulitis), schouderimpingement, tenniselleboog (laterale epicondylitis), golferselleboog (mediale epicondylitis) en Repetitive Strain Injury (RSI). Het stimuleert zachtjes de ontspanning van beperkte fascia en spieren in de bovenrug, nek en armen, wat de bewegingsvrijheid verbetert en ongemak vermindert. Aandoeningen zoals carpaal tunnel syndroom, \'sms-nek\", trigger vinger en algemene arm- of handzwakte kunnen ook verbetering laten zien.",
+        "description_nl": "Effectief bij stijve nek, chronische nekpijn, whiplash, torticollis, frozen shoulder (adhesieve capsulitis), schouderimpingement, tenniselleboog (laterale epicondylitis), golferselleboog (mediale epicondylitis) en Repetitive Strain Injury (RSI). Het stimuleert zachtjes de ontspanning van beperkte fascia en spieren in de bovenrug, nek en armen, wat de bewegingsvrijheid verbetert en ongemak vermindert. Aandoeningen zoals carpaal tunnel syndroom, 'sms-nek\", trigger vinger en algemene arm- of handzwakte kunnen ook verbetering laten zien.",
         "testimonial_nl": "“Mijn frozen shoulder beperkte mijn beweging maandenlang. Na een paar Bowen sessies heb ik bijna volledige mobiliteit teruggekregen en mijn chronische nekstijfheid verminderd.”"
     },
     {
@@ -221,8 +220,6 @@
         "description_nl": "Biedt complementaire ondersteuning bij rotator cuff blessures, tendinitis en algemene schouderpijn en stijfheid. Door spieronbalansen en fasciale restricties rond het schoudergewricht zachtjes aan te pakken, helpt Bowen Therapie de bewegingsvrijheid te verbeteren, pijn te verminderen en het natuurlijke genezingsproces van het lichaam in het schoudercomplex te ondersteunen.",
         "testimonial_nl": "“Mijn terugkerende rotator cuff pijn hield me tegen om mijn arm volledig op te tillen. Na Bowen heb ik veel meer bewegingsvrijheid en minder pijn.”"
     },
-
-    // Head, Nervous System & Balance (Expanded to 10 records)
     {
         "id": "head-conditions",
         "filter": "systemic",
@@ -314,8 +311,6 @@
         "description_nl": "Biedt complementaire ondersteuning tijdens beroerte revalidatie. Bowen Therapie kan helpen bij het verbeteren van de motorische functie, het verminderen van spasticiteit, het verlichten van pijn en het verbeteren van balans en coördinatie bij personen na een beroerte. Het helpt neurale paden en spierheropvoeding te vergemakkelijken, wat bijdraagt aan een effectiever herstelproces.",
         "testimonial_nl": "“Na mijn beroerte hielpen Bowen sessies me meer beweging in mijn arm terug te krijgen en verminderden ze de stijfheid die ik ervoer aanzienlijk. Het vulde mijn fysiotherapie heel goed aan.”"
     },
-	
-    // Stress & Emotional (Expanded to 10 records)
     {
         "id": "stress-anxiety-fatigue",
         "filter": "stress",
@@ -359,7 +354,7 @@
         "id": "fatigue-energy",
         "filter": "stress",
         "title_en": "Fatigue & Energy Levels",
-        "description_en": "Beyond chronic fatigue syndrome, Bowen Therapy can significantly improve general fatigue, low energy levels, and lethargy. By promoting deep relaxation and optimizing the body\'s self-regulating systems, it helps to restore vitality, improve stamina, and enhance overall energy production, leading to a greater sense of well-being and reduced exhaustion.",
+        "description_en": "Beyond chronic fatigue syndrome, Bowen Therapy can significantly improve general fatigue, low energy levels, and lethargy. By promoting deep relaxation and optimizing the body's self-regulating systems, it helps to restore vitality, improve stamina, and enhance overall energy production, leading to a greater sense of well-being and reduced exhaustion.",
         "testimonial_en": "“I no longer feel exhausted all the time. Bowen has given me back my energy and zest for life.”",
         "title_ro": "Oboseală și Niveluri de Energie",
         "description_ro": "Dincolo de sindromul de oboseală cronică, Terapia Bowen poate îmbunătăți semnificativ oboseala generală, nivelurile scăzute de energie și letargia. Prin promovarea relaxării profunde și optimizarea sistemelor de auto-reglare ale corpului, ajută la restabilirea vitalității, îmbunătățirea rezistenței și creșterea producției generale de energie, ducând la o senzație mai mare de bunăstare și oboseală redusă.",
@@ -433,8 +428,6 @@
         "description_nl": "Naast emotionele impact, manifesteert chronische stress zich vaak als fysieke symptomen. Bowen Therapie is zeer effectief in het verminderen van spierspanning, spasmen, hoofdpijn, spijsverteringsklachten en oppervlakkige ademhalingspatronen die directe gevolgen zijn van stress. Door het zenuwstelsel over te schakelen naar een "rust- en herstel"-modus, helpt het lichaam opgebouwde fysieke spanning los te laten en het evenwicht te herstellen, waardoor fysiek ongemak dat verband houdt met stress wordt verminderd.",
         "testimonial_nl": "“Mijn chronische spanningshoofdpijn en nekpijn waren altijd erger als ik gestrest was. Bowen sessies hebben ze aanzienlijk verminderd, en ik voel me zoveel lichter.”"
     },
-
-    // Pediatric (Expanded to 10 records)
     {
         "id": "infant-colic-reflux",
         "filter": "pediatric",
@@ -445,7 +438,7 @@
         "description_ro": "Foarte blândă și eficientă pentru bebeluși, ajutând la reechilibrarea sistemului nervos. Poate reduce disconfortul cauzat de colici, reflux, regurgitări excesive, constipație și poate îmbunătăți digestia și tiparele de somn.",
         "testimonial_ro": "“Colicile bebelușului nostru au dispărut după doar două sesiuni Bowen. Doarme mult mai bine acum și pare mult mai confortabil!”",
         "title_nl": "Babykoliek & Reflux",
-        "description_nl": "Zeer zacht en effectief voor baby\'s, helpt het zenuwstelsel te herstellen. Het kan ongemak door babykoliek, reflux, overmatig spugen, constipatie verminderen en een verbeterde spijsvertering en slaappatronen bevorderen.",
+        "description_nl": "Zeer zacht en effectief voor baby's, helpt het zenuwstelsel te herstellen. Het kan ongemak door babykoliek, reflux, overmatig spugen, constipatie verminderen en een verbeterde spijsvertering en slaappatronen bevorderen.",
         "testimonial_nl": "“De koliek van onze baby verdween na slechts twee Bowen sessies. Hij slaapt nu veel beter en lijkt zoveel comfortabeler!”"
     },
     {
@@ -535,7 +528,7 @@
         "title_ro": "Dificultăți de Alăptare și Alimentație la Bebeluși",
         "description_ro": "Oferă suport blând pentru sugarii care întâmpină dificultăți la alăptare sau la alimentația cu biberonul. Prin eliberarea tensiunilor subtile din zona maxilarului, gâtului și craniană, Terapia Bowen poate îmbunătăți mecanica orală și confortul general, facilitând o alimentație mai ușoară și mai eficientă.",
         "testimonial_ro": "“Nou-născutul nostru se lupta să se alăpteze, iar după o sesiune blândă de Bowen, a existat o îmbunătățire notabilă, făcând alăptarea mult mai puțin stresantă pentru amândoi.”",
-        "title_nl": "Aanleg- & Voedingsproblemen bij Baby\'s",
+        "title_nl": "Aanleg- & Voedingsproblemen bij Baby's",
         "description_nl": "Biedt zachte ondersteuning voor zuigelingen die moeite hebben met het aanleggen bij borstvoeding of flesvoeding. Door subtiele spanningen in de kaak-, nek- en craniale gebieden los te laten, kan Bowen Therapie de orale mechanica en het algehele comfort verbeteren, waardoor voeden gemakkelijker en effectiever wordt.",
         "testimonial_nl": "“Onze pasgeborene had moeite met aanleggen, en na één zachte Bowen sessie was er een merkbare verbetering, waardoor borstvoeding zoveel minder stressvol werd voor ons beiden.”"
     },
@@ -569,7 +562,7 @@
         "id": "respiratory-issues-children",
         "filter": "pediatric",
         "title_en": "Respiratory Issues in Children",
-        "description_en": "Offers gentle complementary support for respiratory challenges in children, including recurrent colds, chronic coughs, mild asthma, and lingering congestion after illness. By improving breathing mechanics and supporting the body\'s natural defenses, Bowen Therapy can help children breathe more easily and recover more effectively.",
+        "description_en": "Offers gentle complementary support for respiratory challenges in children, including recurrent colds, chronic coughs, mild asthma, and lingering congestion after illness. By improving breathing mechanics and supporting the body's natural defenses, Bowen Therapy can help children breathe more easily and recover more effectively.",
         "testimonial_en": "“Our son was constantly battling coughs and chest congestion. Bowen Therapy helped clear his lungs, and he breathes much better now.”",
         "title_ro": "Probleme Respiratorii la Copii",
         "description_ro": "Oferă suport complementar blând pentru provocările respiratorii la copii, inclusiv răceli recurente, tuse cronică, astm ușor și congestie persistentă după boală. Prin îmbunătățirea mecanicii respirației și susținerea apărărilor naturale ale corpului, Terapia Bowen poate ajuta copiii să respire mai ușor și să se recupereze mai eficient.",
@@ -604,18 +597,16 @@
         "description_nl": "Biedt zachte complementaire ondersteuning aan kinderen die lijden aan terugkerende hoofdpijn of migraine. Door spanning in het hoofd, de nek en de schouders aan te pakken en het zenuwstelsel in balans te brengen, kan Bowen Therapie helpen de frequentie en intensiteit van hoofdpijn te verminderen, waardoor het algehele comfort en de levenskwaliteit van een kind worden verbeterd.",
         "testimonial_nl": "“Onze zoon leed aan frequente migraine die zijn schoolbezoek beïnvloedde. Bowen Therapie heeft een enorm verschil gemaakt; zijn hoofdpijn is nu veel zeldzamer.”"
     },
-
-    // Women's Health
     {
         "id": "womens-health-support",
         "filter": "womens-health",
-        "title_en": "Women\'s Health: Hormonal & Reproductive Support",
+        "title_en": "Women's Health: Hormonal & Reproductive Support",
         "description_en": "supports regulation of the menstrual cycle, alleviating symptoms of PMS (premenstrual syndrome), period pain (dysmenorrhea), and irregular cycles. It provides relief during perimenopause and menopause, addressing hot flashes, night sweats, mood swings, and other discomforts. It can also offer complementary support for fertility challenges, ovarian cysts, uterine fibroids, endometriosis, PCOS symptoms, pelvic pain, and issues like bladder control and incontinence.",
         "testimonial_en": "“My hormonal fluctuations and PMS symptoms have significantly reduced since starting Bowen Therapy, which also helped with my fertility journey and pelvic discomfort.”",
         "title_ro": "sănătatea Femeilor: Suport Hormonal și Reproductiv",
         "description_ro": "sprijină reglarea ciclului menstrual, ameliorând simptomele sindromului premenstrual (PMS), durerilor menstruale (dismenoreei) și ciclurile neregulate. Oferă alinare în timpul perimenopauzei și menopauzei, abordând bufeurile, transpirațiile nocturne, schimbările de dispoziție și alte disconforturi. Poate oferi, de asemenea, suport complementar pentru problemele de fertilitate, chisturi ovariene, fibroame uterine, endometrioză, simptomele SOPC, dureri pelvine și probleme precum controlul vezicii urinare și incontinența.",
         "testimonial_ro": "“Fluctuațiile mele hormonale și simptomele PMS s-au redus semnificativ de când am început Terapia Bowen, ceea ce m-a ajutat și în călătoria mea spre fertilitate și disconfortul pelvin.”",
-        "title_nl": "Vrouwen Gezondhe"id": Hormonale & Reproductieve Ondersteuning",
+        "title_nl": "Vrouwen Gezondhe: Hormonale & Reproductieve Ondersteuning",
         "description_nl": "Ondersteunt de regulering van de menstruatiecyclus, verlicht symptomen van PMS (premenstrueel syndroom), menstruatiepijn (dysmenorroe) en onregelmatige cycli. Het biedt verlichting tijdens de perimenopauze en menopauze, waarbij opvliegers, nachtzweten, stemmingswisselingen en andere ongemakken worden aangepakt. Het kan ook complementaire ondersteuning bieden bij vruchtbaarheidsproblemen, ovariële cysten, baarmoederfibromen, endometriose, PCOS-symptomen, bekkenpijn en problemen zoals blaascontrole en incontinentie.",
         "testimonial_nl": "“Mijn hormonale schommelingen en PMS-symptomen zijn aanzienlijk verminderd sinds ik met Bowen Therapie ben begonnen, wat ook hielp bij mijn vruchtbaarheidstraject en bekkenklachten.”"
     },
@@ -636,7 +627,7 @@
         "id": "menstrual-irregularities",
         "filter": "womens-health",
         "title_en": "Menstrual Irregularities",
-        "description_en": "Beyond PMS symptom relief, Bowen Therapy can help regulate irregular menstrual cycles, heavy or light periods, and other cycle-related dysfunctions. By influencing the endocrine system and calming the nervous system, it supports the body\'s natural rhythm and hormonal balance.",
+        "description_en": "Beyond PMS symptom relief, Bowen Therapy can help regulate irregular menstrual cycles, heavy or light periods, and other cycle-related dysfunctions. By influencing the endocrine system and calming the nervous system, it supports the body's natural rhythm and hormonal balance.",
         "testimonial_en": "“My cycles used to be very erratic and painful, but since starting Bowen Therapy, they are much more regular and manageable.”",
         "title_ro": "Neregularități Menstruale",
         "description_ro": "Dincolo de ameliorarea simptomelor PMS, Terapia Bowen poate ajuta la reglarea ciclurilor menstruale neregulate, a menstruațiilor abundente sau ușoare și a altor disfuncții legate de ciclu. Prin influențarea sistemului endocrin și calmarea sistemului nervos, susține ritmul natural al corpului și echilibrul hormonal.",
@@ -649,7 +640,7 @@
         "id": "infertility-support",
         "filter": "womens-health",
         "title_en": "Infertility Support (Complementary)",
-        "description_en": "Can assist with fertility challenges in both men and women by promoting nervous system balance, reducing stress, and releasing physical blocks. It supports the body\'s optimal functioning for conception, working as a complementary therapy alongside conventional fertility treatments.",
+        "description_en": "Can assist with fertility challenges in both men and women by promoting nervous system balance, reducing stress, and releasing physical blocks. It supports the body's optimal functioning for conception, working as a complementary therapy alongside conventional fertility treatments.",
         "testimonial_en": "“After struggling to conceive for years, Bowen Therapy helped my body find balance and align, and I am now happily pregnant!”",
         "title_ro": "suport pentru Infertilitate (Complementar)",
         "description_ro": "Poate ajuta cu problemele de fertilitate atât la bărbați, cât și la femei, prin promovarea echilibrului sistemului nervos, reducerea stresului și eliberarea blocajelor fizice. Susține funcționarea optimă a corpului pentru concepție, lucrând ca terapie complementară alături de tratamentele convenționale de fertilitate.",
@@ -701,7 +692,7 @@
         "id": "pre-conception-support",
         "filter": "womens-health",
         "title_en": "Pre-Conception Support",
-        "description_en": "supports couples in their journey towards conception by optimizing the body\'s balance and reducing stress. For women, it can help regulate menstrual cycles and prepare the body for pregnancy. For men, it can aid in stress reduction and overall systemic health that supports reproductive well-being.",
+        "description_en": "supports couples in their journey towards conception by optimizing the body's balance and reducing stress. For women, it can help regulate menstrual cycles and prepare the body for pregnancy. For men, it can aid in stress reduction and overall systemic health that supports reproductive well-being.",
         "testimonial_en": "“We had been trying to conceive for a while, and after incorporating Bowen Therapy, I felt my body become more balanced, and we were thrilled to get pregnant.”",
         "title_ro": "suport Pre-Concepție",
         "description_ro": "susține cuplurile în călătoria lor spre concepție prin optimizarea echilibrului corpului și reducerea stresului. Pentru femei, poate ajuta la reglarea ciclurilor menstruale și la pregătirea corpului pentru sarcină. Pentru bărbați, poate ajuta la reducerea stresului și la sănătatea sistemică generală care susține bunăstarea reproductivă.",
@@ -1427,12 +1418,11 @@
         "description_nl": "In de kern beïnvloedt Bowen Therapie het Autonome Zenuwstelsel (AZS) aanzienlijk, waarbij het lichaam verschuift van een sympathische (\"vecht-, vlucht- of bevries\") modus naar een parasympathische (\"rust-, ontspan- en herstel\") modus. Deze fundamentele verschuiving is cruciaal voor diepe ontspanning, pijnvermindering en het activeren van de aangeboren genezingsintelligentie van het lichaam, wat een breed scala aan zenuwstelsel onevenwichtigheden en disfuncties beïnvloedt, zoals neuropathie, Bell's Parese, trigeminusneuralgie en post-commotioneel syndroom.",
         "testimonial_nl": "“De diepe ontspanning die ik tijdens en na een sessie voel, is ongelooflijk. Het helpt echt om mijn overactieve zenuwstelsel te kalmeren en mijn zenuwpijn te verminderen.”"
     },
-    // Systemic & Other Conditions (Expanded to 12 records)
     {
         "id": "systemic-illnesses-support",
         "filter": "systemic",
         "title_en": "Support for Chronic & Systemic Illnesses",
-        "description_en": "Bowen Therapy offers complementary support for individuals with a range of chronic and systemic conditions by promoting overall balance and self-healing. This includes neurological conditions such as Multiple Sclerosis (MS), Parkinson\'s, motor neuron disease, and post-stroke sequelae (aiming to improve motor function, gait, and balance). It also provides comfort and symptom management for cancer patients (reducing pain, nausea, anxiety, fatigue, and improving quality of life), thyroid issues (hypo/hyperthyroidism, Hashimoto\'s), autoimmune conditions (e.g., Rheumatoid Arthritis, Lupus), and conditions like gout and rheumatism.",
+        "description_en": "Bowen Therapy offers complementary support for individuals with a range of chronic and systemic conditions by promoting overall balance and self-healing. This includes neurological conditions such as Multiple Sclerosis (MS), Parkinson's, motor neuron disease, and post-stroke sequelae (aiming to improve motor function, gait, and balance). It also provides comfort and symptom management for cancer patients (reducing pain, nausea, anxiety, fatigue, and improving quality of life), thyroid issues (hypo/hyperthyroidism, Hashimoto's), autoimmune conditions (e.g., Rheumatoid Arthritis, Lupus), and conditions like gout and rheumatism.",
         "testimonial_en": "“Bowen has provided unexpected relief from some of my MS symptoms, improving my overall comfort and energy levels. It also helped my father manage pain during his cancer treatment.”",
         "title_ro": "Suport pentru Afecțiuni Cronice și Sistemice",
         "description_ro": "Terapia Bowen oferă suport complementar persoanelor cu o gamă largă de afecțiuni cronice și sistemice prin promovarea echilibrului general și a auto-vindecării. Aceasta include afecțiuni neurologice precum Scleroza Multiplă (SM), Parkinson, boala neuronului motor și sechele post-AVC (având ca scop îmbunătățirea funcției motorii, a mersului și a echilibrului). De asemenea, oferă confort și gestionarea simptomelor pentru pacienții cu cancer (reducând durerea, greața, anxietatea, oboseala și îmbunătățind calitatea vieții), probleme tiroidiene (hipo/hipertiroidism, Hashimoto), boli autoimune (de ex., artrită reumatoidă, lupus) și afecțiuni precum guta și reumatismul.",
@@ -1445,7 +1435,7 @@
         "id": "recovery-rehabilitation",
         "filter": "systemic",
         "title_en": "Recovery from Injury, Surgery & Trauma",
-        "description_en": "Accelerates healing and recovery from physical trauma, acute and chronic injuries, and post-operative conditions by stimulating the body\'s natural repair processes. Bowen therapy can reduce swelling, pain, and stiffness, promoting faster tissue repair, scar tissue reduction, and improved mobility. It also provides gentle support for elderly/frail individuals for mobility, balance, and general well-being, and those with work-related injuries (like RSI or back strain).",
+        "description_en": "Accelerates healing and recovery from physical trauma, acute and chronic injuries, and post-operative conditions by stimulating the body's natural repair processes. Bowen therapy can reduce swelling, pain, and stiffness, promoting faster tissue repair, scar tissue reduction, and improved mobility. It also provides gentle support for elderly/frail individuals for mobility, balance, and general well-being, and those with work-related injuries (like RSI or back strain).",
         "testimonial_en": "“After my knee surgery, Bowen helped immensely with the swelling and getting my mobility back much quicker than expected.”",
         "title_ro": "Recuperare după Leziuni, Chirurgie și Traumă",
         "description_ro": "Accelerează vindecarea și recuperarea după traume fizice, leziuni acute și cronice și afecțiuni post-operatorii prin stimularea proceselor naturale de reparare ale corpului. Terapia Bowen poate reduce umflăturile, durerea și rigiditatea, promovând o reparare mai rapidă a țesuturilor, reducerea țesutului cicatricial și o mobilitate îmbunătățită. De asemenea, oferă suport blând persoanelor vârstnice/fragile pentru mobilitate, echilibru și bunăstare generală, și celor cu leziuni legate de muncă (precum RSI sau întinderi de spate).",
@@ -1458,7 +1448,7 @@
         "id": "circulation-lymphatic",
         "filter": "systemic",
         "title_en": "Circulation & Lymphatic Drainage",
-        "description_en": "Bowen moves can positively influence fluid dynamics within the body, aiding in improved blood circulation, reduced fluid retention (edema), and enhanced lymphatic drainage. This supports the body\'s natural detoxification processes, reduces swelling, and can benefit conditions related to poor circulation, lymphedema, and general metabolic waste removal.",
+        "description_en": "Bowen moves can positively influence fluid dynamics within the body, aiding in improved blood circulation, reduced fluid retention (edema), and enhanced lymphatic drainage. This supports the body's natural detoxification processes, reduces swelling, and can benefit conditions related to poor circulation, lymphedema, and general metabolic waste removal.",
         "testimonial_en": "“I used to suffer from swollen ankles and legs, but after regular Bowen sessions, the swelling has significantly reduced, and I feel less sluggish.”",
         "title_ro": "Circulație și Drenaj Limfatic",
         "description_ro": "Mișcările Bowen pot influența pozitiv dinamica fluidelor în corp, ajutând la îmbunătățirea circulației sanguine, reducerea retenției de lichide (edeme) și îmbunătățirea drenajului limfatic. Acest lucru susține procesele naturale de detoxifiere ale corpului, reduce umflăturile și poate aduce beneficii afecțiunilor legate de circulație deficitară, limfedem și eliminarea generală a deșeurilor metabolice.",
@@ -1471,7 +1461,7 @@
         "id": "general-wellbeing",
         "filter": "systemic",
         "title_en": "General Well-being & Vitality",
-        "description_en": "Beyond specific conditions, many individuals experience an overall enhancement in their general well-being, increased energy levels, improved vitality, and a deeper sense of relaxation and balance after Bowen Therapy sessions. It supports the body\'s innate capacity for self-regulation, stress reduction, and can lead to a greater sense of calm, mental clarity, and improved resilience to daily stressors.",
+        "description_en": "Beyond specific conditions, many individuals experience an overall enhancement in their general well-being, increased energy levels, improved vitality, and a deeper sense of relaxation and balance after Bowen Therapy sessions. It supports the body's innate capacity for self-regulation, stress reduction, and can lead to a greater sense of calm, mental clarity, and improved resilience to daily stressors.",
         "testimonial_en": "“I feel a noticeable improvement in my overall energy and mood after each session. It just helps me feel more balanced and cope better with stress.”",
         "title_ro": "Bunăstare Generală și Vitalitate",
         "description_ro": "Dincolo de afecțiunile specifice, multe persoane experimentează o îmbunătățire generală a stării de bine, un nivel crescut de energie, o vitalitate îmbunătățită și o senzație mai profundă de relaxare și echilibru după sesiunile de Terapie Bowen. Susține capacitatea înnăscută a corpului de auto-reglare, reducerea stresului și poate duce la o senzație mai mare de calm, claritate mentală și o reziliență îmbunătățită la factorii de stres zilnici.",
@@ -1484,7 +1474,7 @@
         "id": "immune-support",
         "filter": "systemic",
         "title_en": "Immune System Support",
-        "description_en": "Bowen Therapy can help regulate the immune system by promoting a shift to parasympathetic dominance, which is essential for immune function. It offers complementary support for recurring infections (e.g., colds, flu), chronic inflammatory conditions, and autoimmune conditions (e.g., Hashimoto\'s, Rheumatoid Arthritis, Lupus, MS-related immune support). By reducing stress and enhancing the body\'s natural healing mechanisms, it can contribute to a more balanced immune response and overall resilience.",
+        "description_en": "Bowen Therapy can help regulate the immune system by promoting a shift to parasympathetic dominance, which is essential for immune function. It offers complementary support for recurring infections (e.g., colds, flu), chronic inflammatory conditions, and autoimmune conditions (e.g., Hashimoto's, Rheumatoid Arthritis, Lupus, MS-related immune support). By reducing stress and enhancing the body's natural healing mechanisms, it can contribute to a more balanced immune response and overall resilience.",
         "testimonial_en": "“I noticed fewer colds and generally felt stronger after incorporating Bowen Therapy into my routine, especially during flu season.”",
         "title_ro": "Suport pentru Sistemul Imunitar",
         "description_ro": "Terapia Bowen poate ajuta la reglarea sistemului imunitar prin promovarea unei treceri la dominanța parasimpatică, esențială pentru funcția imunitară. Oferă suport complementar pentru infecțiile recurente (de ex., răceli, gripă), afecțiunile inflamatorii cronice și afecțiunile autoimune (de ex., Hashimoto, artrită reumatoidă, lupus, suport imunitar legat de SM). Prin reducerea stresului și îmbunătățirea mecanismelor naturale de vindecare ale corpului, poate contribui la un răspuns imunitar mai echilibrat și la o reziliență generală.",
@@ -1497,13 +1487,13 @@
         "id": "nervous-system-regulation",
         "filter": "systemic",
         "title_en": "Nervous System Regulation",
-        "description_en": "At its core, Bowen Therapy significantly influences the Autonomic Nervous System (ANS), shifting the body from a sympathetic ("fight, flight, or freeze") mode to a parasympathetic ("rest, relax, and repair") mode. This fundamental shift is crucial for profound relaxation, pain reduction, and activating the body\'s innate healing intelligence, impacting a wide range of nervous system imbalances and dysfunctions like neuropathy, Bell\'s Palsy, trigeminal neuralgia, and post-concussion syndrome.",
+        "description_en": "At its core, Bowen Therapy significantly influences the Autonomic Nervous System (ANS), shifting the body from a sympathetic („fight, flight, or freeze”) mode to a parasympathetic („rest, relax, and repair”) mode. This fundamental shift is crucial for profound relaxation, pain reduction, and activating the body's innate healing intelligence, impacting a wide range of nervous system imbalances and dysfunctions like neuropathy, Bell's Palsy, trigeminal neuralgia, and post-concussion syndrome.",
         "testimonial_en": "“The deep relaxation I feel during and after a session is incredible. It truly helps to calm my overactive nervous system and reduce my nerve pain.”",
         "title_ro": "Reglarea Sistemului Nervos",
         "description_ro": "La baza sa, Terapia Bowen influențează semnificativ Sistemul Nervos Autonom (SNA), trecând corpul dintr-un mod simpatic („luptă, fugi sau îngheață”) într-un mod parasimpatic („odihnă, relaxare și reparare”). Această schimbare fundamentală este crucială pentru relaxare profundă, reducerea durerii și activarea inteligenței înnăscute de vindecare a corpului, impactând o gamă largă de dezechilibre și disfuncții ale sistemului nervos, cum ar fi neuropatia, paralizia Bell, nevralgia de trigemen și sindromul post-commoțional.",
         "testimonial_ro": "“Relaxarea profundă pe care o simt în timpul și după o sesiune este incredibilă. Ajută cu adevărat la calmarea sistemului meu nervos hiperactiv și la reducerea durerii nervoase.”",
         "title_nl": "Regulatie van het Zenuwstelsel",
-        "description_nl": "In de kern beïnvloedt Bowen Therapie het Autonome Zenuwstelsel (AZS) aanzienlijk, waarbij het lichaam verschuift van een sympathische ("vecht-, vlucht- of bevries") modus naar een parasympathische ("rust-, ontspan- en herstel") modus. Deze fundamentele verschuiving is cruciaal voor diepe ontspanning, pijnvermindering en het activeren van de aangeboren genezingsintelligentie van het lichaam, wat een breed scala aan zenuwstelsel onevenwichtigheden en disfuncties beïnvloedt, zoals neuropathie, Bell\'s Parese, trigeminusneuralgie en post-commotioneel syndroom.",
+        "description_nl": "In de kern beïnvloedt Bowen Therapie het Autonome Zenuwstelsel (AZS) aanzienlijk, waarbij het lichaam verschuift van een sympathische („vecht-, vlucht- of bevries”) modus naar een parasympathische („rust-, ontspan- en herstel”) modus. Deze fundamentele verschuiving is cruciaal voor diepe ontspanning, pijnvermindering en het activeren van de aangeboren genezingsintelligentie van het lichaam, wat een breed scala aan zenuwstelsel onevenwichtigheden en disfuncties beïnvloedt, zoals neuropathie, Bell's Parese, trigeminusneuralgie en post-commotioneel syndroom.",
         "testimonial_nl": "“De diepe ontspanning die ik tijdens en na een sessie voel, is ongelooflijk. Het helpt echt om mijn overactieve zenuwstelsel te kalmeren en mijn zenuwpijn te verminderen.”"
     },
     {
@@ -1536,7 +1526,7 @@
         "id": "pre-post-operative-dental",
         "filter": "systemic",
         "title_en": "Pre/Post-Operative & Dental Work Support",
-        "description_en": "Bowen Therapy can prepare the body for surgery by reducing stress and promoting tissue readiness for optimal healing. Post-operatively, it accelerates recovery, reduces swelling, pain, and scar tissue formation. It\'s also beneficial for releasing tension and discomfort after dental procedures, extractions, or extensive dental work, promoting faster healing and reduced jaw/facial soreness.",
+        "description_en": "Bowen Therapy can prepare the body for surgery by reducing stress and promoting tissue readiness for optimal healing. Post-operatively, it accelerates recovery, reduces swelling, pain, and scar tissue formation. It's also beneficial for releasing tension and discomfort after dental procedures, extractions, or extensive dental work, promoting faster healing and reduced jaw/facial soreness.",
         "testimonial_en": "“Bowen sessions before and after my surgery truly made a difference in my recovery time and pain levels. It also helped immensely after my wisdom tooth extraction.”",
         "title_ro": "Suport Pre/Post-Operator și pentru Lucrări Dentare",
         "description_ro": "Terapia Bowen poate pregăti corpul pentru intervenția chirurgicală prin reducerea stresului și promovarea pregătirii țesuturilor pentru o vindecare optimă. Post-operator, accelerează recuperarea, reduce umflăturile, durerea și formarea țesutului cicatricial. Este, de asemenea, benefică pentru eliberarea tensiunii și a disconfortului după proceduri dentare, extracții sau lucrări dentare extinse, promovând o vindecare mai rapidă și reducerea durerii maxilare/faciale.",
@@ -1549,7 +1539,7 @@
         "id": "recovery-rehabilitation",
         "filter": "systemic",
         "title_en": "Recovery from Injury, Surgery & Trauma",
-        "description_en": "Accelerates healing and recovery from physical trauma, acute and chronic injuries, and post-operative conditions by stimulating the body\'s natural repair processes. Bowen therapy can reduce swelling, pain, and stiffness, promoting faster tissue repair, scar tissue reduction, and improved mobility. It also provides gentle support for elderly/frail individuals for mobility, balance, and general well-being, and those with work-related injuries (like RSI or back strain).",
+        "description_en": "Accelerates healing and recovery from physical trauma, acute and chronic injuries, and post-operative conditions by stimulating the body's natural repair processes. Bowen therapy can reduce swelling, pain, and stiffness, promoting faster tissue repair, scar tissue reduction, and improved mobility. It also provides gentle support for elderly/frail individuals for mobility, balance, and general well-being, and those with work-related injuries (like RSI or back strain).",
         "testimonial_en": "“After my knee surgery, Bowen helped immensely with the swelling and getting my mobility back much quicker than expected.”",
         "title_ro": "Recuperare după Leziuni, Chirurgie și Traumă",
         "description_ro": "Accelerează vindecarea și recuperarea după traume fizice, leziuni acute și cronice și afecțiuni post-operatorii prin stimularea proceselor naturale de reparare ale corpului. Terapia Bowen poate reduce umflăturile, durerea și rigiditatea, promovând o reparare mai rapidă a țesuturilor, reducerea țesutului cicatricial și o mobilitate îmbunătățită. De asemenea, oferă suport blând persoanelor vârstnice/fragile pentru mobilitate, echilibru și bunăstare generală, și celor cu leziuni legate de muncă (precum RSI sau întinderi de spate).",
@@ -1562,7 +1552,7 @@
         "id": "circulation-lymphatic",
         "filter": "systemic",
         "title_en": "Circulation & Lymphatic Drainage",
-        "description_en": "Bowen moves can positively influence fluid dynamics within the body, aiding in improved blood circulation, reduced fluid retention (edema), and enhanced lymphatic drainage. This supports the body\'s natural detoxification processes, reduces swelling, and can benefit conditions related to poor circulation, lymphedema, and general metabolic waste removal.",
+        "description_en": "Bowen moves can positively influence fluid dynamics within the body, aiding in improved blood circulation, reduced fluid retention (edema), and enhanced lymphatic drainage. This supports the body's natural detoxification processes, reduces swelling, and can benefit conditions related to poor circulation, lymphedema, and general metabolic waste removal.",
         "testimonial_en": "“I used to suffer from swollen ankles and legs, but after regular Bowen sessions, the swelling has significantly reduced, and I feel less sluggish.”",
         "title_ro": "Circulație și Drenaj Limfatic",
         "description_ro": "Mișcările Bowen pot influența pozitiv dinamica fluidelor în corp, ajutând la îmbunătățirea circulației sanguine, reducerea retenției de lichide (edeme) și îmbunătățirea drenajului limfatic. Acest lucru susține procesele naturale de detoxifiere ale corpului, reduce umflăturile și poate aduce beneficii afecțiunilor legate de circulație deficitară, limfedem și eliminarea generală a deșeurilor metabolice.",
@@ -1575,7 +1565,7 @@
         "id": "general-wellbeing",
         "filter": "systemic",
         "title_en": "General Well-being & Vitality",
-        "description_en": "Beyond specific conditions, many individuals experience an overall enhancement in their general well-being, increased energy levels, improved vitality, and a deeper sense of relaxation and balance after Bowen Therapy sessions. It supports the body\'s innate capacity for self-regulation, stress reduction, and can lead to a greater sense of calm, mental clarity, and improved resilience to daily stressors.",
+        "description_en": "Beyond specific conditions, many individuals experience an overall enhancement in their general well-being, increased energy levels, improved vitality, and a deeper sense of relaxation and balance after Bowen Therapy sessions. It supports the body's innate capacity for self-regulation, stress reduction, and can lead to a greater sense of calm, mental clarity, and improved resilience to daily stressors.",
         "testimonial_en": "“I feel a noticeable improvement in my overall energy and mood after each session. It just helps me feel more balanced and cope better with stress.”",
         "title_ro": "Bunăstare Generală și Vitalitate",
         "description_ro": "Dincolo de afecțiunile specifice, multe persoane experimentează o îmbunătățire generală a stării de bine, un nivel crescut de energie, o vitalitate îmbunătățită și o senzație mai profundă de relaxare și echilibru după sesiunile de Terapie Bowen. Susține capacitatea înnăscută a corpului de auto-reglare, reducerea stresului și poate duce la o senzație mai mare de calm, claritate mentală și o reziliență îmbunătățită la factorii de stres zilnici.",
@@ -1588,7 +1578,7 @@
         "id": "immune-support",
         "filter": "systemic",
         "title_en": "Immune System Support",
-        "description_en": "Bowen Therapy can help regulate the immune system by promoting a shift to parasympathetic dominance, which is essential for immune function. It offers complementary support for recurring infections (e.g., colds, flu), chronic inflammatory conditions, and autoimmune conditions (e.g., Hashimoto\'s, Rheumatoid Arthritis, Lupus, MS-related immune support). By reducing stress and enhancing the body\'s natural healing mechanisms, it can contribute to a more balanced immune response and overall resilience.",
+        "description_en": "Bowen Therapy can help regulate the immune system by promoting a shift to parasympathetic dominance, which is essential for immune function. It offers complementary support for recurring infections (e.g., colds, flu), chronic inflammatory conditions, and autoimmune conditions (e.g., Hashimoto's, Rheumatoid Arthritis, Lupus, MS-related immune support). By reducing stress and enhancing the body's natural healing mechanisms, it can contribute to a more balanced immune response and overall resilience.",
         "testimonial_en": "“I noticed fewer colds and generally felt stronger after incorporating Bowen Therapy into my routine, especially during flu season.”",
         "title_ro": "Suport pentru Sistemul Imunitar",
         "description_ro": "Terapia Bowen poate ajuta la reglarea sistemului imunitar prin promovarea unei treceri la dominanța parasimpatică, esențială pentru funcția imunitară. Oferă suport complementar pentru infecțiile recurente (de ex., răceli, gripă), afecțiunile inflamatorii cronice și afecțiunile autoimune (de ex., Hashimoto, artrită reumatoidă, lupus, suport imunitar legat de SM). Prin reducerea stresului și îmbunătățirea mecanismelor naturale de vindecare ale corpului, poate contribui la un răspuns imunitar mai echilibrat și la o reziliență generală.",
@@ -1601,13 +1591,13 @@
         "id": "nervous-system-regulation",
         "filter": "systemic",
         "title_en": "Nervous System Regulation",
-        "description_en": "At its core, Bowen Therapy significantly influences the Autonomic Nervous System (ANS), shifting the body from a sympathetic ("fight, flight, or freeze") mode to a parasympathetic ("rest, relax, and repair") mode. This fundamental shift is crucial for profound relaxation, pain reduction, and activating the body\'s innate healing intelligence, impacting a wide range of nervous system imbalances and dysfunctions like neuropathy, Bell\'s Palsy, trigeminal neuralgia, and post-concussion syndrome.",
+        "description_en": "At its core, Bowen Therapy significantly influences the Autonomic Nervous System (ANS), shifting the body from a sympathetic („fight, flight, or freeze”) mode to a parasympathetic („rest, relax, and repair”) mode. This fundamental shift is crucial for profound relaxation, pain reduction, and activating the body's innate healing intelligence, impacting a wide range of nervous system imbalances and dysfunctions like neuropathy, Bell's Palsy, trigeminal neuralgia, and post-concussion syndrome.",
         "testimonial_en": "“The deep relaxation I feel during and after a session is incredible. It truly helps to calm my overactive nervous system and reduce my nerve pain.”",
         "title_ro": "Reglarea Sistemului Nervos",
         "description_ro": "La baza sa, Terapia Bowen influențează semnificativ Sistemul Nervos Autonom (SNA), trecând corpul dintr-un mod simpatic („luptă, fugi sau îngheață”) într-un mod parasimpatic („odihnă, relaxare și reparare”). Această schimbare fundamentală este crucială pentru relaxare profundă, reducerea durerii și activarea inteligenței înnăscute de vindecare a corpului, impactând o gamă largă de dezechilibre și disfuncții ale sistemului nervos, cum ar fi neuropatia, paralizia Bell, nevralgia de trigemen și sindromul post-commoțional.",
         "testimonial_ro": "“Relaxarea profundă pe care o simt în timpul și după o sesiune este incredibilă. Ajută cu adevărat la calmarea sistemului meu nervos hiperactiv și la reducerea durerii nervoase.”",
         "title_nl": "Regulatie van het Zenuwstelsel",
-        "description_nl": "In de kern beïnvloedt Bowen Therapie het Autonome Zenuwstelsel (AZS) aanzienlijk, waarbij het lichaam verschuift van een sympathische ("vecht-, vlucht- of bevries") modus naar een parasympathische ("rust-, ontspan- en herstel") modus. Deze fundamentele verschuiving is cruciaal voor diepe ontspanning, pijnvermindering en het activeren van de aangeboren genezingsintelligentie van het lichaam, wat een breed scala aan zenuwstelsel onevenwichtigheden en disfuncties beïnvloedt, zoals neuropathie, Bell\'s Parese, trigeminusneuralgie en post-commotioneel syndroom.",
+        "description_nl": "In de kern beïnvloedt Bowen Therapie het Autonome Zenuwstelsel (AZS) aanzienlijk, waarbij het lichaam verschuift van een sympathische („vecht-, vlucht- of bevries”) modus naar een parasympathische („rust-, ontspan- en herstel”) modus. Deze fundamentele verschuiving is cruciaal voor diepe ontspanning, pijnvermindering en het activeren van de aangeboren genezingsintelligentie van het lichaam, wat een breed scala aan zenuwstelsel onevenwichtigheden en disfuncties beïnvloedt, zoals neuropathie, Bell's Parese, trigeminusneuralgie en post-commotioneel syndroom.",
         "testimonial_nl": "“De diepe ontspanning die ik tijdens en na een sessie voel, is ongelooflijk. Het helpt echt om mijn overactieve zenuwstelsel te kalmeren en mijn zenuwpijn te verminderen.”"
     },
     {
@@ -1640,7 +1630,7 @@
         "id": "pre-post-operative-dental",
         "filter": "systemic",
         "title_en": "Pre/Post-Operative & Dental Work Support",
-        "description_en": "Bowen Therapy can prepare the body for surgery by reducing stress and promoting tissue readiness for optimal healing. Post-operatively, it accelerates recovery, reduces swelling, pain, and scar tissue formation. It\'s also beneficial for releasing tension and discomfort after dental procedures, extractions, or extensive dental work, promoting faster healing and reduced jaw/facial soreness.",
+        "description_en": "Bowen Therapy can prepare the body for surgery by reducing stress and promoting tissue readiness for optimal healing. Post-operatively, it accelerates recovery, reduces swelling, pain, and scar tissue formation. It's also beneficial for releasing tension and discomfort after dental procedures, extractions, or extensive dental work, promoting faster healing and reduced jaw/facial soreness.",
         "testimonial_en": "“Bowen sessions before and after my surgery truly made a difference in my recovery time and pain levels. It also helped immensely after my wisdom tooth extraction.”",
         "title_ro": "Suport Pre/Post-Operator și pentru Lucrări Dentare",
         "description_ro": "Terapia Bowen poate pregăti corpul pentru intervenția chirurgicală prin reducerea stresului și promovarea pregătirii țesuturilor pentru o vindecare optimă. Post-operator, accelerează recuperarea, reduce umflăturile, durerea și formarea țesutului cicatricial. Este, de asemenea, benefică pentru eliberarea tensiunii și a disconfortului după proceduri dentare, extracții sau lucrări dentare extinse, promovând o vindecare mai rapidă și reducerea durerii maxilare/faciale.",
