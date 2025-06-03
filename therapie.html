@@ -456,7 +456,7 @@
             <p id="category-description" class="text-center text-medium-gray mb-8" data-i18n="categoryDescriptionAll">Select a category to see specific conditions and reported benefits.</p>
 
             <div id="conditions-grid" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            </div>
+                </div>
         </section>
 
         <section id="session" class="bg-gray-100 py-20 px-4">
@@ -832,280 +832,32 @@
 
     <script>
         let translations = {}; // Global variable to store fetched translations
+        let conditionsData = []; // Global variable to store fetched conditions data
 
-        const conditionsData = [
-            // Musculoskeletal & Pain
-            {
-                id: 'chronic-back-pain',
-                filter: 'musculoskeletal',
-                title_en: 'Chronic Back Pain',
-                description_en: 'Bowen Therapy aims to release muscle tension and realign the spine, addressing the root causes of chronic back pain, sciatica, and lumbar issues.',
-                testimonial_en: '“After years of persistent back pain, Bowen Therapy has given me significant relief and improved my mobility.”',
-                title_ro: 'Dureri Cronice de Spate',
-                description_ro: 'Terapia Bowen urmărește să elibereze tensiunea musculară și să realinieze coloana vertebrală, abordând cauzele fundamentale ale durerilor cronice de spate, sciatică și probleme lombare.',
-                testimonial_ro: '“După ani de dureri persistente de spate, Terapia Bowen mi-a adus o alinare semnificativă și mi-a îmbunătățit mobilitatea.”',
-                title_nl: 'Chronische Rugpijn',
-                description_nl: 'Bowen Therapie is gericht op het loslaten van spierspanning en het realigneren van de wervelkolom, waarbij de diepere oorzaken van chronische rugpijn, ischias en lumbale problemen worden aangepakt.',
-                testimonial_nl: '“Na jaren van aanhoudende rugpijn heeft Bowen Therapie me aanzienlijke verlichting gebracht en mijn mobiliteit verbeterd.”'
-            },
-            {
-                id: 'neck-shoulder-pain',
-                filter: 'musculoskeletal',
-                title_en: 'Neck & Shoulder Pain',
-                description_en: 'Effective for stiff necks, frozen shoulder, whiplash, and tension in the upper back, improving range of motion and reducing discomfort.',
-                testimonial_en: '“My frozen shoulder had limited my movement for months. After a few Bowen sessions, I regained almost full mobility.”',
-                title_ro: 'Dureri de Gât și Umeri',
-                description_ro: 'Eficientă pentru rigiditatea gâtului, umărul blocat, whiplash și tensiunea din partea superioară a spatelui, îmbunătățind amplitudinea de mișcare și reducând disconfortul.',
-                testimonial_ro: '“Umărul meu blocat îmi limitase mișcarea luni de zile. După câteva sesiuni Bowen, am recăpătat aproape întreaga mobilitate.”',
-                title_nl: 'Nek- & Schouderpijn',
-                description_nl: 'Effectief bij stijve nek, frozen shoulder, whiplash en spanning in de bovenrug, verbetert de bewegingsvrijheid en vermindert ongemak.',
-                testimonial_nl: '“Mijn frozen shoulder beperkte mijn beweging maandenlang. Na een paar Bowen sessies heb ik bijna volledige mobiliteit teruggekregen.”'
-            },
-            {
-                id: 'joint-pain-arthritis',
-                filter: 'musculoskeletal',
-                title_en: 'Joint Pain & Arthritis',
-                description_en: 'Helps to reduce inflammation, improve joint flexibility, and alleviate pain associated with arthritis, osteoarthritis, and general joint stiffness.',
-                testimonial_en: '“Bowen has dramatically reduced the swelling and pain in my arthritic knees, allowing me to move more freely.”',
-                title_ro: 'Dureri Articulare și Artrită',
-                description_ro: 'Ajută la reducerea inflamației, îmbunătățirea flexibilității articulațiilor și ameliorarea durerii asociate cu artrita, osteoartrita și rigiditatea generală a articulațiilor.',
-                testimonial_ro: '“Bowen mi-a redus dramatic umflăturile și durerile de genunchi artritici, permițându-mi să mă mișc mai liber.”',
-                title_nl: 'Gewrichtspijn & Artritis',
-                description_nl: 'Helpt ontstekingen te verminderen, de gewrichtsflexibiliteit te verbeteren en pijn te verlichten die geassocieerd wordt met artritis, artrose en algemene gewrichtsstijfheid.',
-                testimonial_nl: '“Bowen heeft de zwelling en pijn in mijn artritische knieën drastisch verminderd, waardoor ik vrijer kan bewegen.”'
-            },
-            {
-                id: 'sports-injuries',
-                filter: 'musculoskeletal',
-                title_en: 'Sports Injuries & Recovery',
-                description_en: 'Assists in faster recovery from sprains, strains, hamstring injuries, tennis/golf elbow, and other sports-related trauma, enhancing performance and preventing re-injury.',
-                testimonial_en: '“As an athlete, Bowen Therapy has been instrumental in my recovery from a hamstring tear and kept me in top shape.”',
-                title_ro: 'Leziuni Sportive și Recuperare',
-                description_ro: 'Ajută la recuperarea mai rapidă după entorse, întinderi, leziuni ale ischiogambierilor, epicondilită laterală/medială și alte traume legate de sport, îmbunătățind performanța și prevenind re-accidentările.',
-                testimonial_ro: '“Ca sportiv, Terapia Bowen a fost esențială în recuperarea mea după o ruptură de ischiogambieri și m-a menținut în formă maximă.”',
-                title_nl: 'Sportblessures & Herstel',
-                description_nl: 'Ondersteunt sneller herstel van verstuikingen, verrekkingen, hamstringblessures, tennis-/golfelleboog en andere sportgerelateerde trauma\'s, verbetert de prestaties en voorkomt herhaalde blessures.',
-                testimonial_nl: '“Als atleet is Bowen Therapie cruciaal geweest voor mijn herstel van een hamstringblessure en heeft het me in topvorm gehouden.”'
-            },
-            {
-                id: 'postural-imbalance',
-                filter: 'musculoskeletal',
-                title_en: 'Postural Imbalances & Scoliosis',
-                description_en: 'Promotes postural realignment by releasing fascial tension and muscle imbalances, addressing issues like scoliosis, kyphosis, and lordosis.',
-                testimonial_en: '“My posture has visibly improved, and the constant ache in my lower back from scoliosis has significantly decreased.”',
-                title_ro: 'Dezechilibre Posturale și Scolioză',
-                description_ro: 'Promovează realinierea posturală prin eliberarea tensiunii fasciale și a dezechilibrelor musculare, abordând probleme precum scolioza, cifoza și lordoza.',
-                testimonial_ro: '“Postura mea s-a îmbunătățit vizibil, iar durerea constantă din zona lombară cauzată de scolioză a scăzut semnificativ.”',
-                title_nl: 'Houdingsonevenwichten & Scoliose',
-                description_nl: 'Bevordert posturale realignment door het loslaten van fasciale spanning en spieronbalansen, en pakt problemen zoals scoliose, kyfose en lordose aan.',
-                testimonial_nl: '“Mijn houding is zichtbaar verbeterd en de constante pijn in mijn onderrug door scoliose is aanzienlijk verminderd.”'
-            },
-            // Stress & Emotional
-            {
-                id: 'stress-anxiety',
-                filter: 'stress',
-                title_en: 'Stress & Anxiety Relief',
-                description_en: 'Calms the nervous system, reducing symptoms of generalized anxiety, panic attacks, and stress-related tension, fostering deep relaxation and emotional balance.',
-                testimonial_en: '“Bowen has been my anchor for managing anxiety. I feel a profound sense of calm and well-being after each session.”',
-                title_ro: 'Ameliorarea Stresului și Anxietății',
-                description_ro: 'Calmează sistemul nervos, reducând simptomele anxietății generalizate, atacurilor de panică și tensiunii legate de stres, favorizând o relaxare profundă și echilibrul emoțional.',
-                testimonial_ro: '“Bowen a fost ancora mea pentru gestionarea anxietății. Simt o stare profundă de calm și bunăstare după fiecare sesiune.”',
-                title_nl: 'Stress- & Angstverlichting',
-                description_nl: 'Kalmeert het zenuwstelsel, vermindert symptomen van algemene angst, paniekaanvallen en stressgerelateerde spanning, en bevordert diepe ontspanning en emotioneel evenwicht.',
-                testimonial_nl: '“Bowen is mijn anker geweest voor het omgaan met angst. Ik voel een diep gevoel van kalmte en welzijn na elke sessie.”'
-            },
-            {
-                id: 'insomnia-sleep',
-                filter: 'stress',
-                title_en: 'Insomnia & Sleep Issues',
-                description_en: 'By promoting deep relaxation and shifting the ANS, Bowen Therapy helps improve sleep quality and address insomnia, leading to more restful nights.',
-                testimonial_en: '“I struggled with insomnia for years, but now I sleep soundly through the night thanks to Bowen Therapy.”',
-                title_ro: 'Insomnie și Probleme de Somn',
-                description_ro: 'Prin promovarea relaxării profunde și schimbarea SNA, Terapia Bowen ajută la îmbunătățirea calității somnului și la abordarea insomniei, ducând la nopți mai odihnitoare.',
-                testimonial_ro: '“M-am luptat cu insomnia ani de zile, dar acum dorm profund toată noaptea datorită Terapiei Bowen.”',
-                title_nl: 'Slapeloosheid & Slaapproblemen',
-                description_nl: 'Door diepe ontspanning te bevorderen en het AZS te verschuiven, helpt Bowen Therapie de slaapkwaliteit te verbeteren en slapeloosheid aan te pakken, wat leidt tot rustigere nachten.',
-                testimonial_nl: '“Ik worstelde jarenlang met slapeloosheid, maar nu slaap ik dankzij Bowen Therapie de hele nacht door.”'
-            },
-            {
-                id: 'depression-mood',
-                filter: 'stress',
-                title_en: 'Depression & Mood Support',
-                description_en: 'As a complementary support, it helps alleviate physical symptoms associated with depression, promotes emotional balance, and can improve overall mood and vitality.',
-                testimonial_en: '“It helped me a lot with depressive states. I feel lighter and more energetic now.”',
-                title_ro: 'Depresie și Suport Emoțional',
-                description_ro: 'Ca suport complementar, ajută la ameliorarea simptomelor fizice asociate cu depresia, promovează echilibrul emoțional și poate îmbunătăți starea generală de spirit și vitalitatea.',
-                testimonial_ro: '“M-a ajutat mult cu stările depresive. Mă simt mai ușor și mai energic acum.”',
-                title_nl: 'Depressie & Stemmingsondersteuning',
-                description_nl: 'Als complementaire ondersteuning helpt het fysieke symptomen geassocieerd met depressie te verlichten, bevordert het emotioneel evenwicht en kan het de algehele stemming en vitaliteit verbeteren.',
-                testimonial_nl: '“Het heeft me enorm geholpen met depressieve gemoedstoestanden. Ik voel me nu lichter en energieker.”'
-            },
-            // Women's Health
-            {
-                id: 'hormonal-imbalance',
-                filter: 'womens-health',
-                title_en: 'Hormonal Imbalances & PMS',
-                description_en: 'Supports regulation of the menstrual cycle, alleviates PMS symptoms, and provides relief during perimenopause and menopause by promoting systemic balance.',
-                testimonial_en: '“My hormonal fluctuations and PMS symptoms have significantly reduced since starting Bowen Therapy.”',
-                title_ro: 'Dezechilibre Hormonale și PMS',
-                description_ro: 'Sprijină reglarea ciclului menstrual, ameliorează simptomele PMS și oferă alinare în timpul perimenopauzei și menopauzei prin promovarea echilibrului sistemic.',
-                testimonial_ro: '“Fluctuațiile mele hormonale și simptomele PMS s-au redus semnificativ de când am început Terapia Bowen.”',
-                title_nl: 'Hormonale Onevenwichtigheden & PMS',
-                description_nl: 'Ondersteunt de regulering van de menstruatiecyclus, verlicht PMS-symptomen en biedt verlichting tijdens de perimenopauze en menopauze door systemisch evenwicht te bevorderen.',
-                testimonial_nl: '“Mijn hormonale schommelingen en PMS-symptomen zijn aanzienlijk verminderd sinds ik met Bowen Therapie ben begonnen.”'
-            },
-            {
-                id: 'fertility-support',
-                filter: 'womens-health',
-                title_en: 'Fertility Support',
-                description_en: 'Can assist with fertility challenges in both men and women by promoting nervous system balance and releasing physical blocks, complementing conventional treatments.',
-                testimonial_en: '“After struggling to conceive, Bowen Therapy helped my body find balance, and I am now happily pregnant!”',
-                title_ro: 'Suport pentru Fertilitate',
-                description_ro: 'Poate ajuta cu provocările de fertilitate atât la bărbați, cât și la femei, prin promovarea echilibrului sistemului nervos și eliberarea blocajelor fizice, completând tratamentele convenționale.',
-                testimonial_ro: '“După ce m-am chinuit să rămân însărcinată, Terapia Bowen mi-a ajutat corpul să-și găsească echilibrul, și acum sunt fericită să fiu însărcinată!”',
-                title_nl: 'Vruchtbaarheidsondersteuning',
-                description_nl: 'Kan helpen bij vruchtbaarheidsproblemen bij zowel mannen als vrouwen door het zenuwstelsel in balans te brengen en fysieke blokkades op te heffen, als aanvulling op conventionele behandelingen.',
-                testimonial_nl: '“Na moeite met zwanger worden, heeft Bowen Therapie mijn lichaam geholpen balans te vinden, en nu ben ik gelukkig zwanger!”'
-            },
-            {
-                id: 'pregnancy-pain',
-                filter: 'womens-health',
-                title_en: 'Pregnancy Pain & Discomfort',
-                description_en: 'Gentle and safe for pregnancy, helping alleviate back and pelvic pain, sciatica, swollen ankles, heartburn, and optimizing fetal positioning.',
-                testimonial_en: '“Bowen Therapy made my pregnancy so much more comfortable, easing my back pain and helping with swelling.”',
-                title_ro: 'Dureri și Disconfort în Sarcină',
-                description_ro: 'Blândă și sigură în timpul sarcinii, ajutând la ameliorarea durerilor de spate și pelvine, sciaticii, umflăturilor la glezne, arsurilor la stomac și optimizarea poziției fătului.',
-                testimonial_ro: '“Terapia Bowen mi-a făcut sarcina mult mai confortabilă, ameliorându-mi durerile de spate și ajutându-mă cu umflăturile.”',
-                title_nl: 'Zwangerschapspijn & Ongemak',
-                description_nl: 'Zacht en veilig tijdens de zwangerschap, helpt rug- en bekkenpijn, ischias, gezwollen enkels, brandend maagzuur te verlichten en de foetale positionering te optimaliseren.',
-                testimonial_nl: '“Bowen Therapie maakte mijn zwangerschap veel comfortabeler, verlichtte mijn rugpijn en hielp bij zwelling.”'
-            },
-            {
-                id: 'postnatal-recovery',
-                filter: 'womens-health',
-                title_en: 'Postnatal Recovery & Breastfeeding',
-                description_en: 'Supports postpartum healing (natural birth or C-section), perineal recovery, pain relief, and can stimulate lactation and alleviate breastfeeding discomfort.',
-                testimonial_en: '“Bowen helped my body recover quickly after childbirth and even eased the shoulder pain from breastfeeding.”',
-                title_ro: 'Recuperare Postnatală și Alăptare',
-                description_ro: 'Susține vindecarea postpartum (naștere naturală sau cezariană), recuperarea perineală, ameliorarea durerii și poate stimula lactația și ameliora disconfortul alăptării.',
-                testimonial_ro: '“Bowen mi-a ajutat corpul să se recupereze rapid după naștere și chiar mi-a ameliorat durerile de umăr de la alăptat.”',
-                title_nl: 'Postnataal Herstel & Borstvoeding',
-                description_nl: 'Ondersteunt postpartaal herstel (natuurlijke bevalling of keizersnede), perineale genezing, pijnverlichting, en kan de lactatie stimuleren en borstvoedingsongemakken verlichten.',
-                testimonial_nl: '“Bowen hielp mijn lichaam snel te herstellen na de bevalling en verlichtte zelfs de schouderpijn van het borstvoeden.”'
-            },
-            // Pediatric
-            {
-                id: 'infant-colic',
-                filter: 'pediatric',
-                title_en: 'Infant Colic & Reflux',
-                description_en: 'Very gentle and effective for babies, helping to rebalance the nervous system, reduce discomfort from colic, reflux, constipation, and improve sleep patterns.',
-                testimonial_en: '“Our baby’s colic vanished after just two Bowen sessions. He sleeps much better now!”',
-                title_ro: 'Colici și Reflux Infantil',
-                description_ro: 'Foarte blândă și eficientă pentru bebeluși, ajutând la reechilibrarea sistemului nervos, reducerea disconfortului cauzat de colici, reflux, constipație și îmbunătățirea tiparelor de somn.',
-                testimonial_ro: '“Colicile bebelușului nostru au dispărut după doar două sesiuni Bowen. Doarme mult mai bine acum!”',
-                title_nl: 'Babykoliek & Reflux',
-                description_nl: 'Zeer zacht en effectief voor baby\'s, helpt het zenuwstelsel te herstellen, ongemak door koliek, reflux, constipatie te verminderen en slaappatronen te verbeteren.',
-                testimonial_nl: '“De koliek van onze baby verdween na slechts twee Bowen sessies. Hij slaapt nu veel beter!”'
-            },
-            {
-                id: 'childhood-development',
-                filter: 'pediatric',
-                title_en: 'Childhood Development & Sleep Issues',
-                description_en: 'Supports children with developmental challenges (e.g., psychomotor retardation, autism elements) and addresses common issues like bedwetting and sleep difficulties.',
-                testimonial_en: '“Bowen Therapy helped my son overcome developmental obstacles and significantly improved his focus and well-being.”',
-                title_ro: 'Dezvoltare și Probleme de Somn la Copii',
-                description_ro: 'Sprijină copiii cu provocări de dezvoltare (ex: retard psihomotor, elemente de autism) și abordează probleme comune precum enurezisul nocturn și dificultățile de somn.',
-                testimonial_ro: '“Terapia Bowen l-a ajutat pe fiul meu să depășească obstacolele de dezvoltare și i-a îmbunătățit semnificativ concentrarea și bunăstarea.”',
-                title_nl: 'Ontwikkeling & Slaapproblemen bij Kinderen',
-                description_nl: 'Ondersteunt kinderen met ontwikkelingsstoornissen (bijv. psychomotorische retardatie, autisme-elementen) en behandelt veelvoorkomende problemen zoals bedplassen en slaapproblemen.',
-                testimonial_nl: '“Bowen Therapie hielp mijn zoon ontwikkelingsbelemmeringen te overwinnen en verbeterde aanzienlijk zijn focus en welzijn.”'
-            },
-            // Systemic & Other Conditions
-            {
-                id: 'digestive-respiratory',
-                filter: 'systemic',
-                title_en: 'Digestive & Respiratory Disorders',
-                description_en: 'Aids in improving digestion, reducing IBS symptoms, heartburn, and can help alleviate asthma, bronchitis, hay fever, and sinusitis.',
-                testimonial_en: '“My lifelong asthma has become much more manageable since I started regular Bowen treatments.”',
-                title_ro: 'Tulburări Digestive și Respiratorii',
-                description_ro: 'Ajută la îmbunătățirea digestiei, reducerea simptomelor IBS, arsurilor la stomac și poate ameliora astmul, bronșita, febra fânului și sinuzita.',
-                testimonial_ro: '“Astmul meu, de o viață, a devenit mult mai ușor de gestionat de când am început tratamentele regulate Bowen.”',
-                title_nl: 'Spijsverterings- & Ademhalingsstoornissen',
-                description_nl: 'Helpt de spijsvertering te verbeteren, PDS-symptomen te verminderen, brandend maagzuur te verlichten, en kan helpen bij astma, bronchitis, hooikoorts en sinusitis.',
-                testimonial_nl: '“Mijn levenslange astma is veel beter beheersbaar geworden sinds ik begon met reguliere Bowen-behandelingen.”'
-            },
-            {
-                id: 'migraines-headaches',
-                filter: 'systemic',
-                title_en: 'Migraines & Headaches',
-                description_en: 'Reduces the frequency and intensity of migraines, tension headaches, and sinus headaches by releasing tension and promoting systemic balance.',
-                testimonial_en: '“I used to have debilitating migraines. Now, after Bowen Therapy, they are much rarer and less severe.”',
-                title_ro: 'Migrene și Dureri de Cap',
-                description_ro: 'Reduce frecvența și intensitatea migrenelor, durerilor de cap tensionale și a durerilor de cap sinusale prin eliberarea tensiunii și promovarea echilibrului sistemic.',
-                testimonial_ro: '“Obișnuiam să am migrene debilitante. Acum, după Terapia Bowen, sunt mult mai rare și mai puțin severe.”',
-                title_nl: 'Migraine & Hoofdpijn',
-                description_nl: 'Vermindert de frequentie en intensiteit van migraine, spanningshoofdpijn en sinushoofdpijn door spanning te verminderen en systemisch evenwicht te bevorderen.',
-                testimonial_nl: '“Ik had vroeger slopende migraine. Nu, na Bowen Therapie, zijn ze veel zeldzamer en minder ernstig.”'
-            },
-            {
-                id: 'neurological-support',
-                filter: 'systemic',
-                title_en: 'Neurological & Autoimmune Support',
-                description_en: 'Supports individuals with conditions like Multiple Sclerosis, Parkinson\'s, post-stroke sequelae, and fibromyalgia by promoting nervous system regulation and physical comfort.',
-                testimonial_en: '“Bowen has provided unexpected relief from some of my MS symptoms, improving my overall comfort and energy levels.”',
-                title_ro: 'Suport Neurologic și Autoimun',
-                description_ro: 'Susține persoanele cu afecțiuni precum Scleroza Multiplă, Parkinson, sechele post-AVC și fibromialgie prin promovarea reglării sistemului nervos și a confortului fizic.',
-                testimonial_ro: '“Bowen mi-a adus o alinare neașteptată pentru unele dintre simptomele mele de SM, îmbunătățind confortul general și nivelul de energie.”',
-                title_nl: 'Neurologische & Auto-immuunondersteuning',
-                description_nl: 'Ondersteunt personen met aandoeningen zoals Multiple Sclerose, Parkinson, post-beroerte gevolgen en fibromyalgie door het bevorderen van zenuwstelselregulatie en fysiek comfort.',
-                testimonial_nl: '“Bowen heeft onverwachte verlichting geboden voor sommige van mijn MS-symptomen, waardoor mijn algehele comfort en energieniveau zijn verbeterd.”'
-            },
-            {
-                id: 'cancer-palliative-care',
-                filter: 'systemic',
-                title_en: 'Cancer & Palliative Care Support',
-                description_en: 'As a complementary therapy, it helps improve the quality of life for cancer patients by reducing pain, nausea, anxiety, and fatigue, and managing side effects of treatments.',
-                testimonial_en: '“During chemotherapy, Bowen Therapy significantly reduced my nausea and helped me sleep better, improving my overall well-being.”',
-                title_ro: 'Suport pentru Cancer și Îngrijiri Paliative',
-                description_ro: 'Ca terapie complementară, ajută la îmbunătățirea calității vieții pacienților cu cancer prin reducerea durerii, greței, anxietății și oboselii, și gestionarea efectelor secundare ale tratamentelor.',
-                testimonial_ro: '“În timpul chimioterapiei, Terapia Bowen mi-a redus semnificativ greața și m-a ajutat să dorm mai bine, îmbunătățindu-mi bunăstarea generală.”',
-                title_nl: 'Kanker & Palliatieve Zorg Ondersteuning',
-                description_nl: 'Als complementaire therapie helpt het de kwaliteit van leven voor kankerpatiënten te verbeteren door pijn, misselijkheid, angst en vermoeidheid te verminderen, en bijwerkingen van behandelingen te beheersen.',
-                testimonial_nl: '“Tijdens chemotherapie verminderde Bowen Therapie mijn misselijkheid aanzienlijk en hielp het me beter te slapen, wat mijn algehele welzijn verbeterde.”'
-            }
-        ];
-
-        let benefitsChart, studiesChart;
-        let currentTranslations = {}; // Will hold the loaded translations
-
-        async function loadTranslations(lang) {
+        async function loadJsonData(filePath) {
             try {
-                const response = await fetch('translations.json'); // Fetch the JSON file
+                const response = await fetch(filePath);
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(`HTTP error! status: ${response.status} from ${filePath}`);
                 }
-                const data = await response.json();
-                currentTranslations = data[lang];
-                if (!currentTranslations) {
-                    console.warn(`Translations for language '${lang}' not found. Falling back to English.`);
-                    currentTranslations = data['en']; // Fallback to English
-                }
+                return await response.json();
             } catch (error) {
-                console.error('Failed to load translations:', error);
-                // Fallback to a hardcoded minimal set or show an error message
-                currentTranslations = {
-                    appTitle: "Translation Error",
-                    navAboutBowen: "About Bowen",
-                    // ... include other critical translations if error occurs
-                };
+                console.error(`Failed to load data from ${filePath}:`, error);
+                return null; // Return null or a default empty object/array
             }
         }
 
-        function applyTranslation(lang) {
+        async function applyTranslation(lang) {
+            if (!translations.en) { // Check if translations are loaded
+                await loadTranslations(lang);
+            }
+
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.dataset.i18n;
-                if (currentTranslations && currentTranslations[key]) {
-                    element.textContent = currentTranslations[key];
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                } else if (translations.en && translations.en[key]) { // Fallback to English key if specific language not found
+                    element.textContent = translations.en[key];
                 }
             });
 
@@ -1115,6 +867,17 @@
             updateConditionsGrid(activeFilter, lang);
             // Update charts after language change
             updateCharts(lang);
+        }
+
+        async function loadTranslations(lang) {
+            const data = await loadJsonData('translations.json');
+            if (data) {
+                translations = data; // Store all language translations
+                if (!translations[lang]) {
+                    console.warn(`Translations for language '${lang}' not found. Falling back to English.`);
+                    // No need to set currentTranslations here, applyTranslation will handle it.
+                }
+            }
         }
 
         function updateConditionsGrid(filter, lang) {
@@ -1128,9 +891,9 @@
                 const card = document.createElement('div');
                 card.classList.add('card', 'p-6');
                 card.innerHTML = `
-                    <h3 class="text-xl font-semibold mb-3 text-primary">${condition[`title_${lang}`]}</h3>
-                    <p class="mb-3">${condition[`description_${lang}`]}</p>
-                    <p class="italic text-light-gray">${condition[`testimonial_${lang}`]}</p>
+                    <h3 class="text-xl font-semibold mb-3 text-primary">${condition[`title_${lang}`] || condition.title_en}</h3>
+                    <p class="mb-3">${condition[`description_${lang}`] || condition.description_en}</p>
+                    <p class="italic text-light-gray">${condition[`testimonial_${lang}`] || condition.testimonial_en}</p>
                 `;
                 conditionsGrid.appendChild(card);
             });
@@ -1138,35 +901,37 @@
             const categoryDescriptionElement = document.getElementById('category-description');
             if (categoryDescriptionElement) {
                 const key = `categoryDescription${filter.charAt(0).toUpperCase() + filter.slice(1)}`;
-                categoryDescriptionElement.textContent = currentTranslations && currentTranslations[key] ? currentTranslations[key] : currentTranslations.categoryDescriptionAll;
+                categoryDescriptionElement.textContent = translations[lang] && translations[lang][key] ? translations[lang][key] : translations.en.categoryDescriptionAll;
             }
         }
 
         function updateCharts(lang) {
-            if (!currentTranslations.benefitsPainReliefTitle) {
+            if (!translations.en) { // Ensure translations are loaded
                 console.warn("Translations not loaded for charts yet. Skipping chart update.");
                 return;
             }
 
+            const currentLangTranslations = translations[lang] || translations.en; // Fallback to English
+
             const chartData = {
                 benefits: {
                     labels: [
-                        currentTranslations.benefitsPainReliefTitle.split(' ')[0], // Pain
-                        currentTranslations.benefitsEmotionalTitle.split(' ')[0], // Emotional
-                        currentTranslations.benefitsNeurologicalTitle.split(' ')[0], // Neurological
-                        currentTranslations.benefitsPediatricTitle.split(' ')[0], // Pediatric
-                        currentTranslations.benefitsHormonalTitle.split(' ')[0] // Hormonal
+                        currentLangTranslations.benefitsPainReliefTitle.split(' ')[0], // Pain
+                        currentLangTranslations.benefitsEmotionalTitle.split(' ')[0], // Emotional
+                        currentLangTranslations.benefitsNeurologicalTitle.split(' ')[0], // Neurological
+                        currentLangTranslations.benefitsPediatricTitle.split(' ')[0], // Pediatric
+                        currentLangTranslations.benefitsHormonalTitle.split(' ')[0] // Hormonal
                     ],
                     data: [70, 60, 50, 40, 30] // Example data based on general prevalence of reported benefits
                 },
                 studies: {
                     labels: [
-                        currentTranslations.study1Source.split(',')[0], // Controlled Trial
-                        currentTranslations.study2Source.split(',')[0], // Randomized Trial
-                        currentTranslations.study3Source.split(',')[0], // Clinical Trial
-                        currentTranslations.study4Source.split(',')[0], // Systematic Review
-                        currentTranslations.study5Source.split(',')[0], // Gov Review
-                        currentTranslations.study6Source.split(' ')[0] // Advertising
+                        currentLangTranslations.study1Source.split(',')[0], // Controlled Trial
+                        currentLangTranslations.study2Source.split(',')[0], // Randomized Trial
+                        currentLangTranslations.study3Source.split(',')[0], // Clinical Trial
+                        currentLangTranslations.study4Source.split(',')[0], // Systematic Review
+                        currentLangTranslations.study5Source.split(',')[0], // Gov Review
+                        currentLangTranslations.study6Source.split(' ')[0] // Advertising
                     ],
                     data: [10, 15, 20, 25, 10, 20] // Example data for study types based on 2011 review findings
                 }
@@ -1182,7 +947,7 @@
                 data: {
                     labels: chartData.benefits.labels,
                     datasets: [{
-                        label: currentTranslations.benefitsChartTitle,
+                        label: currentLangTranslations.benefitsChartTitle,
                         data: chartData.benefits.data,
                         backgroundColor: '#20C997', // Primary green
                         borderColor: '#17A37B',
@@ -1197,7 +962,7 @@
                             beginAtZero: true,
                             title: {
                                 display: true,
-                                text: currentTranslations.benefitsChartTitle.includes('Reported in Research') ? 'Reported Efficacy (%)' : 'Eficacitate Raportată (%)'
+                                text: currentLangTranslations.benefitsChartTitle.includes('Reported in Research') ? 'Reported Efficacy (%)' : 'Eficacitate Raportată (%)'
                             }
                         }
                     },
@@ -1207,7 +972,7 @@
                         },
                         title: {
                             display: true,
-                            text: currentTranslations.benefitsChartTitle
+                            text: currentLangTranslations.benefitsChartTitle
                         }
                     }
                 }
@@ -1219,7 +984,7 @@
                 data: {
                     labels: chartData.studies.labels,
                     datasets: [{
-                        label: currentTranslations.studiesChartTitle,
+                        label: currentLangTranslations.studiesChartTitle,
                         data: chartData.studies.data,
                         backgroundColor: [
                             'rgba(249, 197, 189, 0.8)', // Misty Mountain Pink
@@ -1240,7 +1005,7 @@
                         },
                         title: {
                             display: true,
-                            text: currentTranslations.studiesChartTitle
+                            text: currentLangTranslations.studiesChartTitle
                         }
                     }
                 }
@@ -1249,6 +1014,26 @@
 
 
         document.addEventListener('DOMContentLoaded', async () => {
+            // Load both translations and conditions data concurrently
+            const [loadedTranslations, loadedConditionsData] = await Promise.all([
+                loadJsonData('translations.json'),
+                loadJsonData('conditions.json')
+            ]);
+
+            if (loadedTranslations) {
+                translations = loadedTranslations;
+            } else {
+                console.error('Failed to load translations. Using fallback/empty translations.');
+                translations = { en: {}, ro: {}, nl: {} }; // Fallback empty objects
+            }
+
+            if (loadedConditionsData) {
+                conditionsData = loadedConditionsData;
+            } else {
+                console.error('Failed to load conditions data. Conditions section might be empty.');
+                conditionsData = []; // Fallback empty array
+            }
+
             const langSelect = document.getElementById('language-select');
             const navLinks = document.querySelectorAll('nav ul li a');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -1261,17 +1046,15 @@
             // Set initial language and content
             const initialLang = 'en'; // Default language
 
-            // Load translations before applying them
-            await loadTranslations(initialLang);
-
             langSelect.value = initialLang;
-            applyTranslation(initialLang);
-
+            applyTranslation(initialLang); // Apply initial translation and render conditions/charts
 
             // Language selector change event
             langSelect.addEventListener('change', async (event) => {
-                await loadTranslations(event.target.value); // Load new language
-                applyTranslation(event.target.value);
+                const selectedLang = event.target.value;
+                // No need to load translations again if they are already stored in the 'translations' global variable
+                // You just need to re-apply the translation for the new language.
+                applyTranslation(selectedLang);
             });
 
             // Mobile menu toggle
