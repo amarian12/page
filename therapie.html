@@ -192,6 +192,7 @@
             <a href="#benefits" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navBenefits">Benefits</a>
             <a href="#how-it-works" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navHowItWorks">How it Works</a>
             <a href="#conditions" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navConditions">Conditions</a>
+            <a href="#session" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navSession">Session</a>
           </div>
         </li>
 
@@ -203,7 +204,7 @@
             </svg>
           </button>
           <div id="evidence" class="dropdown hidden absolute left-0 mt-2 w-48 rounded-xl bg-white/75 backdrop-blur-lg shadow-xl p-2 z-50">
-            <a href="#session" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navSession">Session</a>
+																																									 
             <a href="#evidence" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navEvidence">Evidence</a>
             <a href="#safety" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navSafety">Safety</a>
             <a href="#training" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navTraining">Training</a>
@@ -590,7 +591,7 @@
                     <div class="card">
                         <h4 class="font-bold mb-2" data-i18n="study1Title">Effectiveness on Fibromyalgia Syndrome</h4>
                         <p class="text-sm mb-2" data-i18n="study1Source">Controlled Trial, 2024</p>
-                        <p class="text-sm mb-2" data-i18n="study1Description">Found Bowen Therapy effective in improving sleep quality and pressure pain threshold in fibromyalgia participants, with benefits lasting 24 weeks.</p>
+                        <p class="text-sm mb-2" data-i18n="study1Description">Found Bowen Therapy effective in improving sleep quality and pressure pain threshold in fibromyalgia participants, with effects lasting 24 weeks.</p>
                         <a href="https://pubmed.ncbi.nlm.nih.gov/38101480/" target="_blank" class="text-primary hover:underline text-sm" data-i18n="studyLink">View Study</a>
                     </div>
                     <div class="card">
@@ -673,7 +674,7 @@
                         <p class="mb-4" data-i18n="findPractitionerIntro">
                             Given the subtle nature and the lack of a single governmental regulatory body for Bowen Therapy globally, choosing a qualified and reputable practitioner is crucial.
                         </p>
-                        <ul  class="list-none space-y-1">
+                        <ul class="list-none space-y-1">
                             <li data-i18n="findPractitioner1" class="relative pl-6 before:absolute before:left-0 before:content-['🏥']">Accredited Training: Ensure your therapist has completed accredited training from a recognized institution (e.g., Bowtech - The Original Bowen Technique, European College of Bowen Studies (ECBS), American Bowen Academy, ISBT).</li>
                             <li data-i18n="findPractitioner2" class="relative pl-6 before:absolute before:left-0 before:content-['🏥']">Professional Association Membership: Look for therapists registered with a professional association in their country (e.g., Bowen Association UK, Bowen Therapy Professional Association, Bowen Association Australia, American Bowen Academy). These associations often require specific qualifications, professional insurance, adherence to a code of conduct/ethics, and ongoing Continuing Professional Development (CPD).</li>
                             <li data-i18n="findPractitioner3" class="relative pl-6 before:absolute before:left-0 before:content-['🏥']">Professional Insurance: Verify that the therapist holds current professional indemnity and public liability insurance.</li>
@@ -767,7 +768,7 @@
                         </div>
                         <div class="card">
                             <h4 class="font-bold mb-2" data-i18n="directory2Title">The Bowen Association UK (BAUK)</h4>
-                            <p class="text-sm mb-2" data-i18n="directory2Info">Lists practitioners by town, assuring qualifications (Bowen Therapy, A&P, First Aid), professional insurance, adherence to Code of Conduct/Ethics, and CPD.</p>
+                            <p class="text-sm mb-2" data-i18n="directory2Info">Lists practitioners by town, assuring qualifications (Bowen Therapy, A&P), First Aid), professional insurance, adherence to Code of Conduct/Ethics, and CPD.</p>
                             <a href="https://www.bowen-technique.co.uk/find-a-practitioner/" target="_blank" class="text-primary hover:underline text-sm" data-i18n="directoryLink">Visit Directory</a>
                         </div>
                         <div class="card">
@@ -833,6 +834,7 @@
     <script>
         let translations = {}; // Global variable to store fetched translations
         let conditionsData = []; // Global variable to store fetched conditions data
+        let benefitsChart, studiesChart;
 
         async function loadJsonData(filePath) {
             try {
@@ -913,29 +915,37 @@
 
             const currentLangTranslations = translations[lang] || translations.en; // Fallback to English
 
-            const chartData = {
-                benefits: {
-                    labels: [
-                        currentLangTranslations.benefitsPainReliefTitle.split(' ')[0], // Pain
-                        currentLangTranslations.benefitsEmotionalTitle.split(' ')[0], // Emotional
-                        currentLangTranslations.benefitsNeurologicalTitle.split(' ')[0], // Neurological
-                        currentLangTranslations.benefitsPediatricTitle.split(' ')[0], // Pediatric
-                        currentLangTranslations.benefitsHormonalTitle.split(' ')[0] // Hormonal
-                    ],
-                    data: [70, 60, 50, 40, 30] // Example data based on general prevalence of reported benefits
-                },
-                studies: {
-                    labels: [
-                        currentLangTranslations.study1Source.split(',')[0], // Controlled Trial
-                        currentLangTranslations.study2Source.split(',')[0], // Randomized Trial
-                        currentLangTranslations.study3Source.split(',')[0], // Clinical Trial
-                        currentLangTranslations.study4Source.split(',')[0], // Systematic Review
-                        currentLangTranslations.study5Source.split(',')[0], // Gov Review
-                        currentLangTranslations.study6Source.split(' ')[0] // Advertising
-                    ],
-                    data: [10, 15, 20, 25, 10, 20] // Example data for study types based on 2011 review findings
-                }
-            };
+            // Dynamically generate labels for benefits chart from current conditionsData
+            const benefitsLabels = conditionsData
+                .filter(c => ['musculoskeletal', 'stress', 'womens-health', 'pediatric', 'systemic'].includes(c.filter)) // Filter by main benefit categories
+                .map(c => {
+                    const title = c[`title_${lang}`] || c.title_en;
+                    // Extract first word or a short phrase for clarity
+                    if (c.filter === 'musculoskeletal') return currentLangTranslations.benefitsPainReliefTitle.split(' ')[0];
+                    if (c.filter === 'stress') return currentLangTranslations.benefitsEmotionalTitle.split(' ')[0];
+                    if (c.filter === 'womens-health') return currentLangTranslations.benefitsPediatricTitle.split(' ')[0]; // Using Pediatric title for general women's health for benefits chart mapping
+                    if (c.filter === 'pediatric') return currentLangTranslations.benefitsPediatricTitle.split(' ')[0];
+                    if (c.filter === 'systemic') return currentLangTranslations.benefitsHormonalTitle.split(' ')[0]; // Using Hormonal title for general systemic for benefits chart mapping
+                    return title.split(' ')[0]; // Fallback to first word
+                })
+                .filter((value, index, self) => self.indexOf(value) === index); // Get unique labels
+
+            // Example data for benefits chart - replace with real data if available in conditions.json
+            // This is a placeholder. If you have specific benefit percentages per category, you'd calculate them here.
+            const benefitsData = [70, 60, 50, 40, 30]; // Placeholder data, needs to match unique labels count
+
+            // Dynamically generate labels for studies chart from translations
+            const studiesLabels = [
+                currentLangTranslations.study1Source.split(',')[0], // Controlled Trial
+                currentLangTranslations.study2Source.split(',')[0], // Randomized Trial
+                currentLangTranslations.study3Source.split(',')[0], // Clinical Trial
+                currentLangTranslations.study4Source.split(',')[0], // Systematic Review
+                currentLangTranslations.study5Source.split(',')[0], // Gov Review
+                currentLangTranslations.study6Source.split(' ')[0]  // Advertising
+            ];
+            // Example data for studies chart - replace with real data if available
+            const studiesData = [10, 15, 20, 25, 10, 20]; // Placeholder data
+
             // Destroy existing charts if they exist
             if (benefitsChart) benefitsChart.destroy();
             if (studiesChart) studiesChart.destroy();
@@ -945,10 +955,10 @@
             benefitsChart = new Chart(benefitsCtx, {
                 type: 'bar',
                 data: {
-                    labels: chartData.benefits.labels,
+                    labels: benefitsLabels, // Use dynamically generated labels
                     datasets: [{
                         label: currentLangTranslations.benefitsChartTitle,
-                        data: chartData.benefits.data,
+                        data: benefitsData,
                         backgroundColor: '#20C997', // Primary green
                         borderColor: '#17A37B',
                         borderWidth: 1
@@ -982,16 +992,17 @@
             studiesChart = new Chart(studiesCtx, {
                 type: 'pie',
                 data: {
-                    labels: chartData.studies.labels,
+                    labels: studiesLabels, // Use dynamically generated labels
                     datasets: [{
                         label: currentLangTranslations.studiesChartTitle,
-                        data: chartData.studies.data,
+                        data: studiesData,
                         backgroundColor: [
                             'rgba(249, 197, 189, 0.8)', // Misty Mountain Pink
                             'rgba(128, 118, 163, 0.8)', // Purple Mountains Majesty
                             'rgba(99, 179, 237, 0.8)', // A light blue
                             'rgba(255, 206, 86, 0.8)', // A light yellow
-                            'rgba(75, 192, 192, 0.8)'  // A light teal
+                            'rgba(75, 192, 192, 0.8)', // A light teal
+                            'rgba(200, 150, 100, 0.8)' // Another color
                         ],
                         hoverOffset: 4
                     }]
@@ -1052,8 +1063,8 @@
             // Language selector change event
             langSelect.addEventListener('change', async (event) => {
                 const selectedLang = event.target.value;
-                // No need to load translations again if they are already stored in the 'translations' global variable
-                // You just need to re-apply the translation for the new language.
+																													  
+																				  
                 applyTranslation(selectedLang);
             });
 
