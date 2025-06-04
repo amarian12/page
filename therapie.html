@@ -1641,35 +1641,40 @@
 
     </script>
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggles = document.querySelectorAll(".dropdown-toggle");
-    const dropdowns = document.querySelectorAll(".dropdown");
+document.addEventListener("DOMContentLoaded", () => {
+  const toggles = document.querySelectorAll(".dropdown-toggle");
+  const dropdowns = document.querySelectorAll(".dropdown");
 
-    toggles.forEach(toggle => {
-      toggle.addEventListener("click", e => {
-        e.stopPropagation();
-        const targetId = toggle.getAttribute("data-dropdown");
+  toggles.forEach(toggle => {
+    toggle.addEventListener("click", e => {
+      e.stopPropagation();
+      const targetId = toggle.getAttribute("data-dropdown");
+      const targetDropdown = document.getElementById(targetId);
 
-        dropdowns.forEach(drop => {
-          if (drop.id === targetId) {
-            drop.classList.toggle("hidden");
-          } else {
-            drop.classList.add("hidden");
-          }
-        });
-      });
-    });
-
-    document.addEventListener("click", () => {
-      dropdowns.forEach(drop => drop.classList.add("hidden"));
-    });
-
-    document.querySelectorAll(".dropdown-link").forEach(link => {
-      link.addEventListener("click", () => {
-        dropdowns.forEach(drop => drop.classList.add("hidden"));
+      // Toggle the clicked dropdown, close others
+      dropdowns.forEach(drop => {
+        if (drop === targetDropdown) {
+          drop.classList.toggle("hidden");
+        } else {
+          drop.classList.add("hidden");
+        }
       });
     });
   });
+
+  // Close all dropdowns if clicking outside
+  document.addEventListener("click", () => {
+    dropdowns.forEach(drop => drop.classList.add("hidden"));
+  });
+
+  // Close dropdown on link click
+  document.querySelectorAll(".dropdown-link").forEach(link => {
+    link.addEventListener("click", () => {
+      dropdowns.forEach(drop => drop.classList.add("hidden"));
+    });
+  });
+});
+
 
   document.querySelectorAll('[data-accordion-target]').forEach(button => {
     button.addEventListener('click', () => {
