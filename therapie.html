@@ -193,6 +193,10 @@
         .accordion-header[aria-expanded="true"] .accordion-toggle-icon {
             transform: rotate(180deg);
         }
+        .emoji-symbol {
+          color: #20C997;
+          font-size: 1.2rem;
+        }
     </style>
 </head>
 <body class="bg-secondary text-dark-gray">
@@ -213,10 +217,7 @@
       <ul class="flex space-x-6 text-sm font-medium items-center">
         <li class="relative">
           <button type="button" class="dropdown-toggle flex items-center text-gray-700 hover:text-accent transition-colors" data-dropdown="about" data-i18n="navAboutBowen">
-            About Bowen
-                <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" class="ml-1 inline-block" viewBox="0 0 24 24">
-                  <path d="M12 16a1 1 0 0 1-.71-.29l-6-6a1 1 0 0 1 1.42-1.42l5.29 5.3 5.29-5.29a1 1 0 0 1 1.41 1.41l-6 6a1 1 0 0 1-.7.29z" data-name="16" data-original="#000000" />
-                </svg>
+            About Bowen<span class="emoji-symbol">▼</span>
           </button>
           <div id="about" class="dropdown hidden absolute left-0 mt-2 w-48 rounded-xl bg-white/75 backdrop-blur-lg shadow-xl p-2 z-50">
             <a href="#introduction" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navIntroduction">Introduction</a>
@@ -228,10 +229,7 @@
 
         <li class="relative">
           <button type="button" class="dropdown-toggle flex items-center text-gray-700 hover:text-accent transition-colors" data-dropdown="applications" data-i18n="navApplications">
-            Applications
-                <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" class="ml-1 inline-block" viewBox="0 0 24 24">
-                  <path d="M12 16a1 1 0 0 1-.71-.29l-6-6a1 1 0 0 1 1.42-1.42l5.29 5.3 5.29-5.29a1 1 0 0 1 1.41 1.41l-6 6a1 1 0 0 1-.7.29z" data-name="16" data-original="#000000" />
-                </svg>
+            Applications <span class="emoji-symbol">▼</span>
           </button>
           <div id="applications" class="dropdown hidden absolute left-0 mt-2 w-48 rounded-xl bg-white/75 backdrop-blur-lg shadow-xl p-2 z-50">
             <a href="#conditions" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navConditions">Conditions</a>
@@ -242,10 +240,7 @@
 
         <li class="relative">
           <button type="button" class="dropdown-toggle flex items-center text-gray-700 hover:text-accent transition-colors" data-dropdown="more" data-i18n="navMore">
-            More
-                <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" class="ml-1 inline-block" viewBox="0 0 24 24">
-                  <path d="M12 16a1 1 0 0 1-.71-.29l-6-6a1 1 0 0 1 1.42-1.42l5.29 5.3 5.29-5.29a1 1 0 0 1 1.41 1.41l-6 6a1 1 0 0 1-.7.29z" data-name="16" data-original="#000000" />
-                </svg>
+            More <span class="emoji-symbol">▼</span>
           </button>
           <div id="more" class="dropdown hidden absolute left-0 mt-2 w-48 rounded-xl bg-white/75 backdrop-blur-lg shadow-xl p-2 z-50">
             <a href="#faq" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navFAQ">FAQ</a>
@@ -1650,27 +1645,41 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       const targetId = toggle.getAttribute("data-dropdown");
       const targetDropdown = document.getElementById(targetId);
+      const icon = toggle.querySelector(".emoji-symbol");
 
-      // Toggle the clicked dropdown, close others
+      const isOpening = targetDropdown.classList.contains("hidden");
+
+      // Toggle dropdowns and symbols
       dropdowns.forEach(drop => {
+        const relatedToggle = document.querySelector(`[data-dropdown="${drop.id}"]`);
+        const relatedIcon = relatedToggle?.querySelector(".emoji-symbol");
+
         if (drop === targetDropdown) {
           drop.classList.toggle("hidden");
+          if (icon) icon.textContent = isOpening ? "▲" : "▼";
         } else {
           drop.classList.add("hidden");
+          if (relatedIcon) relatedIcon.textContent = "▼";
         }
       });
     });
   });
 
-  // Close all dropdowns if clicking outside
+  // Click outside: close all dropdowns and reset icons
   document.addEventListener("click", () => {
     dropdowns.forEach(drop => drop.classList.add("hidden"));
+    document.querySelectorAll(".emoji-symbol").forEach(icon => {
+      icon.textContent = "▼";
+    });
   });
 
-  // Close dropdown on link click
+  // On dropdown link click, close all
   document.querySelectorAll(".dropdown-link").forEach(link => {
     link.addEventListener("click", () => {
       dropdowns.forEach(drop => drop.classList.add("hidden"));
+      document.querySelectorAll(".emoji-symbol").forEach(icon => {
+        icon.textContent = "▼";
+      });
     });
   });
 });
