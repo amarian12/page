@@ -6,7 +6,7 @@
     <title id="app-title" data-i18n="appTitle">An Interactive Guide to Bowen Therapy</title>
     <meta name="description" content="Discover Bowen Therapy, a gentle, holistic bodywork technique for pain relief, stress reduction, and overall well-being. Learn about its benefits for musculoskeletal issues, chronic pain, women's health, and pediatric care.">
     <meta name="keywords" content="Bowen Therapy, Bowenwork, Bowtech, holistic therapy, pain relief, chronic back pain, sciatica, fibromyalgia, stress relief, anxiety, pregnancy support, infant colic, sports injuries, musculoskeletal pain, natural healing, alternative therapy, self-healing">
-     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +32,7 @@
         }
         .bg-primary { background-color: #20C997;} /* Original Grass Green, now used for accents */
         .bg-secondary { background-color: #F8F8F8;} /* Very Light Grey */
+        .bg-header { background: linear-gradient(to bottom, #20C997, #fff);}
         .text-primary { color: #20C997;}
         .text-accent { color: #f9c5bd;} /* Misty Mountain Pink */
         .bg-accent-light { background-color: #fde7e3;} /* Lighter Misty Mountain Pink */
@@ -42,6 +43,12 @@
         .text-dark-theme-text { color: #ffffff;}
 
         /* Custom components and adjustments for improved aesthetics/UX */
+        .logo {
+            background: linear-gradient(to bottom, #20C997, #000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
         .section-title {
             font-size: 2.5rem; /* Increased for impact */
             font-weight: 700;
@@ -127,6 +134,35 @@
             color: #333333; /* Ensure dark text */
             border: 1px solid #E0E6ED;
         }
+    #testimonial-carousel {
+        display: block; /* Change from grid to block to stack items vertically */
+        overflow: hidden; /* Keep this to contain items for the slider logic */
+        /* Remove or comment out any 'grid-template-columns' or 'gap' rules if they were here */
+    }
+
+    /* Style individual testimonial cards for vertical stacking */
+    #testimonials-container .testimonial-card {
+        margin-bottom: 1.5rem; /* Add spacing between vertically stacked cards */
+        width: 100%; /* Ensure cards take full width in a column */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+
+    /* Adjust navigation button positioning for the new layout */
+    /* These rules were already present, just ensure they are interpreted correctly for the new layout */
+    #testimonials-container .absolute {
+        top: auto; /* Ensure no fixed 'top' interfering with new layout */
+        bottom: 0; /* Position at the bottom */
+        transform: none; /* Remove any transform properties that might be centering vertically */
+        margin-bottom: 1rem; /* Adjust margin as needed */
+    }
+
+    #testimonials-container #prev-testimonial {
+        left: 0;
+    }
+
+    #testimonials-container #next-testimonial {
+        right: 0;
+    }
 
         /* Chart container styling */
         .chart-container {
@@ -207,9 +243,9 @@
         </svg>
     </div>
 
-<header class="sticky top-0 z-50 bg-secondary/80 backdrop-blur-md shadow-md">
+<header class="sticky top-0 z-50 bg-header shadow-md">
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <a href="#hero" class="text-2xl font-bold text-dark-gray hover:text-accent transition-colors">
+    <a href="#hero" class="text-2xl font-bold logo transition-colors">
       Bowen Therapy
     </a>
 
@@ -244,7 +280,8 @@
           </button>
           <div id="more" class="dropdown hidden absolute left-0 mt-2 w-48 rounded-xl bg-white/75 backdrop-blur-lg shadow-xl p-2 z-50">
             <a href="#faq" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navFAQ">FAQ</a>
-            <a href="#evidence" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navEvidence">Evidence</a>
+            <a href="#evidence" class="dropdown-link block px-4
+py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navEvidence">Evidence</a>
             <a href="#safety" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navSafety">Safety</a>
             <a href="#training" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navTraining">Training</a>
           </div>
@@ -277,7 +314,8 @@
       </svg>
     </button>
     <a href="#introduction" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navIntroduction">Introduction</a>
-    <a href="#benefits" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navBenefits">Benefits</a>
+    <a href="#benefits" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors"
+data-i18n="navBenefits">Benefits</a>
     <a href="#how-it-works" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navHowItWorks">How it Works</a>
     <a href="#evidence" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navEvidence">Evidence</a>
     <a href="#conditions" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navConditions">Conditions</a>
@@ -285,7 +323,8 @@
     <a href="#sport" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navSport">In Sport</a>
     <a href="#animals" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navAnimals">For Animals</a>
     <a href="#faq" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navFAQ">FAQ</a>
-    <a href="#safety" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navSafety">Safety</a>
+    <a href="#safety" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors"
+data-i18n="navSafety">Safety</a>
     <a href="#training" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navTraining">Training</a>
     <a href="#contact" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navContact">Contact</a>
   </div>
@@ -295,13 +334,13 @@
             <h1 class="text-5xl md:text-6xl font-bold mb-4" data-i18n="heroTitle">Understanding Bowen Therapy</h1>
             <p class="text-xl md:text-2xl font-light mb-8" data-i18n="heroSubtitle">A Gentle Path to Self-Healing and Well-being</p>
             <p class="max-w-3xl mb-10 text-lg" data-i18n="heroDescription">
-                Bowen Therapy is a holistic, non-invasive bodywork technique that encourages the body's innate ability to heal itself. Through subtle, precise movements, it aims to reset the body's balance, reduce pain, and restore overall harmony.
+                Bowen Therapy is a holistic, non-invasive bodywork technique that encourages the body's innate ability to heal itself.
+Through subtle, precise movements, it aims to reset the body's balance, reduce pain, and restore overall harmony.
             </p>
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
                 <a href="#conditions" class="bg-white text-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-transparent hover:text-white hover:border-2  hover:border-white transition-colors shadow-lg" data-i18n="heroExploreConditions">Explore Conditions</a>
                 <a href="#principles" class="bg-white text-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-transparent hover:text-white hover:border-2  hover:border-white transition-colors shadow-lg" data-i18n="heroLearnPrinciples">Learn the Principles</a>
             </div>
-																																																																												
         </section>
 
         <section id="introduction" class="container mx-auto px-4 py-20">
@@ -312,19 +351,28 @@
                 <div class="card">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="introWhatIsTitle">What is Bowen Therapy?</h3>
                     <p data-i18n="introWhatIsText">
-                        Bowen Therapy, also known as Bowenwork or Bowtech, is a gentle, non-invasive, and holistic soft tissue therapy. It involves a series of subtle rolling moves performed with thumbs and fingers over specific muscles, tendons, ligaments, and fascia. Unlike other manual therapies, it does not involve forceful manipulation, deep pressure, or cracking joints. Its philosophy emphasizes "Less is More," believing that minimal, precise inputs can trigger profound self-healing responses in the body.
+                        Bowen Therapy, also known as Bowenwork or Bowtech, is a gentle, non-invasive, and holistic soft tissue therapy.
+It involves a series of subtle rolling moves performed with thumbs and fingers over specific muscles, tendons, ligaments, and fascia.
+Unlike other manual therapies, it does not involve forceful manipulation, deep pressure, or cracking joints.
+Its philosophy emphasizes "Less is More," believing that minimal, precise inputs can trigger profound self-healing responses in the body.
                     </p>
                 </div>
                 <div class="card">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="introOriginsTitle">Origins and Philosophy</h3>
                     <p data-i18n="introOriginsText">
-                        Developed by Australian Thomas Ambrose Bowen (1916-1982) in the 1950s, Bowen Therapy emerged from his deep understanding of the human body. Tom Bowen claimed to treat over 13,000 people per year by the 1970s, establishing his reputation largely by word-of-mouth. His technique was based on the belief that the body, given the right conditions and signals, possesses an inherent capacity to heal itself. The therapy is a holistic approach, treating the individual as a whole—body, mind, and soul—rather than focusing solely on specific symptoms.
+                        Developed by Australian Thomas Ambrose Bowen (1916-1982) in the 1950s, Bowen Therapy emerged from his deep understanding of the human body.
+Tom Bowen claimed to treat over 13,000 people per year by the 1970s, establishing his reputation largely by word-of-mouth.
+His technique was based on the belief that the body, given the right conditions and signals, possesses an inherent capacity to heal itself.
+The therapy is a holistic approach, treating the individual as a whole—body, mind, and soul—rather than focusing solely on specific symptoms.
                     </p>
                 </div>
                 <div class="card">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="introHowPromotesTitle">How It Promotes Healing</h3>
                     <p data-i18n="introHowPromotesText">
-                        Bowen Therapy works by sending precise signals to the nervous system, particularly influencing the Autonomic Nervous System (ANS). It aims to shift the body from a state of sympathetic dominance ("fight, flight, or freeze" mode) to parasympathetic dominance ("rest, relax, and repair" mode). This shift allows the body to release tension, reduce inflammation, improve circulation, and activate its innate healing intelligence to restore balance (homeostasis). The unique "pauses" during a session are crucial for the body to integrate these signals and initiate its self-healing processes.
+                        Bowen Therapy works by sending precise signals to the nervous system, particularly influencing the Autonomic Nervous System (ANS).
+It aims to shift the body from a state of sympathetic dominance ("fight, flight, or freeze" mode) to parasympathetic dominance ("rest, relax, and repair" mode).
+This shift allows the body to release tension, reduce inflammation, improve circulation, and activate its innate healing intelligence to restore balance (homeostasis).
+The unique "pauses" during a session are crucial for the body to integrate these signals and initiate its self-healing processes.
                     </p>
                 </div>
             </div>
@@ -352,14 +400,17 @@
                             <li data-i18n="benefitsNeurological1" class="relative pl-6 before:absolute before:left-0 before:content-['🧠']">Migraines and tension headaches, dizziness, vertigo, tinnitus</li>
                             <li data-i18n="benefitsNeurological2" class="relative pl-6 before:absolute before:left-0 before:content-['🧠']">Multiple Sclerosis (MS), Parkinson's, post-stroke sequelae (to support motor function)</li>
                             <li data-i18n="benefitsNeurological3" class="relative pl-6 before:absolute before:left-0 before:content-['🧠']">Asthma, bronchitis, hay fever, sinusitis, respiratory difficulties</li>
-                            <li data-i18n="benefitsNeurological4" class="relative pl-6 before:absolute before:left-0 before:content-['🧠']">IBS, bloating, constipation, acid reflux, digestive disorders</li>
+                            <li data-i18n="benefitsNeurological4" class="relative pl-6
+                            before:absolute before:left-0 before:content-['🧠']">IBS, bloating, constipation, acid reflux, digestive
+                            disorders</li>
                             <li data-i18n="benefitsNeurological5" class="relative pl-6 before:absolute before:left-0 before:content-['🧠']">Fluid retention, lymphatic drainage, improved circulation</li>
                         </ul>
                     </div>
                     <div class="card">
                         <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="benefitsEmotionalTitle">Emotional & Psychological Well-being</h3>
                         <ul class="list-none text-left space-y-1">
-                            <li data-i18n="benefitsEmotional1" class="relative pl-6 before:absolute before:left-0 before:content-['👵']">Stress and anxiety relief, panic attacks, depression (complementary support)</li>
+                            <li data-i18n="benefitsEmotional1" class="relative pl-6 before:absolute before:left-0 before:content-['👵']">Stress and anxiety
+                            relief, panic attacks, depression (complementary support)</li>
                             <li data-i18n="benefitsEmotional2" class="relative pl-6 before:absolute before:left-0 before:content-['👵']">Improved sleep quality and insomnia</li>
                             <li data-i18n="benefitsEmotional3" class="relative pl-6 before:absolute before:left-0 before:content-['👵']">Emotional trauma release, increased calmness and mental clarity</li>
                             <li data-i18n="benefitsEmotional4" class="relative pl-6 before:absolute before:left-0 before:content-['👵']">Enhanced general well-being and vitality</li>
@@ -371,7 +422,8 @@
                             <li data-i18n="benefitsPediatric1" class="relative pl-6 before:absolute before:left-0 before:content-['👶']">Infant colic and reflux, sleep issues in babies, bedwetting</li>
                             <li data-i18n="benefitsPediatric2" class="relative pl-6 before:absolute before:left-0 before:content-['👶']">ADHD, developmental and motor problems in children (complementary)</li>
                             <li data-i18n="benefitsPediatric3" class="relative pl-6 before:absolute before:left-0 before:content-['👶']">Pre-conception support (menstrual cycle regulation, fertility)</li>
-                            <li data-i18n="benefitsPediatric4" class="relative pl-6 before:absolute before:left-0 before:content-['👶']">Pelvic pain during pregnancy, morning sickness, optimizing fetal positioning</li>
+                            <li data-i18n="benefitsPediatric4" class="relative pl-6
+                            before:absolute before:left-0 before:content-['👶']">Pelvic pain during pregnancy, morning sickness, optimizing fetal positioning</li>
                             <li data-i18n="benefitsPediatric5" class="relative pl-6 before:absolute before:left-0 before:content-['👶']">Postnatal recovery, perineal healing, lactation stimulation, breastfeeding discomfort</li>
                         </ul>
                     </div>
@@ -417,25 +469,31 @@
                 <div class="card">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="mechanismANS">Autonomic Nervous System (ANS) Modulation</h3>
                     <p data-i18n="mechanismANSText">
-                        Bowen moves send sensory input to the brain, influencing the ANS. This triggers a shift from sympathetic ("fight/flight") to parasympathetic ("rest/repair") dominance, which is crucial for healing and deep relaxation. Observable signs include deep relaxation and audible peristalsis.
+                        Bowen moves send sensory input to the brain, influencing the ANS.
+This triggers a shift from sympathetic ("fight/flight") to parasympathetic ("rest/repair") dominance, which is crucial for healing and deep relaxation.
+Observable signs include deep relaxation and audible peristalsis.
                     </p>
                 </div>
                 <div class="card">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="mechanismFascia">The Fascial System: A Body-Wide Network</h3>
                     <p data-i18n="mechanismFasciaText">
-                        Bowen targets fascia, the connective tissue rich in mechanoreceptors. Releasing fascial tension improves posture, movement, and organ function, as restrictions can impact the entire body. It promotes fluid dynamics (circulation, lymphatic flow).
+                        Bowen targets fascia, the connective tissue rich in mechanoreceptors.
+Releasing fascial tension improves posture, movement, and organ function, as restrictions can impact the entire body.
+It promotes fluid dynamics (circulation, lymphatic flow).
                     </p>
                 </div>
                 <div class="card">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="mechanismProprioceptive">Proprioceptive & Neuromuscular Reset</h3>
                     <p data-i16n="mechanismProprioceptiveText">
-                        Moves reset muscle spindle cells and Golgi tendon organs, vital for sensing muscle length and tension. This normalizes muscle tone, reduces guarding, and restores proper joint mechanics, leading to reduced pain and improved mobility.
+                        Moves reset muscle spindle cells and Golgi tendon organs, vital for sensing muscle length and tension.
+This normalizes muscle tone, reduces guarding, and restores proper joint mechanics, leading to reduced pain and improved mobility.
                     </p>
                 </div>
                 <div class="card">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="mechanismEnergetic">Energetic & Visceral Response</h3>
                     <p data-i18n="mechanismEnergeticText">
-                        Many moves overlap with acupuncture points and meridians, potentially influencing "Chi" or energy flow. Somatic input from moves can also positively impact visceral (organ) functions and stimulate endorphin release for pain relief and well-being.
+                        Many moves overlap with acupuncture points and meridians, potentially influencing "Chi" or energy flow.
+Somatic input from moves can also positively impact visceral (organ) functions and stimulate endorphin release for pain relief and well-being.
                     </p>
                 </div>
                 <div class="card md:col-span-2 lg:col-span-2">
@@ -447,7 +505,8 @@
                 <div class="card md:col-span-2 lg:col-span-2">
                     <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="mechanismTriggerPoints">Trigger Points & Pain Loops</h3>
                     <p data-i18n="mechanismTriggerPointsText">
-                        Bowen moves often coincide with trigger points. By addressing these points, the technique can interrupt dysfunctional pain-muscle-spasm cycles, leading to relief and improved coordination.
+                        Bowen moves often coincide with trigger points.
+By addressing these points, the technique can interrupt dysfunctional pain-muscle-spasm cycles, leading to relief and improved coordination.
                     </p>
                 </div>
             </div>
@@ -463,21 +522,26 @@
                         <span class="text-5xl mb-4 block" data-i18n="principlesEmoji1">🙌</span>
                         <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="principlesMoveTitle">The Gentle Move</h3>
                         <p data-i18n="principlesMoveText">
-                            Precise, subtle rolling movements applied with thumbs or fingers over muscles, tendons, and fascia. This minimal, non-invasive input acts as a "question, not a command" to the nervous system, initiating a gentle dialogue with the body.
+                            Precise, subtle rolling movements applied with thumbs or fingers over muscles, tendons, and fascia.
+This minimal, non-invasive input acts as a "question, not a command" to the nervous system, initiating a gentle dialogue with the body.
                         </p>
                     </div>
                     <div class="card bg-white text-dark-gray">
                         <span class="text-5xl mb-4 block" data-i18n="principlesPauseEmoji">⚡</span>
-                        <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="principlesPauseTitle">The Crucial Pause</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-primary"
+data-i18n="principlesPauseTitle">The Crucial Pause</h3>
                         <p data-i18n="principlesPauseText">
-                            After each set of moves, the therapist leaves the room for a few minutes. This mandatory pause is vital for the body to process the signals, initiate its own adjustments, and shift from a stressed state to a "rest, relax, and repair" mode.
+                            After each set of moves, the therapist leaves the room for a few minutes.
+This mandatory pause is vital for the body to process the signals, initiate its own adjustments, and shift from a stressed state to a "rest, relax, and repair" mode.
                         </p>
                     </div>
                     <div class="card bg-white text-dark-gray">
                         <span class="text-5xl mb-4 block" data-i18n="principlesResponseEmoji">🧘</span>
-                        <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="principlesResponseTitle">The Healing Response</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-primary"
+data-i18n="principlesResponseTitle">The Healing Response</h3>
                         <p data-i18n="principlesResponseText">
-                            By shifting the nervous system and integrating signals, the body activates its innate healing intelligence. This leads to reduced tension and pain, improved circulation, and the restoration of overall balance and harmony.
+                            By shifting the nervous system and integrating signals, the body activates its innate healing intelligence.
+This leads to reduced tension and pain, improved circulation, and the restoration of overall balance and harmony.
                         </p>
                     </div>
                 </div>
@@ -486,7 +550,8 @@
 
         <section id="conditions" class="container mx-auto px-4 py-20">
             <h2 class="section-title" data-i18n="conditionsTitle">Conditions & Reported Benefits</h2>
-            <p class="section-subtitle" data-i18n="conditionsSubtitle">Explore how Bowen Therapy may help you</p>
+            <p class="section-subtitle"
+data-i18n="conditionsSubtitle">Explore how Bowen Therapy may help you</p>
 
             <div id="filter-buttons" class="flex flex-wrap justify-center gap-3 mb-8">
                 <button class="pill-button active" data-filter="all" data-i18n="filterAll">All</button>
@@ -499,7 +564,8 @@
 
             <p id="category-description" class="text-center text-medium-gray mb-8" data-i18n="categoryDescriptionAll">Select a category to see specific conditions and reported benefits.</p>
 
-            <div id="conditions-grid" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div id="conditions-grid" class="grid
+sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 </div>
         </section>
 
@@ -514,13 +580,18 @@
                         <div class="flex flex-col md:flex-row items-start md:items-center relative">
                             <div class="md:w-1/2 md:pr-12">
                                 <div class="card p-6 text-center md:text-right">
-                                    <span class="text-5xl mb-4 block text-center">🔍</span><h3 class="text-xl font-semibold mb-2 text-primary" data-i18n="sessionStep1Title"> Consultation & Preparation</h3>
+                                    <span
+class="text-5xl mb-4 block text-center">🔍</span><h3 class="text-xl font-semibold mb-2 text-primary" data-i18n="sessionStep1Title"> Consultation & Preparation</h3>
                                     <p data-i18n="sessionStep1Text">
-                                        Your first session typically lasts 60-90 minutes. We'll discuss your medical history, current symptoms, and goals. Wear light, loose-fitting clothing, as moves can be done through clothes. Hydration is key: drink plenty of water in the days leading up to your session. Avoid other bodywork (massage, chiropractic) for a few days prior to ensure the best results.
+                                        Your first session typically lasts 60-90 minutes.
+We'll discuss your medical history, current symptoms, and goals. Wear light, loose-fitting clothing, as moves can be done through clothes.
+Hydration is key: drink plenty of water in the days leading up to your session.
+Avoid other bodywork (massage, chiropractic) for a few days prior to ensure the best results.
                                     </p>
                                 </div>
                             </div>
-                            <div class="hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-primary absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-sm">1</div>
+                            <div class="hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-primary absolute left-1/2 top-1/2
+                            transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-sm">1</div>
                             <div class="md:w-1/2 md:pl-12"></div>
                         </div>
 
@@ -531,7 +602,10 @@
                                 <div class="card p-6 text-center md:text-left">
                                     <span class="text-5xl mb-4 block text-center">✋</span><h3 class="text-xl font-semibold mb-2 text-primary" data-i18n="sessionStep2Title"> Gentle Moves & The Crucial Pause</h3>
                                     <p data-i18n="sessionStep2Text">
-                                        You'll lie on a therapy bed (or sit in a chair if preferred). The therapist applies gentle, rolling moves with thumbs and fingers to specific points on your body. After each set of moves, the therapist will leave the room for 2-5 minutes. This 'crucial pause' allows your body to integrate the signals and initiate its self-healing processes without interference.
+                                        You'll lie on a therapy bed (or sit in a chair if preferred).
+The therapist applies gentle, rolling moves with thumbs and fingers to specific points on your body.
+After each set of moves, the therapist will leave the room for 2-5 minutes.
+This 'crucial pause' allows your body to integrate the signals and initiate its self-healing processes without interference.
                                     </p>
                                 </div>
                             </div>
@@ -540,13 +614,17 @@
                         <div class="flex flex-col md:flex-row items-start md:items-center relative">
                             <div class="md:w-1/2 md:pr-12">
                                 <div class="card p-6 text-center md:text-right">
-                                    <span class="text-5xl mb-4 block text-center">🕰</span><h3 class="text-xl font-semibold mb-2 text-primary" data-i18n="sessionStep3Title"> The Healing Response</h3>
+                                    <span
+class="text-5xl mb-4 block text-center">🕰</span><h3 class="text-xl font-semibold mb-2 text-primary" data-i18n="sessionStep3Title"> The Healing Response</h3>
                                     <p data-i18n="sessionStep3Text">
-                                        During and after the session, your body enters a state of deep relaxation, shifting to a 'rest and repair' mode. You may experience subtle sensations (tingling, warmth, mild aches) as your body reorganizes. This is a positive sign that the treatment is taking effect and your body's innate healing intelligence is activated.
+                                        During and after the session, your body enters a state of deep relaxation, shifting to a 'rest and repair' mode.
+You may experience subtle sensations (tingling, warmth, mild aches) as your body reorganizes.
+This is a positive sign that the treatment is taking effect and your body's innate healing intelligence is activated.
                                     </p>
                                 </div>
                             </div>
-                            <div class="hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-primary absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-sm">3</div>
+                            <div class="hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-primary absolute left-1/2 top-1/2
+                            transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-sm">3</div>
                             <div class="md:w-1/2 md:pl-12"></div>
                         </div>
 
@@ -557,7 +635,9 @@
                                 <div class="card p-6 text-center md:text-left">
                                     <span class="text-5xl mb-4 block text-center">✅</span><h3 class="text-xl font-semibold mb-2 text-primary" data-i18n="sessionStep4Title"> Post-Session Integration & Aftercare</h3>
                                     <p data-i18n="sessionStep4Text">
-                                        The healing process continues for 5-7 days after your session. It's vital to stay hydrated, engage in light movement (avoid prolonged sitting), and avoid other manipulative therapies or extreme temperatures (hot/cold packs, hot baths) for at least 48 hours to allow your body to fully integrate the treatment's effects. The number of sessions varies, but often 2-3 sessions spaced a week apart yield significant improvements.
+                                        The healing process continues for 5-7 days after your session.
+It's vital to stay hydrated, engage in light movement (avoid prolonged sitting), and avoid other manipulative therapies or extreme temperatures (hot/cold packs, hot baths) for at least 48 hours to allow your body to fully integrate the treatment's effects.
+The number of sessions varies, but often 2-3 sessions spaced a week apart yield significant improvements.
                                     </p>
                                 </div>
                             </div>
@@ -575,43 +655,75 @@
                 <div class="card">
                     <h3 class="text-xl font-semibold mb-4 text-primary" data-i18n="evidenceScientificTitle">The Scientific Evidence</h3>
                     <p class="mb-4" data-i18n="evidenceScientificIntro">
-                        The scientific community acknowledges a limited body of high-quality scientific research on Bowen Therapy. A 2015 review by the Australian Government's Department of Health found no clear evidence of its effectiveness as a medical intervention. Similarly, the UK Advertising Standards Authority (ASA) only accepts claims for stress/anxiety relief and short-term hamstring flexibility, requiring robust clinical evidence for broader claims. Critics like PainScience.com describe the scientific basis as "flimsy at best" and the mechanisms as "murky, if not incoherent." They argue that its primary appeal is its gentle nature, not its proven efficacy.
+                        The scientific community acknowledges
+a limited body of high-quality scientific research on Bowen Therapy.
+A 2015 review by the Australian Government's Department of Health found no clear evidence of its effectiveness as a medical intervention.
+Similarly, the UK Advertising Standards Authority (ASA) only accepts claims for stress/anxiety relief and short-term hamstring flexibility, requiring robust clinical evidence for broader claims.
+Critics like PainScience.com describe the scientific basis as "flimsy at best" and the mechanisms as "murky, if not incoherent."
+They argue that its primary appeal is its gentle nature, not its proven efficacy.
                     </p>
                     <p class="mb-4" data-i18n="evidenceScientificPromising">
                         However, ongoing preliminary research and smaller clinical trials suggest promising areas:
                     </p>
                     <ul class="list-none space-y-1 mb-4">
                         <li data-i18n="evidenceScientificStudy1" class="relative pl-6 before:absolute before:left-0 before:content-['📚']">A 2024 controlled trial found Bowen Therapy effective in improving sleep quality and pressure pain threshold in fibromyalgia syndrome participants, with effects lasting 24 weeks.</li>
-                        <li data-i18n="evidenceScientificStudy2" class="relative pl-6 before:absolute before:left-0 before:content-['📚']">A 2023 randomized clinical trial showed Bowen Therapy to be significantly more effective at reducing pain and increasing function for thoracic myofascial pain syndrome compared to a control.</li>
+                        <li data-i18n="evidenceScientificStudy2" class="relative pl-6 before:absolute before:left-0 before:content-['📚']">A 2023 randomized clinical trial showed Bowen Therapy to be significantly more effective at reducing pain and
+                        increasing function for thoracic myofascial pain syndrome compared to a control.</li>
                         <li data-i18n="evidenceScientificStudy3" class="relative pl-6 before:absolute before:left-0 before:content-['📚']">Another 2023 clinical trial indicated significant improvements in neck range of motion, anxiety, depression, and pain interference for myofascial neck pain.</li>
-                        <li data-i18n="evidenceScientificStudy4" class="relative pl-6 before:absolute before:left-0 before:content-['📚']">A 2011 systematic review (cited in 2022 context) reported 53% effectiveness for pain reduction and 33% for improved mobility across 15 studies, though noted more research was needed.</li>
-                        <li data-i18n="evidenceScientificStudy5" class="relative pl-6 before:absolute before:left-0 before:content-['📚']">Pilot studies suggest potential for stroke rehabilitation support and improved neuromuscular function.</li>
+                        <li data-i18n="evidenceScientificStudy4" class="relative pl-6 before:absolute before:left-0 before:content-['📚']">A 2011 systematic review (cited in 2022 context) reported 53%
+                        effectiveness for pain reduction and 33% for improved mobility across 15 studies, though noted more research was needed.</li>
+                        <li data-i18n="evidenceScientificStudy5" class="relative pl-6 before:absolute before:left-0 before:content-['📚']">Pilot studies suggest potential for stroke rehabilitation support and improved neuromuscular function, with statistically significant improvements in physical health summary scales observed.</li>
+                        <li data-i18n="evidenceScientificStudy6" class="relative pl-6 before:absolute
+                        before:left-0 before:content-['📚']">A 2001
+                        pilot study found Bowen Technique improved shoulder mobility and reduced pain significantly in participants with frozen shoulder.</li>
+                        <li data-i18n="evidenceScientificStudy7" class="relative pl-6 before:absolute before:left-0 before:content-['📚']">Research shows Bowen Therapy can significantly increase hamstring flexibility in healthy subjects for up to one week after a single treatment.</li>
+                        <li data-i18n="evidenceScientificStudy8" class="relative pl-6 before:absolute before:left-0 before:content-['📚']">For tension-type headaches, a
+                        2024 randomized controlled trial showed significant decrease in pain severity and headache frequency in the Bowen Therapy group.</li>
+                        <li data-i18n="evidenceScientificStudy9" class="relative pl-6 before:absolute before:left-0 before:content-['📚']">An asthma research project (unpublished, cited 2025) reported 83% of participants experienced reduced frequency of asthma attacks, 75% reduced severity, and 75% used less medication.</li>
+                        <li data-i18n="evidenceScientificStudy10" class="relative pl-6 before:absolute
+                        before:left-0 before:content-['📚']">A 2020 study on multisite chronic pain indicated a short-term reduction in pain in the Bowen Therapy group compared to a sham group.</li>
                     </ul>
                     <p class="text-light-gray text-sm" data-i18n="evidenceScientificDisclaimer">
-                        *Note: While some studies show promising results, a consensus on long-term efficacy from large-scale, independent Randomized Controlled Trials (RCTs) is still lacking. Bowen Therapy is a complementary therapy and should not replace conventional medical advice.*
+                        *Note: While some studies show promising results, a consensus on
+                        long-term efficacy from large-scale, independent Randomized Controlled Trials (RCTs) is still developing.
+Bowen Therapy is a complementary therapy and should not replace conventional medical advice.
+                        The Australian Government's 2024 review found limited evidence of effectiveness, noting that the evidence is very uncertain for many pain outcomes.*
                     </p>
                 </div>
-                <div class="card">
-                    <h3 class="text-xl font-semibold mb-4 text-primary" data-i18n="evidencePatientTitle">The Patient Experience</h3>
-                    <p class="mb-4" data-i18n="evidencePatientIntro">
-                        Despite the limitations in scientific evidence, there is overwhelmingly positive anecdotal evidence and patient testimonials from individuals and practitioners worldwide. Many clients report significant relief and improved quality of life, often after trying conventional treatments without success.
-                    </p>
-                    <div class="testimonial-card evidence-section mb-4 p-4 rounded-lg bg-white text-dark-gray">
-                        <p class="italic mb-2" data-i18n="evidenceTestimonial1Quote">"I suffered from back pain for over 25 years. After trying various specialists, Bowen Therapy provided relief and significantly improved my lifestyle."</p>
-                        <p class="text-right text-sm font-semibold" data-i18n="evidenceTestimonial1Author">- Alexandru, Romania (for Disc Herniations)</p>
-                    </div>
-                    <div class="testimonial-card evidence-section mb-4 p-4 rounded-lg bg-white text-dark-gray">
-                        <p class="italic mb-2" data-i18n="evidenceTestimonial2Quote">"After severe lumbosciatica and limited success with physiotherapy and medication, Bowen Therapy brought significant relief for my lumbar discopathy and vertigo."</p>
-                        <p class="text-right text-sm font-semibold" data-i18n="evidenceTestimonial2Author">- Pacient from Terapeutic.ro (for Lumbar Discopathy and Vertigo)</p>
-                    </div>
-                    <div class="testimonial-card evidence-section p-4 rounded-lg bg-white text-dark-gray">
-                        <p class="italic mb-2" data-i18n="evidenceTestimonial3Quote">"I was amazed by the changes after my first session. My legs felt stronger, and I could walk unaided, which I hadn't done before."</p>
-                        <p class="text-right text-sm font-semibold" data-i18n="evidenceTestimonial3Author">- Transverse, Scope Forum (for Disability)</p>
-                    </div>
-                    <p class="mt-4" data-i18n="evidencePatientOutcomes">
-                        Client satisfaction surveys often report high success rates. Many practitioners, including those integrated into conventional healthcare settings (nursing, physiotherapy, palliative care), observe tangible improvements in their patients' pain, mobility, sleep, and overall well-being. These real-world experiences highlight the perceived therapeutic value of Bowen Therapy for many individuals.
-                    </p>
-                </div>
+<div class="card">
+    <h3 class="text-xl font-semibold mb-4 text-primary" data-i18n="evidencePatientTitle">The Patient Experience</h3>
+    <p class="mb-4" data-i18n="evidencePatientIntro">
+        Despite the limitations in scientific evidence, there is overwhelmingly positive anecdotal evidence and patient testimonials from individuals and
+        practitioners worldwide. Many clients report significant relief and improved quality of life, often after trying conventional treatments without success.
+    </p>
+
+    <div id="testimonials-container" class="relative">
+        <div id="testimonial-carousel" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 overflow-hidden">
+            </div>
+
+        <button id="prev-testimonial" class="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md hover:bg-gray-300 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <button id="next-testimonial" class="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md hover:bg-gray-300 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="text-center mt-4">
+        <span id="carousel-page-info" class="text-sm text-gray-600"></span>
+    </div>
+
+    <p class="mt-4" data-i18n="evidencePatientOutcomes">
+        Client satisfaction surveys often report high success rates.
+For example, a 2012 study by the Bowen Association in the UK found that over 85% of people reported a major reduction in their pain symptoms, with 50% reporting total pain relief.
+Many practitioners, including those integrated into conventional healthcare settings (nursing, physiotherapy, palliative care), observe tangible improvements in their patients' pain, mobility, sleep, and overall well-being.
+These real-world experiences highlight the perceived therapeutic value of Bowen Therapy for many individuals.
+    </p>
+</div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
@@ -628,13 +740,15 @@
             <div class="mt-10">
                 <h3 class="text-2xl font-semibold mb-4 text-primary" data-i18n="scientificStudiesHeading">Scientific Studies and Evidence</h3>
                 <p class="mb-6" data-i18n="scientificStudiesIntro">
-                    While more large-scale research is needed, here are some peer-reviewed studies and related evidence cited by various Bowen Therapy resources. It is recommended to consult the original sources for full details.
+                    While more large-scale research is needed, here are some
+                    peer-reviewed studies and related evidence cited by various Bowen Therapy resources.
+It is recommended to consult the original sources for full details.
                 </p>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="card">
                         <h4 class="font-bold mb-2" data-i18n="study1Title">Effectiveness on Fibromyalgia Syndrome</h4>
                         <p class="text-sm mb-2" data-i18n="study1Source">Controlled Trial, 2024</p>
-                        <p class="text-sm mb-2" data-i18n="study1Description">Found Bowen Therapy effective in improving sleep quality and pressure pain threshold in fibromyalgia participants, with effects lasting 24 weeks.</p>
+                        <p class="text-sm mb-2" data-i18n="study1Description">Found Bowen Therapy effective in improving sleep quality and pressure pain threshold in fibromyalgia participants, with benefits lasting 24 weeks.</p>
                         <a href="https://pubmed.ncbi.nlm.nih.gov/38101480/" target="_blank" class="text-primary hover:underline text-sm" data-i18n="studyLink">View Study</a>
                     </div>
                     <div class="card">
@@ -643,20 +757,25 @@
                         <p class="text-sm mb-2" data-i18n="study2Description">Showed Bowen Therapy to be significantly more effective at reducing pain and increasing function for thoracic myofascial pain syndrome compared to a control.</p>
                         <a href="https://jptcp.com/index.php/jptcp/article/view/4007" target="_blank" class="text-primary hover:underline text-sm" data-i18n="studyLink">View Study</a>
                     </div>
-                    <div class="card">
+                    <div
+class="card">
                         <h4 class="font-bold mb-2" data-i18n="study3Title">Impact on Myofascial Neck Pain</h4>
                         <p class="text-sm mb-2" data-i18n="study3Source">Clinical Trial, 2023</p>
-                        <p class="text-sm mb-2" data-i18n="study3Description">Indicated significant improvements in neck range of motion, anxiety, depression, and pain interference for myofascial neck pain.</p>
+                        <p class="text-sm mb-2" data-i18n="study3Description">Indicated significant improvements in neck range of motion, anxiety, depression, and pain interference
+                        for myofascial neck pain.</p>
                         <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10668497/" target="_blank" class="text-primary hover:underline text-sm" data-i18n="studyLink">View Study</a>
                     </div>
                     <div class="card">
-                        <h4 class="font-bold mb-2" data-i18n="study4Title">Systematic Review of Bowenwork (2011)</h4>
+                        <h4
+class="font-bold mb-2" data-i18n="study4Title">Systematic Review of Bowenwork (2011)</h4>
                         <p class="text-sm mb-2" data-i18n="study4Source">ResearchGate, Cited in 2022</p>
-                        <p class="text-sm mb-2" data-i18n="study4Description">Reviewed 15 studies (1 RCT, 2 quasi-experimental, 3 mixed methods, 2 cross-sectional, 7 case studies), reporting 53% effectiveness for pain reduction and 33% for improved mobility. Concluded more research is needed.</p>
+                        <p class="text-sm mb-2" data-i18n="study4Description">Reviewed 15 studies (1 RCT, 2 quasi-experimental, 3 mixed methods, 2 cross-sectional, 7 case studies), reporting 53% effectiveness for pain reduction and 33% for improved mobility.
+Concluded more research is needed.</p>
                         <a href="https://www.researchgate.net/publication/51802277_What_is_Bowenwork_R_A_Systematic_Review" target="_blank" class="text-primary hover:underline text-sm" data-i18n="studyLink">View Study</a>
                     </div>
                     <div class="card">
-                        <h4 class="font-bold mb-2" data-i18n="study5Title">Australian Government Review (2015)</h4>
+                        <h4
+class="font-bold mb-2" data-i18n="study5Title">Australian Government Review (2015)</h4>
                         <p class="text-sm mb-2" data-i18n="study5Source">Department of Health Report</p>
                         <p class="text-sm mb-2" data-i18n="study5Description">Evaluated Bowen Therapy among 17 alternative therapies and found no clear evidence of its effectiveness as a medical intervention for health insurance coverage.</p>
                         <a href="https://www.health.gov.au/sites/default/files/2025-03/natural-therapies-review-2024-bowen-therapy-evidence-evaluation.pdf" target="_blank" class="text-primary hover:underline text-sm" data-i18n="studyLink">View Study</a>
@@ -664,7 +783,8 @@
                     <div class="card">
                         <h4 class="font-bold mb-2" data-i18n="study6Title">Advertising Standards Authority (ASA) Rulings (UK)</h4>
                         <p class="text-sm mb-2" data-i18n="study6Source">Official Guidelines</p>
-                        <p class="text-sm mb-2" data-i18n="study6Description">Accepts claims for stress/anxiety relief and short-term hamstring flexibility. Requires robust clinical evidence for broader claims (e.g., musculoskeletal pain, chronic conditions).</p>
+                        <p class="text-sm mb-2" data-i18n="study6Description">Accepts claims for stress/anxiety relief and short-term hamstring flexibility.
+Requires robust clinical evidence for broader claims (e.g., musculoskeletal pain, chronic conditions).</p>
                         <a href="https://www.asa.org.uk/advice-online/health-bowen-technique.html" target="_blank" class="text-primary hover:underline text-sm" data-i18n="studyLink">View Study</a>
                     </div>
                 </div>
@@ -674,16 +794,19 @@
                 <h3 class="text-2xl font-semibold mb-4 text-primary" data-i18n="quotesHeading">Quotes from Educators & Practitioners</h3>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="card testimonial-card evidence-section p-4 rounded-lg bg-white text-dark-gray">
-                        <p class="italic mb-2" data-i18n="quote1Text">"Very little needed to be done in order for the body to start the process of repair."</p>
+                        <p class="italic
+mb-2" data-i18n="quote1Text">"Very little needed to be done in order for the body to start the process of repair."</p>
                         <p class="text-right text-sm font-semibold" data-i18n="quote1Author">- Julian Baker, Director of the European College of Bowen Studies</p>
                     </div>
-                    <div class="card testimonial-card evidence-section p-4 rounded-lg bg-white text-dark-gray">
+                    <div class="card testimonial-card evidence-section p-4
+rounded-lg bg-white text-dark-gray">
                         <p class="italic mb-2" data-i18n="quote2Text">"What’s good about it isn’t unique, and what’s unique about it isn’t good!"</p>
                         <p class="text-right text-sm font-semibold" data-i18n="quote2Author">- Paul Ingraham, PainScience.com (Critical perspective)</p>
                     </div>
                     <div class="card testimonial-card evidence-section p-4 rounded-lg bg-white text-dark-gray">
                         <p class="italic mb-2" data-i18n="quote3Text">"Patients are enthusiastic about the different approach to body alignment and how Bowen can prevent sports injuries as well as deal with long-standing problems."</p>
-                        <p class="text-right text-sm font-semibold" data-i18n="quote3Author">- Steve Swanson, Head coach of the Scottish Rocks Pro Basketball team</p>
+                        <p class="text-right text-sm
+font-semibold" data-i18n="quote3Author">- Steve Swanson, Head coach of the Scottish Rocks Pro Basketball team</p>
                     </div>
                 </div>
             </div>
@@ -696,26 +819,30 @@
 
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="card">
-																																																																								
                         <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="sportBenefitsTitle">How Bowen Benefits Athletes</h3>
                         <p class="mb-4" data-i18n="sportBenefitsIntro">
-                            Bowen Therapy is increasingly recognized in the athletic community for its ability to enhance performance, speed up recovery, and aid in injury prevention. Its gentle, holistic approach works with the body's natural healing capabilities, making it suitable for athletes of all levels.
+                            Bowen Therapy is increasingly recognized in the athletic community for its ability to enhance performance, speed up recovery, and aid in injury prevention.
+Its gentle, holistic approach works with the body's natural healing capabilities, making it suitable for athletes of all levels.
                         </p>
                         <ul class="list-none space-y-1">
                             <li data-i18n="sportBenefit1" class="relative pl-6 before:absolute before:left-0 before:content-['🏃‍♂️']">
-                                Faster Recovery & Rehabilitation: Accelerates healing from acute and chronic sports injuries (e.g., sprains, strains, muscle tears, shin splints, hamstring injuries, groin strains). Reduces swelling, pain, and stiffness post-injury or intense training, promoting quicker return to activity.
+                                Faster Recovery & Rehabilitation: Accelerates healing from acute
+                                and chronic sports injuries (e.g., sprains, strains, muscle tears, shin splints, hamstring injuries, groin strains).
+Reduces swelling, pain, and stiffness post-injury or intense training, promoting quicker return to activity.
                             </li>
                             <li data-i18n="sportBenefit2" class="relative pl-6 before:absolute before:left-0 before:content-['🏃‍♂️']">
                                 Injury Prevention: By addressing subtle fascial restrictions, muscle imbalances, and postural misalignments, Bowen helps to prevent recurring injuries and improve biomechanics, making the body more resilient to stress during training and competition.
                             </li>
                             <li data-i18n="sportBenefit3" class="relative pl-6 before:absolute before:left-0 before:content-['🏃‍♂️']">
-                                Enhanced Performance: Optimizes flexibility, range of motion, and coordination. Improves energy levels and reduces muscle fatigue, allowing athletes to train harder, recover faster, and perform at their peak.
+                                Enhanced Performance: Optimizes flexibility, range of motion, and coordination.
+Improves energy levels and reduces muscle fatigue, allowing athletes to train harder, recover faster, and perform at their peak.
                             </li>
                             <li data-i18n="sportBenefit4" class="relative pl-6 before:absolute before:left-0 before:content-['🏃‍♂️']">
                                 Reduced Muscle Soreness & Spasms: Effective for alleviating post-exercise soreness, muscle cramps, and spasms, aiding in faster tissue repair and comfort.
                             </li>
                             <li data-i18n="sportBenefit5" class="relative pl-6 before:absolute before:left-0 before:content-['🏃‍♂️']">
-                                Stress Reduction & Mental Focus: Calms the nervous system, which is crucial for athletes dealing with pre-competition anxiety, performance pressure, and burnout. Improves sleep quality, mental clarity, and focus.
+                                Stress Reduction & Mental Focus: Calms the nervous system, which is crucial for athletes dealing with pre-competition anxiety, performance pressure, and burnout.
+Improves sleep quality, mental clarity, and focus.
                             </li>
                             <li data-i18n="sportBenefit6" class="relative pl-6 before:absolute before:left-0 before:content-['🏃‍♂️']">
                                 Pain Management: Provides a gentle, non-pharmacological approach to managing chronic pain conditions that might otherwise hinder athletic participation.
@@ -726,8 +853,8 @@
                         </ul>
                     </div>
                     <div class="card">
-																																																																										  
-                        <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="sportApplicationTitle">Applications & Testimonials in Sport</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="sportApplicationTitle">Applications & Testimonials in
+                        Sport</h3>
                         <p class="mb-4" data-i18n="sportApplicationIntro">
                             Bowen Therapy's application in sport ranges from acute injury management to long-term performance enhancement, as evidenced by testimonials from various athletes and coaches.
                         </p>
@@ -741,10 +868,12 @@
                         </div>
                         <div class="testimonial-card evidence-section p-4 rounded-lg bg-white text-dark-gray">
                             <p class="italic mb-2" data-i18n="sportTestimonial3Quote">"Patients are enthusiastic about the different approach to body alignment and how Bowen can prevent sports injuries as well as deal with long-standing problems."</p>
-                            <p class="text-right text-sm font-semibold" data-i18n="sportTestimonial3Author">- Steve Swanson, Head coach of the Scottish Rocks Pro Basketball team [cite: 198]</p>
+                            <p class="text-right text-sm
+                            font-semibold" data-i18n="sportTestimonial3Author">- Steve Swanson, Head coach of the Scottish Rocks Pro Basketball team</p>
                         </div>
                         <p class="mt-4" data-i18n="sportIntegrationNote">
-                            Many athletes, from recreational to professional levels, integrate Bowen Therapy into their training and recovery protocols for its subtle yet profound effects on the musculoskeletal and nervous systems.
+                            Many athletes, from recreational to professional levels, integrate
+                            Bowen Therapy into their training and recovery protocols for its subtle yet profound effects on the musculoskeletal and nervous systems.
                         </p>
                     </div>
                 </div>
@@ -753,25 +882,31 @@
 
         <section id="animals" class="bg-primary text-white py-20 px-4">
             <div class="container mx-auto">
-                <h2 class="section-title text-white" data-i18n="animalsTitle">Bowen Therapy for Animals</h2>
+                <h2
+class="section-title text-white" data-i18n="animalsTitle">Bowen Therapy for Animals</h2>
                 <p class="section-subtitle text-white" data-i18n="animalsSubtitle">Gentle Care for Your Beloved Pets and Livestock</p>
 
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="card bg-white text-dark-gray">
-																																																																					 
-                        <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="animalsBenefitsTitle">How Bowen Benefits Animals</h3>
+                        <h3 class="text-xl
+font-semibold mb-3 text-primary" data-i18n="animalsBenefitsTitle">How Bowen Benefits Animals</h3>
                         <p class="mb-4" data-i18n="animalsBenefitsIntro">
-                            Just like humans, animals can experience physical and emotional imbalances that affect their well-being and performance. Bowen Therapy offers a gentle, non-invasive, and effective way to support their natural healing processes. It is suitable for a wide range of animals, including horses, dogs, cats, and livestock.
+                            Just like humans, animals can experience physical and emotional imbalances that affect their well-being and performance.
+Bowen Therapy offers a gentle, non-invasive, and effective way to support their natural healing processes.
+It is suitable for a wide range of animals, including horses, dogs 🐶, cats 🐱, and livestock.
                         </p>
                         <ul  class="list-none space-y-1">
                             <li data-i18n="animalsBenefit1" class="relative pl-6 before:absolute before:left-0 before:content-['🐶️']">
-                                Pain Relief & Mobility: Addresses lameness, stiffness, arthritis, back pain, and muscle soreness. Improves range of motion and overall comfort, especially beneficial for aging animals or those recovering from injury.
+                                Pain Relief & Mobility: Addresses lameness, stiffness,
+                                arthritis, back pain, and muscle soreness. Improves range of motion and overall comfort, especially beneficial for aging animals or those recovering from injury.
                             </li>
                             <li data-i18n="animalsBenefit2" class="relative pl-6 before:absolute before:left-0 before:content-['🐶']">
-                                Post-Injury & Post-Operative Recovery: Accelerates healing after injuries, accidents, or surgery. Reduces swelling, inflammation, and helps restore normal movement patterns.
+                                Post-Injury & Post-Operative Recovery: Accelerates healing after injuries, accidents, or surgery.
+Reduces swelling, inflammation, and helps restore normal movement patterns.
                             </li>
                             <li data-i18n="animalsBenefit3" class="relative pl-6 before:absolute before:left-0 before:content-['🐶']">
-                                Behavioral Issues: By calming the nervous system, Bowen can help reduce anxiety, stress, hyperactivity, and fear-based behaviors in animals. It promotes a more relaxed and balanced demeanor.
+                                Behavioral Issues: By calming the nervous system, Bowen can help reduce anxiety, stress, hyperactivity, and fear-based behaviors in animals.
+It promotes a more relaxed and balanced demeanor.
                             </li>
                             <li data-i18n="animalsBenefit4" class="relative pl-6 before:absolute before:left-0 before:content-['🐶']">
                                 Performance Enhancement (e.g., Equine): Improves athletic performance in horses by enhancing flexibility, stride length, and reducing muscle tension, leading to better competition results.
@@ -780,22 +915,26 @@
                                 Digestive & Systemic Support: Can assist with digestive upsets, constipation, and overall systemic balance, contributing to better absorption of nutrients and improved vitality.
                             </li>
                             <li data-i18n="animalsBenefit6" class="relative pl-6 before:absolute before:left-0 before:content-['🐶']">
-                                Stress Reduction: Ideal for animals experiencing stress from travel, competition, changes in environment, or separation anxiety. Promotes a profound state of relaxation.
+                                Stress Reduction: Ideal for animals experiencing stress from travel, competition, changes in environment, or separation anxiety.
+Promotes a profound state of relaxation.
                             </li>
                             <li data-i18n="animalsBenefit7" class="relative pl-6 before:absolute before:left-0 before:content-['🐶']">
-                                General Well-being: Enhances overall vitality, coat condition, and demeanor. Supports the immune system and the body's innate ability to maintain health.
+                                General Well-being: Enhances overall vitality, coat condition, and demeanor.
+Supports the immune system and the body's innate ability to maintain health.
                             </li>
                         </ul>
                     </div>
                     <div class="card bg-white text-dark-gray">
-																																																																							   
-                        <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="animalsApplicationTitle">Common Applications & Approach</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="animalsApplicationTitle">Common
+                        Applications & Approach</h3>
                         <p class="mb-4" data-i18n="animalsApplicationIntro">
-                            Bowen Therapy for animals is typically performed in their familiar environment (e.g., stable, home) to ensure maximum comfort and receptiveness. Sessions are gentle, with frequent pauses to allow the animal's body to integrate the subtle signals.
+                            Bowen Therapy for animals is typically performed in their familiar environment (e.g., stable, home) to ensure maximum comfort and receptiveness.
+Sessions are gentle, with frequent pauses to allow the animal's body to integrate the subtle signals.
                         </p>
                         <ul  class="list-none space-y-1">
                             <li data-i18n="animalsApplication1" class="relative pl-6 before:absolute before:left-0 before:content-['🐱']">
-                                Musculoskeletal Issues: Lameness, stiffness, arthritis, hip/elbow dysplasia, back pain, muscle soreness, post-surgical recovery.
+                                Musculoskeletal Issues: Lameness, stiffness, arthritis, hip/elbow dysplasia,
+                                back pain, muscle soreness, post-surgical recovery.
                             </li>
                             <li data-i18n="animalsApplication2" class="relative pl-6 before:absolute before:left-0 before:content-['🐱']">
                                 Behavioral & Stress-Related: Anxiety, fear, aggression, hyperactivity, separation anxiety, stress from showing/competition.
@@ -814,7 +953,8 @@
                             </li>
                         </ul>
                         <p class="mt-4 font-semibold text-dark-gray" data-i18n="animalsVetNote">
-                            Important Note: Bowen Therapy for animals is a complementary modality and should always be used in conjunction with veterinary care. A qualified animal Bowen therapist will typically require veterinary consent before treatment.
+                            Important Note: Bowen Therapy for animals is a complementary modality and should always be used in conjunction with veterinary care.
+A qualified animal Bowen therapist will typically require veterinary consent before treatment.
                         </p>
                         <div class="testimonial-card evidence-section mt-4 p-4 rounded-lg bg-white text-dark-gray">
                             <p class="italic mb-2" data-i18n="animalsTestimonial1Quote">"My horse had been struggling with unexplained lameness. After a few Bowen sessions, he showed remarkable improvement and was back to his old self."</p>
@@ -835,7 +975,8 @@
                     <h3 data-i18n="faqCategoryGeneral" class="text-xl font-semibold mt-8 mb-4 text-primary">General Questions</h3>
                     <div class="accordion-item">
                         <h2 id="accordion-flush-heading-1">
-                            <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-1" aria-expanded="false" aria-controls="accordion-flush-body-1">
+                            <button type="button" class="accordion-header flex items-center justify-between
+                            w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-1" aria-expanded="false" aria-controls="accordion-flush-body-1">
                                 <span data-i18n="faqQ1">What is Bowen Therapy?</span>
                                 <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
@@ -843,7 +984,8 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-1" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-1">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA1">Bowen Therapy is a gentle, hands-on technique involving subtle movements over muscles, tendons, and fascia. It works by stimulating the body's innate healing mechanisms, often leading to deep relaxation, pain reduction, and improved function.</p>
+                            <p class="mb-2 text-gray-500" data-i18n="faqA1">Bowen Therapy is a gentle, hands-on technique involving subtle movements over muscles, tendons, and fascia.
+It works by stimulating the body's innate healing mechanisms, often leading to deep relaxation, pain reduction, and improved function.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -856,7 +998,8 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-2" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-2">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA2">Bowen Therapy is extremely gentle and considered safe for everyone, from newborns to the elderly, including pregnant women. It can address a wide range of conditions, both acute and chronic, and is often used for general well-being and stress reduction.</p>
+                            <p class="mb-2 text-gray-500" data-i18n="faqA2">Bowen Therapy is extremely gentle and considered safe for everyone, from newborns to the elderly, including pregnant women.
+It can address a wide range of conditions, both acute and chronic, and is often used for general well-being and stress reduction.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -869,7 +1012,9 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-3" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-3">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA3">It works by stimulating the body's Autonomic Nervous System (ANS), encouraging a shift from 'fight or flight' to 'rest and repair'. This facilitates relaxation, reduces muscle tension, improves circulation, and activates the body’s self-healing mechanisms. Bowen moves also affect fascia and proprioceptors.</p>
+                            <p class="mb-2 text-gray-500" data-i18n="faqA3">It works by stimulating the body's Autonomic Nervous System (ANS), encouraging a shift from 'fight or flight' to 'rest and repair'.
+This facilitates relaxation, reduces muscle tension, improves circulation, and activates the body’s self-healing mechanisms.
+Bowen moves also affect fascia and proprioceptors.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -882,8 +1027,10 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-4" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-4">
-																						
-                            <p class="mb-2 text-gray-500" data-i18n="faqA4">A session typically lasts 45-60 minutes. The client lies on a massage table or sits in a chair. The therapist makes gentle rolling moves over specific points, followed by pauses, allowing the body to integrate the signals. Clients often experience deep relaxation.</p>
+                            <p class="mb-2 text-gray-500" data-i18n="faqA4">A session typically lasts 45-60 minutes.
+The client lies on a massage table or sits in a chair.
+The therapist makes gentle rolling moves over specific points, followed by pauses, allowing the body to integrate the signals.
+Clients often experience deep relaxation.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -896,8 +1043,8 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-5" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-5">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA5">Light, loose-fitting clothing is recommended, as Bowen moves can be performed through clothing. However, moves can also be performed directly on skin if preferred.</p>
-																																																																																		  
+                            <p class="mb-2 text-gray-500" data-i18n="faqA5">Light, loose-fitting clothing is recommended, as Bowen moves can be performed through clothing.
+However, moves can also be performed directly on skin if preferred.</p>
                         </div>
                     </div>
 
@@ -907,17 +1054,20 @@
                             <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-6" aria-expanded="false" aria-controls="accordion-flush-body-6">
                                 <span data-i18n="faqQ6">What will I feel during a session?</span>
                                 <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9
+5 5 1 1 5"/>
                                 </svg>
                             </button>
                         </h2>
                         <div id="accordion-flush-body-6" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-6">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA6">Many clients experience deep relaxation, sometimes falling asleep. You might feel subtle sensations like tingling, warmth, or mild aches as the body responds. These are often signs of the body initiating its healing process.</p>
-																																																																																							
+                            <p class="mb-2 text-gray-500" data-i18n="faqA6">Many clients experience deep relaxation, sometimes falling asleep.
+You might feel subtle sensations like tingling, warmth, or mild aches as the body responds.
+These are often signs of the body initiating its healing process.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 id="accordion-flush-heading-7">
+                        <h2
+id="accordion-flush-heading-7">
                             <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-7" aria-expanded="false" aria-controls="accordion-flush-body-7">
                                 <span data-i18n="faqQ7">What is a 'healing response' or 'aggravation'?</span>
                                 <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -926,12 +1076,14 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-7" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-7">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA7">These are temporary reactions that indicate the body is processing the treatment. They might include temporary aches or stiffness in treated or new areas, fatigue, mild flu-like symptoms (attributed to toxin release), emotional releases, or increased thirst. These are usually mild and short-lived.</p>
-																																																																																													  
+                            <p class="mb-2 text-gray-500" data-i18n="faqA7">These are temporary reactions that indicate the body is processing the treatment.
+They might include temporary aches or stiffness in treated or new areas, fatigue, mild flu-like symptoms (attributed to toxin release), emotional releases, or increased thirst.
+These are usually mild and short-lived.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 id="accordion-flush-heading-8">
+                        <h2
+id="accordion-flush-heading-8">
                             <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-8" aria-expanded="false" aria-controls="accordion-flush-body-8">
                                 <span data-i18n="faqQ8">How many sessions will I need?</span>
                                 <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -940,8 +1092,8 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-8" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-8">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA8">Many conditions respond within 2-3 sessions, often spaced about a week apart. Chronic or long-standing issues may require more sessions. Your therapist will discuss a treatment plan with you.</p>
-																																																																																																											
+                            <p class="mb-2 text-gray-500" data-i18n="faqA8">Many conditions respond within 2-3 sessions, often spaced about a week apart.
+Chronic or long-standing issues may require more sessions. Your therapist will discuss a treatment plan with you.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -954,22 +1106,24 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-9" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-9">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA9">The pauses are a unique and crucial aspect of Bowen Therapy. They allow the body time to process the gentle signals given by the moves, initiate its own adjustments, and shift into a 'rest and repair' state without interference.</p>
-																																																																																																																					 
+                            <p class="mb-2 text-gray-500" data-i18n="faqA9">The pauses are a unique and crucial aspect of Bowen Therapy.
+They allow the body time to process the gentle signals given by the moves, initiate its own adjustments, and shift into a 'rest and repair' state without interference.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 id="accordion-flush-heading-10">
                             <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-10" aria-expanded="false" aria-controls="accordion-flush-body-10">
-                                <span data-i18n="faqQ10">Is Bowen Therapy safe for pregnant women?</span>
+                                <span data-i18n="faqQ10">Is Bowen Therapy safe for pregnant
+                                women?</span>
                                 <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
                                 </svg>
                             </button>
                         </h2>
-                        <div id="accordion-flush-body-10" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-10">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA10">Yes, Bowen Therapy is very gentle and considered safe for pregnant women at all stages. It can effectively address common pregnancy discomforts like back pain, sciatica, and swelling.</p>
-																																																																																																																									   
+                        <div
+id="accordion-flush-body-10" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-10">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA10">Yes, Bowen Therapy is very gentle and considered safe for pregnant women at all stages.
+It can effectively address common pregnancy discomforts like back pain, sciatica, and swelling.</p>
                         </div>
                     </div>
 
@@ -979,13 +1133,15 @@
                             <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-11" aria-expanded="false" aria-controls="accordion-flush-body-11">
                                 <span data-i18n="faqQ11">Is Bowen Therapy a type of massage?</span>
                                 <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                                    <path stroke="currentColor"
+stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
                                 </svg>
                             </button>
                         </h2>
                         <div id="accordion-flush-body-11" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-11">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA11">No, Bowen Therapy is distinct from massage. It involves very light, specific rolling moves rather than deep tissue manipulation or prolonged rubbing. The practitioner often leaves the room between sets of moves, allowing the body to process.</p>
-																																																																										
+                            <p class="mb-2 text-gray-500" data-i18n="faqA11">No, Bowen Therapy is distinct from massage.
+It involves very light, specific rolling moves rather than deep tissue manipulation or prolonged rubbing.
+The practitioner often leaves the room between sets of moves, allowing the body to process.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -998,12 +1154,13 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-12" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-12">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA12">No, Bowen Therapy does not involve any forceful manipulation, cracking, or adjustment of bones or joints. It works on the soft tissues (muscles, fascia) to encourage the body to make its own gentle realignments.</p>
-																																																																																																																		  
+                            <p class="mb-2 text-gray-500" data-i18n="faqA12">No, Bowen Therapy does not involve any forceful manipulation, cracking, or adjustment of bones or joints.
+It works on the soft tissues (muscles, fascia) to encourage the body to make its own gentle realignments.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 id="accordion-flush-heading-13">
+                        <h2
+id="accordion-flush-heading-13">
                             <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-13" aria-expanded="false" aria-controls="accordion-flush-body-13">
                                 <span data-i18n="faqQ13">Does it diagnose or treat specific conditions?</span>
                                 <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -1012,8 +1169,8 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-13" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-13">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA13">Bowen Therapy is a holistic complementary therapy that facilitates the body’s innate healing. Practitioners do not diagnose or treat medical conditions. It is recommended to consult a doctor for diagnosis and medical treatment.</p>
-																																																																																																									  
+                            <p class="mb-2 text-gray-500" data-i18n="faqA13">Bowen Therapy is a holistic complementary therapy that facilitates the body’s innate healing.
+Practitioners do not diagnose or treat medical conditions. It is recommended to consult a doctor for diagnosis and medical treatment.</p>
                         </div>
                     </div>
 
@@ -1028,8 +1185,8 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-14" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-14">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA14">It is important to choose a therapist who has completed accredited training and is typically registered with a professional association in their country. Look for qualifications, professional insurance, and adherence to a code of conduct.</p>
-																																																																																													 
+                            <p class="mb-2 text-gray-500" data-i18n="faqA14">It is important to choose a therapist who has completed accredited training and is typically registered with a professional association in their country.
+Look for qualifications, professional insurance, and adherence to a code of conduct.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -1042,12 +1199,14 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-15" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-15">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA15">Bowen Therapy is very safe. However, certain situations require caution or modification by the therapist, including intoxication, fevers, deep vein thrombosis (DVT), certain types of cancer (especially lymphatic system), and aortic aneurysm. Always inform your therapist of your full medical history.</p>
-																																																																																																				  
+                            <p class="mb-2 text-gray-500" data-i18n="faqA15">Bowen Therapy is very safe.
+However, certain situations require caution or modification by the therapist, including intoxication, fevers, deep vein thrombosis (DVT), certain types of cancer (especially lymphatic system), and aortic aneurysm.
+Always inform your therapist of your full medical history.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 id="accordion-flush-heading-16">
+                        <h2
+id="accordion-flush-heading-16">
                             <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-16" aria-expanded="false" aria-controls="accordion-flush-body-16">
                                 <span data-i18n="faqQ16">Can Bowen Therapy be combined with other therapies?</span>
                                 <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -1056,8 +1215,8 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-16" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-16">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA16">It is generally recommended to avoid other manipulative therapies (like massage, chiropractic, physiotherapy) for 5-7 days after a Bowen session to allow the body to fully integrate the work. Other gentle therapies, like acupuncture, might be acceptable, but always discuss with your Bowen therapist.</p>
-																																																																																												
+                            <p class="mb-2 text-gray-500" data-i18n="faqA16">It is generally recommended to avoid other manipulative therapies (like massage, chiropractic, physiotherapy) for 5-7 days after a Bowen session to allow the body to fully integrate the work.
+Other gentle therapies, like acupuncture, might be acceptable, but always discuss with your Bowen therapist.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -1070,8 +1229,8 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-17" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-17">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA17">No, Bowen Therapy is a complementary modality and is not intended to replace conventional medical diagnosis or treatment. Always consult with your doctor or a qualified healthcare professional for any health concerns and appropriate treatment options.</p>
-																																																																																																																																												 
+                            <p class="mb-2 text-gray-500" data-i18n="faqA17">No, Bowen Therapy is a complementary modality and is not intended to replace conventional medical diagnosis or treatment.
+Always consult with your doctor or a qualified healthcare professional for any health concerns and appropriate treatment options.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -1084,12 +1243,13 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-18" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-18">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA18">Qualified Bowen Therapists complete accredited training programs from recognized institutions (e.g., Bowtech, ECBS, American Bowen Academy). This typically involves comprehensive study of Bowen techniques, anatomy & physiology, first aid, and adherence to professional standards and ongoing CPD.</p>
-																																																																																																																																					   
+                            <p class="mb-2 text-gray-500" data-i18n="faqA18">Qualified Bowen Therapists complete accredited training programs from recognized institutions (e.g., Bowtech, ECBS, American Bowen Academy).
+This typically involves comprehensive study of Bowen techniques, anatomy & physiology, first aid, and adherence to professional standards and ongoing CPD.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 id="accordion-flush-heading-19">
+                        <h2
+id="accordion-flush-heading-19">
                             <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-19" aria-expanded="false" aria-controls="accordion-flush-body-19">
                                 <span data-i18n="faqQ19">Can Bowen Therapy help with chronic conditions?</span>
                                 <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -1097,13 +1257,15 @@
                                 </svg>
                             </button>
                         </h2>
-                        <div id="accordion-flush-body-19" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-19">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA19">Yes, Bowen Therapy is frequently used to support individuals with chronic conditions such as fibromyalgia, MS, Parkinson's, and long-standing pain. While it may not cure the condition, it often helps manage symptoms, reduce pain, improve mobility, and enhance overall quality of life.</p>
-																																																																																																																											
+                        <div id="accordion-flush-body-19" class="hidden accordion-body py-5 border-b
+border-gray-200" aria-labelledby="accordion-flush-heading-19">
+                            <p class="mb-2 text-gray-500" data-i18n="faqA19">Yes, Bowen Therapy is frequently used to support individuals with chronic conditions such as fibromyalgia, MS, Parkinson's, and long-standing pain.
+While it may not cure the condition, it often helps manage symptoms, reduce pain, improve mobility, and enhance overall quality of life.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 id="accordion-flush-heading-20">
+                        <h2
+id="accordion-flush-heading-20">
                             <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-20" aria-expanded="false" aria-controls="accordion-flush-body-20">
                                 <span data-i18n="faqQ20">Is there scientific evidence for Bowen Therapy?</span>
                                 <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -1112,12 +1274,13 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-20" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-20">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA20">While a large body of high-quality randomized controlled trials (RCTs) is still developing, preliminary research and smaller studies suggest promising areas, particularly for stress reduction, pain management, and flexibility. Patient testimonials also consistently report positive outcomes. It's important to note regulatory bodies may have specific guidelines on claims.</p>
-																																																																																																																					 
+                            <p class="mb-2 text-gray-500" data-i18n="faqA20">While a large body of high-quality randomized controlled trials (RCTs) is still developing, preliminary research and smaller studies suggest promising areas, particularly for stress reduction, pain management, and flexibility.
+Patient testimonials also consistently report positive outcomes. It's important to note regulatory bodies may have specific guidelines on claims.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 id="accordion-flush-heading-21">
+                        <h2
+id="accordion-flush-heading-21">
                             <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-21" aria-expanded="false" aria-controls="accordion-flush-body-21">
                                 <span data-i18n="faqQ21">Can children and babies receive Bowen Therapy?</span>
                                 <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -1126,12 +1289,13 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-21" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-21">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA21">Yes, Bowen Therapy is extremely gentle and effective for children and babies, often with very quick results due to their highly responsive systems. It can help with conditions like colic, reflux, sleep issues, bedwetting, and developmental challenges.</p>
-																																																																																																													 
+                            <p class="mb-2 text-gray-500" data-i18n="faqA21">Yes, Bowen Therapy is extremely gentle and effective for children and babies, often with very quick results due to their highly responsive systems.
+It can help with conditions like colic, reflux, sleep issues, bedwetting, and developmental challenges.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 id="accordion-flush-heading-22">
+                        <h2
+id="accordion-flush-heading-22">
                             <button type="button" class="accordion-header flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 border-b border-gray-200" data-accordion-target="#accordion-flush-body-22" aria-expanded="false" aria-controls="accordion-flush-body-22">
                                 <span data-i18n="faqQ22">What are the 'rules' for after a Bowen session?</span>
                                 <svg data-accordion-icon class="accordion-toggle-icon w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -1140,8 +1304,9 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-22" class="hidden accordion-body py-5 border-b border-gray-200" aria-labelledby="accordion-flush-heading-22">
-                            <p class="mb-2 text-gray-500" data-i18n="faqA22">Aftercare is crucial. It includes staying well-hydrated, engaging in gentle movement (avoiding prolonged sitting/lying), avoiding other manipulative therapies for 5-7 days, avoiding extreme temperatures (hot/cold packs, hot baths) for 48 hours, and communicating any 'healing responses' to your therapist. These guidelines help maximize the treatment's effectiveness.</p>
-																																																																																																																																						
+                            <p class="mb-2 text-gray-500" data-i18n="faqA22">Aftercare is crucial.
+It includes staying well-hydrated, engaging in gentle movement (avoiding prolonged sitting/lying), avoiding other manipulative therapies for 5-7 days, avoiding extreme temperatures (hot/cold packs, hot baths) for 48 hours, and communicating any 'healing responses' to your therapist.
+These guidelines help maximize the treatment's effectiveness.</p>
                         </div>
                     </div>
 
@@ -1158,7 +1323,8 @@
                     <div class="card bg-white text-dark-gray">
                         <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="risksTitle">Potential Risks & "Healing Responses"</h3>
                         <p class="mb-4" data-i18n="risksIntro">
-                            Bowen Therapy is widely considered very safe and non-invasive, suitable for all ages. However, some individuals may experience temporary reactions, often referred to by practitioners as "healing responses" or "aggravations," indicating the body is processing the treatment:
+                            Bowen Therapy is widely considered very safe and non-invasive, suitable
+                            for all ages. However, some individuals may experience temporary reactions, often referred to by practitioners as "healing responses" or "aggravations," indicating the body is processing the treatment:
                         </p>
                         <ul class="list-disc list-inside space-y-1">
                             <li data-i18n="risks1">Temporary aches or stiffness in treated or new areas</li>
@@ -1169,7 +1335,8 @@
                             <li data-i18n="risks6">Tingling, warmth, or pressure sensations</li>
                         </ul>
                         <p class="mt-4" data-i18n="risksWarning">
-                            While rare, specific situations may require caution or modification by the therapist: intoxication, fevers, deep vein thrombosis (DVT), certain types of cancer (especially lymphatic system), and aortic aneurysm. Always inform your therapist of your full medical history.
+                            While rare, specific situations may require caution or modification by the therapist: intoxication, fevers, deep vein thrombosis (DVT), certain types of cancer (especially lymphatic system), and aortic aneurysm.
+Always inform your therapist of your full medical history.
                         </p>
                     </div>
                     <div class="card bg-white text-dark-gray">
@@ -1179,9 +1346,11 @@
                         </p>
                         <ul class="list-none space-y-1">
                             <li data-i18n="findPractitioner1" class="relative pl-6 before:absolute before:left-0 before:content-['🏥']">Accredited Training: Ensure your therapist has completed accredited training from a recognized institution (e.g., Bowtech - The Original Bowen Technique, European College of Bowen Studies (ECBS), American Bowen Academy, ISBT).</li>
-                            <li data-i18n="findPractitioner2" class="relative pl-6 before:absolute before:left-0 before:content-['🏥']">Professional Association Membership: Look for therapists registered with a professional association in their country (e.g., Bowen Association UK, Bowen Therapy Professional Association, Bowen Association Australia, American Bowen Academy). These associations often require specific qualifications, professional insurance, adherence to a code of conduct/ethics, and ongoing Continuing Professional Development (CPD).</li>
+                            <li data-i18n="findPractitioner2" class="relative pl-6 before:absolute before:left-0 before:content-['🏥']">Professional Association Membership: Look for therapists registered with a professional association in their country (e.g., Bowen Association UK, Bowen Therapy Professional Association, Bowen Association Australia, American Bowen Academy).
+These associations often require specific qualifications, professional insurance, adherence to a code of conduct/ethics, and ongoing Continuing Professional Development (CPD).</li>
                             <li data-i18n="findPractitioner3" class="relative pl-6 before:absolute before:left-0 before:content-['🏥']">Professional Insurance: Verify that the therapist holds current professional indemnity and public liability insurance.</li>
-                            <li data-i18n="findPractitioner4" class="relative pl-6 before:absolute before:left-0 before:content-['🏥']">Transparency: A reputable therapist should be transparent about their qualifications, training, and professional affiliations.</li>
+                            <li data-i18n="findPractitioner4" class="relative pl-6 before:absolute before:left-0
+                            before:content-['🏥']">Transparency: A reputable therapist should be transparent about their qualifications, training, and professional affiliations.</li>
                             <li data-i18n="findPractitioner5" class="relative pl-6 before:absolute before:left-0 before:content-['🏥']">'Neither Diagnose nor Treat' (USA): In the USA, many practitioners emphasize they 'neither diagnose nor treat' medical conditions but facilitate relaxation and balance.</li>
                         </ul>
                         <p class="mt-4" data-i18n="findPractitionerResources">
@@ -1192,8 +1361,12 @@
 
                 <div class="disclaimer-box mt-8" data-i18n="disclaimerText">
                     <p class="font-bold mb-2" data-i18n="disclaimerHeading">IMPORTANT DISCLAIMER:</p>
-                    <p data-i18n="disclaimerContent">
-                        Bowen Therapy is a complementary modality and is not intended to replace conventional medical diagnosis or treatment. Always consult with your doctor or a qualified healthcare professional for any health concerns, proper diagnosis, and guidance on appropriate treatment options. Do not discontinue or delay medical treatment based solely on information from this website or from Bowen Therapy sessions. The effects of Bowen Therapy can vary, and individual results are not guaranteed.
+                    <p
+data-i18n="disclaimerContent">
+                        Bowen Therapy is a complementary modality and is not intended to replace conventional medical diagnosis or treatment.
+Always consult with your doctor or a qualified healthcare professional for any health concerns, proper diagnosis, and guidance on appropriate treatment options.
+Do not discontinue or delay medical treatment based solely on information from this website or from Bowen Therapy sessions.
+The effects of Bowen Therapy can vary, and individual results are not guaranteed.
                     </p>
                 </div>
             </div>
@@ -1208,14 +1381,18 @@
                     <div class="card">
                         <h3 class="text-xl font-semibold mb-3 text-primary" data-i18n="globalPresenceTitle">Global Presence & Training Excellence</h3>
                         <p class="mb-4" data-i18n="globalPresenceText">
-                            Bowen Therapy is a globally recognized form of manual therapy, taught and practiced in over 40 countries, with a growing international network of practitioners and training institutions. Standardized training programs and practitioner associations support its global reach and ensure consistent quality.
+                            Bowen Therapy is a globally recognized form of manual therapy, taught and practiced in over 40 countries, with a growing international network of practitioners and training institutions.
+Standardized training programs and practitioner associations support its global reach and ensure consistent quality.
                         </p>
                         <h4 class="font-bold mb-2 text-dark-gray" data-i18n="majorTrainingOrgs">Major Training Organizations & Accreditation:</h4>
                         <ul class="list-none space-y-1">
-                            <li data-i18n="trainingOrg1" class="relative pl-6 before:absolute before:left-0 before:content-['🧾']">Bowtech – The Original Bowen Technique: The global benchmark, taught in over 30 countries through national academies. Emphasizes foundational principles and original moves.</li>
+                            <li data-i18n="trainingOrg1" class="relative pl-6 before:absolute before:left-0 before:content-['🧾']">Bowtech – The Original Bowen Technique: The global
+                            benchmark, taught in over 30 countries through national academies. Emphasizes foundational principles and original moves.</li>
                             <li data-i18n="trainingOrg2" class="relative pl-6 before:absolute before:left-0 before:content-['🧾']">American Bowen Academy (USA): Official certification body in the U.S., provides standardized, high-quality training and resources.</li>
-                            <li data-i18n="trainingOrg3" class="relative pl-6 before:absolute before:left-0 before:content-['🧾']">European College of Bowen Studies (ECBS) (UK): Known for its strong anatomical focus and structured postgraduate pathways.</li>
-                            <li data-i18n="trainingOrg4" class="relative pl-6 before:absolute before:left-0 before:content-['🧾']">ISBT – International School of Bowen Therapy: Modernizes techniques with contemporary anatomical understanding, integrates research findings. Accepted in Hong Kong public hospital system and included in Masters of Physiotherapy course at Aveiro University, Portugal.</li>
+                            <li data-i18n="trainingOrg3" class="relative pl-6 before:absolute before:left-0 before:content-['🧾']">European College of
+                            Bowen Studies (ECBS) (UK): Known for its strong anatomical focus and structured postgraduate pathways.</li>
+                            <li data-i18n="trainingOrg4" class="relative pl-6 before:absolute before:left-0 before:content-['🧾']">ISBT – International School of Bowen Therapy: Modernizes techniques with contemporary anatomical understanding, integrates research findings.
+Accepted in Hong Kong public hospital system and included in Masters of Physiotherapy course at Aveiro University, Portugal.</li>
                             <li data-i18n="trainingOrg5" class="relative pl-6 before:absolute before:left-0 before:content-['🧾']">Bowen Training UK: Offers introductory, beginner, and advanced modules, along with professional development.</li>
                         </ul>
                         <p class="mt-4" data-i18n="accreditationNote">
@@ -1227,18 +1404,24 @@
                         <p class="mb-4" data-i18n="integrationIntro">
                             Due to its gentle nature, holistic approach, and reported benefits, Bowen Therapy is increasingly integrated as a complementary modality within various healthcare settings globally:
                         </p>
-                        <ul class="list-none space-y-1">
+                        <ul class="list-none
+space-y-1">
                             <li data-i18n="integration1" class="relative pl-6 before:absolute before:left-0 before:content-['🌿']">Physiotherapy & Osteopathy Clinics: Used as an adjunct to conventional physical therapies for musculoskeletal issues, pain relief, and mobility improvement (e.g., Exeter Osteopaths, Stride Physiotherapy in Canada).</li>
-                            <li data-i18n="integration2" class="relative pl-6 before:absolute before:left-0 before:content-['🌿']">Holistic & Integrative Wellness Centers: A common offering in clinics that blend conventional and complementary approaches (e.g., Brisbane Livewell Clinic, Quantica720 in Romania).</li>
+                            <li data-i18n="integration2" class="relative pl-6 before:absolute before:left-0 before:content-['🌿']">Holistic & Integrative Wellness Centers: A
+                            common offering in clinics that blend conventional and complementary approaches (e.g., Brisbane Livewell Clinic, Quantica720 in Romania).</li>
                             <li data-i18n="integration3" class="relative pl-6 before:absolute before:left-0 before:content-['🌿']">Chronic Pain Management: Employed by Registered Nurses with holistic training in chronic pain clinics (e.g., McBride Pain Clinic in Canada).</li>
-                            <li data-i18n="integration4" class="relative pl-6 before:absolute before:left-0 before:content-['🌿']">Palliative Care & Cancer Support: Used in hospice and cancer support centers to improve comfort, reduce anxiety, and manage symptoms for cancer patients (e.g., Little Haven Palliative Care in Australia, Cancer Support WA, Galway Bowen Therapy Clinic).</li>
-                            <li data-i18n="integration5" class="relative pl-6 before:absolute before:left-0 before:content-['🌿']">Neurological Rehabilitation: Applied in rehabilitation settings for conditions like stroke, MS, Parkinson's, and traumatic brain injury, aiming to improve motor function and overall well-being (e.g., American Bowen Academy practitioner integrating in VA Health Care System).</li>
+                            <li data-i18n="integration4" class="relative
+                            pl-6 before:absolute before:left-0 before:content-['🌿']">Palliative Care & Cancer Support: Used in hospice and cancer support centers to improve comfort, reduce anxiety, and manage symptoms for cancer patients (e.g., Little Haven Palliative Care in Australia, Cancer Support WA, Galway Bowen Therapy Clinic).</li>
+                            <li data-i18n="integration5" class="relative pl-6 before:absolute before:left-0 before:content-['🌿']">Neurological Rehabilitation: Applied in rehabilitation settings for conditions like stroke, MS, Parkinson's, and traumatic brain injury, aiming to improve motor function and overall well-being (e.g., American Bowen
+                            Academy practitioner integrating in VA Health Care System).</li>
                             <li data-i18n="integration6" class="relative pl-6 before:absolute before:left-0 before:content-['🌿']">Pediatric & Geriatric Care: Widely used for infants (colic, sleep issues) and the elderly (pain, mobility, general well-being) due to its gentleness.</li>
-                            <li data-i18n="integration7" class="relative pl-6 before:absolute before:left-0 before:content-['🌿']">Sports Medicine: Integrated for injury prevention, rehabilitation, and performance enhancement in athletes (e.g., Scottish Rocks Pro Basketball team, Scottish golfers).</li>
+                            <li data-i18n="integration7" class="relative pl-6 before:absolute before:left-0 before:content-['🌿']">Sports Medicine: Integrated for
+                            injury prevention, rehabilitation, and performance enhancement in athletes (e.g., Scottish Rocks Pro Basketball team, Scottish golfers).</li>
                         </ul>
                         <p class="mt-4" data-i18n="futureEducationTitle">Future of Bowen Therapy Education</p>
                         <p data-i18n="futureEducationText">
-                            The educational landscape is evolving, with anticipated trends including hybrid learning models, increased research collaborations with universities, and expanded pathways for clinical integration for licensed healthcare professionals. There is a growing call for standardizing qualifications across borders and developing advanced specializations.
+                            The educational landscape is evolving, with anticipated trends including hybrid learning models, increased research collaborations with universities, and expanded pathways for clinical integration for licensed healthcare professionals.
+There is a growing call for standardizing qualifications across borders and developing advanced specializations.
                         </p>
                     </div>
                 </div>
@@ -1246,7 +1429,8 @@
                 <div class="mt-10">
                     <h3 class="text-2xl font-semibold mb-4 text-primary" data-i18n="practitionerDirectoriesHeading">Finding a Bowen Therapist: Online Directories</h3>
                     <p class="mb-6" data-i18n="practitionerDirectoriesIntro">
-                        Various online directories exist to help you locate qualified Bowen Therapy practitioners. These directories often provide essential information to assist you in making an informed choice:
+                        Various online directories exist to help you locate qualified Bowen Therapy practitioners.
+These directories often provide essential information to assist you in making an informed choice:
                     </p>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div class="card">
@@ -1265,7 +1449,8 @@
                             <a href="https://www.vind-een-therapeut.nl/therapie/bowentherapie.html" target="_blank" class="text-primary hover:underline text-sm" data-i18n="directoryLink">Visit Directory</a>
                         </div>
                         <div class="card">
-                            <h4 class="font-bold mb-2" data-i18n="directory1Title">American Bowen Academy (USA)</h4>
+                            <h4
+class="font-bold mb-2" data-i18n="directory1Title">American Bowen Academy (USA)</h4>
                             <p class="text-sm mb-2" data-i18n="directory1Info">Provides practitioner name, profile picture, verification status, rating, business name, short bio, location, service delivery (online/in-person), therapies offered, and a link to a full profile.</p>
                             <a href="https://americanbowen.academy/find-a-practitioner" target="_blank" class="text-primary hover:underline text-sm" data-i18n="directoryLink">Visit Directory</a>
                         </div>
@@ -1280,13 +1465,16 @@
                             <a href="https://www.bowentherapy.org.uk/btpa-find-therapist.php" target="_blank" class="text-primary hover:underline text-sm" data-i18n="directoryLink">Visit Directory</a>
                         </div>
                         <div class="card">
-                            <h4 class="font-bold mb-2" data-i18n="directory4Title">Bowen Association Australia (BAA)</h4>
+                            <h4
+class="font-bold mb-2" data-i18n="directory4Title">Bowen Association Australia (BAA)</h4>
                             <p class="text-sm mb-2" data-i18n="directory4Info">Official Australian organization for practitioners, provides a 'Find a Bowtech Bowen Practitioner' tool, recommending members for their professional standards.</p>
-                            <a href="https://www.bowen.org.au/find-a-practitioner/" target="_blank" class="text-primary hover:underline text-sm" data-i18n="directoryLink">Visit Directory</a>
+                            <a href="https://www.bowen.org.au/find-a-practitioner/" target="_blank" class="text-primary hover:underline text-sm" data-i18n="directoryLink">Visit
+                            Directory</a>
                         </div>
                         <div class="card">
                             <h4 class="font-bold mb-2" data-i18n="directory6Title">SoulAdvisor (Australia)</h4>
-                            <p class="text-sm mb-2" data-i18n="directory6Info">A broader holistic health directory. Provides practitioner name, profile picture, verification, rating, business name, short bio, location, and therapies offered.</p>
+                            <p class="text-sm mb-2" data-i18n="directory6Info">A broader holistic health directory.
+Provides practitioner name, profile picture, verification, rating, business name, short bio, location, and therapies offered.</p>
                             <a href="https://www.souladvisor.com/therapy/bowen-therapy" target="_blank" class="text-primary hover:underline text-sm" data-i18n="directoryLink">Visit Directory</a>
                         </div>
                         <div class="card">
@@ -1327,7 +1515,8 @@
                             </a>
                             <a href="#" target="_blank" class="text-accent hover:text-white transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2.7c-2.36 0-3.32.96-3.32 3.32v7.16c0 2.36.96 3.32 3.32 3.32h7.16c2.36 0 3.32-.96 3.32-3.32V7.8c0-2.36-.96-3.32-3.32-3.32H7.6zm9.3 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zM12 9.2c-1.54 0-2.8.96-2.8 2.8s1.26 2.8 2.8 2.8 2.8-.96 2.8-2.8-1.26-2.8-2.8-2.8zm0 1.5c.71 0 1.32.59 1.32 1.32s-.59 1.32-1.32 1.32-1.32-.59-1.32-1.32.59-1.32 1.32-1.32z" />
+                                    <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2.7c-2.36 0-3.32.96-3.32 3.32v7.16c0 2.36.96 3.32 3.32 3.32h7.16c2.36 0 3.32-.96 3.32-3.32V7.8c0-2.36-.96-3.32-3.32-3.32H7.6zm9.3 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zM12 9.2c-1.54 0-2.8.96-2.8 2.8s1.26 2.8 2.8 2.8 2.8-.96 2.8-2.8-1.26-2.8-2.8-2.8zm0 1.5c.71 0 1.32.59 1.32 1.32s-.59 1.32-1.32
+                            1.32-1.32-.59-1.32-1.32.59-1.32 1.32-1.32z" />
                                 </svg>
                             </a>
                         </div>
@@ -1339,15 +1528,381 @@
 
     <footer class="bg-gray-800 text-gray-300 py-8 px-4 text-center">
         <div class="container mx-auto">
-            <p>&copy; 2025 Bowen Therapy Guide. All rights reserved.</p>
+            <p>&copy;
+2025 Bowen Therapy Guide. All rights reserved.</p>
             <p class="text-sm mt-2">Made by <a href="https://www.massict.com/" rel="noreferrer noopener" target="_blank">Mass</a></p>
         </div>
     </footer>
-
-    <script>
+<script>
         let translations = {}; // Global variable to store fetched translations
         let conditionsData = []; // Global variable to store fetched conditions data
-        let benefitsChart, studiesChart;
+        let benefitsChart, studiesChart; // Global chart instances
+
+        // Declare allTestimonials globally
+        const allTestimonials = [
+            {
+                id: 1,
+                quote_en: "I suffered from back pain for over 25 years. After trying various specialists, Bowen Therapy provided relief and significantly improved my lifestyle.",
+                author_en: "- Alexandru, Romania (for Disc Herniations)",
+                quote_ro: "Am suferit de dureri de spate peste 25 de ani. După ce am încercat diverși specialiști, Terapia Bowen mi-a adus alinare și mi-a îmbunătățit semnificativ stilul de viață.",
+                author_ro: "- Alexandru, România (pentru Hernii de Disc)",
+                quote_nl: "Ik leed al meer dan 25 jaar aan rugpijn. Na het proberen van verschillende specialisten, heeft Bowen Therapie me aanzienlijke verlichting gebracht en mijn mobiliteit verbeterd.",
+                author_nl: "- Alexandru, Roemenië (voor Hernia Disci)"
+            },
+            {
+                id: 2,
+                quote_en: "After severe lumbosciatica and limited success with physiotherapy and medication, Bowen Therapy brought significant relief for my lumbar discopathy and vertigo.",
+                author_en: "- Pacient from Terapeutic.ro (for Lumbar Discopathy and Vertigo)",
+                quote_ro: "După lombo-sciatică severă și succes limitat cu fizioterapia și medicația, Terapia Bowen mi-a adus o alinare semnificativă pentru discopatia lombară și vertij.",
+                author_ro: "- Pacient de la Terapeutic.ro (pentru Discopatie Lombară și Vertij)",
+                quote_nl: "Na ernstige lumbo-ischias en beperkt succes met fysiotherapie en medicatie, bracht Bowen Therapie aanzienlijke verlichting voor mijn lumbale discopathie en duizeligheid.",
+                author_nl: "- Patiënt van Terapeutic.ro (voor Lumbale Discopathie en Duizeligheid)"
+            },
+            {
+                id: 3,
+                quote_en: "I was amazed by the changes after my first session. My legs felt stronger, and I could walk unaided, which I hadn't done before.",
+                author_en: "- Transverse, Scope Forum (for Disability)",
+                quote_ro: "Am fost uimit de schimbările după prima mea sesiune. Picioarele mele se simțeau mai puternice și am putut merge fără ajutor, ceea ce nu mai făcusem înainte.",
+                author_ro: "- Transverse, Forum Scope (pentru Dizabilitate)",
+                quote_nl: "Ik was verbaasd over de veranderingen na mijn eerste sessie. Mijn benen voelden sterker aan en ik kon ongesteund lopen, wat ik voorheen niet kon.",
+                author_nl: "- Patiënt van Terapeutic.ro (voor Handicap)"
+            },
+            {
+                id: 4,
+                quote_en: "After 4 sessions for severe bilateral knee osteoarthritis, the pain subsided, and I can move much easier. Thank you!",
+                author_en: "- Patient from Terapeutic.ro (for Knee Osteoarthritis)",
+                quote_ro: "După 4 ședințe pentru gonartroză bilaterală severă, durerile au cedat și mă pot deplasa mult mai ușor. Mulțumesc!",
+                author_ro: "- Pacient de la Terapeutic.ro (pentru Gonartroză Genunchi)",
+                quote_nl: "Na 4 sessies voor ernstige bilaterale knieartrose, verdween de pijn en kan ik veel gemakkelijker bewegen. Dank u!",
+                author_nl: "- Patiënt van Terapeutic.ro (voor Knieartrose)"
+            },
+            {
+                id: 5,
+                quote_en: "My 2-year old ankle pain from an accident completely resolved after 3 Bowen sessions. I can walk normally without pain.",
+                author_en: "- Patient from Terapeutic.ro (for Ankle Pain)",
+                quote_ro: "Durerea mea de gleznă veche de 2 ani, după un accident, a dispărut complet după 3 ședințe Bowen. Mă pot deplasa normal, fără dureri.",
+                author_ro: "- Pacient de la Terapeutic.ro (pentru Dureri de Gleznă)",
+                quote_nl: "Mijn 2 jaar oude enkelpijn van een ongeluk verdween volledig na 3 Bowen sessies. Ik kan weer normaal lopen zonder pijn.",
+                author_nl: "- Patiënt van Terapeutic.ro (voor Enkelpijn)"
+            },
+            {
+                id: 6,
+                quote_en: "Living with fibromyalgia for 11 years was immense. Bowen Therapy helped enormously; I can sleep, have less pain, and much more energy.",
+                author_en: "- Patient from Terapeutic.ro (for Fibromyalgia)",
+                quote_ro: "A trăi cu fibromialgie de 11 ani a fost imens. Terapia Bowen m-a ajutat enorm; pot dormi, am mai puține dureri și mult mai multă energie.",
+                author_ro: "- Pacient de la Terapeutic.ro (pentru Fibromialgie)",
+                quote_nl: "Leven met fibromyalgie gedurende 11 jaar was immens. Bowen Therapie heeft enorm geholpen; ik kan slapen, heb minder pijn en veel meer energie.",
+                author_nl: "- Patiënt van Terapeutic.ro (voor Fibromyalgie)"
+            },
+            {
+                id: 7,
+                quote_en: "This therapy was a godsend for my husband with Parkinson's. After a year, muscle rigidity improved visibly, gait improved, and his mood is much better.",
+                author_en: "- Patient from Terapeutic.ro (for Parkinson's Disease)",
+                quote_ro: "Această terapie a fost o mană cerească pentru soțul meu cu Parkinson. După un an, rigiditatea musculară s-a ameliorat vizibil, mersul s-a îmbunătățit, iar starea sa de spirit este mult mai bună.",
+                author_ro: "- Pacient de la Terapeutic.ro (pentru Boala Parkinson)",
+                quote_nl: "Deze therapie was een zegen voor mijn man met Parkinson. Na een jaar verbeterde de spierstijfheid zichtbaar, de gang verbeterde, en zijn humeur is veel beter.",
+                author_nl: "- Patiënt van Terapeutic.ro (voor Ziekte van Parkinson)"
+            },
+            {
+                id: 8,
+                quote_en: "I came with very strong menstrual pain, vomiting, and headaches. Just one session was enough. Thank you!",
+                author_en: "- Patient from Terapeutic.ro (for Menstrual Pain)",
+                quote_ro: "Am venit cu dureri menstruale foarte puternice, vomă și dureri de cap. A fost de ajuns o singură ședință. Vă mulțumesc!",
+                author_ro: "- Pacient de la Terapeutic.ro (pentru Dureri Menstruale)",
+                quote_nl: "Ik kwam met zeer sterke menstruatiepijn, braken en hoofdpijn. Slechts één sessie was voldoende. Dank u!",
+                author_nl: "- Patiënt van Terapeutic.ro (voor Menstruatiepijn)"
+            },
+            {
+                id: 9,
+                quote_en: "My right shoulder pain radiating down my entire arm, even painful to touch, completely disappeared after 3 Bowen sessions, and I regained arm mobility.",
+                author_en: "- Patient from Terapeutic.ro (for Shoulder Pain)",
+                quote_ro: "Durerea mea foarte puternică la umărul drept, care iradia pe toată mâna, chiar și la atingere, a dispărut complet după 3 ședințe Bowen și am recăpătat mobilitatea brațului.",
+                author_ro: "- Pacient de la Terapeutic.ro (pentru Dureri de Umăr)",
+                quote_nl: "Mijn rechter schouderpijn die uitstraalde over mijn hele arm, zelfs pijnlijk bij aanraking, verdween volledig na 3 Bowen sessies, en ik kreeg mijn armmobiliteit terug.",
+                author_nl: "- Patiënt van Terapeutic.ro (voor Schouderpijn)"
+            },
+            {
+                id: 10,
+                quote_en: "After 3 Bowen sessions for menopause symptoms (hot flashes, insomnia, irritability), hot flashes reduced in frequency and intensity, I sleep much better, and my mood is improved.",
+                author_en: "- Patient from Terapeutic.ro (for Menopause Symptoms)",
+                quote_ro: "După 3 ședințe Bowen pentru simptomele menopauzei (bufeuri, insomnie, iritabilitate), bufeurile s-au redus ca frecvență și intensitate, dorm mult mai bine, iar starea de spirit este mai bună.",
+                author_ro: "- Pacient de la Terapeutic.ro (pentru Simptome Menopauză)",
+                quote_nl: "Na 3 Bowen sessies voor menopauzeklachten (opvliegers, slapeloosheid, prikkelbaarheid), namen de opvliegers af in frequentie en intensiteit, slaap ik veel beter, en is mijn humeur verbeterd.",
+                author_nl: "- Patiënt van Terapeutic.ro (voor Menopauzeklachten)"
+            },
+            {
+                id: 11,
+                quote_en: "I found Bowen very helpful for my MS symptoms, including muscle spasms, fatigue, and balance, which were significantly improved for some time after a session.",
+                author_en: "- MS Patient from forum.mssociety.org.uk",
+                quote_ro: "Am găsit Bowen foarte util pentru simptomele mele de SM, inclusiv spasmele musculare, oboseala și echilibrul, care au fost îmbunătățite semnificativ pentru o perioadă după o sesiune.",
+                author_ro: "- Pacient cu SM de pe forum.mssociety.org.uk",
+                quote_nl: "Ik vond Bowen zeer nuttig voor mijn MS-symptomen, waaronder spierspasmen, vermoeidheid en balans, die geruime tijd na een sessie aanzienlijk verbeterden.",
+                author_nl: "- MS Patiënt van forum.mssociety.org.uk"
+            },
+            {
+                id: 12,
+                quote_en: "My chronic headaches are finally gone. Bowen Therapy has been a miracle.",
+                author_en: "- Sarah K.",
+                quote_ro: "Durerile mele cronice de cap au dispărut în sfârșit. Terapia Bowen a fost un miracol.",
+                author_ro: "- Sarah K.",
+                quote_nl: "Mijn chronische hoofdpijn is eindelijk weg. Bowen Therapie is een wonder geweest.",
+                author_nl: "- Sarah K."
+            },
+            {
+                id: 13,
+                quote_en: "Increased energy and better digestion. Highly recommend!",
+                author_en: "- John D.",
+                quote_ro: "Energie crescută și o digestie mai bună. Recomand cu drag!",
+                author_ro: "- John D.",
+                quote_nl: "Meer energie en een betere spijsvertering. Zeer aan te bevelen!",
+                author_nl: "- John D."
+            },
+            {
+                id: 14,
+                quote_en: "My baby's colic dramatically improved after just two sessions. He seems so much happier now!",
+                author_en: "- A Happy Parent",
+                quote_ro: "Colicile bebelușului meu s-au îmbunătățit dramatic după doar două sesiuni. Acum pare mult mai fericit!",
+                author_ro: "- Un Părinte Fericit",
+                quote_nl: "De koliek van mijn baby is na slechts twee sessies drastisch verbeterd. Hij lijkt nu zoveel gelukkiger!",
+                author_nl: "- Een Gelukkige Ouder"
+            },
+            {
+                id: 15,
+                quote_en: "Significant relief from my persistent neck stiffness. I can finally turn my head freely.",
+                author_en: "- Emily R.",
+                quote_ro: "O alinare semnificativă pentru rigiditatea mea persistentă a gâtului. În sfârșit pot să-mi rotesc capul liber.",
+                author_ro: "- Emily R.",
+                quote_nl: "Aanzienlijke verlichting van mijn aanhoudende nekstijfheid. Ik kan eindelijk mijn hoofd vrij draaien.",
+                author_nl: "- Emily R."
+            },
+            {
+                id: 16,
+                quote_en: "Helped me sleep through the night after years of insomnia. I feel so much more rested.",
+                author_en: "- Michael T.",
+                quote_ro: "M-a ajutat să dorm toată noaptea după ani de insomnie. Mă simt mult mai odihnit.",
+                author_ro: "- Michael T.",
+                quote_nl: "Hielp me de hele nacht door te slapen na jaren van slapeloosheid. Ik voel me zoveel uitgeruster.",
+                author_nl: "- Michael T."
+            },
+            {
+                id: 17,
+                quote_en: "Post-surgery recovery was much faster with Bowen. The swelling went down remarkably quick.",
+                author_en: "- David P.",
+                quote_ro: "Recuperarea post-chirurgicală a fost mult mai rapidă cu Bowen. Umflătura s-a redus remarcabil de repede.",
+                author_ro: "- David P.",
+                quote_nl: "Het post-operatieve herstel verliep veel sneller met Bowen. De zwelling nam opmerkelijk snel af.",
+                author_nl: "- David P."
+            },
+            {
+                id: 18,
+                quote_en: "My stress levels are much lower now, I feel more balanced and calm.",
+                author_en: "- Jessica L.",
+                quote_ro: "Nivelul meu de stres este mult mai scăzut acum, mă simt mai echilibrată și calmă.",
+                author_ro: "- Jessica L.",
+                quote_nl: "Mijn stressniveaus zijn nu veel lager, ik voel me meer in balans en kalm.",
+                author_nl: "- Jessica L."
+            },
+            {
+                id: 19,
+                quote_en: "Relief from my sciatica, allowing me to walk freely again after months of discomfort.",
+                author_en: "- Robert C.",
+                quote_ro: "Ameliorare pentru sciatică, permițându-mi să merg liber din nou după luni de disconfort.",
+                author_ro: "- Robert C.",
+                quote_nl: "Verlichting van mijn ischias, waardoor ik na maanden van ongemak weer vrij kan lopen.",
+                author_nl: "- Robert C."
+            },
+            {
+                id: 20,
+                quote_en: "My posture has improved immensely, and my chronic back pain is gone. I feel taller!",
+                author_en: "- Maria G.",
+                quote_ro: "Postura mea s-a îmbunătățit imens, iar durerea mea cronică de spate a dispărut. Mă simt mai înaltă!",
+                author_ro: "- Maria G.",
+                quote_nl: "Mijn houding is enorm verbeterd, en mijn chronische rugpijn is verdwenen. Ik voel me langer!",
+                author_nl: "- Maria G."
+            },
+            {
+                id: 21,
+                quote_en: "Reduced my TMJ pain and jaw clicking significantly. Eating is no longer a chore.",
+                author_en: "- Chris W.",
+                quote_ro: "Mi-a redus semnificativ durerea ATM și zgomotul maxilarului. Mâncatul nu mai este o corvoadă.",
+                author_ro: "- Chris W.",
+                quote_nl: "Mijn kaakpijn en kaakklikken zijn aanzienlijk verminderd. Eten is geen opgave meer.",
+                author_nl: "- Chris W."
+            },
+            {
+                id: 22,
+                quote_en: "My recurrent migraines are now rare occurrences. I finally have my life back.",
+                author_en: "- Laura B.",
+                quote_ro: "Migrenele mele recurente sunt acum evenimente rare. În sfârșit mi-am recăpătat viața.",
+                author_ro: "- Laura B.",
+                quote_nl: "Mijn terugkerende migraine is nu zeldzaam. Ik heb eindelijk mijn leven terug.",
+                author_nl: "- Laura B."
+            },
+            {
+                id: 23,
+                quote_en: "Improved my balance and reduced dizziness. I feel so much more stable.",
+                author_en: "- Peter J.",
+                quote_ro: "Mi-am îmbunătățit echilibrul și am redus amețelile. Mă simt mult mai stabil.",
+                author_ro: "- Peter J.",
+                quote_nl: "Mijn balans is verbeterd en duizeligheid verminderd. Ik voel me zoveel stabieler.",
+                author_nl: "- Peter J."
+            },
+            {
+                id: 24,
+                quote_en: "Helped me through a tough period of grief, bringing a profound sense of calm.",
+                author_en: "- Anna S.",
+                quote_ro: "M-a ajutat să trec printr-o perioadă dificilă de doliu, aducând un sentiment profund de calm.",
+                author_ro: "- Anna S.",
+                quote_nl: "Hielp me door een moeilijke periode van verdriet heen, bracht een diep gevoel van kalmte.",
+                author_nl: "- Anna S."
+            },
+            {
+                id: 25,
+                quote_en: "My athletic performance is better, and I recover faster after intense training. Bowen is a game changer.",
+                author_en: "- Mark A., Athlete",
+                quote_ro: "Performanța mea atletică este mai bună și mă recuperez mai repede după antrenamente intense. Bowen este un schimbător de joc.",
+                author_ro: "- Mark A., Atlet",
+                quote_nl: "Mijn sportprestaties zijn beter, en ik herstel sneller na intensieve training. Bowen is een gamechanger.",
+                author_nl: "- Mark A., Atleet"
+            },
+            {
+                id: 26,
+                quote_en: "Chronic fatigue symptoms are much more manageable now. I have energy to live again.",
+                author_en: "- Lisa H.",
+                quote_ro: "Simptomele oboselii cronice sunt mult mai ușor de gestionat acum. Am energie să trăiesc din nou.",
+                author_ro: "- Lisa H.",
+                quote_nl: "Chronische vermoeidheidssymptomen zijn nu veel beter te beheersen. Ik heb weer energie om te leven.",
+                author_nl: "- Lisa H."
+            },
+            {
+                id: 27,
+                quote_en: "My knee pain from arthritis is significantly reduced, allowing me to enjoy walks again.",
+                author_en: "- Susan M.",
+                quote_ro: "Durerea mea de genunchi de la artrită s-a redus semnificativ, permițându-mi să mă bucur din nou de plimbări.",
+                author_ro: "- Susan M.",
+                quote_nl: "Mijn kniepijn door artritis is aanzienlijk verminderd, waardoor ik weer van wandelingen kan genieten.",
+                author_nl: "- Susan M."
+            },
+            {
+                id: 28,
+                quote_en: "Helped my child with bedwetting, giving him so much confidence and better sleep.",
+                author_en: "- Concerned Parent",
+                quote_ro: "L-a ajutat pe copilul meu cu enurezisul nocturn, oferindu-i multă încredere și un somn mai bun.",
+                author_ro: "- Părinte Îngrijorat",
+                quote_nl: "Hielp mijn kind met bedplassen, gaf hem zoveel zelfvertrouwen en een betere slaap.",
+                author_nl: "- Bezorgde Ouder"
+            },
+            {
+                id: 29,
+                quote_en: "Relief from chronic sinus congestion. I can finally breathe easily through my nose!",
+                author_en: "- James F.",
+                quote_ro: "Ameliorare pentru congestia sinusală cronică. În sfârșit pot respira ușor pe nas!",
+                author_ro: "- James F.",
+                quote_nl: "Verlichting van chronische sinuscongestie. Ik kan eindelijk weer gemakkelijk door mijn neus ademen!",
+                author_nl: "- James F."
+            },
+            {
+                id: 30,
+                quote_en: "My IBS symptoms are finally under control. No more bloating or discomfort after meals.",
+                author_en: "- Olivia P.",
+                quote_ro: "Simptomele mele de SII sunt în sfârșit sub control. Fără balonare sau disconfort după mese.",
+                author_ro: "- Olivia P.",
+                quote_nl: "Mijn PDS-symptomen zijn eindelijk onder controle. Geen opgeblazen gevoel of ongemak meer na de maaltijd.",
+                author_nl: "- Olivia P."
+            },
+            {
+                id: 31,
+                quote_en: "Improved circulation in my cold hands and feet. They feel warm for the first time in years.",
+                author_en: "- Kevin R.",
+                quote_ro: "Circulația mi-a îmbunătățit în mâinile și picioarele reci. Le simt calde pentru prima dată în ani.",
+                author_ro: "- Kevin R.",
+                quote_nl: "Verbeterde bloedsomloop in mijn koude handen en voeten. Ze voelen voor het eerst in jaren warm aan.",
+                author_nl: "- Kevin R."
+            },
+            {
+                id: 32,
+                quote_en: "Less severe PMS symptoms and more regular cycles. Bowen has made a huge difference to my monthly well-being.",
+                author_en: "- Rachel C.",
+                quote_ro: "Simptome PMS mai puțin severe și cicluri mai regulate. Bowen a făcut o diferență uriașă pentru bunăstarea mea lunară.",
+                author_ro: "- Rachel C.",
+                quote_nl: "Minder ernstige PMS-symptomen en regelmatige cycli. Bowen heeft een enorm verschil gemaakt voor mijn maandelijkse welzijn.",
+                author_nl: "- Rachel C."
+            },
+            {
+                id: 33,
+                quote_en: "Helped with my postpartum recovery, easing discomfort and helping me feel like myself again.",
+                author_en: "- New Mother",
+                quote_ro: "M-a ajutat cu recuperarea postpartum, ameliorând disconfortul și ajutându-mă să mă simt din nou eu însămi.",
+                author_ro: "- Proaspătă Mamică",
+                quote_nl: "Hielp bij mijn postpartum herstel, verlichtte ongemak en hielp me weer mezelf te voelen.",
+                author_nl: "- Nieuwe Moeder"
+            },
+            {
+                id: 34,
+                quote_en: "My horse's lameness greatly improved with Bowen. He's back to his old self, energetic and pain-free.",
+                author_en: "- Equestrian Owner",
+                quote_ro: "Șchiopătura calului meu s-a îmbunătățit considerabil cu Bowen. A revenit la vechea lui stare, energic și fără durere.",
+                author_ro: "- Proprietar Ecvine",
+                quote_nl: "De kreupelheid van mijn paard is enorm verbeterd met Bowen. Hij is weer de oude, energiek en pijnvrij.",
+                author_nl: "- Paardeneigenaar"
+            },
+            {
+                id: 35,
+                quote_en: "My dog's anxiety is much less noticeable after sessions. He's calmer and more affectionate.",
+                author_en: "- Pet Owner",
+                quote_ro: "Anxietatea câinelui meu este mult mai puțin vizibilă după sesiuni. Este mai calm și mai afectuos.",
+                author_ro: "- Proprietar de Animal de Companie",
+                quote_nl: "De angst van mijn hond is veel minder merkbaar na sessies. Hij is kalmer en aanhankelijker.",
+                author_nl: "- Huisdiereigenaar"
+            },
+            {
+                id: 36,
+                quote_en: "Overall sense of well-being and increased vitality. I feel rejuvenated after every session.",
+                author_en: "- Anonymous",
+                quote_ro: "Un sentiment general de bunăstare și o vitalitate crescută. Mă simt întinerit după fiecare sesiune.",
+                author_ro: "- Anonim",
+                quote_nl: "Algemeen gevoel van welzijn en verhoogde vitaliteit. Ik voel me verjongd na elke sessie.",
+                author_nl: "- Anoniem"
+            }
+        ];
+
+        let currentTestimonialIndex = 0;
+        const testimonialsPerPage = 4;
+
+        function renderTestimonials(lang) {
+            const carouselContainer = document.getElementById('testimonial-carousel');
+            carouselContainer.innerHTML = ''; // Clear existing testimonials
+
+            const startIndex = currentTestimonialIndex;
+            const endIndex = Math.min(startIndex + testimonialsPerPage, allTestimonials.length);
+
+            // Filter and map testimonials for current view based on language
+            for (let i = startIndex; i < endIndex; i++) {
+                const testimonial = allTestimonials[i];
+                const quote = testimonial[`quote_${lang}`] || testimonial.quote_en;
+                const author = testimonial[`author_${lang}`] || testimonial.author_en;
+
+                const testimonialCard = document.createElement('div');
+                testimonialCard.classList.add('testimonial-card', 'evidence-section', 'p-4', 'rounded-lg', 'bg-white', 'text-dark-gray');
+                testimonialCard.innerHTML = `
+                    <p class="italic mb-2">"${quote}"</p>
+                    <p class="text-right text-sm font-semibold">${author}</p>
+                `;
+                carouselContainer.appendChild(testimonialCard);
+            }
+
+            updateCarouselNavigation();
+        }
+
+        function updateCarouselNavigation() {
+            const totalPages = Math.ceil(allTestimonials.length / testimonialsPerPage);
+            const currentPage = Math.floor(currentTestimonialIndex / testimonialsPerPage) + 1;
+
+            document.getElementById('carousel-page-info').textContent =
+                `Page ${currentPage} of ${totalPages}`;
+            document.getElementById('prev-testimonial').disabled = currentTestimonialIndex === 0;
+            document.getElementById('next-testimonial').disabled = currentTestimonialIndex + testimonialsPerPage >= allTestimonials.length;
+        }
 
         async function loadJsonData(filePath) {
             try {
@@ -1363,10 +1918,7 @@
         }
 
         async function applyTranslation(lang) {
-            if (!translations.en) { // Check if translations are loaded
-                await loadTranslations(lang);
-            }
-
+            // translations are already loaded globally by DOMContentLoaded
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.dataset.i18n;
                 if (translations[lang] && translations[lang][key]) {
@@ -1375,7 +1927,6 @@
                     element.textContent = translations.en[key];
                 }
             });
-
             // Update conditions grid after language change
             const activeFilterButton = document.querySelector('#filter-buttons .pill-button.active');
             const activeFilter = activeFilterButton ? activeFilterButton.dataset.filter : 'all';
@@ -1384,17 +1935,7 @@
             updateCharts(lang);
         }
 
-        async function loadTranslations(lang) {
-            const data = await loadJsonData('translations.json');
-            if (data) {
-                translations = data; // Store all language translations
-                if (!translations[lang]) {
-                    console.warn(`Translations for language '${lang}' not found. Falling back to English.`);
-                    // No need to set currentTranslations here, applyTranslation will handle it.
-                }
-            }
-        }
-
+        // loadTranslations is no longer async and combined into DOMContentLoaded
         function updateConditionsGrid(filter, lang) {
             const conditionsGrid = document.getElementById('conditions-grid');
             conditionsGrid.innerHTML = ''; // Clear existing cards
@@ -1428,37 +1969,41 @@
 
             const currentLangTranslations = translations[lang] || translations.en; // Fallback to English
 
-            // Dynamically generate labels for benefits chart from current conditionsData
-            const benefitsLabels = conditionsData
-                .filter(c => ['musculoskeletal', 'stress', 'womens-health', 'pediatric', 'systemic'].includes(c.filter)) // Filter by main benefit categories
-                .map(c => {
-                    const title = c[`title_${lang}`] || c.title_en;
-                    // Extract first word or a short phrase for clarity
-                    if (c.filter === 'musculoskeletal') return currentLangTranslations.benefitsPainReliefTitle.split(' ')[0];
-                    if (c.filter === 'stress') return currentLangTranslations.benefitsEmotionalTitle.split(' ')[0];
-                    if (c.filter === 'womens-health') return currentLangTranslations.benefitsPediatricTitle.split(' ')[0]; // Using Pediatric title for general women's health for benefits chart mapping
-                    if (c.filter === 'pediatric') return currentLangTranslations.benefitsPediatricTitle.split(' ')[0];
-                    if (c.filter === 'systemic') return currentLangTranslations.benefitsHormonalTitle.split(' ')[0]; // Using Hormonal title for general systemic for benefits chart mapping
-																	   
-                    return title.split(' ')[0]; // Fallback to first word
-                })
-                .filter((value, index, self) => self.indexOf(value) === index); // Get unique labels
+            // --- Benefits Chart ---
+            const benefitsMap = new Map();
+            conditionsData.forEach(condition => {
+                const filter = condition.filter;
+                // Use the translated filter category title for the label
+                let labelKey = '';
+                switch (filter) {
+                    case 'musculoskeletal': labelKey = 'benefitsPainReliefTitle'; break;
+                    case 'stress': labelKey = 'benefitsEmotionalTitle'; break;
+                    case 'womens-health': labelKey = 'benefitsHormonalTitle'; break;
+                    case 'pediatric': labelKey = 'benefitsPediatricTitle'; break;
+                    case 'systemic': labelKey = 'benefitsSystemicTitle'; break; // Make sure this key exists in translations.json
+                    default: labelKey = 'filterAll'; break;
+                }
+                const label = currentLangTranslations[labelKey] || translations.en[labelKey];
 
-            // Example data for benefits chart - replace with real data if available in conditions.json
-            // This is a placeholder. If you have specific benefit percentages per category, you'd calculate them here.
-            const benefitsData = [70, 60, 50, 40, 30]; // Placeholder data, needs to match unique labels count
+                // For demonstration, let's assume each condition contributes equally to the count.
+                // In a real scenario, you'd have actual data points (e.g., success rates, number of cases).
+                benefitsMap.set(label, (benefitsMap.get(label) || 0) + 1);
+            });
 
-            // Dynamically generate labels for studies chart from translations
+            const benefitsLabels = Array.from(benefitsMap.keys());
+            const benefitsData = Array.from(benefitsMap.values()); // This will be the count of conditions per filter
+
+            // --- Studies Chart (Pie Chart) ---
+            // This data is static based on the "Evidence" section, not dynamic conditions.
             const studiesLabels = [
-                currentLangTranslations.study1Source.split(',')[0], // Controlled Trial
-                currentLangTranslations.study2Source.split(',')[0], // Randomized Trial
-                currentLangTranslations.study3Source.split(',')[0], // Clinical Trial
-                currentLangTranslations.study4Source.split(',')[0], // Systematic Review
-                currentLangTranslations.study5Source.split(',')[0], // Gov Review
-                currentLangTranslations.study6Source.split(' ')[0]  // Advertising
+                currentLangTranslations.study1Source.split(',')[0], // "Controlled Trial"
+                currentLangTranslations.study2Source.split(',')[0], // "Randomized Clinical Trial"
+                currentLangTranslations.study3Source.split(',')[0], // "Clinical Trial"
+                currentLangTranslations.study4Source.split(',')[0].replace('ResearchGate', 'Systematic Review'), // "Systematic Review"
+                (currentLangTranslations.study5Source.split(' ')[0] + ' ' + currentLangTranslations.study5Source.split(' ')[1]).replace('Department', 'Gov'), // "Australian Government"
+                currentLangTranslations.study6Source.split(' ')[0]  // "Advertising"
             ];
-            // Example data for studies chart - replace with real data if available
-            const studiesData = [10, 15, 20, 25, 10, 20]; // Placeholder data
+            const studiesData = [10, 15, 20, 25, 10, 20]; // Placeholder data, update with actual percentages if known
 
             // Destroy existing charts if they exist
             if (benefitsChart) benefitsChart.destroy();
@@ -1486,7 +2031,8 @@
                             beginAtZero: true,
                             title: {
                                 display: true,
-                                text: currentLangTranslations.benefitsChartTitle.includes('Reported in Research') ? 'Reported Efficacy (%)' : 'Eficacitate Raportată (%)'
+                                // Adjusting label based on actual data meaning. Here it's counts of conditions.
+                                text: 'Number of Conditions'
                             }
                         }
                     },
@@ -1574,12 +2120,15 @@
             langSelect.value = initialLang;
             applyTranslation(initialLang); // Apply initial translation and render conditions/charts
 
+            // Initial render of testimonials after language is set
+            renderTestimonials(initialLang); // Call to render testimonials specifically
+
             // Language selector change event
             langSelect.addEventListener('change', async (event) => {
                 const selectedLang = event.target.value;
                 applyTranslation(selectedLang);
+                renderTestimonials(selectedLang); // Call to re-render testimonials specifically on language change
             });
-
             // Mobile menu toggle
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.remove('hidden');
@@ -1632,78 +2181,89 @@
                     behavior: 'smooth'
                 });
             });
+
+            // Accordion functionality (moved from the second script block)
+            document.querySelectorAll('[data-accordion-target]').forEach(button => {
+                button.addEventListener('click', () => {
+                    const target = document.querySelector(button.getAttribute('data-accordion-target'));
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+
+                    // Toggle current
+                    button.setAttribute('aria-expanded', !expanded);
+                    target.classList.toggle('hidden');
+
+                    // Optional: close all other open accordions
+                    document.querySelectorAll('.accordion-body').forEach(body => {
+                        if (body !== target) body.classList.add('hidden');
+                    });
+                    document.querySelectorAll('.accordion-header').forEach(otherBtn => {
+                        if (otherBtn !== button) otherBtn.setAttribute('aria-expanded', false);
+                    });
+                });
+            });
+
+            // Dropdown menu functionality (moved from the second script block)
+            const toggles = document.querySelectorAll(".dropdown-toggle");
+            const dropdowns = document.querySelectorAll(".dropdown");
+
+            toggles.forEach(toggle => {
+                toggle.addEventListener("click", e => {
+                    e.stopPropagation();
+                    const targetId = toggle.getAttribute("data-dropdown");
+                    const targetDropdown = document.getElementById(targetId);
+                    const icon = toggle.querySelector(".emoji-symbol");
+
+                    const isOpening = targetDropdown.classList.contains("hidden");
+
+                    // Toggle dropdowns and symbols
+                    dropdowns.forEach(drop => {
+                        const relatedToggle = document.querySelector(`[data-dropdown="${drop.id}"]`);
+                        const relatedIcon = relatedToggle?.querySelector(".emoji-symbol");
+
+                        if (drop === targetDropdown) {
+                            drop.classList.toggle("hidden");
+                            if (icon) icon.textContent = isOpening ? "▲" : "▼";
+                        } else {
+                            drop.classList.add("hidden");
+                            if (relatedIcon) relatedIcon.textContent = "▼";
+                        }
+                    });
+                });
+            });
+            // Click outside: close all dropdowns and reset icons
+            document.addEventListener("click", () => {
+                dropdowns.forEach(drop => drop.classList.add("hidden"));
+                document.querySelectorAll(".emoji-symbol").forEach(icon => {
+                    icon.textContent = "▼";
+                });
+            });
+            // On dropdown link click, close all
+            document.querySelectorAll(".dropdown-link").forEach(link => {
+                link.addEventListener("click", () => {
+                    dropdowns.forEach(drop => drop.classList.add("hidden"));
+                    document.querySelectorAll(".emoji-symbol").forEach(icon => {
+                        icon.textContent = "▼";
+                    });
+                });
+            });
+
+            // Testimonial carousel navigation button event listeners (moved from the second script block)
+            document.getElementById('prev-testimonial').addEventListener('click', () => {
+                if (currentTestimonialIndex > 0) {
+                    currentTestimonialIndex -= testimonialsPerPage;
+                    renderTestimonials(langSelect.value);
+                }
+            });
+
+            document.getElementById('next-testimonial').addEventListener('click', () => {
+                if (currentTestimonialIndex + testimonialsPerPage < allTestimonials.length) {
+                    currentTestimonialIndex += testimonialsPerPage;
+                    renderTestimonials(langSelect.value);
+                }
+            });
         });
-
-    </script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const toggles = document.querySelectorAll(".dropdown-toggle");
-  const dropdowns = document.querySelectorAll(".dropdown");
-
-  toggles.forEach(toggle => {
-    toggle.addEventListener("click", e => {
-      e.stopPropagation();
-      const targetId = toggle.getAttribute("data-dropdown");
-      const targetDropdown = document.getElementById(targetId);
-      const icon = toggle.querySelector(".emoji-symbol");
-
-      const isOpening = targetDropdown.classList.contains("hidden");
-
-      // Toggle dropdowns and symbols
-      dropdowns.forEach(drop => {
-        const relatedToggle = document.querySelector(`[data-dropdown="${drop.id}"]`);
-        const relatedIcon = relatedToggle?.querySelector(".emoji-symbol");
-
-        if (drop === targetDropdown) {
-          drop.classList.toggle("hidden");
-          if (icon) icon.textContent = isOpening ? "▲" : "▼";
-        } else {
-          drop.classList.add("hidden");
-          if (relatedIcon) relatedIcon.textContent = "▼";
-        }
-      });
-    });
-  });
-
-  // Click outside: close all dropdowns and reset icons
-  document.addEventListener("click", () => {
-    dropdowns.forEach(drop => drop.classList.add("hidden"));
-    document.querySelectorAll(".emoji-symbol").forEach(icon => {
-      icon.textContent = "▼";
-    });
-  });
-
-  // On dropdown link click, close all
-  document.querySelectorAll(".dropdown-link").forEach(link => {
-    link.addEventListener("click", () => {
-      dropdowns.forEach(drop => drop.classList.add("hidden"));
-      document.querySelectorAll(".emoji-symbol").forEach(icon => {
-        icon.textContent = "▼";
-      });
-    });
-  });
-});
-
-
-  document.querySelectorAll('[data-accordion-target]').forEach(button => {
-    button.addEventListener('click', () => {
-      const target = document.querySelector(button.getAttribute('data-accordion-target'));
-      const expanded = button.getAttribute('aria-expanded') === 'true';
-
-      // Toggle current
-      button.setAttribute('aria-expanded', !expanded);
-      target.classList.toggle('hidden');
-
-      // Optional: close all other open accordions
-      document.querySelectorAll('.accordion-body').forEach(body => {
-        if (body !== target) body.classList.add('hidden');
-      });
-      document.querySelectorAll('.accordion-header').forEach(otherBtn => {
-        if (otherBtn !== button) otherBtn.setAttribute('aria-expanded', false);
-      });
-    });
-  });
 </script>
-
 </body>
+	   
+
 </html>
