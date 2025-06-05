@@ -43,6 +43,12 @@
         .text-dark-theme-text { color: #ffffff;}
 
         /* Custom components and adjustments for improved aesthetics/UX */
+        .logo {
+            background: linear-gradient(to bottom, #20C997, #000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
         .section-title {
             font-size: 2.5rem; /* Increased for impact */
             font-weight: 700;
@@ -237,9 +243,9 @@
         </svg>
     </div>
 
-<header class="sticky top-0 z-50 .bg-header shadow-md">
+<header class="sticky top-0 z-50 bg-header shadow-md">
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <a href="#hero" class="text-2xl font-bold text-dark-gray hover:text-accent transition-colors">
+    <a href="#hero" class="text-2xl font-bold logo transition-colors">
       Bowen Therapy
     </a>
 
