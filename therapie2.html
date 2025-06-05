@@ -127,6 +127,35 @@
             color: #333333; /* Ensure dark text */
             border: 1px solid #E0E6ED;
         }
+    #testimonial-carousel {
+        display: block; /* Change from grid to block to stack items vertically */
+        overflow: hidden; /* Keep this to contain items for the slider logic */
+        /* Remove or comment out any 'grid-template-columns' or 'gap' rules if they were here */
+    }
+
+    /* Style individual testimonial cards for vertical stacking */
+    #testimonials-container .testimonial-card {
+        margin-bottom: 1.5rem; /* Add spacing between vertically stacked cards */
+        width: 100%; /* Ensure cards take full width in a column */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+
+    /* Adjust navigation button positioning for the new layout */
+    /* These rules were already present, just ensure they are interpreted correctly for the new layout */
+    #testimonials-container .absolute {
+        top: auto; /* Ensure no fixed 'top' interfering with new layout */
+        bottom: 0; /* Position at the bottom */
+        transform: none; /* Remove any transform properties that might be centering vertically */
+        margin-bottom: 1rem; /* Adjust margin as needed */
+    }
+
+    #testimonials-container #prev-testimonial {
+        left: 0;
+    }
+
+    #testimonials-container #next-testimonial {
+        right: 0;
+    }
 
         /* Chart container styling */
         .chart-container {
