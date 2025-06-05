@@ -49,6 +49,9 @@
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
+        .dropdown-lang {
+          background: linear-gradient(to bottom, #20C997, #fff);
+        }
         .section-title {
             font-size: 2.5rem; /* Increased for impact */
             font-weight: 700;
@@ -294,7 +297,7 @@ py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="n
     </nav>
 
     <div class="flex items-center space-x-4">
-      <select id="language-select" class="p-2 rounded-md bg-white border border-gray-300 text-dark-gray">
+      <select id="language-select" class="p-2 rounded-md dropdown-lang border border-gray-300 text-dark-gray">
         <option value="en">English</option>
         <option value="ro">Română</option>
         <option value="nl">Nederlands</option>
