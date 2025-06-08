@@ -1537,11 +1537,64 @@ Provides practitioner name, profile picture, verification, rating, business name
                 <p class="section-subtitle" data-i18n="appointmentsSubtitle">View our typical availability and schedule your appointment.</p>
 
                 <div class="card p-6 max-w-2xl mx-auto mb-8">
-                    <h3 class="text-xl font-semibold mb-4 text-primary" data-i18n="appointmentsScheduleTitle">Weekly Availability Overview</h3>
-                    <div class="chart-container h-80 sm:h-96">
-                        <canvas id="availabilityChart"></canvas>
+                    <h3 class="text-xl font-semibold mb-4 text-primary" data-i18n="appointmentsPlannerTitle">Weekly Appointment Planner</h3>
+                    <div id="weekly-planner" class="text-left">
+                        <p class="mb-4 text-medium-gray" data-i18n="plannerInstructions">Select your preferred day and time from the available slots below. Times are approximate and subject to change.</p>
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-200">
+                                    <th class="p-2 border border-gray-300" data-i18n="timeColumn">Time</th>
+                                    <th class="p-2 border border-gray-300" data-i18n="appointmentsDay1">Monday</th>
+                                    <th class="p-2 border border-gray-300" data-i18n="appointmentsDay2">Tuesday</th>
+                                    <th class="p-2 border border-gray-300" data-i18n="appointmentsDay3">Wednesday</th>
+                                    <th class="p-2 border border-gray-300" data-i18n="appointmentsDay4">Thursday</th>
+                                    <th class="p-2 border border-gray-300" data-i18n="appointmentsDay5">Friday</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-2 border border-gray-300 font-semibold">9:00 - 10:00</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-gray-300 font-semibold">10:30 - 11:30</td>
+                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-gray-300 font-semibold">13:00 - 14:00</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-gray-300 font-semibold">14:30 - 15:30</td>
+                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-gray-300 font-semibold">16:00 - 17:00</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
+                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <p class="mt-4 text-medium-gray" data-i18n="appointmentsNote">This chart illustrates general availability patterns. For real-time booking, please use our contact form or preferred booking method.</p>
+                    <p class="mt-4 text-medium-gray" data-i18n="appointmentsNote">Times shown are illustrative. For real-time booking, please use our contact form or preferred booking method.</p>
                 </div>
 
                 <div class="max-w-xl mx-auto">
@@ -2145,115 +2198,6 @@ Provides practitioner name, profile picture, verification, rating, business name
 
     let availabilityChart; // Declare this globally
 
-    // Function to initialize the new availability chart
-    function initAvailabilityChart(lang) {
-        if (!translations.en) {
-            console.warn("Translations not loaded for availability chart yet. Skipping chart initialization.");
-            return;
-        }
-
-        const currentLangTranslations = translations[lang] || translations.en;
-
-        const availabilityCtx = document.getElementById('availabilityChart').getContext('2d');
-
-        if (availabilityChart) {
-            availabilityChart.destroy(); // Destroy existing chart if it exists
-        }
-
-        availabilityChart = new Chart(availabilityCtx, {
-            type: 'bar', // Base type is bar
-            data: {
-                labels: [
-                    currentLangTranslations.appointmentsDay1 || "Monday",
-                    currentLangTranslations.appointmentsDay2 || "Tuesday",
-                    currentLangTranslations.appointmentsDay3 || "Wednesday",
-                    currentLangTranslations.appointmentsDay4 || "Thursday",
-                    currentLangTranslations.appointmentsDay5 || "Friday"
-                ],
-                datasets: [
-                    {
-                        label: currentLangTranslations.appointmentsBookingsLabel || "Number of Bookings",
-                        data: [25, 18, 22, 15, 30], // Mock data for number of bookings
-                        backgroundColor: '#20C997', // Primary green for bars
-                        borderColor: '#17A37B',
-                        borderWidth: 1,
-                        yAxisID: 'y' // Assign to primary Y-axis
-                    },
-                    {
-                        label: currentLangTranslations.appointmentsCancellationsLabel || "Cancellation Rate (%)",
-                        data: [10, 15, 8, 20, 5], // Mock data for cancellation rate in percentage
-                        backgroundColor: 'rgba(249, 197, 189, 0.6)', // Misty Mountain Pink for line
-                        borderColor: '#f9c5bd',
-                        borderWidth: 2,
-                        type: 'line', // This dataset will be a line chart
-                        fill: false, // Don't fill under the line
-                        yAxisID: 'y1', // Assign to secondary Y-axis
-                        tension: 0.3 // Smooth the line
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                interaction: {
-                    mode: 'index', // Enable interaction for both datasets
-                    intersect: false,
-                },
-                scales: {
-                    y: { // Primary Y-axis for bookings
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: currentLangTranslations.appointmentsBookingsYAxisLabel || "Bookings"
-                        },
-                        position: 'left',
-                    },
-                    y1: { // Secondary Y-axis for cancellation rate
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: currentLangTranslations.appointmentsCancellationsYAxisLabel || "Cancellation Rate (%)"
-                        },
-                        position: 'right',
-                        grid: {
-                            drawOnChartArea: false, // Only draw grid lines for the primary Y-axis
-                        },
-                        ticks: {
-                            callback: function(value) {
-                                return value + '%'; // Add percentage sign to ticks
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: true, // Show legend for multiple datasets
-                        position: 'top',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                let label = context.dataset.label || '';
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.dataset.yAxisID === 'y') {
-                                    label += context.parsed.y;
-                                } else if (context.dataset.yAxisID === 'y1') {
-                                    label += context.parsed.y + '%';
-                                }
-                                return label;
-                            }
-                        }
-                    },
-                    title: {
-                        display: false // Title handled by HTML H3 tag
-                    }
-                }
-            }
-        });
-    }
-
         document.addEventListener('DOMContentLoaded', async () => {
             // Load both translations and conditions data concurrently
             const [loadedTranslations, loadedConditionsData] = await Promise.all([
@@ -2294,14 +2238,12 @@ Provides practitioner name, profile picture, verification, rating, business name
             renderTestimonials(initialLang); // Call to render testimonials specifically
 
         // Call the new chart initialization after initial translation is applied
-        initAvailabilityChart(initialLang); // Initial chart render
 		
             // Language selector change event
             langSelect.addEventListener('change', async (event) => {
                 const selectedLang = event.target.value;
                 applyTranslation(selectedLang);
                 renderTestimonials(selectedLang); // Call to re-render testimonials specifically on language change
-				initAvailabilityChart(selectedLang); // Re-render availability chart on language change
             });
             // Mobile menu toggle
             mobileMenuButton.addEventListener('click', () => {
