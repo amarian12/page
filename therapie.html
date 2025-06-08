@@ -2122,7 +2122,73 @@ Provides practitioner name, profile picture, verification, rating, business name
             });
         }
 
+    let availabilityChart; // Declare this globally
 
+    // Function to initialize the new availability chart
+    function initAvailabilityChart(lang) {
+        if (!translations.en) {
+            console.warn("Translations not loaded for availability chart yet. Skipping chart initialization.");
+            return;
+        }
+
+        const currentLangTranslations = translations[lang] || translations.en;
+
+        const availabilityCtx = document.getElementById('availabilityChart').getContext('2d');
+
+        if (availabilityChart) {
+            availabilityChart.destroy(); // Destroy existing chart if it exists
+        }
+
+        availabilityChart = new Chart(availabilityCtx, {
+            type: 'bar', // A bar chart is good for showing availability by day/time
+            data: {
+                labels: [
+                    currentLangTranslations.appointmentsDay1 || "Monday",
+                    currentLangTranslations.appointmentsDay2 || "Tuesday",
+                    currentLangTranslations.appointmentsDay3 || "Wednesday",
+                    currentLangTranslations.appointmentsDay4 || "Thursday",
+                    currentLangTranslations.appointmentsDay5 || "Friday"
+                ],
+                datasets: [{
+                    label: currentLangTranslations.appointmentsAvailableHours || "Available Hours",
+                    data: [8, 6, 7, 5, 9], // Example data: hours available per day
+                    backgroundColor: '#20C997', // Primary green
+                    borderColor: '#17A37B',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: currentLangTranslations.appointmentsYAxisLabel || "Hours Available"
+                        },
+                        ticks: {
+                            stepSize: 1 // Display integer steps for hours
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: currentLangTranslations.appointmentsXAxisLabel || "Day of the Week"
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false // Hide legend if only one dataset
+                    },
+                    title: {
+                        display: false // Title handled by HTML H3 tag
+                    }
+                }
+            }
+        });
+    }
         document.addEventListener('DOMContentLoaded', async () => {
             // Load both translations and conditions data concurrently
             const [loadedTranslations, loadedConditionsData] = await Promise.all([
@@ -2167,6 +2233,7 @@ Provides practitioner name, profile picture, verification, rating, business name
                 const selectedLang = event.target.value;
                 applyTranslation(selectedLang);
                 renderTestimonials(selectedLang); // Call to re-render testimonials specifically on language change
+				initAvailabilityChart(selectedLang); // Re-render availability chart on language change
             });
             // Mobile menu toggle
             mobileMenuButton.addEventListener('click', () => {
