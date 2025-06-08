@@ -430,6 +430,58 @@
         "timeColumn": "Time",
         "availableSlot": "Available",
         "bookedSlot": "Booked",
+        "plannerSlots": [
+            {
+                "time": "9:00 - 10:00",
+                "availability": [
+                    "available",
+                    "booked",
+                    "available",
+                    "booked",
+                    "available"
+                ]
+            },
+            {
+                "time": "10:30 - 11:30",
+                "availability": [
+                    "booked",
+                    "available",
+                    "booked",
+                    "available",
+                    "booked"
+                ]
+            },
+            {
+                "time": "13:00 - 14:00",
+                "availability": [
+                    "available",
+                    "available",
+                    "booked",
+                    "available",
+                    "available"
+                ]
+            },
+            {
+                "time": "14:30 - 15:30",
+                "availability": [
+                    "booked",
+                    "available",
+                    "available",
+                    "booked",
+                    "booked"
+                ]
+            },
+            {
+                "time": "16:00 - 17:00",
+                "availability": [
+                    "available",
+                    "booked",
+                    "available",
+                    "available",
+                    "booked"
+                ]
+            }
+        ],
         "appointmentsNote": "Times shown are illustrative. For real-time booking, please use our contact form or preferred booking method.",
         "appointmentsBookingTitle": "Ready to Book?",
         "appointmentsBookingText": "Use our contact form to inquire about specific dates and times, or click the button below to proceed to our online booking system (if available).",
@@ -871,6 +923,58 @@
         "timeColumn": "Oră",
         "availableSlot": "Disponibil",
         "bookedSlot": "Ocupat",
+        "plannerSlots": [
+            {
+                "time": "9:00 - 10:00",
+                "availability": [
+                    "available",
+                    "booked",
+                    "available",
+                    "booked",
+                    "available"
+                ]
+            },
+            {
+                "time": "10:30 - 11:30",
+                "availability": [
+                    "booked",
+                    "available",
+                    "booked",
+                    "available",
+                    "booked"
+                ]
+            },
+            {
+                "time": "13:00 - 14:00",
+                "availability": [
+                    "available",
+                    "available",
+                    "booked",
+                    "available",
+                    "available"
+                ]
+            },
+            {
+                "time": "14:30 - 15:30",
+                "availability": [
+                    "booked",
+                    "available",
+                    "available",
+                    "booked",
+                    "booked"
+                ]
+            },
+            {
+                "time": "16:00 - 17:00",
+                "availability": [
+                    "available",
+                    "booked",
+                    "available",
+                    "available",
+                    "booked"
+                ]
+            }
+        ],
         "appointmentsNote": "Orele afișate sunt ilustrative. Pentru rezervări în timp real, vă rugăm să utilizați formularul nostru de contact sau metoda de rezervare preferată.",
         "appointmentsBookingTitle": "Ești Gata să Programezi?",
         "appointmentsBookingText": "Utilizează formularul nostru de contact pentru a te interesa despre date și ore specifice, sau apasă butonul de mai jos pentru a accesa sistemul nostru de rezervări online (dacă este disponibil).",
@@ -1312,13 +1416,65 @@
         "timeColumn": "Tijd",
         "availableSlot": "Beschikbaar",
         "bookedSlot": "Bezet",
+        "plannerSlots": [
+            {
+                "time": "9:00 - 10:00",
+                "availability": [
+                    "available",
+                    "booked",
+                    "available",
+                    "booked",
+                    "available"
+                ]
+            },
+            {
+                "time": "10:30 - 11:30",
+                "availability": [
+                    "booked",
+                    "available",
+                    "booked",
+                    "available",
+                    "booked"
+                ]
+            },
+            {
+                "time": "13:00 - 14:00",
+                "availability": [
+                    "available",
+                    "available",
+                    "booked",
+                    "available",
+                    "available"
+                ]
+            },
+            {
+                "time": "14:30 - 15:30",
+                "availability": [
+                    "booked",
+                    "available",
+                    "available",
+                    "booked",
+                    "booked"
+                ]
+            },
+            {
+                "time": "16:00 - 17:00",
+                "availability": [
+                    "available",
+                    "booked",
+                    "available",
+                    "available",
+                    "booked"
+                ]
+            }
+        ],
         "appointmentsNote": "Getoonde tijden zijn illustratief. Voor realtime boeking kunt u ons contactformulier of de voorkeursboekingsmethode gebruiken.",
         "appointmentsBookingTitle": "Klaar om te Boeken?",
         "appointmentsBookingText": "Gebruik ons contactformulier om te informeren naar specifieke data en tijden, of klik op de knop hieronder om door te gaan naar ons online boekingssysteem (indien beschikbaar).",
         "appointmentsBookNowButton": "Nu Boeken",
         "appointmentsDay1": "Maandag",
         "appointmentsDay2": "Dinsdag",
-        "appointmentsDay3": "Woensdag",
+        "appointmentsDay3": "Wednesday",
         "appointmentsDay4": "Donderdag",
         "appointmentsDay5": "Vrijdag"
     }

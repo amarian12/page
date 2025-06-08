@@ -1551,47 +1551,8 @@ Provides practitioner name, profile picture, verification, rating, business name
                                     <th class="p-2 border border-gray-300" data-i18n="appointmentsDay5">Friday</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="p-2 border border-gray-300 font-semibold">9:00 - 10:00</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 border border-gray-300 font-semibold">10:30 - 11:30</td>
-                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 border border-gray-300 font-semibold">13:00 - 14:00</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 border border-gray-300 font-semibold">14:30 - 15:30</td>
-                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 border border-gray-300 font-semibold">16:00 - 17:00</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                    <td class="p-2 border border-gray-300 text-gray-500" data-i18n="bookedSlot">Booked</td>
-                                    <td class="p-2 border border-gray-300 text-primary" data-i18n="availableSlot">Available</td>
-                                </tr>
-                            </tbody>
+                            <tbody id="planner-table-body">
+                                </tbody>
                         </table>
                     </div>
                     <p class="mt-4 text-medium-gray" data-i18n="appointmentsNote">Times shown are illustrative. For real-time booking, please use our contact form or preferred booking method.</p>
@@ -1982,6 +1943,70 @@ Provides practitioner name, profile picture, verification, rating, business name
         let currentTestimonialIndex = 0;
         const testimonialsPerPage = 4;
 
+    function renderPlannerTable(lang) {
+        const tableBody = document.getElementById('planner-table-body');
+        if (!tableBody) return; // Exit if element not found
+
+        tableBody.innerHTML = ''; // Clear existing rows when re-rendering for language change
+
+        const currentLangTranslations = translations[lang] || translations.en;
+        const plannerSlots = currentLangTranslations.plannerSlots; // Get planner data from translations
+        const days = [ // Array to map day index to localized day names for the alert message
+            currentLangTranslations.appointmentsDay1 || "Monday",
+            currentLangTranslations.appointmentsDay2 || "Tuesday",
+            currentLangTranslations.appointmentsDay3 || "Wednesday",
+            currentLangTranslations.appointmentsDay4 || "Thursday",
+            currentLangTranslations.appointmentsDay5 || "Friday"
+        ];
+
+        if (!plannerSlots) {
+            console.warn("Planner slots data not found for current language.");
+            return;
+        }
+
+        plannerSlots.forEach(slot => {
+            const row = document.createElement('tr');
+            let rowHtml = `<td class="p-2 border border-gray-300 font-semibold">${slot.time}</td>`;
+
+            // Loop through availability for each day (Monday to Friday)
+            slot.availability.forEach((status, dayIndex) => {
+                const statusText = currentLangTranslations[`${status}Slot`]; // "Available" or "Booked" text
+                let statusClass = status === 'available' ? 'text-primary cursor-pointer hover:bg-green-50' : 'text-gray-500'; // Add Tailwind hover effect for available slots
+                
+                let dataAttributes = '';
+                if (status === 'available') {
+                    // Add data attributes to store time and day for the click handler
+                    dataAttributes = `data-time="${slot.time}" data-day="${days[dayIndex]}" data-status="available"`;
+                }
+
+                rowHtml += `<td class="p-2 border border-gray-300 ${statusClass}" ${dataAttributes}>${statusText}</td>`;
+            });
+
+            row.innerHTML = rowHtml;
+            tableBody.appendChild(row);
+        });
+
+        // Add event listener using event delegation to the table body
+        // This ensures that click functionality works for dynamically added rows.
+        tableBody.addEventListener('click', (event) => {
+            // Check if the clicked element (or its closest parent) is an 'available' table cell
+            const clickedCell = event.target.closest('td[data-status="available"]');
+            if (clickedCell) {
+                const time = clickedCell.dataset.time;
+                const day = clickedCell.dataset.day;
+                
+                // Get the localized mock booking message and replace placeholders
+                const message = currentLangTranslations.mockBookingMessage
+                                ? currentLangTranslations.mockBookingMessage
+                                    .replace('{time}', time)
+                                    .replace('{day}', day)
+                                : `You've selected ${time} on ${day}. Please proceed to the contact form to finalize your booking.`;
+                
+                alert(message); // Display the mock booking message
+            }
+        }, { once: false }); // Use { once: false } to ensure event listener is not removed after first click
+    }
+
         function renderTestimonials(lang) {
             const carouselContainer = document.getElementById('testimonial-carousel');
             carouselContainer.innerHTML = ''; // Clear existing testimonials
@@ -2237,13 +2262,15 @@ Provides practitioner name, profile picture, verification, rating, business name
             // Initial render of testimonials after language is set
             renderTestimonials(initialLang); // Call to render testimonials specifically
 
-        // Call the new chart initialization after initial translation is applied
-		
+            // Call renderPlannerTable on initial load
+            renderPlannerTable(initialLang);
+			
             // Language selector change event
             langSelect.addEventListener('change', async (event) => {
                 const selectedLang = event.target.value;
                 applyTranslation(selectedLang);
                 renderTestimonials(selectedLang); // Call to re-render testimonials specifically on language change
+                renderPlannerTable(selectedLang); // Re-render planner table on language change
             });
             // Mobile menu toggle
             mobileMenuButton.addEventListener('click', () => {
