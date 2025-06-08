@@ -1948,16 +1948,16 @@ Provides practitioner name, profile picture, verification, rating, business name
 
     function renderPlannerTable(lang) {
         const tableBody = document.getElementById('planner-table-body');
-        const bookingMessageContainer = document.getElementById('booking-message-container'); // Get the new message container
-        
-        if (!tableBody || !bookingMessageContainer) return; // Exit if elements not found
+																															  
+		
+        if (!tableBody) return; // Exit if element not found
 
         tableBody.innerHTML = ''; // Clear existing rows when re-rendering for language change
-        bookingMessageContainer.classList.add('hidden'); // Ensure message container is hidden on re-render
+																										   
 
         const currentLangTranslations = translations[lang] || translations.en;
         const plannerSlots = currentLangTranslations.plannerSlots; // Get planner data from translations
-        const days = [ // Array to map day index to localized day names for the message
+        const days = [ // Array to map day index to localized day names for the alert message
             currentLangTranslations.appointmentsDay1 || "Monday",
             currentLangTranslations.appointmentsDay2 || "Tuesday",
             currentLangTranslations.appointmentsDay3 || "Wednesday",
@@ -1992,6 +1992,25 @@ Provides practitioner name, profile picture, verification, rating, business name
             tableBody.appendChild(row);
         });
 
+        // Add event listener using event delegation to the table body
+        // This ensures that click functionality works for dynamically added rows.
+        tableBody.addEventListener('click', (event) => {
+            // Check if the clicked element (or its closest parent) is an 'available' table cell
+            const clickedCell = event.target.closest('td[data-status="available"]');
+            if (clickedCell) {
+                const time = clickedCell.dataset.time;
+                const day = clickedCell.dataset.day;
+                
+                // Get the localized mock booking message and replace placeholders
+                const message = currentLangTranslations.mockBookingMessage
+                                ? currentLangTranslations.mockBookingMessage
+                                    .replace('{time}', time)
+                                    .replace('{day}', day)
+                                : `You've selected ${time} on ${day}. Please proceed to the contact form to finalize your booking.`;
+                
+                alert(message); // Display the mock booking message
+            }
+        }, { once: false }); // Use { once: false } to ensure event listener is not removed after first click
     }
 
         function renderTestimonials(lang) {
@@ -2249,44 +2268,44 @@ Provides practitioner name, profile picture, verification, rating, business name
             // Initial render of testimonials after language is set
             renderTestimonials(initialLang); // Call to render testimonials specifically
 
-        const tableBody = document.getElementById('planner-table-body'); // Get table body here
-        const bookingMessageContainer = document.getElementById('booking-message-container'); // Get message container here
+																							   
+																														   
 
-        // Attach event listener to the table body for clicks on available slots
-        if (tableBody) { // Ensure tableBody exists before adding listener
-            // Using a unique ID to avoid adding multiple listeners if DOMContentLoaded runs multiple times (unlikely, but good practice)
-            // Or just check if listener already exists, but simple delegation is best.
-            // If this script is run only once in DOMContentLoaded, this listener will be added once.
-            tableBody.addEventListener('click', (event) => {
-                const clickedCell = event.target.closest('td[data-status="available"]');
-                if (clickedCell) {
-                    const time = clickedCell.dataset.time;
-                    const day = clickedCell.dataset.day;
-                    
-                    const currentLangTranslations = translations[langSelect.value] || translations.en;
-                    const message = currentLangTranslations.mockBookingMessage
-                                    ? currentLangTranslations.mockBookingMessage
-                                        .replace('{time}', time)
-                                        .replace('{day}', day)
-                                    : `You've selected ${time} on ${day}. Please proceed to the contact form to finalize your booking.`;
-                    
-                    // Display the message
-                    bookingMessageContainer.textContent = message;
-                    bookingMessageContainer.classList.remove('hidden'); // Make it visible
+																				
+																		  
+																																		 
+																					   
+																									 
+															
+																						
+								  
+														  
+														
+					
+																									  
+																			  
+																				
+																
+															  
+																																		
+					
+										  
+																  
+																						  
 
-                    // Optionally hide the message after a few seconds
-                    setTimeout(() => {
-                        bookingMessageContainer.classList.add('hidden');
-                        bookingMessageContainer.textContent = ''; // Clear content
-                    }, 5000); // Message disappears after 5 seconds
-                }
-            });
-        }
+																	  
+									  
+																		
+																				  
+																   
+				 
+			   
+		 
 
 
-        // Call renderPlannerTable on initial load
-        renderPlannerTable(initialLang);
-
+            // Call renderPlannerTable on initial load
+            renderPlannerTable(initialLang);
+			
             // Language selector change event
             langSelect.addEventListener('change', async (event) => {
                 const selectedLang = event.target.value;
