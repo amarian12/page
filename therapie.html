@@ -19,51 +19,53 @@
             --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+			--mainColor: #068434;
+			--optional-color: #0EB582;
         }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #F8F8F8; /* Light Grey for main background - improved readability over dark green */
-            color: #333333; /* Dark Grey for general text */
+            color: #012c11; /* Dark Grey for general text */
         }
         section {
             min-height: 80vh; /* Adjusted for better content flow, not always full viewport height */
             padding-top: 5rem;
             padding-bottom: 5rem;
         }
-        .bg-primary { background-color: #20C997;} /* Original Grass Green, now used for accents */
+        .bg-primary { background-color: #008615;} /* Original Grass Green, now used for accents */
         .bg-secondary { background-color: #F8F8F8;} /* Very Light Grey */
-        .bg-header { background: linear-gradient(to bottom, #20C997, #fff);}
-        .text-primary { color: #20C997;}
-        .text-accent { color: #f9c5bd;} /* Misty Mountain Pink */
+        .bg-header { background: linear-gradient(to bottom, #008615, #fff);}
+        .text-primary { color: #008615;}
+        .text-accent { color: #08ba4a;} /* Misty Mountain Pink */
         .bg-accent-light { background-color: #fde7e3;} /* Lighter Misty Mountain Pink */
-        .text-dark-gray { color: #333333;}
-        .text-medium-gray { color: #555555;}
+        .text-dark-gray { color: #012c11;}
+        .text-medium-gray { color: #03491d;}
         .text-light-gray { color: #777777;}
-        .bg-dark-theme { background-color: #333333;} /* Dark Grey for footer/contact */
+        .bg-dark-theme { background-color: #012c11;} /* Dark Grey for footer/contact */
         .text-dark-theme-text { color: #ffffff;}
 
         /* Custom components and adjustments for improved aesthetics/UX */
         .logo {
-            background: linear-gradient(to bottom, #20C997, #000);
+            background: linear-gradient(to bottom, #008615, #000, #61CE70);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
         .dropdown-lang {
-          background: linear-gradient(to bottom, #20C997, #fff);
+          background: linear-gradient(to bottom, #008615, #fff);
           font-size: 75%;
         }
         .section-title {
             font-size: 2.5rem; /* Increased for impact */
             font-weight: 700;
-            color: #333333;
+            color: #012c11;
             margin-bottom: 1rem;
             text-align: center;
         }
         .section-subtitle {
             font-size: 1.25rem;
             font-weight: 500;
-            color: #555555;
+            color: #03491d;
             text-align: center;
             margin-bottom: 3rem;
         }
@@ -88,25 +90,25 @@
             white-space: nowrap; /* Prevent wrapping */
         }
         .pill-button.active {
-            background-color: #f9c5bd; /* Active accent color */
-            color: #333333;
+            background-color: #08ba4a; /* Active accent color */
+            color: #012c11;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .pill-button:hover:not(.active) {
             background-color: #d1d8e0; /* Slightly darker on hover */
         }
         .nav-link.active {
-            color: #f9c5bd; /* Active navigation link color */
+            color: #08ba4a; /* Active navigation link color */
             font-weight: 600;
         }
         .nav-link:hover {
-            color: #f9c5bd; /* Accent color on hover */
+            color: #08ba4a; /* Accent color on hover */
         }
         .scroll-to-top {
             position: fixed;
             bottom: 1.5rem;
             right: 1.5rem;
-            background-color: #20C997; /* Primary green */
+            background-color: #008615; /* Primary green */
             color: white;
             border-radius: 50%;
             padding: 0.75rem;
@@ -135,7 +137,7 @@
         /* Testimonial Card for Evidence Section (specific override for readability) */
         .testimonial-card.evidence-section {
             background-color: #ffffff; /* Ensure white background for better readability with dark text */
-            color: #333333; /* Ensure dark text */
+            color: #012c11; /* Ensure dark text */
             border: 1px solid #E0E6ED;
         }
     #testimonial-carousel {
@@ -189,12 +191,12 @@
             border: 1px solid #CBD5E0; /* Light border */
             border-radius: 0.5rem;
             font-size: 1rem;
-            color: #333333;
+            color: #012c11;
             background-color: #ffffff;
         }
         .form-button {
             padding: 0.75rem 1.5rem;
-            background-color: #20C997; /* Primary green */
+            background-color: #008615; /* Primary green */
             color: white;
             border-radius: 0.5rem;
             font-weight: 600;
@@ -220,7 +222,7 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            color: #333333;
+            color: #012c11;
         }
         .accordion-body {
             padding: 1rem 1.5rem;
@@ -234,12 +236,15 @@
             transform: rotate(180deg);
         }
         .emoji-symbol {
-          color: #20C997;
+          color: #008615;
           font-size: 1.2rem;
         }
         /* Z-index for modals to be on top of everything */
         .z-\[9999\] {
             z-index: 9999;
+        }
+		input,button,a {
+            outline: 0!important
         }
     </style>
 </head>
@@ -260,7 +265,7 @@
     <nav class="hidden md:block">
       <ul class="flex space-x-6 text-sm font-medium items-center">
         <li class="relative">
-          <button type="button" class="dropdown-toggle flex items-center text-gray-700 hover:text-accent transition-colors" data-dropdown="about">
+          <button type="button" class="dropdown-toggle flex items-center text-dark-gray hover:text-accent transition-colors" data-dropdown="about">
             <span  data-i18n="navAboutBowen">About Bowen</span> <span class="emoji-symbol">▼</span>
           </button>
           <div id="about" class="dropdown hidden absolute left-0 mt-2 w-48 rounded-xl bg-white/75 backdrop-blur-lg shadow-xl p-2 z-50">
@@ -272,7 +277,7 @@
         </li>
 
         <li class="relative">
-          <button type="button" class="dropdown-toggle flex items-center text-gray-700 hover:text-accent transition-colors" data-dropdown="applications">
+          <button type="button" class="dropdown-toggle flex items-center text-dark-gray hover:text-accent transition-colors" data-dropdown="applications">
             <span data-i18n="navApplications">Applications</span> <span class="emoji-symbol">▼</span>
           </button>
           <div id="applications" class="dropdown hidden absolute left-0 mt-2 w-48 rounded-xl bg-white/75 backdrop-blur-lg shadow-xl p-2 z-50">
@@ -283,22 +288,21 @@
         </li>
 
         <li class="relative">
-          <button type="button" class="dropdown-toggle flex items-center text-gray-700 hover:text-accent transition-colors" data-dropdown="more">
+          <button type="button" class="dropdown-toggle flex items-center text-dark-gray hover:text-accent transition-colors" data-dropdown="more">
             <span   data-i18n="navMore">More</span> <span class="emoji-symbol">▼</span>
           </button>
           <div id="more" class="dropdown hidden absolute left-0 mt-2 w-48 rounded-xl bg-white/75 backdrop-blur-lg shadow-xl p-2 z-50">
             <a href="#faq" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navFAQ">FAQ</a>
-            <a href="#evidence" class="dropdown-link block px-4
-py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navEvidence">Evidence</a>
+            <a href="#evidence" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navEvidence">Evidence</a>
             <a href="#safety" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navSafety">Safety</a>
             <a href="#training" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navTraining">Training</a>
           </div>
         </li>
         <li>
-          <a href="#appointments" class="nav-link text-medium-gray hover:text-accent transition-colors" data-i18n="appointmentsTitle">Appointments</a>
+          <a href="#appointments" class="nav-link text-dark-gray hover:text-accent transition-colors" data-i18n="appointmentsTitle">Appointments</a>
         </li>
         <li>
-          <a href="#contact" class="nav-link text-medium-gray hover:text-accent transition-colors" data-i18n="navContact">Contact</a>
+          <a href="#contact" class="nav-link text-dark-gray hover:text-accent transition-colors" data-i18n="navContact">Contact</a>
         </li>
       </ul>
     </nav>
@@ -745,12 +749,12 @@ Bowen Therapy is a complementary therapy and should not replace conventional med
             </div>
 
         <button id="prev-testimonial" class="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md hover:bg-gray-300 focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-dark-gray" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
         </button>
         <button id="next-testimonial" class="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md hover:bg-gray-300 focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-dark-gray" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
         </button>
@@ -1605,7 +1609,7 @@ Provides practitioner name, profile picture, verification, rating, business name
             </div>
 <div id="bookingSuccessModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-[9999]">
         <div class="bg-white p-8 rounded-lg shadow-xl max-w-sm w-full mx-4 text-center relative">
-            <button id="closeModalBtn" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+            <button id="closeModalBtn" class="absolute top-3 right-3 text-gray-500 hover:text-dark-gray">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -2239,7 +2243,7 @@ Provides practitioner name, profile picture, verification, rating, business name
                     datasets: [{
                         label: currentLangTranslations.benefitsChartTitle,
                         data: benefitsData,
-                        backgroundColor: '#20C997', // Primary green
+                        backgroundColor: '#008615', // Primary green
                         borderColor: '#17A37B',
                         borderWidth: 1
                     }]
