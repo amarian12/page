@@ -490,7 +490,10 @@
         "appointmentsDay2": "Tuesday",
         "appointmentsDay3": "Wednesday",
         "appointmentsDay4": "Thursday",
-        "appointmentsDay5": "Friday"
+        "appointmentsDay5": "Friday",
+        "modalSuccessTitle": "Booking Confirmed!",
+        "modalOkButton": "OK",
+        "mockBookingMessage": "You've selected {time} on {day}. Please proceed to the contact form to finalize your booking."
     },
     "ro": {
         "appTitle": "Un Ghid Interactiv al Terapiei Bowen",
@@ -983,7 +986,10 @@
         "appointmentsDay2": "Marți",
         "appointmentsDay3": "Miercuri",
         "appointmentsDay4": "Joi",
-        "appointmentsDay5": "Vineri"
+        "appointmentsDay5": "Vineri",
+        "modalSuccessTitle": "Rezervare Confirmată!",
+        "modalOkButton": "OK",
+        "mockBookingMessage": "Ați selectat {time} pe {day}. Vă rugăm să continuați la formularul de contact pentru a finaliza rezervarea."
     },
     "nl": {
         "appTitle": "Een Interactieve Gids voor Bowen Therapie",
@@ -1476,6 +1482,9 @@
         "appointmentsDay2": "Dinsdag",
         "appointmentsDay3": "Wednesday",
         "appointmentsDay4": "Donderdag",
-        "appointmentsDay5": "Vrijdag"
+        "appointmentsDay5": "Vrijdag",
+        "modalSuccessTitle": "Boeking Bevestigd!",
+        "modalOkButton": "OK",
+        "mockBookingMessage": "U heeft {time} op {day} geselecteerd. Ga verder naar het contactformulier om uw boeking af te ronden."
     }
 }

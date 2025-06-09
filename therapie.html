@@ -237,6 +237,10 @@
           color: #20C997;
           font-size: 1.2rem;
         }
+        /* Z-index for modals to be on top of everything */
+        .z-\[9999\] {
+            z-index: 9999;
+        }
     </style>
 </head>
 <body class="bg-secondary text-dark-gray">
@@ -1539,7 +1543,7 @@ Provides practitioner name, profile picture, verification, rating, business name
                 <h2 class="section-title" data-i18n="appointmentsTitle">Book Your Session</h2>
                 <p class="section-subtitle" data-i18n="appointmentsSubtitle">View our typical availability and schedule your appointment.</p>
 
-                <div class="card p-6 max-w-2xl mx-auto mb-8">
+                <div class="card p-6 max-w-3xl mx-auto mb-8">
                     <h3 class="text-xl font-semibold mb-4 text-primary" data-i18n="appointmentsPlannerTitle">Weekly Appointment Planner</h3>
                     <div id="weekly-planner" class="text-left">
                         <p class="mb-4 text-medium-gray" data-i18n="plannerInstructions">Select your preferred day and time from the available slots below. Times are approximate and subject to change.</p>
@@ -1567,6 +1571,18 @@ Provides practitioner name, profile picture, verification, rating, business name
                     <a href="#contact" class="form-button inline-block" data-i18n="appointmentsBookNowButton">Book Now</a>
                 </div>
             </div>
+<div id="bookingSuccessModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-[9999]">
+        <div class="bg-white p-8 rounded-lg shadow-xl max-w-sm w-full mx-4 text-center relative">
+            <button id="closeModalBtn" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="text-2xl font-bold text-primary mb-4" data-i18n="modalSuccessTitle">Booking Confirmed!</h3>
+            <p id="modalMessage" class="text-medium-gray mb-6"></p>
+            <button id="modalOkBtn" class="form-button w-full" data-i18n="modalOkButton">OK</button>
+        </div>
+    </div>
         </section>
 
         <section id="contact" class="bg-primary text-white py-20 px-4">
@@ -2008,11 +2024,45 @@ Provides practitioner name, profile picture, verification, rating, business name
                                     .replace('{day}', day)
                                 : `You've selected ${time} on ${day}. Please proceed to the contact form to finalize your booking.`;
                 
-                alert(message); // Display the mock booking message
-            }
-        }, { once: false }); // Use { once: false } to ensure event listener is not removed after first click
-    }
+           // Get modal elements
+                const bookingSuccessModal = document.getElementById('bookingSuccessModal');
+                const modalMessage = document.getElementById('modalMessage');
+                const closeModalBtn = document.getElementById('closeModalBtn');
+                const modalOkBtn = document.getElementById('modalOkBtn');
 
+                // Get the localized mock booking message and replace placeholders
+                const message = currentLangTranslations.mockBookingMessage
+                                ? currentLangTranslations.mockBookingMessage
+                                    .replace('{time}', time)
+                                    .replace('{day}', day)
+                                : `You've selected ${time} on ${day}. Please proceed to the contact form to finalize your booking.`;
+
+                // Display the message in the modal
+                modalMessage.textContent = message;
+
+                // Show the modal
+                bookingSuccessModal.classList.remove('hidden');
+
+                // Close modal functionality
+                const closeHandler = () => {
+                    bookingSuccessModal.classList.add('hidden');
+                    closeModalBtn.removeEventListener('click', closeHandler);
+                    modalOkBtn.removeEventListener('click', closeHandler);
+                    bookingSuccessModal.removeEventListener('click', outsideClickHandler); // Remove specific outside click listener
+                };
+
+                const outsideClickHandler = (event) => {
+                    if (event.target === bookingSuccessModal) { // Check if the click was on the modal overlay itself
+                        closeHandler();
+                    }
+                };
+
+                closeModalBtn.addEventListener('click', closeHandler);
+                modalOkBtn.addEventListener('click', closeHandler);
+                bookingSuccessModal.addEventListener('click', outsideClickHandler); // Listen for clicks on the overlay
+            }
+        }, { once: false }); // Keep this listener active for all clicks
+    }
         function renderTestimonials(lang) {
             const carouselContainer = document.getElementById('testimonial-carousel');
             carouselContainer.innerHTML = ''; // Clear existing testimonials
