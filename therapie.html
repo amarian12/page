@@ -1580,7 +1580,7 @@ Provides practitioner name, profile picture, verification, rating, business name
             </button>
             <h3 class="text-2xl font-bold text-primary mb-4" data-i18n="modalSuccessTitle">Booking Confirmed!</h3>
             <p id="modalMessage" class="text-medium-gray mb-6"></p>
-            <button id="modalOkBtn" class="form-button w-full" data-i18n="modalOkButton">OK</button>
+            <a href="#contact" id="modalOkBtn" class="form-button w-full inline-block" data-i18n="modalOkButton">OK</a>
         </div>
     </div>
         </section>
@@ -2051,8 +2051,10 @@ Provides practitioner name, profile picture, verification, rating, business name
                 };
 
                 closeModalBtn.addEventListener('click', closeHandler);
+                // Keep the modalOkBtn listener to close the modal, the href will handle navigation
                 modalOkBtn.addEventListener('click', closeHandler);
                 bookingSuccessModal.addEventListener('click', outsideClickHandler); // Listen for clicks on the overlay
+				
             }
         }, { once: false }); // Keep this listener active for all clicks
     }
