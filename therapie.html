@@ -2018,13 +2018,6 @@ Provides practitioner name, profile picture, verification, rating, business name
                 const day = clickedCell.dataset.day;
                 
                 // Get the localized mock booking message and replace placeholders
-                const message = currentLangTranslations.mockBookingMessage
-                                ? currentLangTranslations.mockBookingMessage
-                                    .replace('{time}', time)
-                                    .replace('{day}', day)
-                                : `You've selected ${time} on ${day}. Please proceed to the contact form to finalize your booking.`;
-                
-           // Get modal elements
                 const bookingSuccessModal = document.getElementById('bookingSuccessModal');
                 const modalMessage = document.getElementById('modalMessage');
                 const closeModalBtn = document.getElementById('closeModalBtn');
