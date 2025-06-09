@@ -480,6 +480,26 @@
                     "available",
                     "booked"
                 ]
+            },
+            {
+                "time": "17:00 - 17:30",
+                "availability": [
+                    "available",
+                    "booked",
+                    "available",
+                    "available",
+                    "booked"
+                ]
+            },
+            {
+                "time": "17:30 - 18:00",
+                "availability": [
+                    "available",
+                    "booked",
+                    "available",
+                    "available",
+                    "booked"
+                ]
             }
         ],
         "appointmentsNote": "Times shown are illustrative. For real-time booking, please use our contact form or preferred booking method.",
@@ -976,6 +996,26 @@
                     "available",
                     "booked"
                 ]
+            },
+            {
+                "time": "17:00 - 17:30",
+                "availability": [
+                    "available",
+                    "booked",
+                    "available",
+                    "available",
+                    "booked"
+                ]
+            },
+            {
+                "time": "17:30 - 18:00",
+                "availability": [
+                    "available",
+                    "booked",
+                    "available",
+                    "available",
+                    "booked"
+                ]
             }
         ],
         "appointmentsNote": "Orele afișate sunt ilustrative. Pentru rezervări în timp real, vă rugăm să utilizați formularul nostru de contact sau metoda de rezervare preferată.",
@@ -1465,6 +1505,26 @@
             },
             {
                 "time": "16:00 - 17:00",
+                "availability": [
+                    "available",
+                    "booked",
+                    "available",
+                    "available",
+                    "booked"
+                ]
+            },
+            {
+                "time": "17:00 - 17:30",
+                "availability": [
+                    "available",
+                    "booked",
+                    "available",
+                    "available",
+                    "booked"
+                ]
+            },
+            {
+                "time": "17:30 - 18:00",
                 "availability": [
                     "available",
                     "booked",
