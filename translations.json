@@ -9,6 +9,7 @@
         "navSession": "Session",
         "navApplications": "Applications",
         "navSport": "Bowen in Sport",
+        "navStressManagement": "Stress Management",
         "navAnimals": "Bowen for Animals",
         "navEvidence": "Evidence",
         "navFAQ": "FAQ",
@@ -554,7 +555,17 @@
         "categorySpecializedInfoShort": "Specialized",
         "cookieConsentText": "We use cookies to ensure you get the best experience on our website. By continuing to use this site, you agree to our use of cookies.",
         "cookieAcceptButton": "Accept",
-        "cookieDeclineButton": "Decline"
+        "cookieDeclineButton": "Decline",
+        "stressMgmtTitle": "Bowen Therapy in Stress Management",
+        "stressMgmtSubtitle": "Harnessing the Body's Innate Calm",
+        "stressMgmtANSHeading": "ANS Rebalancing",
+        "stressMgmtANSText": "Bowen Therapy's core mechanism involves shifting the body from a state of sympathetic ('fight, flight, or freeze') dominance to parasympathetic ('rest, relax, and repair') mode. This rebalancing of the Autonomic Nervous System is fundamental to deep relaxation and stress reduction.",
+        "stressMgmtEmotionalHeading": "Emotional & Physical Release",
+        "stressMgmtEmotionalText": "Stress often manifests physically as muscle tension, headaches, and digestive issues. Bowen helps release these physical symptoms. Furthermore, it can aid in emotional trauma release, fostering increased calmness, mental clarity, and overall emotional well-being.",
+        "stressMgmtSleepHeading": "Improved Sleep & Vitality",
+        "stressMgmtSleepText": "Chronic stress often disrupts sleep patterns and leads to fatigue. By promoting deep relaxation and nervous system balance, Bowen Therapy can significantly improve sleep quality and address insomnia, thereby enhancing daily energy levels and overall vitality.",
+        "stressMgmtChronicFatigueHeading": "Support for Chronic Fatigue & Burnout",
+        "stressMgmtChronicFatigueText": "For individuals experiencing chronic fatigue syndrome (CFS), ME, or burnout, Bowen Therapy offers significant complementary support. Its ability to foster deep relaxation and emotional balance helps to reset the body's stress response and improve energy levels, aiding in recovery."
     },
     "ro": {
         "appTitle": "Un Ghid Interactiv al Terapiei Bowen",
@@ -566,6 +577,7 @@
         "navSession": "Sesiune",
         "navApplications": "Aplicații",
         "navSport": "Bowen în Sport",
+        "navStressManagement": "Gestionarea Stresului",
         "navAnimals": "Bowen pentru Animale",
         "navEvidence": "Dovadă",
         "navFAQ": "Întrebări Frecvente",
@@ -1111,7 +1123,17 @@
         "categorySpecializedInfoShort": "Specializat",
         "cookieConsentText": "Folosim cookie-uri pentru a vă asigura cea mai bună experiență pe site-ul nostru. Continuând să utilizați acest site, sunteți de acord cu utilizarea cookie-urilor.",
         "cookieAcceptButton": "Acceptă",
-        "cookieDeclineButton": "Refuză"
+        "cookieDeclineButton": "Refuză",
+        "stressMgmtTitle": "Terapia Bowen în Gestionarea Stresului",
+        "stressMgmtSubtitle": "Valorificarea Calmulului Înnăscut al Corpului",
+        "stressMgmtANSHeading": "Reechilibrarea SNA",
+        "stressMgmtANSText": "Mecanismul de bază al Terapiei Bowen implică trecerea corpului dintr-o stare de dominanță simpatică ('luptă, fugi sau îngheață') la modul parasimpatic ('odihnă, relaxare și reparare'). Această reechilibrare a Sistemului Nervos Autonom este fundamentală pentru relaxarea profundă și reducerea stresului.",
+        "stressMgmtEmotionalHeading": "Eliberare Emoțională și Fizică",
+        "stressMgmtEmotionalText": "Stresul se manifestă adesea fizic prin tensiune musculară, dureri de cap și probleme digestive. Bowen ajută la eliberarea acestor simptome fizice. Mai mult, poate contribui la eliberarea traumei emoționale, favorizând un calm crescut, claritate mentală și o bunăstare emoțională generală.",
+        "stressMgmtSleepHeading": "Somn Îmbunătățit și Vitalitate",
+        "stressMgmtSleepText": "Stresul cronic perturbă adesea tiparele de somn și duce la oboseală. Prin promovarea relaxării profunde și a echilibrului sistemului nervos, Terapia Bowen poate îmbunătăți semnificativ calitatea somnului și poate aborda insomnia, sporind astfel nivelul de energie zilnic și vitalitatea generală.",
+        "stressMgmtChronicFatigueHeading": "Suport pentru Oboseala Cronică și Epuizare",
+        "stressMgmtChronicFatigueText": "Pentru persoanele care se confruntă cu sindromul de oboseală cronică (SOC), ME sau epuizare, Terapia Bowen oferă un suport complementar semnificativ. Capacitatea sa de a favoriza relaxarea profundă și echilibrul emoțional ajută la resetarea răspunsului la stres al corpului și la îmbunătățirea nivelului de energie, contribuind la recuperare."
     },
     "nl": {
         "appTitle": "Een Interactieve Gids voor Bowen Therapie",
@@ -1123,6 +1145,7 @@
         "navSession": "Sessie",
         "navApplications": "Toepassingen",
         "navSport": "Bowen in Sport",
+        "navStressManagement": "Stressmanagement",
         "navAnimals": "Bowen voor Dieren",
         "navEvidence": "Bewijs",
         "navFAQ": "Veelgestelde Vragen",
@@ -1668,7 +1691,16 @@
         "categorySpecializedInfoShort": "Gespecialiseerd",
         "cookieConsentText": "Wij gebruiken cookies om ervoor te zorgen dat u de beste ervaring op onze website krijgt. Door deze site te blijven gebruiken, stemt u in met ons gebruik van cookies.",
         "cookieAcceptButton": "Accepteren",
-        "cookieDeclineButton": "Weigeren"
-
+        "cookieDeclineButton": "Weigeren",
+        "stressMgmtTitle": "Bowen Therapie in Stressmanagement",
+        "stressMgmtSubtitle": "Gebruikmaken van de Aangeboren Rust van het Lichaam",
+        "stressMgmtANSHeading": "AZS Herstel",
+        "stressMgmtANSText": "Het kernmechanisme van Bowen Therapie omvat het verschuiven van het lichaam van een staat van sympathische ('vecht-, vlucht- of bevries') dominantie naar de parasympathische ('rust-, ontspan- en herstel') modus. Deze herbalancering van het Autonome Zenuwstelsel is fundamenteel voor diepe ontspanning en stressvermindering.",
+        "stressMgmtEmotionalHeading": "Emotionele & Fysieke Ontlading",
+        "stressMgmtEmotionalText": "Stress manifesteert zich vaak fysiek als spierspanning, hoofdpijn en spijsverteringsproblemen. Bowen helpt deze fysieke symptomen te verlichten. Bovendien kan het helpen bij emotionele traumaverwerking, wat leidt tot toegenomen kalmte, mentale helderheid en algeheel emotioneel welzijn.",
+        "stressMgmtSleepHeading": "Verbeterde Slaap & Vitaliteit",
+        "stressMgmtSleepText": "Chronische stress verstoort vaak slaappatronen en leidt tot vermoeidheid. Door diepe ontspanning en zenuwstelselbalans te bevorderen, kan Bowen Therapie de slaapkwaliteit aanzienlijk verbeteren en slapeloosheid aanpakken, waardoor de dagelijkse energieniveaus en algehele vitaliteit worden verbeterd.",
+        "stressMgmtChronicFatigueHeading": "Ondersteuning bij Chronische Vermoeidheid & Burnout",
+        "stressMgmtChronicFatigueText": "Voor personen die lijden aan chronisch vermoeidheidssyndroom (CVS), ME of burnout, biedt Bowen Therapie aanzienlijke complementaire ondersteuning. Het vermogen om diepe ontspanning en emotioneel evenwicht te bevorderen, helpt de stressreactie van het lichaam te resetten en de energieniveaus te verbeteren, wat bijdraagt aan herstel."
     }
 }
