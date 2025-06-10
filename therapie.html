@@ -2330,7 +2330,8 @@ Provides practitioner name, profile picture, verification, rating, business name
         allReferenceData.forEach(item => {
             const normalizedUrl = item.url.replace(/\/$/, ''); // Remove trailing slash for consistent uniqueness
 
-            if (!seenUrls.has(normalizedUrl) && item.category !== "Excluded") { // Exclude "Excluded" category
+            // Ensure categories like "Excluded" are indeed excluded from being processed
+            if (!seenUrls.has(normalizedUrl) && item.category !== "Excluded") {
                 if (!categorizedReferences[item.category]) {
                     categorizedReferences[item.category] = [];
                 }
@@ -2339,23 +2340,23 @@ Provides practitioner name, profile picture, verification, rating, business name
             }
         });
 
-        // Define a desired order for categories
+        // Define category order using internal keys that map directly to translation keys for headers
         const categoryOrder = [
-            "Evidence",
-            "Association",
-            "Directory",
-            "Training",
-            "General Info",
-            "Clinic",
-            "Specialized Info"
+            "Evidence",          // Maps to categoryEvidenceHeader
+            "Association",       // Maps to categoryAssociationHeader
+            "Directory",         // Maps to categoryDirectoryHeader
+            "Training",          // Maps to categoryTrainingHeader
+            "General Info",      // Maps to categoryGeneralInfoHeader
+            "Clinic",            // Maps to categoryClinicHeader
+            "Specialized Info"   // Maps to categorySpecializedInfoHeader
         ];
 
         // Populate the table
-        categoryOrder.forEach(categoryKey => {
-            const linksInAwaitingCategory = categorizedReferences[categoryKey];
-            if (linksInAwaitingCategory && linksInAwaitingCategory.length > 0) {
+        categoryOrder.forEach(categoryKey => { // categoryKey will be "Evidence", "Association", etc.
+            const linksInCurrentCategory = categorizedReferences[categoryKey];
+            if (linksInCurrentCategory && linksInCurrentCategory.length > 0) {
                 // Sort links within each category by domain name
-                linksInAwaitingCategory.sort((a, b) => {
+                linksInCurrentCategory.sort((a, b) => {
                     const getDomain = (url) => {
                         try {
                             const urlObj = new URL(url);
@@ -2367,19 +2368,26 @@ Provides practitioner name, profile picture, verification, rating, business name
                     return getDomain(a.url).localeCompare(getDomain(b.url));
                 });
 
+                // Get the correct localized header text for the category
+                // Use the categoryKey directly to form the translation key
+                const categoryHeaderTextKey = `category${categoryKey.replace(/\s/g, '')}Header`;
+                const categoryHeaderLocalizedText = currentLangTranslations[categoryHeaderTextKey] || categoryKey;
                 // Add category header row (optional, if you want a separate row for each category)
                 const categoryHeaderRow = document.createElement('tr');
                 categoryHeaderRow.innerHTML = `
                     <td colspan="2" class="p-2 border border-gray-300 font-bold bg-gray-100 text-primary">
-                        ${currentLangTranslations[`category${categoryKey.replace(/\s/g, '')}Header`] || categoryKey}
+                        ${categoryHeaderLocalizedText}
                     </td>
                 `;
                 referencesTableBody.appendChild(categoryHeaderRow);
 
-                linksInAwaitingCategory.forEach(refItem => {
+                linksInCurrentCategory.forEach(refItem => {
                     const row = document.createElement('tr');
+                    // Get the correct localized short category text
+                    const categoryShortTextKey = `category${categoryKey.replace(/\s/g, '')}Short`;
+                    const categoryShortLocalizedText = currentLangTranslations[categoryShortTextKey] || categoryKey;
                     row.innerHTML = `
-                        <td class="p-2 border border-gray-300 text-medium-gray" data-i18n="category${categoryKey.replace(/\s/g, '')}Short">${currentLangTranslations[`category${categoryKey.replace(/\s/g, '')}Short`] || categoryKey}</td>
+                        <td class="p-2 border border-gray-300 text-medium-gray" data-i18n="category${categoryKey.replace(/\s/g, '')}Short">${categoryShortLocalizedText}</td>
                         <td class="p-2 border border-gray-300">
                             <a href="${refItem.url}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline word-break-all">
                                 ${refItem.url} (<span class="text-dark-gray">${refItem.description}</span>)
@@ -2391,6 +2399,7 @@ Provides practitioner name, profile picture, verification, rating, business name
             }
         });
     }
+
         function updateCarouselNavigation() {
             const totalPages = Math.ceil(allTestimonials.length / testimonialsPerPage);
             const currentPage = Math.floor(currentTestimonialIndex / testimonialsPerPage) + 1;
