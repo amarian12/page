@@ -2360,6 +2360,8 @@ Provides practitioner name, profile picture, verification, rating, business name
         // Populate the list
         sortedReferences.forEach(refUrl => {
             const listItem = document.createElement('li');
+            listItem.classList.add('list-none'); // Apply Tailwind styling
+
             const anchor = document.createElement('a');
             anchor.href = refUrl;
             anchor.textContent = refUrl; // Display the full URL as text
