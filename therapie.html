@@ -2181,6 +2181,7 @@ Provides practitioner name, profile picture, verification, rating, business name
 
         referencesTableBody.innerHTML = ''; // Clear existing table rows
 
+        const currentLangTranslations = translations[lang] || translations.en;
         // Comprehensive list of relevant URLs with categories and descriptions
         const allReferenceData = [
             // Evidence-based & Research Articles
