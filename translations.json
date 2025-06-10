@@ -565,7 +565,18 @@
         "stressMgmtSleepHeading": "Improved Sleep & Vitality",
         "stressMgmtSleepText": "Chronic stress often disrupts sleep patterns and leads to fatigue. By promoting deep relaxation and nervous system balance, Bowen Therapy can significantly improve sleep quality and address insomnia, thereby enhancing daily energy levels and overall vitality.",
         "stressMgmtChronicFatigueHeading": "Support for Chronic Fatigue & Burnout",
-        "stressMgmtChronicFatigueText": "For individuals experiencing chronic fatigue syndrome (CFS), ME, or burnout, Bowen Therapy offers significant complementary support. Its ability to foster deep relaxation and emotional balance helps to reset the body's stress response and improve energy levels, aiding in recovery."
+        "stressMgmtChronicFatigueText": "For individuals experiencing chronic fatigue syndrome (CFS), ME, or burnout, Bowen Therapy offers significant complementary support. Its ability to foster deep relaxation and emotional balance helps to reset the body's stress response and improve energy levels, aiding in recovery.",
+        "navMotherBaby": "Mother & Baby",
+        "motherBabyTitle": "Bowen Therapy for Mother and Baby",
+        "motherBabySubtitle": "Gentle Support Through Pregnancy, Postnatal Recovery, and Childhood",
+        "motherBabyPregnancyHeading": "Support During Pregnancy",
+        "motherBabyPregnancyText": "Bowen Therapy is remarkably gentle and safe for all stages of pregnancy. It can effectively alleviate common discomforts such as back pain, pelvic pain (including SPD), sciatica, swollen ankles, restless legs, and heartburn. It also aids with morning sickness, fatigue, and can support optimal fetal positioning for birth, promoting a more comfortable and balanced pregnancy journey.",
+        "motherBabyPostnatalHeading": "Postnatal Recovery & Breastfeeding Support",
+        "motherBabyPostnatalText": "After childbirth, Bowen Therapy greatly assists postnatal recovery, whether from natural birth or C-section. It helps with perineal healing, pain relief, and pelvic realignment. For breastfeeding mothers, it can stimulate lactation, ease engorgement, and relieve discomfort from blocked ducts, helping new mothers physically and emotionally adapt to the demands of motherhood.",
+        "motherBabyInfantColicHeading": "Infant Colic & Reflux Relief",
+        "motherBabyInfantColicText": "For newborns and infants, Bowen Therapy is incredibly gentle and effective. It can significantly reduce discomfort from colic, reflux, excessive spitting up, and constipation by rebalancing the baby's delicate nervous system. This often leads to improved digestion, reduced fussiness, and better sleep patterns for both baby and parents.",
+        "motherBabyPediatricHeading": "Addressing Pediatric Issues",
+        "motherBabyPediatricText": "Beyond infant specific issues, Bowen Therapy offers support for a range of pediatric concerns including sleep issues, bedwetting, growing pains, and certain developmental or motor problems. Its non-invasive nature makes it ideal for children, promoting overall well-being, improved focus (e.g., in ADHD), and better emotional regulation by calming the nervous system."
     },
     "ro": {
         "appTitle": "Un Ghid Interactiv al Terapiei Bowen",
@@ -1133,7 +1144,18 @@
         "stressMgmtSleepHeading": "Somn Îmbunătățit și Vitalitate",
         "stressMgmtSleepText": "Stresul cronic perturbă adesea tiparele de somn și duce la oboseală. Prin promovarea relaxării profunde și a echilibrului sistemului nervos, Terapia Bowen poate îmbunătăți semnificativ calitatea somnului și poate aborda insomnia, sporind astfel nivelul de energie zilnic și vitalitatea generală.",
         "stressMgmtChronicFatigueHeading": "Suport pentru Oboseala Cronică și Epuizare",
-        "stressMgmtChronicFatigueText": "Pentru persoanele care se confruntă cu sindromul de oboseală cronică (SOC), ME sau epuizare, Terapia Bowen oferă un suport complementar semnificativ. Capacitatea sa de a favoriza relaxarea profundă și echilibrul emoțional ajută la resetarea răspunsului la stres al corpului și la îmbunătățirea nivelului de energie, contribuind la recuperare."
+        "stressMgmtChronicFatigueText": "Pentru persoanele care se confruntă cu sindromul de oboseală cronică (SOC), ME sau epuizare, Terapia Bowen oferă un suport complementar semnificativ. Capacitatea sa de a favoriza relaxarea profundă și echilibrul emoțional ajută la resetarea răspunsului la stres al corpului și la îmbunătățirea nivelului de energie, contribuind la recuperare.",
+        "navMotherBaby": "Mamă și Copil",
+        "motherBabyTitle": "Terapia Bowen pentru Mamă și Copil",
+        "motherBabySubtitle": "Suport Blând pe Parcursul Sarcinii, Recuperării Postnatale și Copilăriei",
+        "motherBabyPregnancyHeading": "Suport în Timpul Sarcinii",
+        "motherBabyPregnancyText": "Terapia Bowen este remarcabil de blândă și sigură pentru toate etapele sarcinii. Poate ameliora eficient disconfortul comun, cum ar fi durerile de spate, durerile pelvine (inclusiv SPD), sciatică, glezne umflate, sindromul picioarelor neliniștite și arsurile la stomac. De asemenea, ajută la grețurile matinale, oboseală și poate susține poziția optimă a fătului pentru naștere, promovând o călătorie de sarcină mai confortabilă și echilibrată.",
+        "motherBabyPostnatalHeading": "Recuperare Postnatală și Suport pentru Alăptare",
+        "motherBabyPostnatalText": "După naștere, Terapia Bowen ajută considerabil la recuperarea postnatală, fie după naștere naturală, fie după cezariană. Ajută la vindecarea perineală, ameliorarea durerii și realinierea pelvină. Pentru mamele care alăptează, poate stimula lactația, ușura angorjarea și ameliora disconfortul de la canalele blocate, ajutând noile mame să se adapteze fizic și emoțional la cerințele maternității.",
+        "motherBabyInfantColicHeading": "Ameliorarea Colicilor și Refluxului Infantil",
+        "motherBabyInfantColicText": "Pentru nou-născuți și sugari, Terapia Bowen este incredibil de blândă și eficientă. Poate reduce semnificativ disconfortul cauzat de colici, reflux, regurgitări excesive și constipație prin reechilibrarea sistemului nervos delicat al bebelușului. Acest lucru duce adesea la o digestie îmbunătățită, la o agitație redusă și la tipare de somn mai bune atât pentru bebeluș, cât și pentru părinți.",
+        "motherBabyPediatricHeading": "Abordarea Problemelor Pediatrice",
+        "motherBabyPediatricText": "Dincolo de problemele specifice sugarilor, Terapia Bowen oferă suport pentru o gamă largă de probleme pediatrice, inclusiv tulburări de somn, enurezis nocturn, dureri de creștere și anumite probleme de dezvoltare sau motorii. Natura sa non-invazivă o face ideală pentru copii, promovând bunăstarea generală, o concentrare îmbunătățită (de ex., în ADHD) și o reglare emoțională mai bună prin calmarea sistemului nervos."
     },
     "nl": {
         "appTitle": "Een Interactieve Gids voor Bowen Therapie",
@@ -1701,6 +1723,17 @@
         "stressMgmtSleepHeading": "Verbeterde Slaap & Vitaliteit",
         "stressMgmtSleepText": "Chronische stress verstoort vaak slaappatronen en leidt tot vermoeidheid. Door diepe ontspanning en zenuwstelselbalans te bevorderen, kan Bowen Therapie de slaapkwaliteit aanzienlijk verbeteren en slapeloosheid aanpakken, waardoor de dagelijkse energieniveaus en algehele vitaliteit worden verbeterd.",
         "stressMgmtChronicFatigueHeading": "Ondersteuning bij Chronische Vermoeidheid & Burnout",
-        "stressMgmtChronicFatigueText": "Voor personen die lijden aan chronisch vermoeidheidssyndroom (CVS), ME of burnout, biedt Bowen Therapie aanzienlijke complementaire ondersteuning. Het vermogen om diepe ontspanning en emotioneel evenwicht te bevorderen, helpt de stressreactie van het lichaam te resetten en de energieniveaus te verbeteren, wat bijdraagt aan herstel."
+        "stressMgmtChronicFatigueText": "Voor personen die lijden aan chronisch vermoeidheidssyndroom (CVS), ME of burnout, biedt Bowen Therapie aanzienlijke complementaire ondersteuning. Het vermogen om diepe ontspanning en emotioneel evenwicht te bevorderen, helpt de stressreactie van het lichaam te resetten en de energieniveaus te verbeteren, wat bijdraagt aan herstel.",
+        "navMotherBaby": "Moeder & Baby",
+        "motherBabyTitle": "Bowen Therapie voor Moeder en Baby",
+        "motherBabySubtitle": "Zachte Ondersteuning Gedurende Zwangerschap, Postnataal Herstel en Jeugd",
+        "motherBabyPregnancyHeading": "Ondersteuning Tijdens Zwangerschap",
+        "motherBabyPregnancyText": "Bowen Therapie is buitengewoon zacht en veilig voor alle stadia van de zwangerschap. Het kan veelvoorkomende ongemakken zoals rugpijn, bekkenpijn (inclusief SPD), ischias, gezwollen enkels, rusteloze benen en brandend maagzuur effectief verlichten. Het helpt ook bij ochtendmisselijkheid, vermoeidheid en kan de optimale foetale positionering voor de geboorte ondersteunen, wat een comfortabelere en evenwichtigere zwangerschapsreis bevordert.",
+        "motherBabyPostnatalHeading": "Postnataal Herstel & Borstvoedingsondersteuning",
+        "motherBabyPostnatalText": "Na de bevalling helpt Bowen Therapie aanzienlijk bij postnataal herstel, zowel na een natuurlijke bevalling als na een keizersnede. Het helpt bij perineale genezing, pijnverlichting en bekkenuitlijning. Voor moeders die borstvoeding geven, kan het de melkproductie stimuleren, stuwing verlichten en ongemak door verstopte melkkanalen verminderen, waardoor nieuwe moeders fysiek en emotioneel beter kunnen omgaan met de eisen van het moederschap.",
+        "motherBabyInfantColicHeading": "Verlichting bij Babykoliek & Reflux",
+        "motherBabyInfantColicText": "Voor pasgeborenen en zuigelingen is Bowen Therapie ongelooflijk zacht en effectief. Het kan het ongemak door koliek, reflux, overmatig spugen en constipatie aanzienlijk verminderen door het delicate zenuwstelsel van de baby opnieuw in balans te brengen. Dit leidt vaak tot een verbeterde spijsvertering, minder onrust en betere slaappatronen voor zowel baby als ouders.",
+        "motherBabyPediatricHeading": "Aanpak van Pediatrische Problemen",
+        "motherBabyPediatricText": "Naast babyspecifieke problemen biedt Bowen Therapie ondersteuning voor een reeks pediatrische zorgen, waaronder slaapproblemen, bedplassen, groeipijnen en bepaalde ontwikkelings- of motorische problemen. De niet-invasieve aard maakt het ideaal voor kinderen, bevordert het algehele welzijn, een verbeterde focus (bijv. bij ADHD), en een betere emotionele regulatie door het zenuwstelsel te kalmeren."
     }
 }
