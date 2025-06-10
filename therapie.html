@@ -2184,7 +2184,7 @@ Provides practitioner name, profile picture, verification, rating, business name
         const currentLangTranslations = translations[lang] || translations.en;
         // Comprehensive list of relevant URLs with categories and descriptions
         const allReferenceData = [
-            // Evidence-based & Research Articles
+            // Evidence-based & Research Articles (Expanded)
             { url: "https://pubmed.ncbi.nlm.nih.gov/38101480/", description: "PubMed: Effectiveness on Fibromyalgia Syndrome (2024 Study)", category: "Evidence" },
             { url: "https://jptcp.com/index.php/jptcp/article/view/4007", description: "JPTCP: Reducing Pain in Myofascial Pain Syndrome (2023 RCT)", category: "Evidence" },
             { url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10668497/", description: "PMC: Impact on Myofascial Neck Pain (2023 Clinical Trial)", category: "Evidence" },
@@ -2193,7 +2193,18 @@ Provides practitioner name, profile picture, verification, rating, business name
             { url: "https://www.asa.org.uk/advice-online/health-bowen-technique.html", description: "UK ASA: Advertising Standards Authority Rulings on Bowen Technique", category: "Evidence" },
             { url: "https://pubmed.ncbi.nlm.nih.gov/22087611/", description: "PubMed: General Review on Bowen Technique (2011)", category: "Evidence" },
             { url: "https://pubmed.ncbi.nlm.nih.gov/2819294/", description: "PubMed: Earlier Research on Bowen Technique (1988)", category: "Evidence" },
-            
+            { url: "https://www.healthline.com/health/bowen-therapy", description: "Healthline: Bowen Therapy Evidence & Overview", category: "Evidence" }, // Added
+            { url: "https://www.medicalnewstoday.com/articles/bowen-therapy", description: "Medical News Today: Bowen Therapy Effectiveness & Uses", category: "Evidence" }, // Added
+            { url: "https://www.painscience.com/articles/bowen-technique.php", description: "PainScience.com: Critical Review of Bowen Technique Evidence", category: "Evidence" }, // Added, critical but relevant for evidence
+            { url: "https://en.wikipedia.org/wiki/Bowen_technique", description: "Wikipedia: Bowen Technique (Scientific Basis Section)", category: "Evidence" }, // Added, Wikipedia often summarizes evidence
+            { url: "https://www.betterhealth.vic.gov.au/health/conditionsandtreatments/bowen-therapy", description: "Better Health Channel (AU): Bowen Therapy Effectiveness", category: "Evidence" }, // Added
+            { url: "https://www.caringforyoutreatments.com/the-pros-and-cons-of-bowen-technique/", description: "Caring For You: Pros & Cons of Bowen Technique (Evidence Context)", category: "Evidence" }, // Added
+            { url: "https://bowencollege.org.uk/what-is-bowen-therapy/", description: "Bowen College (UK): Research & Evidence Claims", category: "Evidence" }, // Added
+            { url: "https://www.brisbanelivewellclinic.com.au/potential-dangers-of-bowen-therapy/", description: "Brisbane Livewell Clinic (AU): Potential Dangers (Evidence Context)", category: "Evidence" }, // Added
+            { url: "https://lspadanang.com/bowen-therapy-uses-benefits-and-side-effects/", description: "LSP Adanang: Uses, Benefits & Side Effects (Evidence Review)", category: "Evidence" }, // Added
+            { url: "https://www.treatwiser.com/complementary-therapies/bowen-therapy-guide/", description: "Treatwiser: Bowen Therapy Guide (Includes Evidence)", category: "Evidence" }, // Added
+
+
             // Official Associations / Main Sites
             { url: "https://americanbowen.academy", description: "American Bowen Academy: Official Site (USA)", category: "Association" },
             { url: "https://www.bowen-technique.co.uk", description: "The Bowen Association UK: Official Site", category: "Association" },
@@ -2201,7 +2212,7 @@ Provides practitioner name, profile picture, verification, rating, business name
             { url: "https://bowen.asn.au", description: "Bowen Association Australia: Domain Alias", category: "Association" },
             { url: "https://www.bowentherapy.org.uk", description: "Bowen Therapy Professional Association (UK): Official Site", category: "Association" },
             { url: "https://www.bowenvereniging.nl/", description: "Bowen Vereniging (NL/BE): Official Association", category: "Association" },
-            { url: "https://bowen-therapy.ca/", description: "Bowen Therapy Canada: Official Site", category: "Association" }, // Corrected URL based on common practice
+            { url: "https://bowen-therapy.ca/", description: "Bowen Therapy Canada: Official Site", category: "Association" },
             { url: "http://www.bowtech.com", description: "Bowtech International: Official Site (Links to Associations Worldwide)", category: "Association" },
             { url: "https://www.bowensa.com/", description: "Bowen Association South Africa: Official Site", category: "Association" },
             { url: "https://www.bowen-academy.fr", description: "Bowen Academy France: Official Site", category: "Association" },
@@ -2218,9 +2229,9 @@ Provides practitioner name, profile picture, verification, rating, business name
             { url: "https://www.vind-een-therapeut.nl/therapie/bowentherapie.html", description: "Vind-een-Therapeut.nl (NL/BE): Bowen Therapy Directory", category: "Directory" },
             { url: "https://www.souladvisor.com/therapy/bowen-therapy", description: "SoulAdvisor (AU): Bowen Therapy Holistic Directory", category: "Directory" },
             { url: "https://www.bowtech.ro/therapists", description: "Bowtech Romania: Find a Therapist", category: "Directory" },
-            { url: "https://www.bowenvereniging.nl/find-a-therapist", description: "Bowen Vereniging (NL/BE): Find a Therapist", category: "Directory" }, // Assuming a specific find-a-therapist sub-page
+            { url: "https://www.bowenvereniging.nl/find-a-therapist", description: "Bowen Vereniging (NL/BE): Find a Therapist", category: "Directory" },
             { url: "https://bowen-therapy.ca/find-a-practitioner/", description: "Bowen Therapy Canada: Find a Practitioner", category: "Directory" },
-            { url: "https://bowenwork.com/find-a-practitioner/", description: "Bowenwork.com: Find a Practitioner (International)", category: "Directory" },
+            { url: "https://bowenwork.com/find-a-practitioner/", description: "Bowenwork International: Find a Practitioner", category: "Directory" },
             { url: "https://www.bowensa.com/practitioners/", description: "Bowen Association South Africa: Practitioner Directory", category: "Directory" },
             { url: "https://bowendirectory.com", description: "Bowen Directory: International Listings", category: "Directory" },
             { url: "https://www.bowen-directory.com", description: "Bowen Directory: Alternative Domain", category: "Directory" },
@@ -2238,12 +2249,12 @@ Provides practitioner name, profile picture, verification, rating, business name
             { url: "https://neurolaunch.com/bowen-therapy-training", description: "NeuroLaunch: Bowen Therapy Training Info", category: "Training" },
             { url: "https://elsdentraining.com", description: "Elsdon Training: Bowen Courses", category: "Training" },
             { url: "https://cursosterapiabowen.com/", description: "Cursos Terapia Bowen: Courses & Training (Spanish/Portuguese)", category: "Training" },
+            { url: "https://www.bowen-academy.fr", description: "Bowen Academy France: Official Site", category: "Training" },
 
 
             // General Information & Articles
-            { url: "https://en.wikipedia.org/wiki/Bowen_technique", description: "Wikipedia: Bowen Technique Overview", category: "General Info" },
             { url: "https://www.reginamaria.ro/utile/dictionar-de-afectiuni/terapia-bowen", description: "Regina Maria (RO): Bowen Therapy in Disease Dictionary", category: "General Info" },
-            { url: "https://www.drmax.ro/articole/terapia-bowen", description: "Dr. Max (RO): Articles on Bowen Therapy", category: "General Info" },
+            { url: "https://www.drmax.ro/articole/terapia-bowen", description: "Dr. Max (RO): Bowen Therapy Articles", category: "General Info" },
             { url: "https://bowen-terapie.cz/", description: "Bowen Terapie (CZ): Official Site", category: "General Info" },
             { url: "https://promama.ro/terapie-bowen/", description: "ProMama (RO): Bowen Therapy Info", category: "General Info" },
             { url: "https://www.medlife.ro/articole-medicale/terapia-bowen-ce-trebuie-sa-stii-despre-ea", description: "MedLife (RO): What You Need to Know About Bowen Therapy", category: "General Info" },
@@ -2256,7 +2267,6 @@ Provides practitioner name, profile picture, verification, rating, business name
             { url: "https://www.thermana.si/it/con-quale-frequenza-viene-eseguita-la-terapia-bowen", description: "Thermana (SI): Bowen Therapy Frequency Information", category: "General Info" },
             { url: "https://www.doc.ro/sanatate/terapia-bowen-principii-rezultate-riscuri", description: "Doc.ro (RO): Principles, Results, Risks of Bowen Therapy", category: "General Info" },
             { url: "https://www.theguardian.com/lifeandstyle/2000/feb/15/healthandwellbeing.health3", description: "The Guardian: Article on Bowen Therapy", category: "General Info" },
-            { url: "https://bowen.asn.au/why-choose-bowen-therapy/", description: "Bowen Association Australia: Why Choose Bowen Therapy?", category: "General Info" },
             { url: "https://www.feelbowen.com/therapies/the-bowen-technique", description: "Feel Bowen: The Bowen Technique Explained", category: "General Info" },
             { url: "https://thetherapycentre.com/product/bowen-technique/", description: "The Therapy Centre: Bowen Technique Overview", category: "General Info" },
             { url: "https://www.bowenhealth.nl/frameBodyUK.html", description: "Bowen Health (NL): International Information", category: "General Info" },
@@ -2271,39 +2281,18 @@ Provides practitioner name, profile picture, verification, rating, business name
             { url: "https://www.bowenvereniging.nl/bowen-therapie-voor-wie", description: "Bowen Vereniging (NL): For Whom is Bowen Therapy", category: "General Info" },
             { url: "https://www.vind-een-kinesist.be/kinesitherapie/wat-is-bowen-therapie.html", description: "Vind een Kinesist (BE): What is Bowen Therapy", category: "General Info" },
             { url: "https://www.passeportsante.net/fr/Therapies/Guide/Fiche.aspx?doc=technique_bowen_th", description: "Passeport Santé (FR): Bowen Technique Guide", category: "General Info" },
-            { url: "https://www.healthline.com/health/bowen-therapy", description: "Healthline: Bowen Therapy Guide", category: "General Info" },
             { url: "https://www.bowenbodywork.nl/", description: "Bowen Bodywork (NL): General Information", category: "General Info" },
             { url: "https://www.eigenkrachtpunt.nl/bowen-therapie", description: "Eigen Kracht Punt (NL): Bowen Therapy Info", category: "General Info" },
             { url: "https://www.bowenvereniging.nl/de-behandeling", description: "Bowen Vereniging (NL): The Treatment Process", category: "General Info" },
             { url: "https://bowenmethod.com/learn-about-bowen/", description: "Bowen Method: Learn About Bowen", category: "General Info" },
-            { url: "https://www.betterhealth.vic.gov.au/health/conditionsandtreatments/bowen-therapy", description: "Better Health Channel (AU): Bowen Therapy", category: "General Info" },
-            { url: "https://www.caringforyoutreatments.com/the-pros-and-cons-of-bowen-technique/", description: "Caring For You Treatments: Pros & Cons of Bowen", category: "General Info" },
-            { url: "https://www.painscience.com/articles/bowen-technique.php", description: "PainScience.com: Critical Perspective on Bowen", category: "General Info" },
-            { url: "https://bowencollege.org.uk/what-is-bowen-therapy/", description: "Bowen College (UK): What is Bowen Therapy?", category: "General Info" },
-            { url: "https://www.bowen.org.au/benefits/", description: "Bowen Association Australia: Benefits of Bowen Therapy", category: "General Info" },
-            { url: "https://www.bodhiholistichub.com/guides/natural-medicine/bowen-therapy", description: "Bodhi Holistic Hub: Bowen Therapy Guide", category: "General Info" },
-            { url: "https://bowensg.com/what-is-bowen-therapy-used-for-benefits-and-applications/", description: "Bowen SG (Singapore): Uses, Benefits & Applications", category: "General Info" },
             { url: "https://www.brisbanelivewellclinic.com.au/understanding-the-magic-of-bowen-technique/", description: "Brisbane Livewell Clinic (AU): Understanding Bowen Technique", category: "General Info" },
             { url: "https://neurolaunch.com/bowen-therapy/", description: "NeuroLaunch: Bowen Therapy Explained", category: "General Info" },
             { url: "https://www.naturaltherapypages.com.au/massage/bowen_technique", description: "Natural Therapy Pages (AU): Bowen Technique", category: "General Info" },
             { url: "https://thelist.gg/article/bowen", description: "The List (UK): General Bowen Therapy Information", category: "General Info" },
             { url: "https://www.therapy-directory.org.uk/articles/8-things-you-need-to-know-about-bowen-therapy", description: "Therapy Directory (UK): Key Info on Bowen Therapy", category: "General Info" },
-            { url: "https://gohealthywithbea.com/bowen-therapy/", description: "Go Healthy With Bea: Bowen Therapy", category: "General Info" },
-            { url: "https://www.brisbanelivewellclinic.com.au/potential-dangers-of-bowen-therapy/", description: "Brisbane Livewell Clinic (AU): Potential Dangers", category: "General Info" },
-            { url: "https://www.medicalnewstoday.com/articles/bowen-therapy", description: "Medical News Today: Bowen Therapy Information", category: "General Info" },
-            { url: "https://bowenbychristine.com.au/after-your-bowen-treatment/", description: "Bowen by Christine (AU): After Your Treatment", category: "General Info" },
-            { url: "https://lspadanang.com/bowen-therapy-uses-benefits-and-side-effects/", description: "LSP Adanang: Uses, Benefits & Side Effects", category: "General Info" },
-            { url: "https://www.treatwiser.com/complementary-therapies/bowen-therapy-guide/", description: "Treatwiser: Bowen Therapy Guide", category: "General Info" },
-            { url: "https://www.atbowentherapy.com.au/faq", description: "AT Bowen Therapy (AU): FAQ", category: "General Info" },
-            { url: "https://bowenhealthandbody.com/bowen-therapy/", description: "Bowen Health & Body: General Information", category: "General Info" },
-            { url: "https://boweninmotion.co.uk/bowen/", description: "Bowen In Motion (UK): General Info", category: "General Info" },
-            { url: "https://www.bowen-therapy.com", description: "Bowen Therapy.com: General Information Site", category: "General Info" },
-            { url: "https://bowenmethod.com", description: "Bowen Method: Official Site", category: "General Info" },
-            { url: "https://bowenmethodcenter.com", description: "Bowen Method Center: Official Site", category: "General Info" },
-            { url: "https://bowen-therapie.nl", description: "Bowen Therapie (NL): Official Site", category: "General Info" },
 
 
-            // Clinic & Practice Sites (Specific examples, not directories)
+            // Clinic & Practice Sites (Selected examples)
             { url: "https://bowenbrasov.ro/", description: "Bowen Brasov (RO): Clinic", category: "Clinic" },
             { url: "https://www.terapie-liberec.cz/bowen-terapie/", description: "Terapie Liberec (CZ): Clinic", category: "Clinic" },
             { url: "https://osteokineto.ro/servicii-terapii/terapia-bowen/", description: "OsteoKineto (RO): Bowen Therapy Services", category: "Clinic" },
@@ -2326,7 +2315,7 @@ Provides practitioner name, profile picture, verification, rating, business name
 
             // Specialized Information
             { url: "https://www.caninebowentechnique.com/find-a-cbt-practitioner/", description: "Canine Bowen Technique: Practitioner Directory", category: "Specialized Info" },
-            { url: "https://www.horseandhound.co.uk/horse-care/vet-advice/understanding-equine-bowen-therapy-40713", description: "Horse & Hound (UK): Equine Bowen Therapy", category: "Specialized Info" },
+            { url: "https://www.horseandhound.co.uk/horse-care/vet-advice/understanding-equine-bowen-therapy-40713", description: "Horse & Hound (UK): Equine Bowen Therapy", category: "Specialized Info" }
          ];
 
         // Process allReferenceData to group by category and ensure uniqueness by URL
@@ -2396,7 +2385,7 @@ Provides practitioner name, profile picture, verification, rating, business name
                         <td class="p-2 border border-gray-300 text-medium-gray" data-i18n="category${categoryKey.replace(/\s/g, '')}Short">${categoryShortLocalizedText}</td>
                         <td class="p-2 border border-gray-300">
                             <a href="${refItem.url}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline word-break-all">
-                                ${refItem.url} <br>(<span class="text-dark-gray">${refItem.description}</span>)
+                                ${refItem.url} <br><span class="text-dark-gray">${refItem.description}</span>
                             </a>
                         </td>
                     `;
