@@ -531,7 +531,11 @@
         "appointmentsDay5": "Friday",
         "modalSuccessTitle": "Booking Confirmed!",
         "modalOkButton": "OK",
-        "mockBookingMessage": "You've selected {time} on {day}. Please proceed to the contact form to finalize your booking."
+        "mockBookingMessage": "You've selected {time} on {day}. Please proceed to the contact form to finalize your booking.",
+        "referencesTitle": "References & External Links",
+        "referencesSubtitle": "Explore the sources and external resources mentioned throughout this guide.",
+        "navAppointments": "Appointments",
+        "navReferences": "References"
     },
     "ro": {
         "appTitle": "Un Ghid Interactiv al Terapiei Bowen",
@@ -1065,7 +1069,11 @@
         "appointmentsDay5": "Vineri",
         "modalSuccessTitle": "Rezervare Confirmată!",
         "modalOkButton": "OK",
-        "mockBookingMessage": "Ați selectat {time} pe {day}. Vă rugăm să continuați la formularul de contact pentru a finaliza rezervarea."
+        "mockBookingMessage": "Ați selectat {time} pe {day}. Vă rugăm să continuați la formularul de contact pentru a finaliza rezervarea.",
+        "referencesTitle": "Referințe și Legături Externe",
+        "referencesSubtitle": "Explorați sursele și resursele externe menționate în acest ghid.",
+        "navAppointments": "Programări",
+        "navReferences": "Referințe"
     },
     "nl": {
         "appTitle": "Een Interactieve Gids voor Bowen Therapie",
@@ -1599,6 +1607,10 @@
         "appointmentsDay5": "Vrijdag",
         "modalSuccessTitle": "Boeking Bevestigd!",
         "modalOkButton": "OK",
-        "mockBookingMessage": "U heeft {time} op {day} geselecteerd. Ga verder naar het contactformulier om uw boeking af te ronden."
+        "mockBookingMessage": "U heeft {time} op {day} geselecteerd. Ga verder naar het contactformulier om uw boeking af te ronden.",
+        "referencesTitle": "Referenties & Externe Links",
+        "referencesSubtitle": "Verken de bronnen en externe bronnen die in deze gids worden genoemd.",
+        "navAppointments": "Afspraken",
+        "navReferences": "Referenties"
     }
 }

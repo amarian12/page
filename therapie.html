@@ -299,10 +299,11 @@
             <a href="#evidence" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navEvidence">Evidence</a>
             <a href="#safety" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navSafety">Safety</a>
             <a href="#training" class="dropdown-link block px-4 py-2 text-dark-gray rounded-md hover:bg-white/50 transition-colors" data-i18n="navTraining">Training</a>
+			<a href="#references" class="nav-link text-medium-gray hover:text-accent transition-colors" data-i18n="navReferences">References</a>
           </div>
         </li>
         <li>
-          <a href="#appointments" class="nav-link text-dark-gray hover:text-accent transition-colors" data-i18n="appointmentsTitle">Appointments</a>
+          <a href="#appointments" class="nav-link text-dark-gray hover:text-accent transition-colors" data-i18n="navAppointments">Appointments</a>
         </li>
         <li>
           <a href="#contact" class="nav-link text-dark-gray hover:text-accent transition-colors" data-i18n="navContact">Contact</a>
@@ -343,7 +344,8 @@ data-i18n="navBenefits">Benefits</a>
     <a href="#safety" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors"
 data-i18n="navSafety">Safety</a>
     <a href="#training" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navTraining">Training</a>
-    <a href="#appointments" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="appointmentsTitle">Appointments</a>
+    <a href="#references" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navReferences">References</a>
+    <a href="#appointments" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navAppointments">Appointments</a>
     <a href="#contact" class="mobile-nav-link text-3xl font-medium text-dark-gray hover:text-accent transition-colors" data-i18n="navContact">Contact</a>
   </div>
 </header>
@@ -1577,6 +1579,16 @@ Provides practitioner name, profile picture, verification, rating, business name
             </div>
         </section>
 
+        <section id="references" class="container mx-auto px-4 py-20">
+            <h2 class="section-title" data-i18n="referencesTitle">References & External Links</h2>
+            <p class="section-subtitle" data-i18n="referencesSubtitle">Explore the sources and external resources mentioned throughout this guide.</p>
+
+            <div class="card p-6">
+                <ul id="references-list" class="list-disc pl-5 space-y-2 text-medium-gray">
+                    </ul>
+            </div>
+        </section>
+
         <section id="appointments" class="bg-gray-100 py-20 px-4">
             <div class="container mx-auto text-center">
                 <h2 class="section-title" data-i18n="appointmentsTitle">Book Your Session</h2>
@@ -2124,6 +2136,81 @@ Provides practitioner name, profile picture, verification, rating, business name
             updateCarouselNavigation();
         }
 
+    function populateReferences(lang) {
+        const referencesList = document.getElementById('references-list');
+        if (!referencesList) return;
+
+        referencesList.innerHTML = ''; // Clear existing references
+
+        const uniqueReferences = new Set(); // Use a Set to store unique URLs
+
+        // 1. Gather links from translations.json (study links and directory links)
+        const currentLangTranslations = translations[lang] || translations.en;
+
+        // Scientific Studies links
+        for (let i = 1; i <= 10; i++) { // Assuming study1 to study10
+            const studyLinkKey = `study${i}Link`;
+            if (currentLangTranslations[studyLinkKey]) {
+                uniqueReferences.add(currentLangTranslations[studyLinkKey]);
+            }
+        }
+
+        // Directory links
+        for (let i = 1; i <= 17; i++) { // Assuming directory1 to directory17
+            const directoryLinkKey = `directory${i}Link`; // Note: Your translations only define `directoryLink` once, not for each.
+                                                         // If `directoryLink` is always the same for all, then it's static.
+                                                         // We need the actual hrefs from the HTML for directory entries.
+        }
+
+        // Add hardcoded links from the HTML directly as they are not in translations.json
+        // These are the 'href' attributes from your <a> tags.
+        // I'll manually extract them from the relevant sections of your therapie.txt
+        const hardcodedLinks = [
+            "https://pubmed.ncbi.nlm.nih.gov/38101480/", // study1Link (Evidence)
+            "https://jptcp.com/index.php/jptcp/article/view/4007", // study2Link (Evidence)
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC10668497/", // study3Link (Evidence)
+            "https://www.researchgate.net/publication/51802277_What_is_Bowenwork_R_A_Systematic_Review", // study4Link (Evidence)
+            "https://www.health.gov.au/sites/default/files/2025-03/natural-therapies-review-2024-bowen-therapy-evidence-evaluation.pdf", // study5Link (Evidence)
+            "https://www.asa.org.uk/advice-online/health-bowen-technique.html", // study6Link (Evidence)
+            // Directory links (from your HTML `therapie.txt`)
+            "https://americanbowen.academy/find-a-practitioner", // directory1Link
+            "https://www.bowen-technique.co.uk/find-a-practitioner/", // directory2Link
+            "https://www.bowentherapy.org.uk/btpa-find-therapist.php", // directory3Link
+            "https://www.bowen.org.au/find-a-practitioner/", // directory4Link
+            "https://www.vind-een-therapeut.nl/therapie/bowentherapie.html", // directory5Link
+            "https://www.souladvisor.com/therapy/bowen-therapy", // directory6Link
+            "https://www.bowtech.ro/therapists", // directory7Link
+            "https://www.bowenvereniging.nl/", // directory8Link
+            "https://bowen-therapy.ca/find-a-practitioner/", // directory9Link
+            "https://bowenwork.com/find-a-practitioner/", // directory10Link
+            // New directories added in the last step
+            "http://www.bowtech.com/websiteproj/pages/about/Associations.aspx?associationid=7", // directory11Link (Germany)
+            "http://www.bowtech.com", // directory12Link (New Zealand - generic link)
+            "https://www.bowensa.com/practitioners/", // directory13Link (South Africa)
+            // The following refer to generic bowtech.com links, so won't add duplicates
+            // directory14Link (Austria), directory15Link (Switzerland), directory16Link (Portugal)
+            "https://www.caninebowentechnique.com/find-a-cbt-practitioner/" // directory17Link (Canine)
+        ];
+
+        hardcodedLinks.forEach(link => uniqueReferences.add(link));
+
+        // Sort references alphabetically for better presentation
+        const sortedReferences = Array.from(uniqueReferences).sort();
+
+        // Populate the list
+        sortedReferences.forEach(refUrl => {
+            const listItem = document.createElement('li');
+            const anchor = document.createElement('a');
+            anchor.href = refUrl;
+            anchor.textContent = refUrl;
+            anchor.target = "_blank"; // Open in new tab
+            anchor.rel = "noopener noreferrer"; // Security best practice
+            anchor.classList.add('text-primary', 'hover:underline'); // Apply styling
+            listItem.appendChild(anchor);
+            referencesList.appendChild(listItem);
+        });
+    }
+
         function updateCarouselNavigation() {
             const totalPages = Math.ceil(allTestimonials.length / testimonialsPerPage);
             const currentPage = Math.floor(currentTestimonialIndex / testimonialsPerPage) + 1;
@@ -2354,50 +2441,19 @@ Provides practitioner name, profile picture, verification, rating, business name
             // Initial render of testimonials after language is set
             renderTestimonials(initialLang); // Call to render testimonials specifically
 
-																							   
-																														   
-
-																				
-																		  
-																																		 
-																					   
-																									 
-															
-																						
-								  
-														  
-														
-					
-																									  
-																			  
-																				
-																
-															  
-																																		
-					
-										  
-																  
-																						  
-
-																	  
-									  
-																		
-																				  
-																   
-				 
-			   
-		 
-
-
             // Call renderPlannerTable on initial load
             renderPlannerTable(initialLang);
-			
+
+            // Call populateReferences on initial load
+            populateReferences(initialLang);
+		
             // Language selector change event
             langSelect.addEventListener('change', async (event) => {
                 const selectedLang = event.target.value;
                 applyTranslation(selectedLang);
                 renderTestimonials(selectedLang); // Call to re-render testimonials specifically on language change
                 renderPlannerTable(selectedLang); // Re-render planner table on language change
+                populateReferences(selectedLang); // Re-populate references to update surrounding text
             });
             // Mobile menu toggle
             mobileMenuButton.addEventListener('click', () => {
