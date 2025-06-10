@@ -262,6 +262,20 @@
     #references-list li:last-child {
         margin-bottom: 0; /* No margin after the last item */
     }
+
+    /* Ensure table headers are left-aligned */
+    #references-table-body th {
+        text-align: left;
+    }
+    /* Add basic styling for table cells */
+    #references-table-body td {
+        padding: 0.5rem;
+        border: 1px solid #E0E6ED; /* Light border matching cards */
+    }
+    /* Ensure the links within the table cells look correct */
+    #references-table-body a {
+        word-break: break-all; /* Break long URLs to prevent overflow */
+    }
     </style>
 </head>
 <body class="bg-secondary text-dark-gray">
@@ -1599,8 +1613,16 @@ Provides practitioner name, profile picture, verification, rating, business name
 
             <div class="card p-6">
                 <div id="references-scroll-container" class="max-h-96 overflow-y-auto border border-gray-300 rounded-md p-4">
-                    <ul id="references-list" class="list-disc pl-5 space-y-2 text-medium-gray">
-                    </ul>
+                    <table class="w-full border-collapse text-left">
+                        <thead>
+                            <tr class="bg-gray-200">
+                                <th class="p-2 border border-gray-300" data-i18n="referenceCategoryHeader">Category</th>
+                                <th class="p-2 border border-gray-300" data-i18n="referenceLinkHeader">Link / Description</th>
+                            </tr>
+                        </thead>
+                        <tbody id="references-table-body">
+                            </tbody>
+                    </table>
                 </div>
             </div>
         </section>
@@ -2154,225 +2176,221 @@ Provides practitioner name, profile picture, verification, rating, business name
 
     // Function to populate the references section
     function populateReferences(lang) {
-        const referencesList = document.getElementById('references-list');
-        if (!referencesList) return;
+        const referencesTableBody = document.getElementById('references-table-body');
+        if (!referencesTableBody) return;
 
-        referencesList.innerHTML = ''; // Clear existing references
+        referencesTableBody.innerHTML = ''; // Clear existing table rows
 
-        const uniqueReferences = new Set(); // Use a Set to store unique URLs
+        // Comprehensive list of relevant URLs with categories and descriptions
+        const allReferenceData = [
+            // Evidence-based & Research Articles
+            { url: "https://pubmed.ncbi.nlm.nih.gov/38101480/", description: "PubMed: Effectiveness on Fibromyalgia Syndrome (2024 Study)", category: "Evidence" },
+            { url: "https://jptcp.com/index.php/jptcp/article/view/4007", description: "JPTCP: Reducing Pain in Myofascial Pain Syndrome (2023 RCT)", category: "Evidence" },
+            { url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10668497/", description: "PMC: Impact on Myofascial Neck Pain (2023 Clinical Trial)", category: "Evidence" },
+            { url: "https://www.researchgate.net/publication/51802277_What_is_Bowenwork_R_A_Systematic_Review", description: "ResearchGate: Systematic Review of Bowenwork (2011/2022)", category: "Evidence" },
+            { url: "https://www.health.gov.au/sites/default/files/2025-03/natural-therapies-review-2024-bowen-therapy-evidence-evaluation.pdf", description: "Australian Dept. of Health: 2015 Review of Bowen Therapy", category: "Evidence" },
+            { url: "https://www.asa.org.uk/advice-online/health-bowen-technique.html", description: "UK ASA: Advertising Standards Authority Rulings on Bowen Technique", category: "Evidence" },
+            { url: "https://pubmed.ncbi.nlm.nih.gov/22087611/", description: "PubMed: Research on Bowen Technique (General)", category: "Evidence" },
+            { url: "https://pubmed.ncbi.nlm.nih.gov/2819294/", description: "PubMed: Earlier Bowen Therapy Research", category: "Evidence" },
 
-        // Add hardcoded links from the HTML and the new extensive list
-        const extensiveLinkList = [
-            // Existing links from 'Evidence' section (from previous interaction)
-            "https://pubmed.ncbi.nlm.nih.gov/38101480/", // study1Link (Fibromyalgia Syndrome)
-            "https://jptcp.com/index.php/jptcp/article/view/4007", // study2Link (Myofascial Pain Syndrome)
-            "https://pmc.ncbi.nlm.nih.gov/articles/PMC10668497/", // study3Link (Myofascial Neck Pain)
-            "https://www.researchgate.net/publication/51802277_What_is_Bowenwork_R_A_Systematic_Review", // study4Link (Systematic Review)
-            "https://www.health.gov.au/sites/default/files/2025-03/natural-therapies-review-2024-bowen-therapy-evidence-evaluation.pdf", // study5Link (Australian Gov Review)
-            "https://www.asa.org.uk/advice-online/health-bowen-technique.html", // study6Link (ASA Rulings)
 
-            // Existing Directory links (from your HTML therapie.txt)
-            "https://americanbowen.academy/find-a-practitioner",
-            "https://www.bowen-technique.co.uk/find-a-practitioner/",
-            "https://www.bowentherapy.org.uk/btpa-find-therapist.php",
-            "https://www.bowen.org.au/find-a-practitioner/",
-            "https://www.vind-een-therapeut.nl/therapie/bowentherapie.html",
-            "https://www.souladvisor.com/therapy/bowen-therapy",
-            "https://www.bowtech.ro/therapists",
-            "https://www.bowenvereniging.nl/",
-            "https://bowen-therapy.ca/find-a-practitioner/",
-            "https://bowenwork.com/find-a-practitioner/",
-            "http://www.bowtech.com/websiteproj/pages/about/Associations.aspx?associationid=7", // Germany
-            "http://www.bowtech.com", // Generic Bowtech link (for New Zealand, Austria, Switzerland, Portugal associations via their main site)
-            "https://www.bowensa.com/practitioners/", // South Africa
-            "https://www.caninebowentechnique.com/find-a-cbt-practitioner/", // Canine Bowen
+            // Practitioner Directories
+            { url: "https://americanbowen.academy/find-a-practitioner", description: "American Bowen Academy: Find a Practitioner (USA)", category: "Directory" },
+            { url: "https://www.bowen-technique.co.uk/find-a-practitioner/", description: "The Bowen Association UK: Find a Practitioner", category: "Directory" },
+            { url: "https://www.bowentherapy.org.uk/btpa-find-therapist.php", description: "Bowen Therapy Professional Association (UK): Therapist Register", category: "Directory" },
+            { url: "https://www.bowen.org.au/find-a-practitioner/", description: "Bowen Association Australia: Find a Practitioner", category: "Directory" },
+            { url: "https://www.vind-een-therapeut.nl/therapie/bowentherapie.html", description: "Vind-een-Therapeut.nl (NL/BE): Bowen Therapy Directory", category: "Directory" },
+            { url: "https://www.souladvisor.com/therapy/bowen-therapy", description: "SoulAdvisor (AU): Bowen Therapy Holistic Directory", category: "Directory" },
+            { url: "https://www.bowtech.ro/therapists", description: "Bowtech Romania: Find a Therapist", category: "Directory" },
+            { url: "https://www.bowenvereniging.nl/", description: "Bowen Vereniging (NL/BE): Official Association", category: "Directory" },
+            { url: "https://bowen-therapy.ca/find-a-practitioner/", description: "Bowen Therapy Canada: Find a Practitioner", category: "Directory" },
+            { url: "https://bowenwork.com/find-a-practitioner/", description: "Bowenwork International: Find a Practitioner", category: "Directory" },
+            { url: "http://www.bowtech.com/websiteproj/pages/about/Associations.aspx?associationid=7", description: "Bowtech Germany: Association List", category: "Directory" },
+            { url: "https://www.bowensa.com/practitioners/", description: "Bowen Association South Africa: Practitioner Directory", category: "Directory" },
+            { url: "https://www.caninebowentechnique.com/find-a-cbt-practitioner/", description: "Canine Bowen Technique: Find a Practitioner (Specialized)", category: "Directory" },
+            { url: "https://americanbowen.academy", description: "American Bowen Academy: Official Site", category: "Directory" },
+            { url: "https://www.bowen-technique.co.uk", description: "The Bowen Association UK: Official Site", category: "Directory" },
+            { url: "https://www.bowen.org.au", description: "Bowen Association Australia: Official Site", category: "Directory" },
+            { url: "https://bowen.asn.au", description: "Bowen Association Australia: Domain Alias", category: "Directory" },
+            { url: "https://www.bowentherapy.org.uk", description: "Bowen Therapy Professional Association (UK): Official Site", category: "Directory" },
+            { url: "https://bowendirectory.com", description: "Bowen Directory: International Listings", category: "Directory" },
+            { url: "https://www.bowen-directory.com", description: "Bowen Directory: Alternative Domain", category: "Directory" },
+            { url: "https://www.bowencollege.com/bowen-therapist-directory", description: "Bowen College: Therapist Directory", category: "Directory" },
+            { url: "https://www.bowen-therapy.com", description: "Bowen Therapy: General Information Site", category: "Directory" }, // Also general info
+            { url: "https://www.collegeofbowenstudies.co.uk", description: "College of Bowen Studies (UK): Official Site", category: "Directory" },
+            { url: "https://www.bowencollege.com", description: "Bowen College: Official Site", category: "Directory" }, // Also training
+            { url: "https://www.starbowentherapy.com", description: "Star Bowen Therapy: Training & Information", category: "Directory" }, // Also training
+            { url: "https://bowenmethod.com", description: "Bowen Method: Official Site", category: "Directory" }, // Also general info
+            { url: "https://bowenmethodcenter.com", description: "Bowen Method Center: Official Site", category: "Directory" },
+            { url: "https://bohm.ca/bowen-therapy", description: "Bohm Clinic (CA): Bowen Therapy Info", category: "Directory" }, // Also general info
+            { url: "https://www.thebowencenter.org", description: "The Bowen Center: Official Site (Family Systems Theory)", category: "General Info" }, // Keep for clarity, but mark as "Family Systems Theory"
+            { url: "https://www.canadianbowenworkschool.com", description: "Canadian Bowenwork School: Official Site", category: "Directory" }, // Also training
+            { url: "https://bowentraining.com.au", description: "Bowen Training Australia: Official Site", category: "Directory" }, // Also training
+            { url: "https://bowentrainingacademy.com", description: "Bowen Training Academy: Official Site", category: "Directory" }, // Also training
+            { url: "https://www.bowentechniquetraining.co.uk", description: "Bowen Technique Training (UK): Official Site", category: "Directory" }, // Also training
+            { url: "https://pedagogyeducation.com/Courses/Bowen-Therapy-Basics", description: "Pedagogy Education: Bowen Therapy Basics Course", category: "Training" },
+            { url: "https://neurolaunch.com/bowen-therapy-training", description: "NeuroLaunch: Bowen Therapy Training Info", category: "Training" },
+            { url: "https://elsdentraining.com", description: "Elsdon Training: Bowen Courses", category: "Training" },
+            { url: "https://www.bowen-academy.fr", description: "Bowen Academy France: Official Site", category: "Directory" }, // Also training
+            { url: "https://www.bowenpolska.pl", description: "Bowen Polska (PL): Official Site", category: "Directory" }, // Also general info
+            { url: "https://www.bowen-therapie.de", description: "Bowen Therapie Deutschland (DE): Official Site", category: "Directory" }, // Also general info
+            { url: "https://www.bowenbodywork.nl/", description: "Bowen Bodywork (NL): General Information", category: "General Info" },
+            { url: "https://bowen-therapie.nl", description: "Bowen Therapie (NL): Official Site", category: "Directory" }, // Also general info
+            { url: "https://praktijkvoorbowentherapie.nl", description: "Praktijk voor Bowen Therapie (NL): Clinic", category: "Clinic" }, // Specific clinic
+            { url: "https://gabinetbowen.pl", description: "Gabinet Bowen (PL): Clinic", category: "Clinic" }, // Specific clinic
+            { url: "https://clinicadayes.es", description: "Clinica Dayes (ES): Clinic", category: "Clinic" }, // Specific clinic
 
-            // New URLs from your provided list (de-duplicated and selected for general relevance)
-            "https://www.reginamaria.ro/utile/dictionar-de-afectiuni/terapia-bowen", // Romanian medical info
-            "https://www.drmax.ro/articole/terapia-bowen", // Romanian medical info
-            "https://bowen-terapie.cz/", // Czech association/info
-            "https://promama.ro/terapie-bowen/", // Romanian info
-            "https://www.medlife.ro/articole-medicale/terapia-bowen-ce-trebuie-sa-stii-despre-ea", // Romanian medical info
-            "https://www.terapiabowen.md/", // Moldova
-            "https://www.terapeutic.ro/marturii-terapia-bowen/", // Romanian testimonials
-            "https://www.bowenhealth.nl/", // Dutch clinic/info
-            "https://www.bowtech.ro/", // Romanian Bowtech
-            "https://www.quantica720.ro/service/terapie-bowen", // Romanian clinic
-            "https://www.cure-naturali.it/enciclopedia-naturale/terapie-naturali/benessere/bowen-therapy.html", // Italian natural therapy
-            "https://bowenbrasov.ro/", // Romanian clinic
-            "https://www.terapie-liberec.cz/bowen-terapie/", // Czech clinic
-            "https://www.thermana.si/it/con-quale-frequenza-viene-eseguita-la-terapia-bowen", // Slovenian info
-            "https://cursosterapiabowen.com/", // Spanish/Portuguese courses
-            "https://bowentraining.co.uk/", // UK training
-            "https://osteokineto.ro/servicii-terapii/terapia-bowen/", // Romanian clinic
-            "https://www.doc.ro/sanatate/terapia-bowen-principii-rezultate-riscuri", // Romanian medical info
-            "https://terapeutancamezei.ro/", // Romanian clinic
-            "https://www.armoniacenter.com/terapia-bowen/", // Romanian clinic
-            "https://www.terapeutalexandrachira.ro/", // Romanian clinic
-            "https://www.artaterapiei.ro/terapia-bowen/", // Romanian clinic
-            "https://bowencentrum.cz/co-je-to-ta-bowenova-technika/", // Czech info
-            "https://terapiabowentimisoara.ro/", // Romanian clinic
-            "https://terapie-bowen.com/", // Romanian info
-            "https://www.bowenhealthpractice.com.au/", // Australian practice
-            "https://bowtech.si/en/the-mechanism-of-bowen-technique/", // Slovenian info
-            "https://www.theguardian.com/lifeandstyle/2000/feb/15/healthandwellbeing.health3", // Guardian article
-            "https://bowen.asn.au/why-choose-bowen-therapy/", // Australian Association
-            "https://exeterosteopaths.co.uk/health-services/bowen-therapy/", // UK clinic
-            "https://en.wikipedia.org/wiki/Bowen_technique", // Wikipedia
-            "https://pubmed.ncbi.nlm.nih.gov/22087611/", // PubMed (general review)
-            "https://www.feelbowen.com/therapies/the-bowen-technique", // General info site
-            "https://thetherapycentre.com/product/bowen-technique/", // Clinic info
-            "https://alvitaplus.rs/en/techniques/bowen-technique/", // Serbian info
-            "https://bowenmethod.com/", // General info
-            "https://www.verywellmind.com/bowenian-family-therapy-definition-and-techniques-5214558", // VeryWellMind (note: this is about Bowen *Family Therapy*, not bodywork)
-            "https://www.bowenandwellbeing.com/what-is-the-bowen-technique/", // General info
-            "https://www.abalancedbodywithbowen.co.uk/the-technique/", // General info
-            "https://www.salonsaver.co.uk/beauty-insurance/what-is-the-bowen-technique", // Insurance perspective
-            "https://www.galwaybowentherapyclinic.com/", // Irish clinic
-            "https://www.caringforyoutreatments.com/benefits-of-bowen-therapy/", // General info
-            "https://bowentechnique.org.uk/the-bowen-technique-a-powerful-gentle-and-effective-therapy/", // General info
-            "https://www.thechoicetochange.co.uk/using-the-bowen-technique-relieves-pain/", // General info
-            "https://bowentherapybath.co.uk/bowen-treatment/", // UK clinic
-            "https://www.cmsfitnesscourses.co.uk/blog/the-bowen-technique/", // Fitness context
-            "https://bowen-backonyourfeet.co.uk/bowen-technique/", // UK clinic
-            "https://boweninstitute.ca/bowen-technique/", // Canadian institute
-            "https://atrhealth.nz/what-is-the-bowen-technique/", // New Zealand clinic
-            "https://www.bowenireland.com/the-bowen-technique/", // Irish association
-            "https://www.bowen-academy.com/method/method_effects/what_is_the_bowen_technique", // Academy info
-            "https://www.massagetique.com/blog/types/bowen-technique/", // Massage context
-            "https://www.bowenvereniging.nl/bowen-therapie-voor-wie", // Dutch association info
-            "https://www.vind-een-kinesist.be/kinesitherapie/wat-is-bowen-therapie.html", // Belgian info
-            "https://www.healinglighttherapies.co.uk/the-bowen-technique", // UK clinic
-            "https://healthnorth.co.uk/bowen-therapy/", // UK clinic
-            "https://www.thefinchleyclinic.co.uk/nojavascript/therapies/bowen/what.htm", // UK clinic
-            "https://www.passeportsante.net/fr/Therapies/Guide/Fiche.aspx?doc=technique_bowen_th", // French health info
-            "https://bowentechniqueindevon.com/what-is-the-bowen/", // UK clinic
-            "https://forum.scope.org.uk/discussion/72998/bowen-therapy", // Forum discussion
-            "https://forum.breastcancernow.org/t/bowen-therapy/19525/3", // Forum discussion
-            "https://www.asd-forum.org.uk/forum/index.php?/topic/21992-bowen-technique/", // Forum discussion
-            "https://forum.mssociety.org.uk/t/bowen-therapy/29411", // Forum discussion
-            "https://www.healthline.com/health/bowen-therapy", // Healthline
-            "https://www.bowenbodywork.nl/", // Dutch clinic
-            "https://www.eigenkrachtpunt.nl/bowen-therapie", // Dutch info
-            "https://www.bowenvereniging.nl/de-behandeling", // Dutch info
-            "https://bowenmethod.com/learn-about-bowen/", // General info
-            "https://www.betterhealth.vic.gov.au/health/conditionsandtreatments/bowen-therapy", // Australian Gov health
-            "https://www.caringforyoutreatments.com/the-pros-and-cons-of-bowen-technique/", // Pros/Cons
-            "https://thenextfind.com/bowen-therapy-pros-cons/", // Pros/Cons
-            "https://www.painscience.com/articles/bowen-technique.php", // Critical perspective
-            "https://bowencollege.org.uk/what-is-bowen-therapy/", // College info
-            "https://www.lovetoknow.com/parenting/kids/types-family-therapies-choose-from", // Family therapy context (likely irrelevant)
-            "https://www.choosingtherapy.com/bowenian-family-therapy/", // Family therapy context (likely irrelevant)
-            "https://www.bowen.org.au/benefits/", // Australian benefits
-            "https://www.bodhiholistichub.com/guides/natural-medicine/bowen-therapy", // Holistic guide
-            "https://bowensg.com/what-is-bowen-therapy-used-for-benefits-and-applications/", // General info
-            "https://pubmed.ncbi.nlm.nih.gov/2819294/", // PubMed (older study)
-            "https://www.brisbanelivewellclinic.com.au/understanding-the-magic-of-bowen-technique/", // Clinic article
-            "https://neurolaunch.com/bowen-therapy/", // Neurological context
-            "https://www.naturaltherapypages.com.au/massage/bowen_technique", // Directory context
-            "https://thelist.gg/article/bowen", // General info
-            "https://psycnet.apa.org/record/1990-31867-001", // APA (family therapy - likely irrelevant)
-            "https://www.therapy-directory.org.uk/articles/8-things-you-need-to-know-about-bowen-therapy", // UK directory blog
-            "https://gohealthywithbea.com/bowen-therapy/", // General info
-            "https://www.ipl.org/essay/The-Pros-And-Cons-Of-Trans-Generational-9CCB502932201CF0", // General essay (likely irrelevant)
-            "https://www.brisbanelivewellclinic.com.au/bowen-technique/", // Clinic info
-            "https://www.brisbanelivewellclinic.com.au/potential-dangers-of-bowen-therapy/", // Risks info
-            "https://www.medicalnewstoday.com/articles/bowen-therapy", // Medical news today
-            "https://bowenbychristine.com.au/after-your-bowen-treatment/", // Aftercare
-            "https://lspadanang.com/bowen-therapy-uses-benefits-and-side-effects/", // Benefits/side effects
-            "https://www.treatwiser.com/complementary-therapies/bowen-therapy-guide/", // Guide
-            "https://cris.maastrichtuniversity.nl/en/publications/patient-preferences-for-the-treatment-of-bowen-disease", // Research
-            "https://www.atbowentherapy.com.au/faq", // Australian FAQ
-            "https://www.horseandhound.co.uk/horse-care/vet-advice/understanding-equine-bowen-therapy-40713", // Equine
-            "https://bowenhealthandbody.com/bowen-therapy/", // General info
-            "https://boweninmotion.co.uk/bowen/", // General info
-            "https://americanbowen.academy", // Academy (top level)
-            "https://www.bowen-technique.co.uk", // UK Association (top level)
-            "https://www.bowen.org.au", // Australia Association (top level)
-            "https://bowen.asn.au", // Australia Association (top level)
-            "https://www.bowentherapy.org.uk", // UK Professional Association (top level)
-            "https://bowendirectory.com", // Directory
-            "https://www.bowen-directory.com", // Directory
-            "https://www.bowencollege.com/bowen-therapist-directory", // College directory
-            "https://www.mcbridepainclinic.com/find-practitioner", // Clinic (already in integration list context)
-            "https://www.bowen-therapy.com", // General info site
-            "https://www.collegeofbowenstudies.co.uk", // UK College
-            "https://www.bowencollege.com", // College
-            "https://www.starbowentherapy.com", // Training
-            "https://bowenmethodcenter.com", // Method Center
-            "https://bohm.ca/bowen-therapy", // Canadian
-            "https://www.canadianbowenworkschool.com", // Canadian school
-            "https://bowentraining.com.au", // Australian training
-            "https://bowentrainingacademy.com", // Training Academy
-            "https://www.bowentechniquetraining.co.uk", // UK Training
-            "https://pedagogyeducation.com/Courses/Bowen-Therapy-Basics", // Courses
-            "https://neurolaunch.com/bowen-therapy-training", // Training
-            "https://elsdentraining.com", // Training
-            "https://www.bowen-academy.fr", // French academy
-            "https://www.bowenpolska.pl", // Poland
-            "https://www.bowen-therapie.de", // Germany
-            "https://www.bowenbodywork.nl", // Dutch
-            "https://bowen-therapie.nl", // Dutch
-            "https://praktijkvoorbowentherapie.nl", // Dutch clinic
-            "https://gabinetbowen.pl", // Polish clinic
-            "https://clinicadayes.es", // Spanish clinic
-            "https://www.vind-een-kinesist.be/kinesitherapie/wat-is-bowen-therapie.html", // Belgian
-            "https://www.norfolkbowentherapy.co.uk/faq/", // UK FAQ
-            "https://nzbowentherapy.org.nz/frequently-asked-questions/", // NZ FAQ
-            "https://randysavard.com/frequently-asked-questions/", // FAQ
-            "http://www.bowentherapies.co.uk/bowen_technique_faq.html", // FAQ
-            "http://www.bardleybowen.co.uk/human-bowen/frequently-asked-questions/", // FAQ
-            "https://mybowentherapy.com/faq/", // FAQ
-            "https://silviasky.co.uk/faq.html", // FAQ
-            "https://www.bowenireland.com/faqs/", // Irish FAQ
-            "https://matthart.com.au/frequently-asked-questions-about-bowen-therapy/", // Australian FAQ
-            "https://www.simplybowen.com/faqs.html", // UK FAQ
-            "https://www.almontebowentherapy.ca/faq/", // Canadian FAQ
-            "https://www.lorrainewoodbowen.co.uk/faq", // UK FAQ
-            "https://www.lovetoknow.com/parenting/kids/types-family-therapies-choose-from" // Family therapy (excluding this, as irrelevant)
+
+            // General Info, Articles, Education & Clinics
+            { url: "https://promama.ro/terapie-bowen/", description: "ProMama (RO): Bowen Therapy Info", category: "General Info" },
+            { url: "https://www.quantica720.ro/service/terapie-bowen", description: "Quantica720 (RO): Bowen Therapy Services", category: "Clinic" },
+            { url: "https://www.cure-naturali.it/enciclopedia-naturale/terapie-naturali/benessere/bowen-therapy.html", description: "Cure Naturali (IT): Bowen Therapy Encyclopedia", category: "General Info" },
+            { url: "https://bowenbrasov.ro/", description: "Bowen Brasov (RO): Clinic", category: "Clinic" },
+            { url: "https://www.terapie-liberec.cz/bowen-terapie/", description: "Terapie Liberec (CZ): Clinic", category: "Clinic" },
+            { url: "https://www.thermana.si/it/con-quale-frequenza-viene-eseguita-la-terapia-bowen", description: "Thermana (SI): Bowen Therapy Frequency Info", category: "General Info" },
+            { url: "https://osteokineto.ro/servicii-terapii/terapia-bowen/", description: "OsteoKineto (RO): Bowen Therapy Services", category: "Clinic" },
+            { url: "https://www.doc.ro/sanatate/terapia-bowen-principii-rezultate-riscuri", description: "Doc.ro (RO): Principles, Results, Risks of Bowen Therapy", category: "General Info" },
+            { url: "https://terapeutancamezei.ro/", description: "Terapeut Ancamezei (RO): Clinic", category: "Clinic" },
+            { url: "https://www.armoniacenter.com/terapia-bowen/", description: "Armonia Center (RO): Bowen Therapy Clinic", category: "Clinic" },
+            { url: "https://www.terapeutalexandrachira.ro/", description: "Terapeut Alexandra Chira (RO): Clinic", category: "Clinic" },
+            { url: "https://www.artaterapiei.ro/terapia-bowen/", description: "Arta Terapiei (RO): Bowen Therapy Clinic", category: "Clinic" },
+            { url: "https://bowencentrum.cz/co-je-to-ta-bowenova-technika/", description: "Bowen Centrum (CZ): What is Bowen Technique", category: "General Info" },
+            { url: "https://terapiabowentimisoara.ro/", description: "Terapia Bowen Timisoara (RO): Clinic", category: "Clinic" },
+            { url: "https://terapie-bowen.com/", description: "Terapie Bowen (RO): General Info", category: "General Info" }, // Already exists above
+            { url: "https://www.bowenhealthpractice.com.au/", description: "Bowen Health Practice (AU): Clinic & Information", category: "Clinic" }, // Already exists above
+            { url: "https://www.theguardian.com/lifeandstyle/2000/feb/15/healthandwellbeing.health3", description: "The Guardian: Health & Wellbeing Article", category: "General Info" },
+            { url: "https://bowen.asn.au/why-choose-bowen-therapy/", description: "Bowen Association Australia: Why Choose Bowen Therapy?", category: "General Info" },
+            { url: "https://exeterosteopaths.co.uk/health-services/bowen-therapy/", description: "Exeter Osteopaths (UK): Bowen Therapy Services", category: "Clinic" },
+            { url: "https://www.healthline.com/health/bowen-therapy", description: "Healthline: Bowen Therapy Guide", category: "General Info" },
+            { url: "https://www.bowenbodywork.nl/", description: "Bowen Bodywork (NL): General Information", category: "General Info" }, // Already exists above
+            { url: "https://www.eigenkrachtpunt.nl/bowen-therapie", description: "Eigen Kracht Punt (NL): Bowen Therapy Info", category: "General Info" },
+            { url: "https://www.bowenvereniging.nl/de-behandeling", description: "Bowen Vereniging (NL): The Treatment Process", category: "General Info" },
+            { url: "https://bowenmethod.com/learn-about-bowen/", description: "Bowen Method: Learn About Bowen", category: "General Info" },
+            { url: "https://www.betterhealth.vic.gov.au/health/conditionsandtreatments/bowen-therapy", description: "Better Health Channel (AU): Bowen Therapy", category: "General Info" },
+            { url: "https://www.caringforyoutreatments.com/the-pros-and-cons-of-bowen-technique/", description: "Caring For You Treatments: Pros & Cons of Bowen", category: "General Info" },
+            { url: "https://www.painscience.com/articles/bowen-technique.php", description: "PainScience.com: Critical Perspective on Bowen Technique", category: "General Info" },
+            { url: "https://bowencollege.org.uk/what-is-bowen-therapy/", description: "Bowen College (UK): What is Bowen Therapy?", category: "General Info" },
+            { url: "https://www.bowen.org.au/benefits/", description: "Bowen Association Australia: Benefits of Bowen Therapy", category: "General Info" },
+            { url: "https://www.bodhiholistichub.com/guides/natural-medicine/bowen-therapy", description: "Bodhi Holistic Hub: Bowen Therapy Guide", category: "General Info" },
+            { url: "https://bowensg.com/what-is-bowen-therapy-used-for-benefits-and-applications/", description: "Bowen SG (Singapore): Uses, Benefits & Applications", category: "General Info" },
+            { url: "https://www.brisbanelivewellclinic.com.au/understanding-the-magic-of-bowen-technique/", description: "Brisbane Livewell Clinic (AU): Understanding Bowen Technique", category: "Clinic" },
+            { url: "https://neurolaunch.com/bowen-therapy/", description: "NeuroLaunch: Bowen Therapy Explained", category: "General Info" },
+            { url: "https://www.naturaltherapypages.com.au/massage/bowen_technique", description: "Natural Therapy Pages (AU): Bowen Technique", category: "General Info" },
+            { url: "https://thelist.gg/article/bowen", description: "The List (UK): General Bowen Therapy Information", category: "General Info" },
+            { url: "https://www.therapy-directory.org.uk/articles/8-things-you-need-to-know-about-bowen-therapy", description: "Therapy Directory (UK): Key Info on Bowen Therapy", category: "General Info" },
+            { url: "https://gohealthywithbea.com/bowen-therapy/", description: "Go Healthy With Bea: Bowen Therapy", category: "General Info" },
+            { url: "https://www.brisbanelivewellclinic.com.au/bowen-technique/", description: "Brisbane Livewell Clinic (AU): Bowen Technique", category: "Clinic" },
+            { url: "https://www.brisbanelivewellclinic.com.au/potential-dangers-of-bowen-therapy/", description: "Brisbane Livewell Clinic (AU): Potential Dangers", category: "General Info" },
+            { url: "https://www.medicalnewstoday.com/articles/bowen-therapy", description: "Medical News Today: Bowen Therapy Information", category: "General Info" },
+            { url: "https://bowenbychristine.com.au/after-your-bowen-treatment/", description: "Bowen by Christine (AU): After Your Treatment", category: "General Info" },
+            { url: "https://lspadanang.com/bowen-therapy-uses-benefits-and-side-effects/", description: "LSP Adanang: Uses, Benefits & Side Effects", category: "General Info" },
+            { url: "https://www.treatwiser.com/complementary-therapies/bowen-therapy-guide/", description: "Treatwiser: Bowen Therapy Guide", category: "General Info" },
+            { url: "https://www.atbowentherapy.com.au/faq", description: "AT Bowen Therapy (AU): FAQ", category: "General Info" },
+            { url: "https://www.horseandhound.co.uk/horse-care/vet-advice/understanding-equine-bowen-therapy-40713", description: "Horse & Hound (UK): Equine Bowen Therapy", category: "Specialized Info" }, // New category
+            { url: "https://bowenhealthandbody.com/bowen-therapy/", description: "Bowen Health & Body: General Information", category: "General Info" },
+            { url: "https://boweninmotion.co.uk/bowen/", description: "Bowen In Motion (UK): General Info", category: "General Info" },
+            { url: "https://americanbowen.academy", description: "American Bowen Academy: Official Site", category: "Association" }, // Changed to Association
+            { url: "https://www.bowen-technique.co.uk", description: "Bowen Technique UK: Official Site", category: "Association" },
+            { url: "https://www.bowen.org.au", description: "Bowen Association Australia: Official Site", category: "Association" },
+            { url: "https://bowen.asn.au", description: "Bowen Association Australia: Domain Alias", category: "Association" }, // Keep for sorting
+            { url: "https://www.bowentherapy.org.uk", description: "Bowen Therapy Professional Association (UK): Official Site", category: "Association" },
+            { url: "https://bowendirectory.com", description: "Bowen Directory: International Listings", category: "Directory" },
+            { url: "https://www.bowen-directory.com", description: "Bowen Directory: Alternative Domain", category: "Directory" }, // Keep for sorting
+            { url: "https://www.bowencollege.com/bowen-therapist-directory", description: "Bowen College: Therapist Directory", category: "Directory" },
+            { url: "https://www.bowen-therapy.com", description: "Bowen Therapy.com: General Information Site", category: "General Info" },
+            { url: "https://www.collegeofbowenstudies.co.uk", description: "College of Bowen Studies (UK): Official Site", category: "Training" }, // Changed to Training
+            { url: "https://www.bowencollege.com", description: "Bowen College: Official Site", category: "Training" },
+            { url: "https://www.starbowentherapy.com", description: "Star Bowen Therapy: Training & Info", category: "Training" },
+            { url: "https://bowenmethod.com", description: "Bowen Method: Official Site", category: "General Info" }, // Also general info
+            { url: "https://bowenmethodcenter.com", description: "Bowen Method Center: Official Site", category: "General Info" },
+            { url: "https://bohm.ca/bowen-therapy", description: "Bohm Clinic (CA): Bowen Therapy Info", category: "Clinic" }, // Specific clinic
+            { url: "https://en.wikipedia.org/wiki/Bowen_technique", description: "Wikipedia: Bowen Technique Overview", category: "General Info" },
+            { url: "https://www.thebowencenter.org", description: "The Bowen Center: Family Systems Theory (Not Bodywork)", category: "Excluded" }, // Explicitly exclude
+            { url: "https://www.canadianbowenworkschool.com", description: "Canadian Bowenwork School: Official Site", category: "Training" },
+            { url: "https://bowentraining.com.au", description: "Bowen Training Australia: Official Site", category: "Training" },
+            { url: "https://bowentrainingacademy.com", description: "Bowen Training Academy: Official Site", category: "Training" },
+            { url: "https://www.bowentechniquetraining.co.uk", description: "Bowen Technique Training (UK): Official Site", category: "Training" },
+            { url: "https://pedagogyeducation.com/Courses/Bowen-Therapy-Basics", description: "Pedagogy Education: Bowen Therapy Basics Course", category: "Training" },
+            { url: "https://neurolaunch.com/bowen-therapy-training", description: "NeuroLaunch: Bowen Therapy Training Info", category: "Training" },
+            { url: "https://elsdentraining.com", description: "Elsdon Training: Bowen Courses", category: "Training" },
+            { url: "https://www.bowen-academy.fr", description: "Bowen Academy France: Official Site", category: "Training" },
+            { url: "https://www.bowenpolska.pl", description: "Bowen Polska (PL): Official Site", category: "Association" },
+            { url: "https://www.bowen-therapie.de", description: "Bowen Therapie Deutschland (DE): Official Site", category: "Association" },
+            { url: "https://www.bowenbodywork.nl/", description: "Bowen Bodywork (NL): General Information", category: "General Info" }, // Already listed
+            { url: "https://bowen-therapie.nl", description: "Bowen Therapie (NL): Official Site", category: "General Info" },
+            { url: "https://praktijkvoorbowentherapie.nl", description: "Praktijk voor Bowen Therapie (NL): Clinic", category: "Clinic" }, // Already listed
+            { url: "https://gabinetbowen.pl", description: "Gabinet Bowen (PL): Clinic", category: "Clinic" }, // Already listed
+            { url: "https://clinicadayes.es", description: "Clinica Dayes (ES): Clinic", category: "Clinic" } // Already listed
         ];
 
-        // Filter and add only unique, general Bowen therapy related links
-        extensiveLinkList.forEach(link => {
-            // Exclude links that are clearly about family therapy
-            if (!link.includes("family-therapy") && !link.includes("Bowenian")) {
-                uniqueReferences.add(link);
+        // Process allReferenceData to group by category and ensure uniqueness by URL
+        const categorizedReferences = {}; // Object to hold categories and their links
+        const seenUrls = new Set();
+
+        allReferenceData.forEach(item => {
+            const normalizedUrl = item.url.replace(/\/$/, ''); // Remove trailing slash for consistent uniqueness
+
+            if (!seenUrls.has(normalizedUrl) && item.category !== "Excluded") { // Exclude "Excluded" category
+                if (!categorizedReferences[item.category]) {
+                    categorizedReferences[item.category] = [];
+                }
+                categorizedReferences[item.category].push({ url: item.url, description: item.description });
+                seenUrls.add(normalizedUrl);
             }
         });
 
-        // Custom sort function to sort by domain name
-        const sortedReferences = Array.from(uniqueReferences).sort((a, b) => {
-            const getDomain = (url) => {
-                try {
-                    const urlObj = new URL(url);
-                    return urlObj.hostname.replace(/^www\./, ''); // Remove 'www.' for better sorting
-                } catch (e) {
-                    return url; // Return original if URL is invalid, though this should not happen with valid links
-                }
-            };
+        // Define a desired order for categories
+        const categoryOrder = [
+            "Evidence",
+            "Association",
+            "Directory",
+            "Training",
+            "General Info",
+            "Clinic",
+            "Specialized Info"
+        ];
 
-            const domainA = getDomain(a);
-            const domainB = getDomain(b);
+        // Populate the table
+        categoryOrder.forEach(categoryKey => {
+            const linksInAwaitingCategory = categorizedReferences[categoryKey];
+            if (linksInAwaitingCategory && linksInAwaitingCategory.length > 0) {
+                // Sort links within each category by domain name
+                linksInAwaitingCategory.sort((a, b) => {
+                    const getDomain = (url) => {
+                        try {
+                            const urlObj = new URL(url);
+                            return urlObj.hostname.replace(/^www\./, '');
+                        } catch (e) {
+                            return url;
+                        }
+                    };
+                    return getDomain(a.url).localeCompare(getDomain(b.url));
+                });
 
-            return domainA.localeCompare(domainB);
-        });
+                // Add category header row (optional, if you want a separate row for each category)
+                const categoryHeaderRow = document.createElement('tr');
+                categoryHeaderRow.innerHTML = `
+                    <td colspan="2" class="p-2 border border-gray-300 font-bold bg-gray-100 text-primary">
+                        ${currentLangTranslations[`category${categoryKey.replace(/\s/g, '')}Header`] || categoryKey}
+                    </td>
+                `;
+                referencesTableBody.appendChild(categoryHeaderRow);
 
-        // Populate the list
-        sortedReferences.forEach(refUrl => {
-            const listItem = document.createElement('li');
-            listItem.classList.add('list-none'); // Apply Tailwind styling
-
-            const anchor = document.createElement('a');
-            anchor.href = refUrl;
-            anchor.textContent = refUrl; // Display the full URL as text
-            anchor.target = "_blank"; // Open in new tab
-            anchor.rel = "noopener noreferrer"; // Security best practice
-            anchor.classList.add('text-primary', 'hover:underline'); // Apply Tailwind styling
-            listItem.appendChild(anchor);
-            referencesList.appendChild(listItem);
+                linksInAwaitingCategory.forEach(refItem => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="p-2 border border-gray-300 text-medium-gray" data-i18n="category${categoryKey.replace(/\s/g, '')}Short">${currentLangTranslations[`category${categoryKey.replace(/\s/g, '')}Short`] || categoryKey}</td>
+                        <td class="p-2 border border-gray-300">
+                            <a href="${refItem.url}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline word-break-all">
+                                ${refItem.url} (<span class="text-dark-gray">${refItem.description}</span>)
+                            </a>
+                        </td>
+                    `;
+                    referencesTableBody.appendChild(row);
+                });
+            }
         });
     }
-
         function updateCarouselNavigation() {
             const totalPages = Math.ceil(allTestimonials.length / testimonialsPerPage);
             const currentPage = Math.floor(currentTestimonialIndex / testimonialsPerPage) + 1;
