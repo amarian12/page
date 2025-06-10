@@ -2340,8 +2340,22 @@ Provides practitioner name, profile picture, verification, rating, business name
             }
         });
 
-        // Convert Set to Array and sort alphabetically by URL
-        const sortedReferences = Array.from(uniqueReferences).sort();
+        // Custom sort function to sort by domain name
+        const sortedReferences = Array.from(uniqueReferences).sort((a, b) => {
+            const getDomain = (url) => {
+                try {
+                    const urlObj = new URL(url);
+                    return urlObj.hostname.replace(/^www\./, ''); // Remove 'www.' for better sorting
+                } catch (e) {
+                    return url; // Return original if URL is invalid, though this should not happen with valid links
+                }
+            };
+
+            const domainA = getDomain(a);
+            const domainB = getDomain(b);
+
+            return domainA.localeCompare(domainB);
+        });
 
         // Populate the list
         sortedReferences.forEach(refUrl => {
