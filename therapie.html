@@ -280,6 +280,18 @@
 </head>
 <body class="bg-secondary text-dark-gray">
 
+    <div id="cookie-consent-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 text-center z-[1000] hidden">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4">
+            <p class="text-sm" data-i18n="cookieConsentText">
+                We use cookies to ensure you get the best experience on our website. By continuing to use this site, you agree to our use of cookies.
+            </p>
+            <div class="flex space-x-3">
+                <button id="accept-cookies" class="px-4 py-2 bg-primary text-white rounded-md text-sm hover:bg-green-700 transition-colors" data-i18n="cookieAcceptButton">Accept</button>
+                <button id="decline-cookies" class="px-4 py-2 bg-gray-700 text-white rounded-md text-sm hover:bg-gray-600 transition-colors" data-i18n="cookieDeclineButton">Decline</button>
+            </div>
+        </div>
+    </div>
+
     <div id="scrollToTopBtn" class="scroll-to-top">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
@@ -2606,7 +2618,13 @@ Provides practitioner name, profile picture, verification, rating, business name
                 console.error('Failed to load conditions data. Conditions section might be empty.');
                 conditionsData = []; // Fallback empty array
             }
+            // --- Cookie Consent Logic ---
+            const cookieConsentBanner = document.getElementById('cookie-consent-banner');
+            const acceptCookiesButton = document.getElementById('accept-cookies');
+            const declineCookiesButton = document.getElementById('decline-cookies');
 
+            const COOKIE_CONSENT_KEY = 'bowen_cookie_consent';
+		
             const langSelect = document.getElementById('language-select');
             const navLinks = document.querySelectorAll('nav ul li a');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -2615,6 +2633,48 @@ Provides practitioner name, profile picture, verification, rating, business name
             const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
             const filterButtonsContainer = document.getElementById('filter-buttons');
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        // Function to check if consent has been given
+        const hasCookieConsent = () => {
+            return localStorage.getItem(COOKIE_CONSENT_KEY) === 'accepted';
+        };
+
+        // Function to show the banner
+        const showCookieBanner = () => {
+            if (cookieConsentBanner && !hasCookieConsent()) {
+                cookieConsentBanner.classList.remove('hidden');
+            }
+        };
+
+        // Function to hide the banner and store consent
+        const hideCookieBanner = (consentStatus) => {
+            if (cookieConsentBanner) {
+                cookieConsentBanner.classList.add('hidden');
+                localStorage.setItem(COOKIE_CONSENT_KEY, consentStatus);
+            }
+        };
+
+        // Event listeners for consent buttons
+        if (acceptCookiesButton) {
+            acceptCookiesButton.addEventListener('click', () => {
+                hideCookieBanner('accepted');
+                // You can add logic here to enable analytics, etc. if consent is given
+                console.log('Cookies accepted.');
+            });
+        }
+
+        if (declineCookiesButton) {
+            declineCookiesButton.addEventListener('click', () => {
+                hideCookieBanner('declined');
+                // You can add logic here to disable non-essential cookies
+                console.log('Cookies declined.');
+                alert('You have declined cookies. Some features may not work as expected.'); // Or show a div message
+            });
+        }
+
+        // Show banner if no consent stored
+        showCookieBanner();
+        // --- End Cookie Consent Logic ---
 
             // Set initial language and content
             const initialLang = 'en'; // Default language
