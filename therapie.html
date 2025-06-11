@@ -779,6 +779,8 @@ They argue that its primary appeal is its gentle nature, not its proven efficacy
                         <li data-i18n="evidenceScientificStudy10" class="relative pl-6 before:absolute
                         before:left-0 before:content-['📚']">A 2020 study on multisite chronic pain indicated a short-term reduction in pain in the Bowen Therapy group compared to a sham group.</li>
                     </ul>
+                    <h4 class="text-lg font-semibold mt-6 mb-3" data-i18n="publishedResearchHeading">Published Research about Bowen Therapy:</h4>
+                     <ul id="published-research-list" class="list-disc list-inside space-y-2 mb-4"></ul>
                     <p class="text-light-gray text-sm" data-i18n="evidenceScientificDisclaimer">
                         *Note: While some studies show promising results, a consensus on
                         long-term efficacy from large-scale, independent Randomized Controlled Trials (RCTs) is still developing.
@@ -2459,6 +2461,54 @@ Provides practitioner name, profile picture, verification, rating, business name
         });
     }
 
+    // Function to populate the "Published Research" list
+    function populatePublishedResearchList(lang) {
+        const publishedResearchList = document.getElementById('published-research-list');
+        if (!publishedResearchList) return;
+
+        publishedResearchList.innerHTML = ''; // Clear existing list items
+
+        const currentLangTranslations = translations[lang] || translations.en;
+
+        const studiesData = [
+            // List of published research with direct links and descriptive text keys
+            { url: "https://www.bowentherapy.org.uk//docs/research/bowen-therapy-for-tension-type-headache.pdf", translationKey: "studyQamari2023Text" },
+            { url: "https://www.bowentherapy.org.uk//docs/research/bowen-therapy-for-thoracic-myofascial-pain-syndrome.pdf", translationKey: "studyAmjad2023Text" },
+            { url: "https://www.bowentherapy.org.uk//docs/research/treatment_of_myofascial_neck_pain-2023.pdf", translationKey: "studyChee2023Text" },
+            { url: "https://www.bowentherapy.org.uk//docs/research/bowen-therapy-and-enuresis.pdf", translationKey: "studyNocturnalEnuresis2020Text" }, // NEW translation key
+            { url: "https://www.bowentherapy.org.uk//docs/research/bowen-chronic-pain-research-2020.pdf", translationKey: "studyLee2020Text" },
+            { url: "https://www.bowentherapy.org.uk//docs/research/Pilot_study_boys_with_developmental_coordination_disorder.pdf", translationKey: "studyMorganJones2019Text" }, // NEW translation key
+            { url: "https://www.bowentherapy.org.uk//docs/research/bowen-low-back-pain-research-2018.pdf", translationKey: "studyKopczynska2018Text" },
+            { url: "https://www.bowentherapy.org.uk//docs/research/bowen-trapezitis-research2015.pdf", translationKey: "studyNitsure2015Text" }, // NEW translation key
+            { url: "https://www.bowentherapy.org.uk//docs/research/pressure_pain_thresholds_and_postural_sway-2016.pdf", translationKey: "studyFelix2016Text" },
+            { url: "https://www.bowentherapy.org.uk//docs/research/bowen-stroke-research-2011.pdf", translationKey: "studyDuncan2011Text" }, // NEW translation key
+            { url: "https://www.bowentherapy.org.uk//docs/research/NST-back-pain-study.pdf", translationKey: "studyNixonLivy2004Text" }, // NEW translation key
+            { url: "https://www.bowentherapy.org.uk//docs/research/bowen-frozen-shoulder-research-2001.pdf", translationKey: "studyCarter2001Text" }
+        ];
+
+        // Sort studies alphabetically by their description text for consistent display
+        studiesData.sort((a, b) => {
+            const textA = currentLangTranslations[a.translationKey] || '';
+            const textB = currentLangTranslations[b.translationKey] || '';
+            return textA.localeCompare(textB);
+        });
+
+        studiesData.forEach(study => {
+            const listItem = document.createElement('li');
+            const linkText = currentLangTranslations[study.translationKey] || study.translationKey; // Get translated text
+
+            const anchor = document.createElement('a');
+            anchor.href = study.url;
+            anchor.textContent = linkText; // Text of the link is the study description
+            anchor.target = "_blank";
+            anchor.rel = "noopener noreferrer";
+            anchor.classList.add('text-primary', 'hover:underline', 'break-words'); // Add break-words for long URLs
+
+            listItem.appendChild(anchor);
+            publishedResearchList.appendChild(listItem);
+        });
+    }
+
         function updateCarouselNavigation() {
             const totalPages = Math.ceil(allTestimonials.length / testimonialsPerPage);
             const currentPage = Math.floor(currentTestimonialIndex / testimonialsPerPage) + 1;
@@ -2737,6 +2787,9 @@ Provides practitioner name, profile picture, verification, rating, business name
             // Initial render of testimonials after language is set
             renderTestimonials(initialLang); // Call to render testimonials specifically
 
+            // Call populatePublishedResearchList on initial load
+            populatePublishedResearchList(initialLang);
+
             // Call renderPlannerTable on initial load
             renderPlannerTable(initialLang);
 
@@ -2750,6 +2803,7 @@ Provides practitioner name, profile picture, verification, rating, business name
                 renderTestimonials(selectedLang); // Call to re-render testimonials specifically on language change
                 renderPlannerTable(selectedLang); // Re-render planner table on language change
                 populateReferences(selectedLang); // Re-populate references to update surrounding text
+                populatePublishedResearchList(selectedLang); // Re-populate this list on language change
             });
             // Mobile menu toggle
             mobileMenuButton.addEventListener('click', () => {
