@@ -276,6 +276,79 @@
     #references-table-body a {
         word-break: break-all; /* Break long URLs to prevent overflow */
     }
+
+    /* Flip Card Container */
+    .flip-card {
+        background-color: transparent; /* No background on container itself */
+        width: 100%; /* Take full width of grid column */
+        height: auto; /* Allow height to adjust to content */
+        perspective: 1000px; /* Provides the 3D perspective for flipping */
+        cursor: pointer; /* Indicates interactivity */
+        min-height: 250px; /* Ensure a minimum height for all cards for visual consistency */
+    }
+
+    /* This is the container for both front and back faces */
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center; /* Center content horizontally */
+        transition: transform 0.6s; /* Smooth flip animation */
+        transform-style: preserve-3d; /* Keeps children in 3D space */
+    }
+
+    /* When the flip-card has the 'flipped' class, rotate the inner container */
+    .flip-card.flipped .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    /* Styling for both the front and back faces of the card */
+    .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; /* Hide the back of the card when rotated */
+        backface-visibility: hidden; /* Standard property */
+        border-radius: 0.75rem; /* Match overall card border-radius */
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Subtle shadow */
+        padding: 1.5rem; /* Match overall card padding */
+        display: flex; /* Use flexbox for content alignment */
+        flex-direction: column; /* Stack content vertically */
+        justify-content: center; /* Center content vertically */
+        align-items: center; /* Center content horizontally */
+        text-align: center; /* Center text */
+    }
+
+    /* Front face specific styling */
+    .flip-card-front {
+        background-color: #ffffff; /* White background for the front */
+        color: #333333; /* Dark text */
+        z-index: 2; /* Ensure front is on top when not flipped */
+    }
+
+    /* Back face specific styling */
+    .flip-card-back {
+        background-color: #fde7e3; /* Lighter Misty Mountain Pink (bg-accent-light) for the back */
+        color: #333333; /* Dark text for readability */
+        transform: rotateY(180deg); /* Start rotated so it's hidden initially */
+    }
+
+    /* Adjust testimonial text on back face for better readability/emphasis */
+    .flip-card-back p.italic {
+        font-size: 1.1rem; /* Slightly larger for emphasis */
+        line-height: 1.5; /* Improve line spacing */
+    }
+
+    /* Ensure .card styling does not interfere with .flip-card-front/back */
+    /* Remove redundant box-shadow/border-radius from .card if it causes issues,
+       as these are now explicitly on .flip-card-front/back */
+    .card {
+        background-color: #ffffff; /* Ensure base card background is white */
+        border-radius: 0.75rem; /* Rounded corners */
+        /* box-shadow and padding are now handled by flip-card-front/back */
+        /* If .card is still used elsewhere, leave its styles */
+    }
+
     </style>
 </head>
 <body class="bg-secondary text-dark-gray">
@@ -2594,31 +2667,41 @@ Provides practitioner name, profile picture, verification, rating, business name
             updateCharts(lang);
         }
 
-        // loadTranslations is no longer async and combined into DOMContentLoaded
-        function updateConditionsGrid(filter, lang) {
-            const conditionsGrid = document.getElementById('conditions-grid');
-            conditionsGrid.innerHTML = ''; // Clear existing cards
+    function updateConditionsGrid(filter, lang) {
+        const conditionsGrid = document.getElementById('conditions-grid');
+        if (!conditionsGrid) return; // Ensure element exists
 
-            const filteredConditions = conditionsData.filter(condition => {
-                return filter === 'all' || condition.filter === filter;
-            });
-            filteredConditions.forEach(condition => {
-                const card = document.createElement('div');
-                card.classList.add('card', 'p-6');
-                card.innerHTML = `
-                    <h3 class="text-xl font-semibold mb-3 text-primary">${condition[`title_${lang}`] || condition.title_en}</h3>
-                    <p class="mb-3">${condition[`description_${lang}`] || condition.description_en}</p>
-                    <p class="italic text-light-gray">${condition[`testimonial_${lang}`] || condition.testimonial_en}</p>
-                `;
-                conditionsGrid.appendChild(card);
-            });
+        conditionsGrid.innerHTML = ''; // Clear existing cards
+
+        const filteredConditions = conditionsData.filter(condition => {
+            return filter === 'all' || condition.filter === filter;
+        });
+
+        filteredConditions.forEach(condition => {
+            const flipCard = document.createElement('div');
+            flipCard.classList.add('flip-card'); // Main container for flip effect
+
+            flipCard.innerHTML = `
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3 class="text-xl font-semibold mb-3 text-primary">${condition[`title_${lang}`] || condition.title_en}</h3>
+                        <p class="mb-3">${condition[`description_${lang}`] || condition.description_en}</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p class="italic text-dark-gray">${condition[`testimonial_${lang}`] || condition.testimonial_en}</p>
+                    </div>
+                </div>
+            `;
+            conditionsGrid.appendChild(flipCard);
+        });
+
             // Update category description
             const categoryDescriptionElement = document.getElementById('category-description');
             if (categoryDescriptionElement) {
                 const key = `categoryDescription${filter.charAt(0).toUpperCase() + filter.slice(1)}`;
                 categoryDescriptionElement.textContent = translations[lang] && translations[lang][key] ? translations[lang][key] : translations.en.categoryDescriptionAll;
             }
-        }
+    }
 
         function updateCharts(lang) {
             if (!translations.en) { // Ensure translations are loaded
@@ -2839,6 +2922,17 @@ Provides practitioner name, profile picture, verification, rating, business name
 
             // Call populateReferences on initial load
             populateReferences(initialLang);
+
+        const conditionsGrid = document.getElementById('conditions-grid');
+        if (conditionsGrid) {
+            // Add a single click event listener to the parent grid for flipping cards
+            conditionsGrid.addEventListener('click', (event) => {
+                const clickedFlipCard = event.target.closest('.flip-card');
+                if (clickedFlipCard) {
+                    clickedFlipCard.classList.toggle('flipped');
+                }
+            });
+        }
 		
             // Language selector change event
             langSelect.addEventListener('change', async (event) => {
