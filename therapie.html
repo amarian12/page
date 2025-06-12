@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title id="app-title" data-i18n="appTitle">An Interactive Guide to Bowen Therapy</title>
+   <title id="app-title" data-i18n="appTitle">Bowen Therapy - A Gentle Path to Self-Healing and Well-being</title>
    <meta name="description"
       content="Discover Bowen Therapy, a gentle, holistic bodywork technique for pain relief, stress reduction, and overall well-being. Learn about its benefits for musculoskeletal issues, chronic pain, women's health, and pediatric care.">
    <meta name="keywords"
@@ -687,6 +687,17 @@
          transform-origin: center;
          /* Ensures rotation around the center of the path */
       }
+	  
+        .floating-animation {
+            animation: float 12s ease-in-out infinite;
+        }
+        .glow-text {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
    </style>
 </head>
 
@@ -878,8 +889,8 @@
    <main>
       <section id="hero"
          class="relative bg-primary flex flex-col justify-center items-center text-center py-20 px-4 min-h-screen">
-         <h1 class="text-5xl md:text-6xl font-bold mb-4" data-i18n="heroTitle">Understanding Bowen Therapy</h1>
-         <p class="text-xl md:text-2xl font-light mb-8" data-i18n="heroSubtitle">A Gentle Path to Self-Healing and
+         <h1 class="text-5xl md:text-6xl font-bold mb-4 glow-text floating-animation" data-i18n="heroTitle">Bowen Therapy</h1>
+         <p class="text-xl md:text-2xl font-light mb-8 leading-tight mb-2 border-t-4 border-b-4 border-green-300 py-4" data-i18n="heroSubtitle">A Gentle Path to Self-Healing and
             Well-being</p>
          <p class="max-w-3xl mb-10 text-lg" data-i18n="heroDescription">
             Bowen Therapy is a holistic, non-invasive bodywork technique that encourages the body's innate ability to
