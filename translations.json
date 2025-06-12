@@ -618,6 +618,8 @@
         "contactSubmitButton": "Send Message",
         "contactOtherInfoTitle": "Other Ways to Connect",
         "contactEmailTextAlt": "For general inquiries:",
+        "contactPreferredTimeLabel": "Preferred Appointment Time (Optional)",
+        "contactPreferredDateLabel": "Preferred Appointment Date (Monday-Friday)",
         "contactFollowUsTitle": "Follow Us"
     },
     "ro": {
@@ -1239,6 +1241,8 @@
         "contactSubmitButton": "Trimite Mesaj",
         "contactOtherInfoTitle": "Alte Modalități de Contact",
         "contactEmailTextAlt": "Pentru întrebări generale:",
+        "contactPreferredTimeLabel": "Ora Preferată pentru Programare (Opțional)",
+        "contactPreferredDateLabel": "Data Preferată pentru Programare (Luni-Vineri)",
         "contactFollowUsTitle": "Urmărește-ne"
     },
     "nl": {
@@ -1860,6 +1864,8 @@
         "contactSubmitButton": "Verstuur Bericht",
         "contactOtherInfoTitle": "Andere Manieren om Contact Op Te Nemen",
         "contactEmailTextAlt": "Voor algemene vragen:",
+        "contactPreferredTimeLabel": "Voorkeur Afspraaktijd (Optioneel)",
+        "contactPreferredDateLabel": "Voorkeur Afspraakdatum (Maandag-Vrijdag)",
         "contactFollowUsTitle": "Volg Ons"
     }
 }
