@@ -2893,52 +2893,6 @@
                or to schedule a session.</p>
             <div class="grid md:grid-cols-2 gap-8 mb-10 rounded-lg shadow-xl text-dark-gray">
                <div class="card">
-                  <form action="your_form_submission_endpoint" method="POST" class="space-y-6">
-                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                           <label for="name" class="block text-left text-sm font-medium text-dark-gray mb-1"
-                              data-i18n="contactFullNameLabel">Full Name *</label>
-                           <input type="text" id="name" name="name"
-                              class="form-input bg-gray-100 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
-                              placeholder="" required>
-                        </div>
-                        <div>
-                           <label for="email" class="block text-left text-sm font-medium text-dark-gray mb-1"
-                              data-i18n="contactEmailLabel">Email *</label>
-                           <input type="email" id="email" name="email"
-                              class="form-input bg-gray-100 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
-                              placeholder="" required>
-                        </div>
-                     </div>
-                     <div>
-                        <label for="phone" class="block text-left text-sm font-medium text-dark-gray mb-1"
-                           data-i18n="contactPhoneLabel">Phone (Optional)</label>
-                        <input type="tel" id="phone" name="phone"
-                           class="form-input bg-gray-100 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
-                           placeholder="">
-                     </div>
-                     <div>
-                        <label for="subject" class="block text-left text-sm font-medium text-dark-gray mb-1"
-                           data-i18n="contactSubjectLabel">Subject *</label>
-                        <input type="text" id="subject" name="subject"
-                           class="form-input bg-gray-100 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
-                           placeholder="" required>
-                     </div>
-                     <div>
-                        <label for="message" class="block text-left text-sm font-medium text-dark-gray mb-1"
-                           data-i18n="contactMessageLabel">Message *</label>
-                        <textarea id="message" name="message" rows="5"
-                           class="form-input bg-gray-100 border border-gray-300 rounded-md focus:ring-primary focus:border-primary resize-y"
-                           placeholder="" required></textarea>
-                     </div>
-                     <div class="text-center">
-                        <button type="submit" class="form-button px-8 py-3" data-i18n="contactSubmitButton">
-                           Send Message
-                        </button>
-                     </div>
-                  </form>
-               </div>
-               <div class="card">
                   <h3 class="text-xl font-semibold mb-4 text-primary" data-i18n="contactOtherInfoTitle">Other Ways to
                      Connect</h3>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
@@ -3017,6 +2971,52 @@
                         </a>
                      </div>
                   </div>
+               </div>
+               <div class="card">
+                  <form action="your_form_submission_endpoint" method="POST" class="space-y-6">
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                           <label for="name" class="block text-left text-sm font-medium text-dark-gray mb-1"
+                              data-i18n="contactFullNameLabel">Full Name *</label>
+                           <input type="text" id="name" name="name"
+                              class="form-input bg-gray-100 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                              placeholder="" required>
+                        </div>
+                        <div>
+                           <label for="email" class="block text-left text-sm font-medium text-dark-gray mb-1"
+                              data-i18n="contactEmailLabel">Email *</label>
+                           <input type="email" id="email" name="email"
+                              class="form-input bg-gray-100 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                              placeholder="" required>
+                        </div>
+                     </div>
+                     <div>
+                        <label for="phone" class="block text-left text-sm font-medium text-dark-gray mb-1"
+                           data-i18n="contactPhoneLabel">Phone (Optional)</label>
+                        <input type="tel" id="phone" name="phone"
+                           class="form-input bg-gray-100 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                           placeholder="">
+                     </div>
+                     <div>
+                        <label for="subject" class="block text-left text-sm font-medium text-dark-gray mb-1"
+                           data-i18n="contactSubjectLabel">Subject *</label>
+                        <input type="text" id="subject" name="subject"
+                           class="form-input bg-gray-100 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                           placeholder="" required>
+                     </div>
+                     <div>
+                        <label for="message" class="block text-left text-sm font-medium text-dark-gray mb-1"
+                           data-i18n="contactMessageLabel">Message *</label>
+                        <textarea id="message" name="message" rows="5"
+                           class="form-input bg-gray-100 border border-gray-300 rounded-md focus:ring-primary focus:border-primary resize-y"
+                           placeholder="" required></textarea>
+                     </div>
+                     <div class="text-center">
+                        <button type="submit" class="form-button px-8 py-3" data-i18n="contactSubmitButton">
+                           Send Message
+                        </button>
+                     </div>
+                  </form>
                </div>
             </div>
          </div>
