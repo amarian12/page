@@ -609,7 +609,16 @@
         "motherBabyTestimonial4Quote": "\"Latching was a struggle for my newborn, but after one Bowen session, feeding became so much easier for both of us. It was a miracle!\"",
         "motherBabyTestimonial4Author": "- Breastfeeding Mother",
         "motherBabyTestimonial5Quote": "\"Bowen therapy has been incredibly helpful for my child's bedwetting issues, giving him so much more confidence and better sleep.\"",
-        "motherBabyTestimonial5Author": "- Parent of a Child"
+        "motherBabyTestimonial5Author": "- Parent of a Child",
+        "contactFullNameLabel": "Full Name *",
+        "contactEmailLabel": "Email *",
+        "contactPhoneLabel": "Phone (Optional)",
+        "contactSubjectLabel": "Subject *",
+        "contactMessageLabel": "Message *",
+        "contactSubmitButton": "Send Message",
+        "contactOtherInfoTitle": "Other Ways to Connect",
+        "contactEmailTextAlt": "For general inquiries:",
+        "contactFollowUsTitle": "Follow Us"
     },
     "ro": {
         "appTitle": "Un Ghid Interactiv al Terapiei Bowen",
@@ -1221,7 +1230,16 @@
         "motherBabyTestimonial4Quote": "\"Prinderea la sân a fost o luptă pentru nou-născutul meu, dar după o sesiune Bowen, alăptarea a devenit mult mai ușoară pentru amândoi. A fost un miracol!\"",
         "motherBabyTestimonial4Author": "- Mamică care Alăptează",
         "motherBabyTestimonial5Quote": "\"Terapia Bowen a fost incredibil de utilă pentru problemele de enurezis nocturn ale copilului meu, oferindu-i mult mai multă încredere și un somn mai bun.\"",
-        "motherBabyTestimonial5Author": "- Părinte al unui Copil"
+        "motherBabyTestimonial5Author": "- Părinte al unui Copil",
+        "contactFullNameLabel": "Nume Complet *",
+        "contactEmailLabel": "Email *",
+        "contactPhoneLabel": "Telefon (Opțional)",
+        "contactSubjectLabel": "Subiect *",
+        "contactMessageLabel": "Mesaj *",
+        "contactSubmitButton": "Trimite Mesaj",
+        "contactOtherInfoTitle": "Alte Modalități de Contact",
+        "contactEmailTextAlt": "Pentru întrebări generale:",
+        "contactFollowUsTitle": "Urmărește-ne"
     },
     "nl": {
         "appTitle": "Een Interactieve Gids voor Bowen Therapie",
@@ -1833,6 +1851,15 @@
         "motherBabyTestimonial4Quote": "\"Aanleggen was een worsteling voor mijn pasgeborene, maar na één Bowen sessie werd voeden zoveel gemakkelijker voor ons beiden. Het was een wonder!\"",
         "motherBabyTestimonial4Author": "- Borstvoedende Moeder",
         "motherBabyTestimonial5Quote": "\"Bowen therapie is ongelooflijk behulpzaam geweest voor de bedplassen van mijn kind, waardoor hij zoveel meer zelfvertrouwen en een betere slaap heeft gekregen.\"",
-        "motherBabyTestimonial5Author": "- Ouder van een Kind"
+        "motherBabyTestimonial5Author": "- Ouder van een Kind",
+        "contactFullNameLabel": "Volledige Naam *",
+        "contactEmailLabel": "E-mail *",
+        "contactPhoneLabel": "Telefoon (Optioneel)",
+        "contactSubjectLabel": "Onderwerp *",
+        "contactMessageLabel": "Bericht *",
+        "contactSubmitButton": "Verstuur Bericht",
+        "contactOtherInfoTitle": "Andere Manieren om Contact Op Te Nemen",
+        "contactEmailTextAlt": "Voor algemene vragen:",
+        "contactFollowUsTitle": "Volg Ons"
     }
 }
