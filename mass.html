@@ -575,371 +575,390 @@
             </footer>
          </div>
          </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>                     <script>
-        {
-            let translations = {};
-            let currentLang = 'en'; // Default language
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>                     
+<script>
+    {
+        let translations = {};
+        let currentLang = 'en'; // Default language
+        const translatableElements = {}; // Cache for translatable elements
 
-            async function loadTranslations(lang) {
+        async function loadTranslations(lang) {
+            try {
+                const response = await fetch('mass.json');
+                const data = await response.json();
+                translations = data;
+                currentLang = lang;
+                applyTranslations();
+            } catch (error) {
+                console.error('Error loading translations:', error);
+            }
+        }
+
+        // Initialize translatableElements cache once on page load
+        function cacheTranslatableElements() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.dataset.i18n;
+                if (!translatableElements[key]) {
+                    translatableElements[key] = [];
+                }
+                translatableElements[key].push(element);
+            });
+        }
+
+        function applyTranslations() {
+            for (const key in translatableElements) {
+                if (translatableElements.hasOwnProperty(key) && translations[currentLang] && translations[currentLang][key]) {
+                    translatableElements[key].forEach(element => {
+                        // For paragraphs and headers (which have varying content and might contain HTML)
+                        // or spans (which only contain text)
+                        element.innerHTML = translations[currentLang][key];
+                    });
+                }
+            }
+
+            // Update dynamic copyright year
+            const copyrightElement = document.querySelector('.tm-copyright-text');
+            if (copyrightElement && translations[currentLang] && translations[currentLang].copyright_text) {
+                copyrightElement.textContent = translations[currentLang].copyright_text.replace('{year}', new Date().getFullYear());
+            }
+            // Update banner text specifically
+            const bannerTextElement = document.querySelector('.baner-body h2');
+            if (bannerTextElement && translations[currentLang] && translations[currentLang].banner_text) {
+                bannerTextElement.textContent = translations[currentLang].banner_text;
+            }
+        }
+
+        class Details {
+            constructor() {
+                this.DOM = {};
+
+                const detailsTmpl = `
+                <div class="details__bg details__bg--down">
+                    <button class="details__close"><i class="fas fa-2x fa-times icon--cross tm-fa-close"></i></button>
+                    <h2 class="details__modal-title"></h2> <div class="details__description"></div>
+                </div>
+                `;
+
+                this.DOM.details = document.createElement('div');
+                this.DOM.details.className = 'details';
+                this.DOM.details.innerHTML = detailsTmpl;
+                document.getElementById('tm-wrap').appendChild(this.DOM.details);
+                this.init();
+            }
+            init() {
+                this.DOM.bgDown = this.DOM.details.querySelector('.details__bg--down');
+                this.DOM.close = this.DOM.details.querySelector('.details__close');
+                this.DOM.modalTitle = this.DOM.details.querySelector('.details__modal-title'); // Get the new title element
+                this.DOM.description = this.DOM.details.querySelector('.details__description'); // Get the description element
+
+                this.initEvents();
+            }
+            initEvents() {
+                // close page when outside of page is clicked.
+                document.body.addEventListener('click', (event) => {
+                    // Check if the click occurred outside the details modal AND the modal is open
+                    if (!this.DOM.details.contains(event.target) && this.DOM.details.classList.contains('details--open')) {
+                        this.close();
+                    }
+                });
+                // prevent close page when inside of page is clicked.
+                this.DOM.bgDown.addEventListener('click', function(event) {
+                                event.stopPropagation();
+                            });
+                // close page when cross button is clicked.
+                this.DOM.close.addEventListener('click', () => this.close());
+            }
+            fill(info) {
+                // Set the modal title from info.title
+                this.DOM.modalTitle.textContent = info.title;
+
+                // Set the remaining content to the scrollable description area
+                this.DOM.description.innerHTML = info.descriptionHtml;
+            }
+            getProductDetailsRect(){
+                var p = 0;
+                var d = 0;
+
                 try {
-                    const response = await fetch('mass.json');
-                    const data = await response.json();
-                    translations = data;
-                    currentLang = lang;
-                    applyTranslations();
-                } catch (error) {
-                    console.error('Error loading translations:', error);
+                    p = this.DOM.productBg.getBoundingClientRect();
+                    d = this.DOM.bgDown.getBoundingClientRect();
                 }
-            }
+                catch(e){}
 
-            function applyTranslations() {
-                document.querySelectorAll('[data-i18n]').forEach(element => {
-                    const key = element.dataset.i18n;
-                    if (translations[currentLang] && translations[currentLang][key]) {
-																									
-															
-                        if (element.tagName === 'P' || element.tagName === 'H5' || element.tagName === 'SPAN') {
-                            element.innerHTML = translations[currentLang][key];
-                        } else {
-                            element.textContent = translations[currentLang][key];
-                        }
+                return {
+                    productBgRect: p,
+                    detailsBgRect: d
+                };
+            }
+            open(data) {
+                if(this.isAnimating) return false;
+                this.isAnimating = true;
+
+                this.DOM.details.style.display = 'flex'; // Use flex to center content
+
+                this.DOM.details.classList.add('details--open');
+                document.body.classList.add('modal-open'); // Add class to body to prevent scroll
+
+                this.DOM.productBg = data.productBg;
+
+                this.DOM.productBg.style.opacity = 0;
+
+                const rect = this.getProductDetailsRect();
+
+                this.DOM.bgDown.style.transform = `translateX(${rect.productBgRect.left-rect.detailsBgRect.left}px) translateY(${rect.productBgRect.top-rect.detailsBgRect.top}px) scaleX(${rect.productBgRect.width/rect.detailsBgRect.width}) scaleY(${rect.productBgRect.height/rect.detailsBgRect.height})`;
+                this.DOM.bgDown.style.opacity = 1;
+
+                // animate background
+                anime({
+                    targets: [this.DOM.bgDown],
+                    duration: (target, index) => index ? 800 : 250,
+                    easing: (target, index) => 'easeOutSine', // Changed to easeOutSine
+                    elasticity: 250,
+                    translateX: 0,
+                    translateY: 0,
+                    scaleX: 1,
+                    scaleY: 1,
+                    complete: () => {
+                        this.isAnimating = false;
+                        // Scroll to top after animation is complete
+                        this.DOM.description.scrollTop = 0;
                     }
                 });
 
-                // Update dynamic copyright year
-                const copyrightElement = document.querySelector('.tm-copyright-text');
-                if (copyrightElement && translations[currentLang] && translations[currentLang].copyright_text) {
-                    copyrightElement.textContent = translations[currentLang].copyright_text.replace('{year}', new Date().getFullYear());
-                }
-                 // Update banner text specifically
-                const bannerTextElement = document.querySelector('.baner-body h2');
-                if (bannerTextElement && translations[currentLang] && translations[currentLang].banner_text) {
-                    bannerTextElement.textContent = translations[currentLang].banner_text;
-                }
+                // animate content
+                anime({
+                    targets: this.DOM.modalTitle, // Only modalTitle here
+                    duration: 1000,
+                    easing: 'easeOutExpo',
+                    opacity: 1 // Only fade in, no translation
+                });
+
+                // Animate description separately
+                anime({
+                    targets: this.DOM.description,
+                    duration: 1000,
+                    easing: 'easeOutExpo',
+                    translateY: ['100%',0],
+                    opacity: 1
+                });
+
+
+                // animate close button
+                anime({
+                    targets: this.DOM.close,
+                    duration: 250,
+                    easing: 'easeOutSine',
+                    translateY: ['100%',0],
+                    opacity: 1
+                });
             }
+            close() {
+                if(this.isAnimating) return false;
+                this.isAnimating = true;
 
-            class Details {
-                constructor() {
-                    this.DOM = {};
+                this.DOM.details.classList.remove('details--open');
+                document.body.classList.remove('modal-open'); // Remove class from body to re-enable scroll
 
-                    const detailsTmpl = `
-                    <div class="details__bg details__bg--down">
-                        <button class="details__close"><i class="fas fa-2x fa-times icon--cross tm-fa-close"></i></button>
-                        <h2 class="details__modal-title"></h2> <div class="details__description"></div>
-                    </div>
-                    `;
+                anime({
+                    targets: this.DOM.close,
+                    duration: 250,
+                    easing: 'easeOutSine',
+                    translateY: '100%',
+                    opacity: 0
+                });
 
-                    this.DOM.details = document.createElement('div');
-                    this.DOM.details.className = 'details';
-                    this.DOM.details.innerHTML = detailsTmpl;
-                    document.getElementById('tm-wrap').appendChild(this.DOM.details);
-                    this.init();
-                }
-                init() {
-                    this.DOM.bgDown = this.DOM.details.querySelector('.details__bg--down');
-                    this.DOM.close = this.DOM.details.querySelector('.details__close');
-                    this.DOM.modalTitle = this.DOM.details.querySelector('.details__modal-title'); // Get the new title element
-                    this.DOM.description = this.DOM.details.querySelector('.details__description'); // Get the description element
+                // Animate modal title out
+                anime({
+                    targets: this.DOM.modalTitle,
+                    duration: 20,
+                    easing: 'linear',
+                    opacity: 0
+                });
 
-                    this.initEvents();
-                }
-                initEvents() {
-                    // close page when outside of page is clicked.
-                    document.body.addEventListener('click', (event) => {
-                        // Check if the click occurred outside the details modal AND the modal is open
-                        if (!this.DOM.details.contains(event.target) && this.DOM.details.classList.contains('details--open')) {
-                            this.close();
-                        }
-                    });
-                    // prevent close page when inside of page is clicked.
-                    this.DOM.bgDown.addEventListener('click', function(event) {
-                                    event.stopPropagation();
-                                });
-                    // close page when cross button is clicked.
-                    this.DOM.close.addEventListener('click', () => this.close());
-                }
-                fill(info) {
-                    // Set the modal title from info.title
-                    this.DOM.modalTitle.textContent = info.title;
+                // Animate description out
+                anime({
+                    targets: this.DOM.description,
+                    duration: 20,
+                    easing: 'linear',
+                    opacity: 0
+                });
 
-                    // Set the remaining content to the scrollable description area
-                    this.DOM.description.innerHTML = info.descriptionHtml;
-                }
-                getProductDetailsRect(){
-                    var p = 0;
-                    var d = 0;
-
-                    try {
-                        p = this.DOM.productBg.getBoundingClientRect();
-                        d = this.DOM.bgDown.getBoundingClientRect();
+                const rect = this.getProductDetailsRect();
+                anime({
+                    targets: [this.DOM.bgDown],
+                    duration: 250,
+                    easing: 'easeOutSine',
+                    translateX: rect.productBgRect.left - rect.detailsBgRect.left,
+                    translateY: rect.productBgRect.top - rect.detailsBgRect.top,
+                    scaleX: rect.productBgRect.width / rect.detailsBgRect.width,
+                    scaleY: rect.productBgRect.height / rect.detailsBgRect.height,
+                    complete: () => {
+                        this.DOM.bgDown.style.opacity = 0;
+                        this.DOM.bgDown.style.transform = 'none';
+                        this.DOM.productBg.style.opacity = 1;
+                        this.DOM.details.style.display = 'none';
+                        this.isAnimating = false;
                     }
-                    catch(e){}
-
-                    return {
-                        productBgRect: p,
-                        detailsBgRect: d
-                    };
-                }
-                open(data) {
-                    if(this.isAnimating) return false;
-                    this.isAnimating = true;
-
-                    this.DOM.details.style.display = 'flex'; // Use flex to center content
-
-                    this.DOM.details.classList.add('details--open');
-                    document.body.classList.add('modal-open'); // Add class to body to prevent scroll
-
-                    this.DOM.productBg = data.productBg;
-
-                    this.DOM.productBg.style.opacity = 0;
-
-                    const rect = this.getProductDetailsRect();
-
-                    this.DOM.bgDown.style.transform = `translateX(${rect.productBgRect.left-rect.detailsBgRect.left}px) translateY(${rect.productBgRect.top-rect.detailsBgRect.top}px) scaleX(${rect.productBgRect.width/rect.detailsBgRect.width}) scaleY(${rect.productBgRect.height/rect.detailsBgRect.height})`;
-                    this.DOM.bgDown.style.opacity = 1;
-
-                    // animate background
-                    anime({
-                        targets: [this.DOM.bgDown],
-                        duration: (target, index) => index ? 800 : 250,
-                        easing: (target, index) => 'easeOutSine', // Changed to easeOutSine
-                        elasticity: 250,
-                        translateX: 0,
-                        translateY: 0,
-                        scaleX: 1,
-                        scaleY: 1,
-                        complete: () => {
-                            this.isAnimating = false;
-                            // Scroll to top after animation is complete
-                            this.DOM.description.scrollTop = 0;
-                        }
-                    });
-
-                    // animate content
-                    anime({
-                        targets: this.DOM.modalTitle, // Only modalTitle here
-                        duration: 1000,
-                        easing: 'easeOutExpo',
-                        opacity: 1 // Only fade in, no translation
-                    });
-
-                    // Animate description separately
-                    anime({
-                        targets: this.DOM.description,
-                        duration: 1000,
-                        easing: 'easeOutExpo',
-                        translateY: ['100%',0],
-                        opacity: 1
-                    });
-
-
-                    // animate close button
-                    anime({
-                        targets: this.DOM.close,
-                        duration: 250,
-                        easing: 'easeOutSine',
-                        translateY: ['100%',0],
-                        opacity: 1
-                    });
-                }
-                close() {
-                    if(this.isAnimating) return false;
-                    this.isAnimating = true;
-
-                    this.DOM.details.classList.remove('details--open');
-                    document.body.classList.remove('modal-open'); // Remove class from body to re-enable scroll
-
-                    anime({
-                        targets: this.DOM.close,
-                        duration: 250,
-                        easing: 'easeOutSine',
-                        translateY: '100%',
-                        opacity: 0
-                    });
-
-                    // Animate modal title out
-                    anime({
-                        targets: this.DOM.modalTitle,
-                        duration: 20,
-                        easing: 'linear',
-                        opacity: 0
-                    });
-
-                    // Animate description out
-                    anime({
-                        targets: this.DOM.description,
-                        duration: 20,
-                        easing: 'linear',
-                        opacity: 0
-                    });
-
-                    const rect = this.getProductDetailsRect();
-                    anime({
-                        targets: [this.DOM.bgDown],
-                        duration: 250,
-                        easing: 'easeOutSine',
-                        translateX: rect.productBgRect.left - rect.detailsBgRect.left,
-                        translateY: rect.productBgRect.top - rect.detailsBgRect.top,
-                        scaleX: rect.productBgRect.width / rect.detailsBgRect.width,
-                        scaleY: rect.productBgRect.height / rect.detailsBgRect.height,
-                        complete: () => {
-                            this.DOM.bgDown.style.opacity = 0;
-                            this.DOM.bgDown.style.transform = 'none';
-                            this.DOM.productBg.style.opacity = 1;
-                            this.DOM.details.style.display = 'none';
-                            this.isAnimating = false;
-                        }
-                    });
-                }
-            }; // class Details
-
-            class Item {
-                constructor(el) {
-                    this.DOM = {};
-                    this.DOM.el = el;
-                    this.DOM.product = this.DOM.el.querySelector('.product');
-                    this.DOM.productBg = this.DOM.product.querySelector('.product__bg');
-                    this.DOM.navText = this.DOM.el.querySelector('.tm-nav-text'); // Get the navigation text element
-                    this.DOM.productDescription = this.DOM.product.querySelector('.product__description');
-
-                    this.info = {
-                        title: this.DOM.navText.textContent, // Pass the navigation text as the title
-                        // This will be populated dynamically from translations when opened
-                        descriptionHtml: ''
-                    };
-
-                    this.initEvents();
-                }
-                initEvents() {
-                    this.DOM.product.addEventListener('click', () => this.open());
-                }
-                open() {
-                    // Dynamically get the description based on the current language and key
-                    const titleKey = this.DOM.navText.dataset.i18n;
-                    if (translations[currentLang] && translations[currentLang][titleKey]) {
-																						   
-																																
-                        let descriptionHtml = '';
-                        const currentTranslations = translations[currentLang];
-
-                        switch(titleKey) {
-                            case 'vision_title':
-                                descriptionHtml += `<p>${currentTranslations.vision_description_p1}</p>`;
-                                descriptionHtml += `<p>${currentTranslations.vision_description_p2}</p>`;
-                                descriptionHtml += `<p>${currentTranslations.vision_description_p3}</p>`;
-                                descriptionHtml += `<p>${currentTranslations.vision_description_p4}</p>`;
-                                descriptionHtml += `<p>${currentTranslations.vision_description_p5}</p>`;
-                                break;
-                            case 'team_title':
-                                descriptionHtml += `<p class="mb-4">${currentTranslations.team_description_p1}</p>`;
-                                descriptionHtml += `<p class="mb-4">${currentTranslations.team_description_p2}</p>`;
-                                descriptionHtml += `<p class="mb-4">${currentTranslations.team_description_p3}</p>`;
-                                descriptionHtml += `<p class="mb-4">${currentTranslations.team_description_p4}</p>`;
-                                descriptionHtml += `<p class="mb-4">${currentTranslations.team_description_p5}</p>`;
-                                break;
-                            case 'partnership_title':
-                                descriptionHtml += `<p>${currentTranslations.partnership_description_p1}</p>`;
-                                descriptionHtml += `<p>${currentTranslations.partnership_description_p2}</p>`;
-                                descriptionHtml += `<p>${currentTranslations.partnership_description_p3}</p>`;
-                                descriptionHtml += `<p>${currentTranslations.partnership_description_p4}</p>`;
-                                descriptionHtml += `<p>${currentTranslations.partnership_description_p5}</p>`;
-                                break;
-                            case 'priorities_title':
-                                descriptionHtml += `<p>${currentTranslations.priorities_description_p1}</p>`;
-                                descriptionHtml += `<h5>${currentTranslations.priorities_customer_centric_title}</h5>`;
-                                descriptionHtml += `<p>${currentTranslations.priorities_customer_centric_description}</p>`;
-                                descriptionHtml += `<h5>${currentTranslations.priorities_flexible_scalable_title}</h5>`;
-                                descriptionHtml += `<p>${currentTranslations.priorities_flexible_scalable_description}</p>`;
-                                descriptionHtml += `<h5>${currentTranslations.priorities_secure_resilient_title}</h5>`;
-                                descriptionHtml += `<p>${currentTranslations.priorities_secure_resilient_description}</p>`;
-                                descriptionHtml += `<h5>${currentTranslations.priorities_confident_knowledgeable_title}</h5>`;
-                                descriptionHtml += `<p>${currentTranslations.priorities_confident_knowledgeable_description}</p>`;
-                                break;
-                            case 'technology_title':
-                                descriptionHtml += `<p>${currentTranslations.technology_description_p1}</p>`;
-                                descriptionHtml += `<p>${currentTranslations.technology_description_p2}</p>`;
-                                descriptionHtml += `<h5>${currentTranslations.technology_ict_cloud_title}</h5>`;
-                                descriptionHtml += `<p>${currentTranslations.technology_ict_cloud_description}</p>`;
-                                descriptionHtml += `<h5>${currentTranslations.technology_internet_solutions_title}</h5>`;
-                                descriptionHtml += `<p>${currentTranslations.technology_internet_solutions_description}</p>`;
-                                descriptionHtml += `<h5>${currentTranslations.technology_cloud_infrastructure_title}</h5>`;
-                                descriptionHtml += `<p>${currentTranslations.technology_cloud_infrastructure_description}</p>`;
-                                descriptionHtml += `<h5>${currentTranslations.technology_cybersecurity_data_title}</h5>`;
-                                descriptionHtml += `<p>${currentTranslations.technology_cybersecurity_data_description}</p>`;
-                                descriptionHtml += `<h5>${currentTranslations.technology_app_dev_modernization_title}</h5>`;
-                                descriptionHtml += `<p>${currentTranslations.technology_app_dev_modernization_description}</p>`;
-                                descriptionHtml += `<h5>${currentTranslations.technology_managed_it_services_title}</h5>`;
-                                descriptionHtml += `<p>${currentTranslations.technology_managed_it_services_description}</p>`;
-                                descriptionHtml += `<h5>${currentTranslations.technology_networking_connectivity_title}</h5>`;
-                                descriptionHtml += `<p>${currentTranslations.technology_networking_connectivity_description}</p>`;
-                                descriptionHtml += `<h5>${currentTranslations.technology_digital_transformation_title}</h5>`;
-																																	   
-                                descriptionHtml += `<p>${currentTranslations.technology_digital_transformation_description}</p>`;
-                                break;
-                            case 'contact_us_title':
-                                descriptionHtml += `<p>${currentTranslations.contact_us_description_p1}</p>`;
-                                descriptionHtml += `<p><i class="fas fa-envelope fa-2x"></i> ${currentTranslations.contact_us_email} </p>`;
-                                descriptionHtml += `<p><i class="fas fa-mobile fa-2x"></i> ${currentTranslations.contact_us_phone} </p>`;
-                                break;
-                            default:
-                                descriptionHtml = ''; // Fallback for unknown keys
-                        }
-
-                        this.info.descriptionHtml = descriptionHtml;
-                    }
-
-
-                    DOM.details.fill(this.info);
-                    DOM.details.open({
-                        productBg: this.DOM.productBg
-                    });
-                }
-            }; // class Item
-
-            const DOM = {};
-            DOM.grid = document.querySelector('.grid');
-            DOM.content = DOM.grid.parentNode;
-            DOM.gridItems = Array.from(DOM.grid.querySelectorAll('.grid__item'));
-            let items = [];
-            DOM.gridItems.forEach(item => items.push(new Item(item)));
-
-            DOM.details = new Details();
-
-            // Original setupFooter and jQuery ready function
-            function setupFooter() {
-                var pageHeight = $('.tm-site-header-container').height() + $('footer').height() + 100;
-
-                var main = $('.tm-main-content');
-
-                if($(window).height() < pageHeight) {
-                    main.addClass('tm-footer-relative');
-                }
-                else {
-                    main.removeClass('tm-footer-relative');
-                }
+                });
             }
+        }; // class Details
 
-            /* DOM is ready
-            ------------------------------------------------*/
-            $(function(){
-                // Load default language on page load
-                loadTranslations('en');
+        class Item {
+            constructor(el) {
+                this.DOM = {};
+                this.DOM.el = el;
+                this.DOM.product = this.DOM.el.querySelector('.product');
+                this.DOM.productBg = this.DOM.product.querySelector('.product__bg');
+                this.DOM.navText = this.DOM.el.querySelector('.tm-nav-text'); // Get the navigation text element
+                this.DOM.productDescription = this.DOM.product.querySelector('.product__description');
 
+                this.info = {
+                    title: '', // Title will be set on open
+                    descriptionHtml: '' // Description will be set on open
+                };
+
+                this.initEvents();
+            }
+            initEvents() {
+                this.DOM.product.addEventListener('click', () => this.open());
+            }
+            open() {
+                const titleKey = this.DOM.navText.dataset.i18n;
+                const currentTranslations = translations[currentLang];
+
+                // Set the title for the modal
+                this.info.title = currentTranslations[titleKey];
+
+                // Dynamically build description HTML based on the current language and key
+                let descriptionHtml = '';
+                if (currentTranslations) { // Ensure translations exist for current language
+                    switch(titleKey) {
+                        case 'vision_title':
+                            descriptionHtml = `
+                                <p>${currentTranslations.vision_description_p1 || ''}</p>
+                                <p>${currentTranslations.vision_description_p2 || ''}</p>
+                                <p>${currentTranslations.vision_description_p3 || ''}</p>
+                                <p>${currentTranslations.vision_description_p4 || ''}</p>
+                                <p>${currentTranslations.vision_description_p5 || ''}</p>
+                            `;
+                            break;
+                        case 'team_title':
+                            descriptionHtml = `
+                                <p class="mb-4">${currentTranslations.team_description_p1 || ''}</p>
+                                <p class="mb-4">${currentTranslations.team_description_p2 || ''}</p>
+                                <p class="mb-4">${currentTranslations.team_description_p3 || ''}</p>
+                                <p class="mb-4">${currentTranslations.team_description_p4 || ''}</p>
+                                <p class="mb-4">${currentTranslations.team_description_p5 || ''}</p>
+                            `;
+                            break;
+                        case 'partnership_title':
+                            descriptionHtml = `
+                                <p>${currentTranslations.partnership_description_p1 || ''}</p>
+                                <p>${currentTranslations.partnership_description_p2 || ''}</p>
+                                <p>${currentTranslations.partnership_description_p3 || ''}</p>
+                                <p>${currentTranslations.partnership_description_p4 || ''}</p>
+                                <p>${currentTranslations.partnership_description_p5 || ''}</p>
+                            `;
+                            break;
+                        case 'priorities_title':
+                            descriptionHtml = `
+                                <p>${currentTranslations.priorities_description_p1 || ''}</p>
+                                <h5>${currentTranslations.priorities_customer_centric_title || ''}</h5>
+                                <p>${currentTranslations.priorities_customer_centric_description || ''}</p>
+                                <h5>${currentTranslations.priorities_flexible_scalable_title || ''}</h5>
+                                <p>${currentTranslations.priorities_flexible_scalable_description || ''}</p>
+                                <h5>${currentTranslations.priorities_secure_resilient_title || ''}</h5>
+                                <p>${currentTranslations.priorities_secure_resilient_description || ''}</p>
+                                <h5>${currentTranslations.priorities_confident_knowledgeable_title || ''}</h5>
+                                <p>${currentTranslations.priorities_confident_knowledgeable_description || ''}</p>
+                            `;
+                            break;
+                        case 'technology_title':
+                            descriptionHtml = `
+                                <p>${currentTranslations.technology_description_p1 || ''}</p>
+                                <p>${currentTranslations.technology_description_p2 || ''}</p>
+                                <h5>${currentTranslations.technology_ict_cloud_title || ''}</h5>
+                                <p>${currentTranslations.technology_ict_cloud_description || ''}</p>
+                                <h5>${currentTranslations.technology_internet_solutions_title || ''}</h5>
+                                <p>${currentTranslations.technology_internet_solutions_description || ''}</p>
+                                <h5>${currentTranslations.technology_cloud_infrastructure_title || ''}</h5>
+                                <p>${currentTranslations.technology_cloud_infrastructure_description || ''}</p>
+                                <h5>${currentTranslations.technology_cybersecurity_data_title || ''}</h5>
+                                <p>${currentTranslations.technology_cybersecurity_data_description || ''}</p>
+                                <h5>${currentTranslations.technology_app_dev_modernization_title || ''}</h5>
+                                <p>${currentTranslations.technology_app_dev_modernization_description || ''}</p>
+                                <h5>${currentTranslations.technology_managed_it_services_title || ''}</h5>
+                                <p>${currentTranslations.technology_managed_it_services_description || ''}</p>
+                                <h5>${currentTranslations.technology_networking_connectivity_title || ''}</h5>
+                                <p>${currentTranslations.technology_networking_connectivity_description || ''}</p>
+                                <h5>${currentTranslations.technology_digital_transformation_title || ''}</h5>
+                                <p>${currentTranslations.technology_digital_transformation_description || ''}</p>
+                            `;
+                            break;
+                        case 'contact_us_title':
+                            descriptionHtml = `
+                                <p>${currentTranslations.contact_us_description_p1 || ''}</p>
+                                <p><i class="fas fa-envelope fa-2x"></i> ${currentTranslations.contact_us_email || ''} </p>
+                                <p><i class="fas fa-mobile fa-2x"></i> ${currentTranslations.contact_us_phone || ''} </p>
+                            `;
+                            break;
+                        default:
+                            descriptionHtml = ''; // Fallback for unknown keys
+                    }
+                }
+                this.info.descriptionHtml = descriptionHtml;
+
+                DOM.details.fill(this.info);
+                DOM.details.open({
+                    productBg: this.DOM.productBg
+                });
+            }
+        }; // class Item
+
+        const DOM = {};
+        DOM.grid = document.querySelector('.grid');
+        DOM.content = DOM.grid.parentNode;
+        DOM.gridItems = Array.from(DOM.grid.querySelectorAll('.grid__item'));
+        let items = [];
+        DOM.gridItems.forEach(item => items.push(new Item(item)));
+
+        DOM.details = new Details();
+
+        // Original setupFooter and jQuery ready function
+        function setupFooter() {
+            var pageHeight = $('.tm-site-header-container').height() + $('footer').height() + 100;
+
+            var main = $('.tm-main-content');
+
+            if($(window).height() < pageHeight) {
+                main.addClass('tm-footer-relative');
+            }
+            else {
+                main.removeClass('tm-footer-relative');
+            }
+        }
+
+        /* DOM is ready
+        ------------------------------------------------*/
+        $(function(){
+            cacheTranslatableElements(); // Cache elements on initial load
+            loadTranslations('en'); // Load default language on page load
+
+            setupFooter();
+
+            $(window).resize(function(){
                 setupFooter();
-
-                $(window).resize(function(){
-                    setupFooter();
-                });
-
-                // Add event listeners for language buttons
-                document.querySelectorAll('.language-selector button').forEach(button => {
-                    button.addEventListener('click', (event) => {
-                        loadTranslations(event.target.dataset.lang);
-                    });
-                });
             });
 
-        }
-      </script>
+            // Add event listeners for language buttons
+            document.querySelectorAll('.language-selector button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    loadTranslations(event.target.dataset.lang);
+                });
+            });
+        });
+
+    }
+</script>
    </body>
 </html>
