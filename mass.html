@@ -444,6 +444,11 @@
                      <div class="tm-site-header">
                         <img src="img/logo2.png" class="img-fluid mb-4">
                         <div class="shadow-lg p-2 mb-5 baner-body rounded"><h2 class="text-center fw-bold" data-i18n="banner_text">Turning Corporate Dreams into Real Outcomes</h2></div>
+			   
+									  
+									  
+									  
+		 
                      </div>
                   </div>
                   <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -568,6 +573,7 @@
             <footer>
 
                <p class="small tm-copyright-text" data-i18n="copyright_text"></p>
+
                         <div class="language-selector mt-3">
                             <button class="lng" data-lang="en"><img src="https://flagcdn.com/w320/us.png" alt="US Flag" width="20" height="20"></button>
                             <button class="lng" data-lang="nl"><img src="https://flagcdn.com/w320/nl.png" alt="Netherlands Flag" width="20"></button>
@@ -696,10 +702,10 @@
 
                     const rect = this.getProductDetailsRect();
 
-																																																																													
-													  
+                    this.DOM.bgDown.style.transform = `translateX(${rect.productBgRect.left-rect.detailsBgRect.left}px) translateY(${rect.productBgRect.top-rect.detailsBgRect.top}px) scaleX(${rect.productBgRect.width/rect.detailsBgRect.width}) scaleY(${rect.productBgRect.height/rect.detailsBgRect.height})`;
+                    this.DOM.bgDown.style.opacity = 1;
 
-										 
+                    // animate background
                     anime({
                         targets: [this.DOM.bgDown],
                         duration: (target, index) => index ? 800 : 250,
@@ -845,33 +851,34 @@
                                 break;
                             case 'priorities_title':
                                 descriptionHtml += `<p>${translations[currentLang].priorities_description_p1}</p>`;
-                                descriptionHtml += `<h5>${translations[currentLang].priorities_customer_centric_title}</h5>`;
+                                descriptionHtml += `<h5 data-i18n="priorities_customer_centric_title">${translations[currentLang].priorities_customer_centric_title}</h5>`;
                                 descriptionHtml += `<p>${translations[currentLang].priorities_customer_centric_description}</p>`;
-                                descriptionHtml += `<h5>${translations[currentLang].priorities_flexible_scalable_title}</h5>`;
+                                descriptionHtml += `<h5 data-i18n="priorities_flexible_scalable_title">${translations[currentLang].priorities_flexible_scalable_title}</h5>`;
                                 descriptionHtml += `<p>${translations[currentLang].priorities_flexible_scalable_description}</p>`;
-                                descriptionHtml += `<h5>${translations[currentLang].priorities_secure_resilient_title}</h5>`;
+                                descriptionHtml += `<h5 data-i18n="priorities_secure_resilient_title">${translations[currentLang].priorities_secure_resilient_title}</h5>`;
                                 descriptionHtml += `<p>${translations[currentLang].priorities_secure_resilient_description}</p>`;
-                                descriptionHtml += `<h5>${translations[currentLang].priorities_confident_knowledgeable_title}</h5>`;
+                                descriptionHtml += `<h5 data-i18n="priorities_confident_knowledgeable_title">${translations[currentLang].priorities_confident_knowledgeable_title}</h5>`;
                                 descriptionHtml += `<p>${translations[currentLang].priorities_confident_knowledgeable_description}</p>`;
                                 break;
                             case 'technology_title':
                                 descriptionHtml += `<p>${translations[currentLang].technology_description_p1}</p>`;
                                 descriptionHtml += `<p>${translations[currentLang].technology_description_p2}</p>`;
-                                descriptionHtml += `<h5>${translations[currentLang].technology_ict_cloud_title}</h5>`;
+                                descriptionHtml += `<h5 data-i18n="technology_ict_cloud_title">${translations[currentLang].technology_ict_cloud_title}</h5>`;
                                 descriptionHtml += `<p>${translations[currentLang].technology_ict_cloud_description}</p>`;
-                                descriptionHtml += `<h5>${translations[currentLang].technology_internet_solutions_title}</h5>`;
+                                descriptionHtml += `<h5 data-i18n="technology_internet_solutions_title">${translations[currentLang].technology_internet_solutions_title}</h5>`;
                                 descriptionHtml += `<p>${translations[currentLang].technology_internet_solutions_description}</p>`;
-                                descriptionHtml += `<h5>${translations[currentLang].technology_cloud_infrastructure_title}</h5>`;
+                                descriptionHtml += `<h5 data-i18n="technology_cloud_infrastructure_title">${translations[currentLang].technology_cloud_infrastructure_title}</h5>`;
                                 descriptionHtml += `<p>${translations[currentLang].technology_cloud_infrastructure_description}</p>`;
-                                descriptionHtml += `<h5>${translations[currentLang].technology_cybersecurity_data_title}</h5>`;
+                                descriptionHtml += `<h5 data-i18n="technology_cybersecurity_data_title">${translations[currentLang].technology_cybersecurity_data_title}</h5>`;
                                 descriptionHtml += `<p>${translations[currentLang].technology_cybersecurity_data_description}</p>`;
-                                descriptionHtml += `<h5>${translations[currentLang].technology_app_dev_modernization_title}</h5>`;
+                                descriptionHtml += `<h5 data-i18n="technology_app_dev_modernization_title">${translations[currentLang].technology_app_dev_modernization_title}</h5>`;
                                 descriptionHtml += `<p>${translations[currentLang].technology_app_dev_modernization_description}</p>`;
-                                descriptionHtml += `<h5>${translations[currentLang].technology_managed_it_services_title}</h5>`;
+                                descriptionHtml += `<h5 data-i18n="technology_managed_it_services_title">${translations[currentLang].technology_managed_it_services_title}</h5>`;
                                 descriptionHtml += `<p>${translations[currentLang].technology_managed_it_services_description}</p>`;
-                                descriptionHtml += `<h5>${translations[currentLang].technology_networking_connectivity_title}</h5>`;
+                                descriptionHtml += `<h5 data-i18n="technology_networking_connectivity_title">${translations[currentLang].technology_networking_connectivity_title}</h5>`;
                                 descriptionHtml += `<p>${translations[currentLang].technology_networking_connectivity_description}</p>`;
-                                descriptionHtml += `<h5>${translations[currentLang].technology_digital_transformation_title}</h5>`;
+                                descriptionHtml += `<h5 data-i18n="technology_digital_transformation_title">${translations[currentLang].technology_digital_transformation_title}</h5>`;
+                                descriptionHtml += `<p>${translations[currentLang].technology_digital_transformation_description}</p>`;
                                 descriptionHtml += `<p>${translations[currentLang].technology_digital_transformation_description}</p>`;
                                 break;
                             case 'contact_us_title':
