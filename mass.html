@@ -598,20 +598,10 @@
         let currentLang = 'en'; // Default language
         const translatableElements = {}; // Cache for translatable elements
 
-        // Helper function to fetch content from uploaded files
-        async function getFileContent(fileName) {
-            const url = `/${fileName}`; // Assuming files are served from the root
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`Failed to fetch ${fileName}: ${response.statusText}`);
-            }
-            return response.text();
-        }
         async function loadTranslations(lang) {
             try {
-                // Use getFileContent to fetch the JSON file
-                const dataString = await getFileContent('mass.json');
-                const data = JSON.parse(dataString); // Parse the string into a JSON object
+                const response = await fetch('mass.json');
+                const data = await response.json();
                 translations = data;
                 currentLang = lang;
                 applyTranslations();
