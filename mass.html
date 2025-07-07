@@ -4,17 +4,435 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>MassICT &#8211; Turning Corporate Dreams into Real Outcomes</title>
-      <!-- load CSS -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300">
-      <!-- Google web font "Open Sans" -->
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-      <!-- https://getbootstrap.com/ -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-      <!-- https://fontawesome.com/ -->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-      <link rel="stylesheet" href="css/style.css">
-      <!-- style -->
-      <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this in a modern browser such as latest version of Chrome or Microsoft Edge.");</script>
+
+      <style>
+         body {
+           font-family: "Open Sans", Helvetica, Arial, sans-serif;
+           font-size: 19px;
+           font-weight: 300;
+           color: #f9a03f;
+           position: relative;
+           background-color: #262626;
+         }
+
+         /* Prevent main page scrolling when a popup is active */
+         body.modal-open {
+             overflow: hidden; /* This stops scrolling on the main page */
+         }
+
+         /* Custom scrollbar styling for Webkit browsers */
+         ::-webkit-scrollbar {
+           width: 10px; /* width of the entire scrollbar */
+         }
+
+         ::-webkit-scrollbar-track {
+           background: #353541; /* color of the tracking area */
+           border-radius: 5px;
+         }
+
+         ::-webkit-scrollbar-thumb {
+           background-color: #f25d39; /* color of the scroll thumb */
+           border-radius: 5px; /* roundness of the scroll thumb */
+           border: 2px solid #353541; /* creates padding around scroll thumb */
+         }
+
+         ::-webkit-scrollbar-thumb:hover {
+           background-color: #f9a03f; /* color of the scroll thumb on hover */
+         }
+
+
+         .baner-body {
+           --bs-bg-opacity: 1;
+           background-color: #262626;
+         }
+         h1 {
+           font-size: 2.8rem;
+         }
+
+         #tm-bg {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background-image: url(img/pop-bg.jpg);
+           background-position: center;
+           background-size: cover;
+           background-repeat: no-repeat;
+           z-index: -1;
+           transition: all 0.3s ease;
+         }
+
+         #tm-bg:after {
+           content: "";
+           display: block;
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+         }
+
+         #tm-wrap {
+           display: flex;
+           align-items: center;
+           height: 100%;
+           min-height: 100vh;
+         }
+
+         p {
+           line-height: 1.9;
+           letter-spacing: 1px;
+         }
+
+         .tm-main-content {
+           display: flex;
+           align-items: center;
+           padding: 50px 15px;
+           position: absolute;
+           left: 0;
+           right: 0;
+           top: 0;
+           bottom: 0;
+         }
+
+         .tm-site-header-col {
+           display: flex;
+           align-items: center;
+         }
+
+         .tm-site-header {
+           margin: 10px;
+           text-align: right;
+           width: 100%;
+         }
+
+         .tm-nav ul {
+           padding-left: 0;
+           display: block;
+         }
+
+         .tm-nav li {
+           list-style: none;
+           display: inline-block;
+           border: 1px solid #f9a03f;
+           float: left;
+           margin: 10px;
+         }
+
+         .tm-nav-link {
+           color: #f9a03f;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           width: 165px;
+           height: 165px;
+           text-align: center;
+           border: 1px solid #f9a03f;
+           cursor: pointer;
+           position: relative;
+         }
+
+         .tm-nav-text {
+           position: absolute;
+           left: 0;
+           right: 0;
+           bottom: 10px;
+         }
+
+         .fa-3x {
+           font-size: 2.5em;
+         }
+
+         .product {
+           background: transparent;
+           transition: all 0.3s ease;
+         }
+
+         .product:hover {
+           background: #f25d39;
+           color: #a9a9a9;
+         }
+		 
+         .lng {
+           background: transparent;
+           transition: all 0.3s ease;
+         }
+
+         .tm-nav-icon {
+           display: block;
+           margin-bottom: 25px;
+         }
+
+         /* Expanding Grid Items from Codrops */
+         .tm-page-title {
+           font-weight: 300;
+         }
+         .content {
+           max-width: 370px;
+         }
+         .grid {
+           display: flex;
+           flex-wrap: wrap;
+         }
+         .grid__item {
+           margin: 10px;
+         }
+         .product {
+           position: relative;
+           cursor: pointer;
+           background-color: #262626;
+         }
+
+         .product__bg {
+           width: 100%;
+           height: 100%;
+           top: 0px;
+         }
+
+         .product__bg,
+         .product__description {
+           opacity: 0;
+           position: absolute;
+         }
+
+         /* Styles for the source content, remains hidden */
+         .product__description {
+           width: 100%;
+           height: 100%;
+           top: 0;
+           left: 0;
+           opacity: 0;
+           position: absolute;
+           display: none;
+         }
+
+         /* Styles for the main modal container */
+         .details {
+           font-size: 1rem;
+           width: 100%;
+           height: 100%;
+           bottom: 0;
+           left: 0;
+           z-index: 1000;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           pointer-events: none;
+           padding: 15px;
+           display: none;
+           position: fixed; /* Ensure details element is fixed to viewport */
+           top: 0;
+           left: 0;
+         }
+
+         .details > * {
+           position: relative;
+           opacity: 0;
+         }
+
+         .details--open {
+           pointer-events: auto;
+         }
+
+         /* Styles for the modal's background element */
+         .details__bg {
+           width: 100%;
+           max-width: 900px;
+           left: 0;
+           right: 0;
+           margin-left: auto;
+           margin-right: auto;
+           background: #262626; /* Ensure background color is set */
+           padding: 50px; /* Keep padding */
+           transform-origin: 0 0;
+           display: flex; /* Make it a flex container */
+           flex-direction: column; /* Stack children vertically */
+           max-height: 70vh; /* Limit the overall height of the modal body to 70% of viewport height */
+           box-sizing: border-box; /* Include padding in height calculation */
+           border: 1px solid #f9a03f; /* Added border to the modal background */
+           border-radius: 8px; /* Added border-radius for rounded corners */
+         }
+
+         /* Styles for the actual scrollable content within the modal */
+         .details__description {
+           flex-grow: 1; /* Allow it to grow and fill available space */
+           overflow-y: auto; /* Enable vertical scrolling */
+           overflow-x: hidden; /* Prevent horizontal scrolling */
+           padding-right: 15px; /* Adjusted padding-right to ensure space from scrollbar */
+           padding-left: 15px; /* Added padding-left for consistent horizontal spacing */
+           padding-top: 15px; /* Added padding-top for consistent vertical spacing */
+           padding-bottom: 15px; /* Added padding-bottom for consistent vertical spacing */
+           box-sizing: border-box;
+           opacity: 0; /* Initial state, animated by JS */
+         }
+
+         /* Unified styling for text elements within the popup description */
+         .details__description p {
+             margin-bottom: 1rem; /* Consistent spacing between paragraphs */
+             text-align: justify; /* Justify text for a cleaner block appearance */
+         }
+
+         /* New style for the modal title */
+         .details__modal-title {
+             margin-bottom: 1.5rem; /* Consistent spacing after main title */
+             color: #f9a03f; /* Ensure title color is consistent */
+             text-align: center; /* Center align title */
+             font-size: 2.2rem; /* Adjusted font size for modal title */
+             font-weight: 300;
+         }
+
+         /* Original tm-page-title style, now only applies to the hidden content */
+         .tm-page-title {
+           font-weight: 300;
+         }
+
+         .details__description h5 {
+             margin-top: 1.5rem; /* Spacing before sub-headings */
+             margin-bottom: 0.8rem; /* Spacing after sub-headings */
+             color: #f9a03f; /* Ensure sub-heading color is consistent */
+             text-align: left; /* Align sub-headings to the left */
+         }
+
+
+         .tm-fa-close {
+           font-size: 30px;
+         }
+
+         .details__close {
+           position: absolute;
+           top: 5px;
+           right: 0;
+           border: 0;
+           background: none;
+           margin: 1em;
+           cursor: pointer;
+           font-size: 0.85em;
+           color: #f9a03f;
+           z-index: 1001;
+         }
+
+         /* Team */
+         .tm-reverse-sm {
+           flex-direction: row;
+         }
+
+         /* Footer */
+         footer {
+           position: absolute;
+           bottom: 30px;
+           text-align: center;
+           left: 0;
+           right: 0;
+         }
+
+         .tm-text-highlight {
+           color: #f9a03f;
+         }
+         .tm-text-highlight:hover {
+           color: red;
+         }
+         .tm-main-content.tm-footer-relative {
+           flex-direction: column;
+         }
+         .tm-main-content.tm-footer-relative footer {
+           position: relative;
+           bottom: 0;
+           margin-top: 50px;
+         }
+
+         .tm-copyright-text {
+           display: inline-block;
+           padding: 10px 30px;
+         }
+
+         a,
+         button {
+           transition: all 0.3s ease;
+         }
+         a:hover,
+         a:focus {
+           text-decoration: none;
+           outline: none;
+         }
+
+         p:last-child {
+           margin-bottom: 0;
+         }
+
+         @media (min-width: 900px) {
+           .container {
+             max-width: 900px;
+           }
+         }
+
+         @media (min-width: 767px) and (max-width: 991px), (max-width: 440px) {
+           .tm-nav-link {
+             width: 145px;
+             height: 145px;
+           }
+         }
+
+         @media (max-width: 767px) {
+           .container {
+             max-width: 450px;
+           }
+           .content {
+             margin-left: auto;
+             margin-right: 0;
+           }
+           .tm-nav ul {
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: flex-end;
+           }
+           .grid {
+             justify-content: flex-end;
+           }
+           .tm-col-email {
+             padding-left: 15px;
+           }
+           .tm-reverse-sm {
+             flex-direction: column-reverse;
+           }
+         }
+
+         @media (max-width: 544px) {
+           .tm-main-content {
+             flex-direction: column;
+           }
+           .details__bg {
+             padding: 55px 40px;
+           }
+           footer {
+             position: relative;
+             bottom: 0;
+           }
+         }
+
+         @media (max-width: 419px) {
+           .tm-nav-link {
+             width: 120px;
+             height: 120px;
+           }
+
+           .fa-3x {
+             font-size: 2.2em;
+           }
+         }
+      </style>
+      <script>
+        document.documentElement.className="js";
+        var supportsCssVars=function(){
+            var e,t=document.createElement("style");
+            t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e
+        };
+        supportsCssVars()||console.warn("Please view this in a modern browser such as latest version of Chrome or Microsoft Edge.");
+      </script>
    </head>
    <body>
       <div id="tm-bg"></div>
@@ -25,7 +443,7 @@
                   <div class="col-sm-12 col-md-6 col-lg-6 col-md-col-xl-6 mb-md-0 mb-sm-4 mb-4 tm-site-header-col">
                      <div class="tm-site-header">
                         <img src="img/logo2.png" class="img-fluid mb-4">
-                        <div class="shadow-lg p-2 mb-5 baner-body rounded"><h2 class="text-center fw-bold">Turning Corporate Dreams into Real Outcomes</h2></div>
+                        <div class="shadow-lg p-2 mb-5 baner-body rounded"><h2 class="text-center fw-bold" data-i18n="banner_text">Turning Corporate Dreams into Real Outcomes</h2></div>
                      </div>
                   </div>
                   <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -35,21 +453,15 @@
                               <div class="product">
                                  <div class="tm-nav-link">
                                     <i class="fas fa-eye  fa-3x tm-nav-icon"></i>
-                                    <span class="tm-nav-text">Vision</span>
+                                    <span class="tm-nav-text" data-i18n="vision_title">Vision</span>
                                     <div class="product__bg"></div>
                                  </div>
                                  <div class="product__description">
-                                    <div class="row mb-3">
-                                       <div class="col-12">
-                                          <h2 class="tm-page-title">Vision - make a plan for the plant of the future.</h2>
-                                       </div>
-                                    </div>
-                                    <div class="row">
-                                       <div class="col-12">
-                                          <p>Don’t Just Plan For The Future: ‘Provoke’ Your Vision</p>
-                                          <p>What you get by achieving your goals is not as important as what you become by achieving your goals.</p>
-                                       </div>
-                                    </div>
+                                    <p data-i18n="vision_description_p1"></p>
+                                    <p data-i18n="vision_description_p2"></p>
+                                    <p data-i18n="vision_description_p3"></p>
+                                    <p data-i18n="vision_description_p4"></p>
+                                    <p data-i18n="vision_description_p5"></p>
                                  </div>
                               </div>
                            </div>
@@ -57,23 +469,15 @@
                               <div class="product">
                                  <div class="tm-nav-link">
                                     <i class="fas fa-users fa-3x tm-nav-icon"></i>
-                                    <span class="tm-nav-text">Team</span>
+                                    <span class="tm-nav-text" data-i18n="team_title">Team</span>
                                     <div class="product__bg"></div>
                                  </div>
                                  <div class="product__description">
-                                    <div class="p-sm-4 p-2">
-                                       <div class="row mb-3">
-                                          <div class="col-12">
-                                             <h2 class="tm-page-title">Team - cross-department task force</h2>
-                                          </div>
-                                       </div>
-                                       <div class="row tm-reverse-sm">
-                                          <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                                             <p class="mb-4">One man can be a crucial ingredient on a team, but one man cannot make a team</p>
-                                             <p class="mb-4">Surround yourself only with people who are going to take you higher.</p>
-                                          </div>
-                                       </div>
-                                    </div>
+                                    <p class="mb-4" data-i18n="team_description_p1"></p>
+                                    <p class="mb-4" data-i18n="team_description_p2"></p>
+                                    <p class="mb-4" data-i18n="team_description_p3"></p>
+                                    <p class="mb-4" data-i18n="team_description_p4"></p>
+                                    <p class="mb-4" data-i18n="team_description_p5"></p>
                                  </div>
                               </div>
                            </div>
@@ -81,25 +485,15 @@
                               <div class="product">
                                  <div class="tm-nav-link">
                                     <i class="fas fa-handshake fa-3x tm-nav-icon"></i>
-                                    <span class="tm-nav-text">Partnership</span>
+                                    <span class="tm-nav-text" data-i18n="partnership_title">Partnership</span>
                                     <div class="product__bg"></div>
                                  </div>
                                  <div class="product__description">
-                                    <div class="p-sm-4 p-2">
-                                       <div class="row mb-3">
-                                          <div class="col-12">
-                                             <h2 class="tm-page-title">Partnership - learn from the best to beat the best.</h2>
-                                          </div>
-                                       </div>
-                                       <div class="row mb-3">
-                                          <div class="col-12">
-                                             <p>How well we communicate is determined not by how well we say things, but how well we are understood.</p>
-                                             <p>We are stronger when we listen, and smarter when we share.</p>
-                                             <p></p>
-                                             <p></p>
-                                          </div>
-                                       </div>
-                                    </div>
+                                    <p data-i18n="partnership_description_p1"></p>
+                                    <p data-i18n="partnership_description_p2"></p>
+                                    <p data-i18n="partnership_description_p3"></p>
+                                    <p data-i18n="partnership_description_p4"></p>
+                                    <p data-i18n="partnership_description_p5"></p>
                                  </div>
                               </div>
                            </div>
@@ -107,33 +501,19 @@
                               <div class="product">
                                  <div class="tm-nav-link">
                                     <i class="fas fa-calendar fa-3x tm-nav-icon"></i>
-                                    <span class="tm-nav-text">Priorities</span>
+                                    <span class="tm-nav-text" data-i18n="priorities_title">Priorities</span>
                                     <div class="product__bg"></div>
                                  </div>
                                  <div class="product__description">
-                                    <div class="pt-sm-4 pb-sm-4 pl-sm-5 pr-sm-5 pt-2 pb-2 pl-3 pr-3">
-                                       <div class="row mb-3">
-                                          <div class="col-12">
-                                             <h2 class="tm-page-title">Priorities - set priorities and do it right</h2>
-                                          </div>
-                                       </div>
-                                       <div class="row mb-4">
-                                          <div class="col-12">
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-12">
-                                             <h5>Customer centric and outcome focused ways of working</h5>
-                                             <p></p>
-                                             <h5>Flexible, scalable and efficient foundations</h5>
-                                             <p></p>
-                                             <h5>Secure, resilient, reliable and reusable digital assets</h5>
-                                             <p></p>
-                                             <h5>Confident and knowledgeable digital capabilities</h5>
-                                             <p></p>
-                                          </div>
-                                       </div>
-                                    </div>
+                                    <p data-i18n="priorities_description_p1"></p>
+                                    <h5 data-i18n="priorities_customer_centric_title"></h5>
+                                    <p data-i18n="priorities_customer_centric_description"></p>
+                                    <h5 data-i18n="priorities_flexible_scalable_title"></h5>
+                                    <p data-i18n="priorities_flexible_scalable_description"></p>
+                                    <h5 data-i18n="priorities_secure_resilient_title"></h5>
+                                    <p data-i18n="priorities_secure_resilient_description"></p>
+                                    <h5 data-i18n="priorities_confident_knowledgeable_title"></h5>
+                                    <p data-i18n="priorities_confident_knowledgeable_description"></p>
                                  </div>
                               </div>
                            </div>
@@ -141,34 +521,28 @@
                               <div class="product">
                                  <div class="tm-nav-link">
                                     <i class="fas fa-computer fa-3x tm-nav-icon"></i>
-                                    <span class="tm-nav-text">Technology </span>
+                                    <span class="tm-nav-text" data-i18n="technology_title">Technology</span>
                                     <div class="product__bg"></div>
                                  </div>
                                  <div class="product__description">
-                                    <div class="pt-sm-4 pb-sm-4 pl-sm-5 pr-sm-5 pt-2 pb-2 pl-3 pr-3">
-                                       <div class="row mb-3">
-                                          <div class="col-12">
-                                             <h2 class="tm-page-title">Technology - always as a backbone.</h2>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-12">
-                                             <p>As technology becomes more and more integrated into our everyday lives, companies can rely on it to drive their businesses forward. However, every business needs to be careful not to lose money by being too hasty with adopting this new innovation. With each company looking for the next big thing, you can see a mixture of state-of-the-art engineering and strategic planning employed in the interest of growing their company.</p>
-                                             <h5>Capacity Expansion and Optimization</h5>
-                                             <p></p>
-                                             <h5>Operational Effectiveness</h5>
-                                             <p></p>
-                                             <h5>Build Businesses</h3>
-                                             <p></p>
-                                             <h5>Decision-Making is Simplified</h5>
-                                             <p></p>
-                                             <h5>Boost Competitive Edge</h5>
-                                             <p></p>
-                                             <h5>Assisting ECommerce Process</h5>
-                                             <p></p>
-                                          </div>
-                                       </div>
-                                    </div>
+                                    <p data-i18n="technology_description_p1"></p>
+                                    <p data-i18n="technology_description_p2"></p>
+                                    <h5 data-i18n="technology_ict_cloud_title"></h5>
+                                    <p data-i18n="technology_ict_cloud_description"></p>
+                                    <h5 data-i18n="technology_internet_solutions_title"></h5>
+                                    <p data-i18n="technology_internet_solutions_description"></p>
+                                    <h5 data-i18n="technology_cloud_infrastructure_title"></h5>
+                                    <p data-i18n="technology_cloud_infrastructure_description"></p>
+                                    <h5 data-i18n="technology_cybersecurity_data_title"></h5>
+                                    <p data-i18n="technology_cybersecurity_data_description"></p>
+                                    <h5 data-i18n="technology_app_dev_modernization_title"></h5>
+                                    <p data-i18n="technology_app_dev_modernization_description"></p>
+                                    <h5 data-i18n="technology_managed_it_services_title"></h5>
+                                    <p data-i18n="technology_managed_it_services_description"></p>
+                                    <h5 data-i18n="technology_networking_connectivity_title"></h5>
+                                    <p data-i18n="technology_networking_connectivity_description"></p>
+                                    <h5 data-i18n="technology_digital_transformation_title"></h5>
+                                    <p data-i18n="technology_digital_transformation_description"></p>
                                  </div>
                               </div>
                            </div>
@@ -176,24 +550,13 @@
                               <div class="product">
                                  <div class="tm-nav-link">
                                     <i class="fas fa-comments fa-3x tm-nav-icon"></i>
-                                    <span class="tm-nav-text">Contact Us</span>
+                                    <span class="tm-nav-text" data-i18n="contact_us_title">Contact Us</span>
                                     <div class="product__bg"></div>
                                  </div>
                                  <div class="product__description">
-                                    <div class="pt-sm-4 pb-sm-4 pl-sm-5 pr-sm-5 pt-2 pb-2 pl-3 pr-3">
-                                       <div class="row mb-3">
-                                          <div class="col-12">
-                                             <h2 class="tm-page-title">Let's start the conversation</h2>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-12">
-                                             <p>Thank you for your interest in MASS ICT. Whether you’re a client, job seeker, journalist, analyst or investor, you can find the best way to contact us below.</p>
-                                             <p><i class="fas fa-envelope fa-2x"></i> info@massict.com </p>
-                                             <p><i class="fas fa-mobile fa-2x"></i> +31624681367 </p>
-                                          </div>
-                                       </div>
-                                    </div>
+                                    <p data-i18n="contact_us_description_p1"></p>
+                                    <p><i class="fas fa-envelope fa-2x"></i> <span data-i18n="contact_us_email">info@massict.com</span> </p>
+                                    <p><i class="fas fa-mobile fa-2x"></i> <span data-i18n="contact_us_phone">+31624681367</span> </p>
                                  </div>
                               </div>
                            </div>
@@ -203,42 +566,377 @@
                </div>
             </div>
             <footer>
-               <p class="small tm-copyright-text">Copyright &copy; <span class="tm-current-year">2023</span> MassICT.</p>
+                        <div class="language-selector mt-3">
+                            <button class="lng" data-lang="en"><img src="https://flagcdn.com/w320/us.png" alt="US Flag" width="20" height="20"></button>
+                            <button class="lng" data-lang="nl"><img src="https://flagcdn.com/w320/nl.png" alt="Netherlands Flag" width="20"></button>
+                            <button class="lng" data-lang="ro"><img src="https://flagcdn.com/w320/ro.png" alt="Romanian Flag" width="20"></button>
+                        </div>
+               <p class="small tm-copyright-text" data-i18n="copyright_text"></p>
             </footer>
          </div>
-         <!-- .tm-main-content -->  
-      </div>
-      <!-- load JS -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>         <!-- https://jquery.com/ -->    
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>                     <!-- http://animejs.com/ -->
-      <script src="js/main.js"></script>  
-      <script>      
-         function setupFooter() {
-             var pageHeight = $('.tm-site-header-container').height() + $('footer').height() + 100;
-         
-             var main = $('.tm-main-content');
-         
-             if($(window).height() < pageHeight) {
-                 main.addClass('tm-footer-relative');
-             }
-             else {
-                 main.removeClass('tm-footer-relative');   
-             }
-         }
-         
-         /* DOM is ready
-         ------------------------------------------------*/
-         $(function(){
-         
-             setupFooter();
-         
-             $(window).resize(function(){
-                 setupFooter();
-             });
-         
-             $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright           
-         });
-         
-      </script>             
+         </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>                     <script>
+        {
+            let translations = {};
+            let currentLang = 'en'; // Default language
+
+            async function loadTranslations(lang) {
+                try {
+                    const response = await fetch('translation.json');
+                    const data = await response.json();
+                    translations = data;
+                    currentLang = lang;
+                    applyTranslations();
+                } catch (error) {
+                    console.error('Error loading translations:', error);
+                }
+            }
+
+            function applyTranslations() {
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.dataset.i18n;
+                    if (translations[currentLang] && translations[currentLang][key]) {
+                        // For paragraphs, directly set innerHTML as they contain multiple sentences
+                        // For titles/spans, set textContent
+                        if (element.tagName === 'P' || element.tagName === 'H5') {
+                            element.innerHTML = translations[currentLang][key];
+                        } else {
+                            element.textContent = translations[currentLang][key];
+                        }
+                    }
+                });
+
+                // Update dynamic copyright year
+                const copyrightElement = document.querySelector('.tm-copyright-text');
+                if (copyrightElement && translations[currentLang] && translations[currentLang].copyright_text) {
+                    copyrightElement.textContent = translations[currentLang].copyright_text.replace('{year}', new Date().getFullYear());
+                }
+                 // Update banner text specifically
+                const bannerTextElement = document.querySelector('.baner-body h2');
+                if (bannerTextElement && translations[currentLang] && translations[currentLang].banner_text) {
+                    bannerTextElement.textContent = translations[currentLang].banner_text;
+                }
+            }
+
+            class Details {
+                constructor() {
+                    this.DOM = {};
+
+                    const detailsTmpl = `
+                    <div class="details__bg details__bg--down">
+                        <button class="details__close"><i class="fas fa-2x fa-times icon--cross tm-fa-close"></i></button>
+                        <h2 class="details__modal-title"></h2> <div class="details__description"></div>
+                    </div>
+                    `;
+
+                    this.DOM.details = document.createElement('div');
+                    this.DOM.details.className = 'details';
+                    this.DOM.details.innerHTML = detailsTmpl;
+                    document.getElementById('tm-wrap').appendChild(this.DOM.details);
+                    this.init();
+                }
+                init() {
+                    this.DOM.bgDown = this.DOM.details.querySelector('.details__bg--down');
+                    this.DOM.close = this.DOM.details.querySelector('.details__close');
+                    this.DOM.modalTitle = this.DOM.details.querySelector('.details__modal-title'); // Get the new title element
+                    this.DOM.description = this.DOM.details.querySelector('.details__description'); // Get the description element
+
+                    this.initEvents();
+                }
+                initEvents() {
+                    // close page when outside of page is clicked.
+                    document.body.addEventListener('click', (event) => {
+                        // Check if the click occurred outside the details modal AND the modal is open
+                        if (!this.DOM.details.contains(event.target) && this.DOM.details.classList.contains('details--open')) {
+                            this.close();
+                        }
+                    });
+                    // prevent close page when inside of page is clicked.
+                    this.DOM.bgDown.addEventListener('click', function(event) {
+                                    event.stopPropagation();
+                                });
+                    // close page when cross button is clicked.
+                    this.DOM.close.addEventListener('click', () => this.close());
+                }
+                fill(info) {
+                    // Set the modal title from info.title
+                    this.DOM.modalTitle.textContent = info.title;
+
+                    // Set the remaining content to the scrollable description area
+                    this.DOM.description.innerHTML = info.descriptionHtml;
+                }
+                getProductDetailsRect(){
+                    var p = 0;
+                    var d = 0;
+
+                    try {
+                        p = this.DOM.productBg.getBoundingClientRect();
+                        d = this.DOM.bgDown.getBoundingClientRect();
+                    }
+                    catch(e){}
+
+                    return {
+                        productBgRect: p,
+                        detailsBgRect: d
+                    };
+                }
+                open(data) {
+                    if(this.isAnimating) return false;
+                    this.isAnimating = true;
+
+                    this.DOM.details.style.display = 'flex'; // Use flex to center content
+
+                    this.DOM.details.classList.add('details--open');
+                    document.body.classList.add('modal-open'); // Add class to body to prevent scroll
+
+                    this.DOM.productBg = data.productBg;
+
+                    this.DOM.productBg.style.opacity = 0;
+
+                    const rect = this.getProductDetailsRect();
+
+                    this.DOM.bgDown.style.transform = `translateX(${rect.productBgRect.left-rect.detailsBgRect.left}px) translateY(${rect.productBgRect.top-rect.detailsBgRect.top}px) scaleX(${rect.productBgRect.width/rect.detailsBgRect.width}) scaleY(${rect.productBgRect.height/rect.detailsBgRect.height})`;
+                    this.DOM.bgDown.style.opacity = 1;
+
+                    // animate background
+                    anime({
+                        targets: [this.DOM.bgDown],
+                        duration: (target, index) => index ? 800 : 250,
+                        easing: (target, index) => 'easeOutSine', // Changed to easeOutSine
+                        elasticity: 250,
+                        translateX: 0,
+                        translateY: 0,
+                        scaleX: 1,
+                        scaleY: 1,
+                        complete: () => {
+                            this.isAnimating = false;
+                            // Scroll to top after animation is complete
+                            this.DOM.description.scrollTop = 0;
+                        }
+                    });
+
+                    // animate content
+                    anime({
+                        targets: this.DOM.modalTitle, // Only modalTitle here
+                        duration: 1000,
+                        easing: 'easeOutExpo',
+                        opacity: 1 // Only fade in, no translation
+                    });
+
+                    // Animate description separately
+                    anime({
+                        targets: this.DOM.description,
+                        duration: 1000,
+                        easing: 'easeOutExpo',
+                        translateY: ['100%',0],
+                        opacity: 1
+                    });
+
+
+                    // animate close button
+                    anime({
+                        targets: this.DOM.close,
+                        duration: 250,
+                        easing: 'easeOutSine',
+                        translateY: ['100%',0],
+                        opacity: 1
+                    });
+                }
+                close() {
+                    if(this.isAnimating) return false;
+                    this.isAnimating = true;
+
+                    this.DOM.details.classList.remove('details--open');
+                    document.body.classList.remove('modal-open'); // Remove class from body to re-enable scroll
+
+                    anime({
+                        targets: this.DOM.close,
+                        duration: 250,
+                        easing: 'easeOutSine',
+                        translateY: '100%',
+                        opacity: 0
+                    });
+
+                    // Animate modal title out
+                    anime({
+                        targets: this.DOM.modalTitle,
+                        duration: 20,
+                        easing: 'linear',
+                        opacity: 0
+                    });
+
+                    // Animate description out
+                    anime({
+                        targets: this.DOM.description,
+                        duration: 20,
+                        easing: 'linear',
+                        opacity: 0
+                    });
+
+                    const rect = this.getProductDetailsRect();
+                    anime({
+                        targets: [this.DOM.bgDown],
+                        duration: 250,
+                        easing: 'easeOutSine',
+                        translateX: rect.productBgRect.left - rect.detailsBgRect.left,
+                        translateY: rect.productBgRect.top - rect.detailsBgRect.top,
+                        scaleX: rect.productBgRect.width / rect.detailsBgRect.width,
+                        scaleY: rect.productBgRect.height / rect.detailsBgRect.height,
+                        complete: () => {
+                            this.DOM.bgDown.style.opacity = 0;
+                            this.DOM.bgDown.style.transform = 'none';
+                            this.DOM.productBg.style.opacity = 1;
+                            this.DOM.details.style.display = 'none';
+                            this.isAnimating = false;
+                        }
+                    });
+                }
+            }; // class Details
+
+            class Item {
+                constructor(el) {
+                    this.DOM = {};
+                    this.DOM.el = el;
+                    this.DOM.product = this.DOM.el.querySelector('.product');
+                    this.DOM.productBg = this.DOM.product.querySelector('.product__bg');
+                    this.DOM.navText = this.DOM.el.querySelector('.tm-nav-text'); // Get the navigation text element
+                    this.DOM.productDescription = this.DOM.product.querySelector('.product__description');
+
+                    this.info = {
+                        title: this.DOM.navText.textContent, // Pass the navigation text as the title
+                        // This will be populated dynamically from translations when opened
+                        descriptionHtml: ''
+                    };
+
+                    this.initEvents();
+                }
+                initEvents() {
+                    this.DOM.product.addEventListener('click', () => this.open());
+                }
+                open() {
+                    // Dynamically get the description based on the current language and key
+                    const titleKey = this.DOM.navText.dataset.i18n;
+                    if (translations[currentLang] && translations[currentLang][titleKey]) {
+                        // Construct the HTML for the description based on the keys in JSON
+                        // This part needs to be more sophisticated if your descriptions have varied structures (e.g., more h5s)
+                        let descriptionHtml = '';
+                        switch(titleKey) {
+                            case 'vision_title':
+                                descriptionHtml += `<p>${translations[currentLang].vision_description_p1}</p>`;
+                                descriptionHtml += `<p>${translations[currentLang].vision_description_p2}</p>`;
+                                descriptionHtml += `<p>${translations[currentLang].vision_description_p3}</p>`;
+                                descriptionHtml += `<p>${translations[currentLang].vision_description_p4}</p>`;
+                                descriptionHtml += `<p>${translations[currentLang].vision_description_p5}</p>`;
+                                break;
+                            case 'team_title':
+                                descriptionHtml += `<p class="mb-4">${translations[currentLang].team_description_p1}</p>`;
+                                descriptionHtml += `<p class="mb-4">${translations[currentLang].team_description_p2}</p>`;
+                                descriptionHtml += `<p class="mb-4">${translations[currentLang].team_description_p3}</p>`;
+                                descriptionHtml += `<p class="mb-4">${translations[currentLang].team_description_p4}</p>`;
+                                descriptionHtml += `<p class="mb-4">${translations[currentLang].team_description_p5}</p>`;
+                                break;
+                            case 'partnership_title':
+                                descriptionHtml += `<p>${translations[currentLang].partnership_description_p1}</p>`;
+                                descriptionHtml += `<p>${translations[currentLang].partnership_description_p2}</p>`;
+                                descriptionHtml += `<p>${translations[currentLang].partnership_description_p3}</p>`;
+                                descriptionHtml += `<p>${translations[currentLang].partnership_description_p4}</p>`;
+                                descriptionHtml += `<p>${translations[currentLang].partnership_description_p5}</p>`;
+                                break;
+                            case 'priorities_title':
+                                descriptionHtml += `<p>${translations[currentLang].priorities_description_p1}</p>`;
+                                descriptionHtml += `<h5 data-i18n="priorities_customer_centric_title">${translations[currentLang].priorities_customer_centric_title}</h5>`;
+                                descriptionHtml += `<p>${translations[currentLang].priorities_customer_centric_description}</p>`;
+                                descriptionHtml += `<h5 data-i18n="priorities_flexible_scalable_title">${translations[currentLang].priorities_flexible_scalable_title}</h5>`;
+                                descriptionHtml += `<p>${translations[currentLang].priorities_flexible_scalable_description}</p>`;
+                                descriptionHtml += `<h5 data-i18n="priorities_secure_resilient_title">${translations[currentLang].priorities_secure_resilient_title}</h5>`;
+                                descriptionHtml += `<p>${translations[currentLang].priorities_secure_resilient_description}</p>`;
+                                descriptionHtml += `<h5 data-i18n="priorities_confident_knowledgeable_title">${translations[currentLang].priorities_confident_knowledgeable_title}</h5>`;
+                                descriptionHtml += `<p>${translations[currentLang].priorities_confident_knowledgeable_description}</p>`;
+                                break;
+                            case 'technology_title':
+                                descriptionHtml += `<p>${translations[currentLang].technology_description_p1}</p>`;
+                                descriptionHtml += `<p>${translations[currentLang].technology_description_p2}</p>`;
+                                descriptionHtml += `<h5 data-i18n="technology_ict_cloud_title">${translations[currentLang].technology_ict_cloud_title}</h5>`;
+                                descriptionHtml += `<p>${translations[currentLang].technology_ict_cloud_description}</p>`;
+                                descriptionHtml += `<h5 data-i18n="technology_internet_solutions_title">${translations[currentLang].technology_internet_solutions_title}</h5>`;
+                                descriptionHtml += `<p>${translations[currentLang].technology_internet_solutions_description}</p>`;
+                                descriptionHtml += `<h5 data-i18n="technology_cloud_infrastructure_title">${translations[currentLang].technology_cloud_infrastructure_title}</h5>`;
+                                descriptionHtml += `<p>${translations[currentLang].technology_cloud_infrastructure_description}</p>`;
+                                descriptionHtml += `<h5 data-i18n="technology_cybersecurity_data_title">${translations[currentLang].technology_cybersecurity_data_title}</h5>`;
+                                descriptionHtml += `<p>${translations[currentLang].technology_cybersecurity_data_description}</p>`;
+                                descriptionHtml += `<h5 data-i18n="technology_app_dev_modernization_title">${translations[currentLang].technology_app_dev_modernization_title}</h5>`;
+                                descriptionHtml += `<p>${translations[currentLang].technology_app_dev_modernization_description}</p>`;
+                                descriptionHtml += `<h5 data-i18n="technology_managed_it_services_title">${translations[currentLang].technology_managed_it_services_title}</h5>`;
+                                descriptionHtml += `<p>${translations[currentLang].technology_managed_it_services_description}</p>`;
+                                descriptionHtml += `<h5 data-i18n="technology_networking_connectivity_title">${translations[currentLang].technology_networking_connectivity_title}</h5>`;
+                                descriptionHtml += `<p>${translations[currentLang].technology_networking_connectivity_description}</p>`;
+                                descriptionHtml += `<h5 data-i18n="technology_digital_transformation_title">${translations[currentLang].technology_digital_transformation_title}</h5>`;
+                                descriptionHtml += `<p>${translations[currentLang].technology_digital_transformation_description}</p>`;
+                                break;
+                            case 'contact_us_title':
+                                descriptionHtml += `<p>${translations[currentLang].contact_us_description_p1}</p>`;
+                                descriptionHtml += `<p><i class="fas fa-envelope fa-2x"></i> ${translations[currentLang].contact_us_email} </p>`;
+                                descriptionHtml += `<p><i class="fas fa-mobile fa-2x"></i> ${translations[currentLang].contact_us_phone} </p>`;
+                                break;
+                            default:
+                                descriptionHtml = ''; // Fallback for unknown keys
+                        }
+
+                        this.info.descriptionHtml = descriptionHtml;
+                    }
+
+
+                    DOM.details.fill(this.info);
+                    DOM.details.open({
+                        productBg: this.DOM.productBg
+                    });
+                }
+            }; // class Item
+
+            const DOM = {};
+            DOM.grid = document.querySelector('.grid');
+            DOM.content = DOM.grid.parentNode;
+            DOM.gridItems = Array.from(DOM.grid.querySelectorAll('.grid__item'));
+            let items = [];
+            DOM.gridItems.forEach(item => items.push(new Item(item)));
+
+            DOM.details = new Details();
+
+            // Original setupFooter and jQuery ready function
+            function setupFooter() {
+                var pageHeight = $('.tm-site-header-container').height() + $('footer').height() + 100;
+
+                var main = $('.tm-main-content');
+
+                if($(window).height() < pageHeight) {
+                    main.addClass('tm-footer-relative');
+                }
+                else {
+                    main.removeClass('tm-footer-relative');
+                }
+            }
+
+            /* DOM is ready
+            ------------------------------------------------*/
+            $(function(){
+                // Load default language on page load
+                loadTranslations('en');
+
+                setupFooter();
+
+                $(window).resize(function(){
+                    setupFooter();
+                });
+
+                // Add event listeners for language buttons
+                document.querySelectorAll('.language-selector button').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        loadTranslations(event.target.dataset.lang);
+                    });
+                });
+            });
+
+        }
+      </script>
    </body>
 </html>
