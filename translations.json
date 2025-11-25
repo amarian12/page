@@ -632,7 +632,10 @@
         "contactEmailTextAlt": "For general inquiries:",
         "contactPreferredTimeLabel": "Preferred Appointment Time (Optional)",
         "contactPreferredDateLabel": "Preferred Appointment Date (Monday-Friday)",
-        "contactFollowUsTitle": "Follow Us"
+        "contactFollowUsTitle": "Follow Us",
+		"sessionFlowTitle": "The Bowen Session Flow",
+		"safetyCautionTitle": "Consult Your Therapist Immediately For:",
+		"aftercareChecklistTitle": "Essential Aftercare Checklist"
     },
     "ro": {
         "appTitle": "Terapia Bowen - O Cale Blândă către Auto-Vindecare și Bunăstare",
@@ -1267,7 +1270,10 @@
         "contactEmailTextAlt": "Pentru întrebări generale:",
         "contactPreferredTimeLabel": "Ora Preferată pentru Programare (Opțional)",
         "contactPreferredDateLabel": "Data Preferată pentru Programare (Luni-Vineri)",
-        "contactFollowUsTitle": "Urmărește-ne"
+        "contactFollowUsTitle": "Urmărește-ne",
+		"sessionFlowTitle": "Fluxul Sesiunii Bowen",
+		"safetyCautionTitle": "Consultați Terapeutul Imediat Pentru:",
+		"aftercareChecklistTitle": "Lista Esențială de Îngrijire Post-Terapie"
     },
     "nl": {
         "appTitle": "Bowen Therapie - Een Zacht Pad naar Zelfgenezing en Welzijn",
@@ -1902,6 +1908,9 @@
         "contactEmailTextAlt": "Voor algemene vragen:",
         "contactPreferredTimeLabel": "Voorkeur Afspraaktijd (Optioneel)",
         "contactPreferredDateLabel": "Voorkeur Afspraakdatum (Maandag-Vrijdag)",
-        "contactFollowUsTitle": "Volg Ons"
+        "contactFollowUsTitle": "Volg Ons",
+		"sessionFlowTitle": "Het Bowen Sessieverloop",
+		"safetyCautionTitle": "Raadpleeg Uw Therapeut Onmiddellijk Voor:",
+		"aftercareChecklistTitle": "Essentiële Nazorg Checklist"
     }
 }
