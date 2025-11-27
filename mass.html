@@ -664,9 +664,13 @@
                 copyrightElement.textContent = translations[currentLang].copyright_text.replace('{year}', new Date().getFullYear());
             }
             // Update banner text specifically
-            const bannerTextElement = document.querySelector('.baner-body h2');
+            const bannerTextElement = document.querySelector('.baner-body h1');
             if (bannerTextElement && translations[currentLang] && translations[currentLang].banner_text) {
                 bannerTextElement.textContent = translations[currentLang].banner_text;
+            }
+			const introTextElement = document.querySelector('.baner-body p');
+            if (introTextElement && translations[currentLang] && translations[currentLang].intro_summary) {
+                introTextElement.textContent = translations[currentLang].intro_summary;
             }
         }
 
