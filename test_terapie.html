@@ -30,9 +30,9 @@ body {
 }
 
 section {
-    min-height: 80vh;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    min-height: auto; /* Allow height to adjust on mobile */
+    padding-top: 3rem; /* Reduced padding for mobile density */
+    padding-bottom: 3rem;
 }
 
 img {
@@ -45,6 +45,9 @@ input, button, a {
     outline: 0 !important;
 }
 
+.z-\[9999\] {
+    z-index: 9999;
+}
 /*
 |--------------------------------------------------------------------------
 | COLOR PALETTE & UTILITIES
@@ -90,20 +93,19 @@ input, button, a {
 
 /* Section Headings */
 .section-title {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Reduced size on mobile */
     font-weight: 700;
     color: var(--color-dark-gray);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     text-align: center;
 }
 .section-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.1rem; /* Reduced size on mobile */
     font-weight: 500;
     color: var(--color-medium-gray);
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem; /* Reduced margin */
 }
-
 /*
 |--------------------------------------------------------------------------
 | UTILITY COMPONENTS
@@ -115,7 +117,7 @@ input, button, a {
     background-color: #ffffff;
     border-radius: 0.75rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    padding: 1.5rem;
+    padding: 1.2rem; /* Slightly reduced padding for mobile */
     transition: transform 0.2s ease-in-out;
 }
 .card:hover {
@@ -130,7 +132,7 @@ input, button, a {
 
 /* Pill Buttons for Filtering */
 .pill-button {
-    padding: 0.5rem 1.25rem;
+    padding: 0.5rem 1rem; /* Adjusted padding for better fit on mobile */
     border-radius: 9999px;
     background-color: #E0E6ED;
     color: #2C3E50;
@@ -138,6 +140,7 @@ input, button, a {
     cursor: pointer;
     transition: all 0.3s ease;
     white-space: nowrap;
+    font-size: 0.875rem; /* Small font size for mobile */
 }
 .pill-button.active {
     background-color: var(--color-accent);
@@ -158,11 +161,11 @@ input, button, a {
     color: var(--color-dark-gray);
     padding: 0.7em 1.7em;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px; /* Reduced font size */
     border-radius: 0.5em;
     background: #e8e8e8;
     border: 1px solid #e8e8e8;
-    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+    box-shadow: 4px 4px 8px #c5c5c5, -4px -4px 8px #ffffff; /* Reduced shadow */
 }
 
 .button2:active {
@@ -259,7 +262,7 @@ input, button, a {
     animation: float 12s ease-in-out infinite;
 }
 .glow-text {
-    text-shadow: 0 0 20px rgba(8, 186, 74, 0.5); /* Accent color glow */
+    text-shadow: 0 0 20px rgba(8, 186, 74, 0.5);
 }
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -304,9 +307,15 @@ input, button, a {
     height: auto;
     perspective: 1000px;
     cursor: pointer;
-    min-height: 450px; /* Ensure visual consistency */
+    min-height: 400px; /* Reduced min-height for mobile */
 }
-
+/* Ensure the front face text fits nicely on mobile */
+.flip-card-front h3 {
+    font-size: 1.15rem;
+}
+.flip-card-front p {
+    font-size: 0.95rem;
+}
 .flip-card-inner {
     position: relative;
     width: 100%;
@@ -326,7 +335,7 @@ input, button, a {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    -webkit-backface-visibility: hidden; /* For Safari */
+    -webkit-backface-visibility: hidden;
     border-radius: 0.75rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     padding: 1.5rem;
@@ -344,17 +353,16 @@ input, button, a {
 }
 
 .flip-card-back {
-    background-color: var(--color-accent-light); /* Use defined light accent background */
+    background-color: var(--color-accent-light);
     color: var(--color-dark-gray);
     transform: rotateY(180deg);
 }
 
 .flip-card-back p.italic {
-    font-size: 1.1rem;
-    line-height: 1.5;
+    font-size: 1.05rem;
+    line-height: 1.4;
     color: var(--color-dark-gray);
 }
-
 /*
 |--------------------------------------------------------------------------
 | ACCORDION (FAQ) & TABLE STYLING
@@ -382,6 +390,9 @@ input, button, a {
     background-color: #ffffff;
     border-top: 1px solid #E0E6ED;
 }
+.accordion-header[aria-expanded="true"] {
+    background-color: var(--color-accent-light); /* Highlight open accordion on mobile tap */
+}
 .accordion-header[aria-expanded="true"] .accordion-toggle-icon {
     transform: rotate(180deg);
 }
@@ -398,7 +409,10 @@ input, button, a {
 #references-table-body a {
     word-break: break-all;
 }
-
+/* Force table headers to not break */
+#references-table-body th {
+    white-space: nowrap;
+}
 /*
 |--------------------------------------------------------------------------
 | MOBILE MENU FIXES
@@ -412,8 +426,8 @@ input, button, a {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 40; /* Keeping original z-index from HTML */
-    /* background color is applied in the HTML: bg-secondary/95 backdrop-blur-md */
+    z-index: 40;
+    overflow-y: auto; /* Ensure scrolling if menu content exceeds screen height */
 }
 
 /*
@@ -423,24 +437,24 @@ input, button, a {
 */
 
 #testimonial-carousel {
-    display: grid; /* Use grid for vertical stacking as per original intent */
-    grid-template-columns: repeat(1, minmax(0, 1fr)); /* Force column layout on mobile/small screens */
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr)); /* Single column on mobile */
+    gap: 1.5rem;
     overflow: hidden;
 }
 
-/* Ensure cards take full width and have proper spacing when stacked */
+/* Testimonial card spacing fix */
 #testimonials-container .testimonial-card {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0; /* Tailwind handles the gap, so remove manual margin */
     width: 100%;
     box-sizing: border-box;
 }
 
-/* Adjust navigation buttons to correctly float over the container */
+/* Position navigation buttons correctly relative to the testimonial container */
 #testimonials-container {
     position: relative;
-    /* This container must have position: relative to anchor children */
+    padding: 0 30px; /* Add padding so buttons don't overlap cards */
 }
-
 #testimonials-container #prev-testimonial,
 #testimonials-container #next-testimonial {
     position: absolute;
@@ -449,29 +463,18 @@ input, button, a {
     z-index: 10;
 }
 
-/* On medium screens and up, switch to a 2-column layout if possible/desired */
-@media (min-width: 768px) {
-    #testimonial-carousel {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.5rem; /* Add gap between columns */
-    }
+#testimonials-container #prev-testimonial {
+    left: 0;
 }
 
-/* On large screens and up, maintain a grid layout but ensure the card styles are appropriate */
-@media (min-width: 1024px) {
-    #testimonial-carousel {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 1.5rem;
-    }
-    #testimonials-container .testimonial-card {
-        margin-bottom: 0; /* Remove vertical margin when in grid layout */
-    }
+#testimonials-container #next-testimonial {
+    right: 0; 
 }
 
 
 /*
 |--------------------------------------------------------------------------
-| SOCIAL MEDIA BUTTONS (REPLACED ORIGINAL COMPLEX ANIMATION WITH CLEAN CSS)
+| SOCIAL MEDIA BUTTONS
 |--------------------------------------------------------------------------
 */
 
@@ -560,6 +563,72 @@ input, button, a {
 }
 .animate-fadeIn {
     animation: fadeIn 1s ease-out;
+}
+/*
+|--------------------------------------------------------------------------
+| DESKTOP/TABLET OPTIMIZATION (min-width: 768px)
+|--------------------------------------------------------------------------
+*/
+@media (min-width: 768px) {
+    section {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+    .section-title {
+        font-size: 2.5rem;
+    }
+    .section-subtitle {
+        font-size: 1.25rem;
+    }
+    .flip-card {
+        min-height: 450px;
+    }
+    .button2 {
+        box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+    }
+    
+    /* Testimonial grid activation */
+    #testimonial-carousel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+    #testimonials-container {
+        padding: 0; /* Remove side padding when screen is wide enough */
+    }
+
+    /* Adjust button positioning for larger screens when they are not in the grid area */
+    #testimonials-container #prev-testimonial,
+    #testimonials-container #next-testimonial {
+         top: 50%;
+         transform: translateY(-50%);
+    }
+    #testimonials-container #prev-testimonial {
+        left: -30px;
+    }
+    #testimonials-container #next-testimonial {
+        right: -30px;
+    }
+    
+    /* Social media links logic for desktop hover */
+    .social .card:hover span {
+        opacity: 0;
+    }
+    .social .card .social-link {
+        display: flex;
+        opacity: 0;
+        width: 0;
+        transform: none;
+    }
+    .social .card:hover .social-link {
+        width: calc(100% / 3); 
+        opacity: 1;
+    }
+
+    /* References Table Layout */
+    #references-table-body th {
+        white-space: normal;
+    }
+
 }
    </style>
 </head>
@@ -4494,4 +4563,3 @@ input, button, a {
 
 
 </html>
-
