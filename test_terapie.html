@@ -4335,7 +4335,48 @@ input, button, a {
          const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
          const filterButtonsContainer = document.getElementById('filter-buttons');
          const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+         const body = document.body;
 
+    // --- Function to lock the background scroll ---
+    const lockBodyScroll = () => {
+        // This prevents the body from scrolling. 'height: 100vh' forces the body to the viewport height.
+        // 'overflow: hidden' prevents content that exceeds the viewport from being scrollable.
+        body.style.overflow = 'hidden';
+        body.style.height = '100vh';
+        
+        // OPTIONAL: Prevent mobile browsers from "jumping" or resizing content when the menu is open.
+        // body.style.position = 'fixed'; 
+        // body.style.width = '100%';
+    };
+
+    // --- Function to unlock the background scroll ---
+    const unlockBodyScroll = () => {
+        body.style.overflow = ''; // Clears the overflow rule
+        body.style.height = '';   // Clears the height rule
+        // body.style.position = ''; // OPTIONAL
+        // body.style.width = '';    // OPTIONAL
+    };
+
+    // --- Event Listener: Open Mobile Menu ---
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        lockBodyScroll();
+    });
+
+    // --- Event Listener: Close Mobile Menu (by X button) ---
+    closeMobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        unlockBodyScroll();
+    });
+
+    // --- Event Listener: Close Mobile Menu (by navigation link click) ---
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            unlockBodyScroll();
+        });
+    });
+	
          // Function to check if consent has been given
          const hasCookieConsent = () => {
             return localStorage.getItem(COOKIE_CONSENT_KEY) === 'accepted';
@@ -4564,4 +4605,3 @@ input, button, a {
 
 
 </html>
-
