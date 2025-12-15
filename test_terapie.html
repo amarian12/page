@@ -35,12 +35,14 @@ section {
     padding-bottom: 5rem;
 }
 
-input, button, a {
-    outline: 0 !important;
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-.z-\[9999\] {
-    z-index: 9999;
+input, button, a {
+    outline: 0 !important;
 }
 
 /*
@@ -52,11 +54,12 @@ input, button, a {
 /* Define primary and accent colors for consistency */
 :root {
     --color-primary: #008615; /* Primary Green */
-    --color-accent: #08ba4a; /* Lighter Accent Green */
+    --color-accent: #08ba4a; /* Lighter Accent Green (used for focus/active state) */
     --color-dark-gray: #012c11;
     --color-medium-gray: #03491d;
     --color-light-gray: #777777;
-    --color-light-bg: #f0f4f8; /* Light background for components */
+    --color-light-bg: #f0f4f8; /* Light background for component headers */
+    --color-accent-light: #e6f7e9; /* Very Light Green for card backgrounds, replacing the previous pinkish color */
 }
 
 .bg-primary { background-color: var(--color-primary); }
@@ -64,8 +67,10 @@ input, button, a {
 .text-accent { color: var(--color-accent); }
 .text-dark-gray { color: var(--color-dark-gray); }
 .text-medium-gray { color: var(--color-medium-gray); }
+.text-light-gray { color: var(--color-light-gray); }
 .bg-dark-theme { background-color: var(--color-dark-gray); }
 .text-dark-theme-text { color: #ffffff; }
+.bg-accent-light { background-color: var(--color-accent-light); }
 
 /* Header/Hero Styles */
 .bg-header {
@@ -115,6 +120,12 @@ input, button, a {
 }
 .card:hover {
     transform: translateY(-5px);
+}
+/* Specific override for testmonials in evidence section */
+.testimonial-card.evidence-section {
+    background-color: #ffffff;
+    color: var(--color-dark-gray);
+    border: 1px solid #E0E6ED;
 }
 
 /* Pill Buttons for Filtering */
@@ -333,12 +344,11 @@ input, button, a {
 }
 
 .flip-card-back {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent-light); /* Use defined light accent background */
     color: var(--color-dark-gray);
     transform: rotateY(180deg);
 }
 
-/* Specific styling for testimonial text on back face */
 .flip-card-back p.italic {
     font-size: 1.1rem;
     line-height: 1.5;
@@ -391,12 +401,82 @@ input, button, a {
 
 /*
 |--------------------------------------------------------------------------
-| SOCIAL MEDIA BUTTONS (CLEANED UP)
+| MOBILE MENU FIXES
 |--------------------------------------------------------------------------
 */
 
-/* Removing complex :before/:after hover effects for simplicity and maintainability */
+/* Overriding Tailwind fixed class to ensure z-index works on the menu overlay */
+#mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 40; /* Keeping original z-index from HTML */
+    /* background color is applied in the HTML: bg-secondary/95 backdrop-blur-md */
+}
+
+/*
+|--------------------------------------------------------------------------
+| TESTIMONIAL CAROUSEL FIXES
+|--------------------------------------------------------------------------
+*/
+
+#testimonial-carousel {
+    display: grid; /* Use grid for vertical stacking as per original intent */
+    grid-template-columns: repeat(1, minmax(0, 1fr)); /* Force column layout on mobile/small screens */
+    overflow: hidden;
+}
+
+/* Ensure cards take full width and have proper spacing when stacked */
+#testimonials-container .testimonial-card {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Adjust navigation buttons to correctly float over the container */
+#testimonials-container {
+    position: relative;
+    /* This container must have position: relative to anchor children */
+}
+
+#testimonials-container #prev-testimonial,
+#testimonials-container #next-testimonial {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+/* On medium screens and up, switch to a 2-column layout if possible/desired */
+@media (min-width: 768px) {
+    #testimonial-carousel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem; /* Add gap between columns */
+    }
+}
+
+/* On large screens and up, maintain a grid layout but ensure the card styles are appropriate */
+@media (min-width: 1024px) {
+    #testimonial-carousel {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+    #testimonials-container .testimonial-card {
+        margin-bottom: 0; /* Remove vertical margin when in grid layout */
+    }
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| SOCIAL MEDIA BUTTONS (REPLACED ORIGINAL COMPLEX ANIMATION WITH CLEAN CSS)
+|--------------------------------------------------------------------------
+*/
+
 .social .card {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -406,6 +486,7 @@ input, button, a {
     overflow: hidden;
     height: 50px;
     width: 200px;
+    border-radius: 0.5rem;
 }
 
 .social .card:hover {
@@ -414,12 +495,16 @@ input, button, a {
 }
 
 .social .card span {
-    position: relative;
+    position: absolute;
     color: white;
     font-size: 16px;
     font-weight: 700;
     transition: opacity 0.3s;
     z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
 }
 
 .social .card:hover span {
@@ -427,21 +512,36 @@ input, button, a {
 }
 
 .social .card .social-link {
-    position: absolute;
+    position: relative; /* Changed from absolute for better control */
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30%;
+    width: 25%; /* Adjust width to fit 4 icons */
     height: 100%;
     color: white;
-    font-size: 24px;
     text-decoration: none;
+    transition: 0.25s;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    /* Positioning links off-screen when not hovered */
+    transform: translateX(100%);
 }
 
 .social .card:hover .social-link {
     opacity: 1;
+    transform: translateX(0);
+    /* Distribute the links evenly */
+    width: calc(100% / 3); /* Adjust this based on number of icons */
+}
+
+/* Specific delay for sequential appearance */
+.social .card:hover .social-link:nth-child(2) {
+    transition-delay: 0.05s;
+}
+.social .card:hover .social-link:nth-child(3) {
+    transition-delay: 0.1s;
+}
+.social .card:hover .social-link:nth-child(4) {
+    transition-delay: 0.15s;
 }
 
 .social .card .social-link svg {
@@ -452,6 +552,14 @@ input, button, a {
 
 .social .card .social-link:hover svg {
     transform: scale(1.1);
+}
+/* Keyframe to replace original bounce animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.animate-fadeIn {
+    animation: fadeIn 1s ease-out;
 }
    </style>
 </head>
@@ -4386,3 +4494,4 @@ input, button, a {
 
 
 </html>
+
