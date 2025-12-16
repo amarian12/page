@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="app-title" data-i18n="appTitle">The Healing Touch Clinic | Bowen Therapy & Stress Relief</title>
+    <link rel="icon" type="image/png" href="logo-new.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reverted to Original Color Palette */
+        :root {
+            --color-charcoal: #012c11;    /* Dark Green/Grey (Original Text/Footer) */
+            --color-primary: #008615;     /* Primary Green (Original Primary Color) */
+            --color-accent-cta: #08ba4a;  /* Lighter Accent Green (Original Accent/Highlight) */
+            --color-cream: #f5f4ea;       /* Light Grey Background */
+            --color-accent-light: #e6f7e9;/* Lightest Accent Green for background blocks */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-cream);
+            color: var(--color-charcoal);
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
+        /* Responsive Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Custom Card Styling */
+        .card-new {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+        .card-new:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sticky CTA Bar (Mobile & Desktop) */
+        #sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background-color: var(--color-primary);
+            padding: 0.75rem 1rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .cta-button {
+            background-color: var(--color-accent-cta); /* Vibrant Accent Green */
+            color: var(--color-charcoal); 
+            padding: 0.6rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            transition: background-color 0.2s;
+        }
+        .cta-button:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        /* Header Navigation Colors */
+        header a {
+            color: var(--color-charcoal);
+            transition: color 0.2s;
+        }
+        header a:hover {
+            color: var(--color-primary);
+        }
+        /* Logo Container Styling */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            line-height: 1.2;
+        }
+        .logo-text {
+            color: var(--color-primary); /* Primary Green for main text */
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .logo-subtext {
+            color: var(--color-charcoal);
+            font-size: 0.75rem;
+            display: block;
+            font-weight: 500;
+        }
+
+        /* Hero Styling */
+        #hero-new {
+            background-image: url('bowenbg2.jpg');
+            background-size: cover;
+            background-position: center 20%;
+            color: var(--color-charcoal);
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+            min-height: 80vh;
+        }
+
+        /* Mobile Menu Overlay */
+        #mobile-menu-new {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9990;
+            background-color: rgba(248, 248, 248, 0.95);
+            backdrop-filter: blur(5px);
+            display: none;
+            overflow-y: auto;
+        }
+        .menu-link-new {
+            font-size: 1.5rem;
+            font-weight: 500;
+            padding: 1rem 0;
+            color: var(--color-charcoal);
+            transition: color 0.2s;
+        }
+        .menu-link-new:hover {
+            color: var(--color-primary);
+        }
+
+        /* Highlight Colors for Sections */
+        .bg-section-accent {
+            background-color: var(--color-accent-light);
+        }
+        .text-section-accent {
+            color: var(--color-primary);
+        }
+        
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            #hero-new {
+                background-position: center;
+                padding-top: 10rem;
+                padding-bottom: 10rem;
+            }
+            .section-heading {
+                font-size: 2.25rem;
+            }
+            #sticky-cta {
+                display: none; 
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sticky-cta" class="md:hidden">
+        <a href="#booking" class="cta-button w-full inline-block" data-i18n="ctaBookMobile">Book Your Session Today</a>
+    </div>
+
+    <header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-sm shadow-sm">
+        <div class="container flex justify-between items-center py-4">
+            <a href="#hero-new" class="logo-container">
+                <img src="logo-new.png" alt="The Healing Touch Logo" class="h-8 w-auto mr-2"> 
+                <div>
+                    <span class="logo-text" data-i18n="logoTitle">The Healing Touch</span>
+                    <span class="logo-subtext" data-i18n="logoSubTitle">Bowen Therapy Clinic</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6 text-sm font-medium">
+                    <li><a href="#about" class="hover:text-primary" data-i18n="navTherapist">The Therapist</a></li>
+                    <li><a href="#benefits" class="hover:text-primary" data-i18n="navBenefits">Benefits</a></li>
+                    <li><a href="#process" class="hover:text-primary" data-i18n="navProcess">Process</a></li>
+                    <li><a href="#testimonials" class="hover:text-primary" data-i18n="navTestimonials">Testimonials</a></li>
+                    <li><a href="#booking" class="cta-button" data-i18n="navBookSession">Book Session</a></li>
+                </ul>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                 <select id="language-select" class="p-2 rounded-md bg-cream border border-gray-300 text-charcoal">
+                    <option value="en">English</option>
+                    <option value="nl">Nederlands</option>
+                </select>
+                <button id="mobile-menu-open" class="md:hidden p-2 rounded-md">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu-new" class="hidden flex-col items-center justify-center space-y-6">
+        <button id="mobile-menu-close" class="absolute top-4 right-4 p-2">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+        <a href="#about" class="menu-link-new" data-i18n="navTherapist">The Therapist</a>
+        <a href="#benefits" class="menu-link-new" data-i18n="navBenefits">Core Benefits</a>
+        <a href="#process" class="menu-link-new" data-i18n="navProcess">The Process</a>
+        <a href="#testimonials" class="menu-link-new" data-i18n="navTestimonials">Trust & Reviews</a>
+        <a href="#booking" class="cta-button text-lg mt-4" data-i18n="navBookSession">Book Your Session</a>
+    </div>
+
+    <main>
+        <section id="hero-new" class="relative text-center">
+            <div class="container max-w-4xl mx-auto">
+                <h2 class="text-xl font-medium uppercase mb-4 text-section-accent" data-i18n="heroPreTitle">Bowen Therapy for Lasting Relief</h2>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight" data-i18n="heroTitleMain">Find Your Balance. Ease Your Pain. <span style="color: var(--color-primary);">Live Freely.</span></h1>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto" data-i18n="heroSubText">Discover the gentle, non-invasive bodywork technique that helps your body reset itself from chronic pain, stress, and injury. Start your journey to self-healing.</p>
+                <a href="#booking" class="cta-button text-xl md:text-2xl py-3 px-8 shadow-lg" data-i18n="heroCta">Book Your Introductory Session</a>
+            </div>
+        </section>
+
+        <section id="about" class="py-16 md:py-24 bg-cream">
+            <div class="container grid md:grid-cols-2 gap-10 items-center">
+                <div class="text-center md:text-left">
+                    <h2 class="text-3xl font-bold mb-4 section-heading" data-i18n="therapistTitle">Meet Anca, Certified Bowen Practitioner</h2>
+                    <p class="mb-4 text-lg" data-i18n="therapistQuote">"My mission is to listen not just with my hands, but with my whole presence, providing the gentle stimulus your body needs to remember its state of balance."</p>
+                    <p class="mb-6" data-i18n="therapistBio">Anca is a fully certified Bowtech practitioner with 10 years of experience, specializing in chronic stress relief and women's health support. She is registered with the American Bowen Academy and committed to continuous professional development (CPD).</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
+                        <span class="text-sm font-semibold p-2 bg-accent-light rounded-md border border-primary" data-i18n="certBowtech">Certified Bowtech</span>
+                        <span class="text-sm font-semibold p-2 bg-accent-light rounded-md border border-primary" data-i18n="certExperience">10 Years Experience</span>
+                    </div>
+                </div>
+                <div class="card-new">
+                    <img src="img/placeholder_professional.jpg" alt="Professional portrait of Anca, Bowen Therapist" class="rounded-lg w-full h-auto object-cover md:h-96">
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits" class="py-16 md:py-24 bg-section-accent">
+            <div class="container text-center">
+                <h2 class="text-3xl font-bold mb-10 section-heading text-section-accent" data-i18n="benefitsTitle">How Bowen Therapy Can Transform Your Health</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card-new">
+                        <span class="text-4xl block mb-3 text-section-accent">🧘‍♀️</span>
+                        <h3 class="text-xl font-semibold mb-2 text-section-accent" data-i18n="benefit1Heading">Deep Stress & ANS Reset</h3>
+                        <p class="text-gray-700 mb-4" data-i18n="benefit1Text">Shifts your body from 'fight or flight' to 'rest and repair', tackling anxiety, fatigue, and burnout at the core level.</p>
+                        <p class="text-sm font-medium text-primary hover:underline" data-i18n="benefit1Link">Learn about the Pause →</p>
+                    </div>
+                    <div class="card-new">
+                        <span class="text-4xl block mb-3 text-section-accent">💪</span>
+                        <h3 class="text-xl font-semibold mb-2 text-section-accent" data-i18n="benefit2Heading">Lasting Pain Management</h3>
+                        <p class="text-gray-700 mb-4" data-i18n="benefit2Text">Effective relief for chronic back pain, sciatica, TMJ, and neck stiffness by releasing deep fascial tension.</p>
+                        <p class="text-sm font-medium text-primary hover:underline" data-i18n="benefit2Link">See Conditions →</p>
+                    </div>
+                    <div class="card-new">
+                        <span class="text-4xl block mb-3 text-section-accent">👶</span>
+                        <h3 class="text-xl font-semibold mb-2 text-section-accent" data-i18n="benefit3Heading">Mother & Child Support</h3>
+                        <p class="text-gray-700 mb-4" data-i18n="benefit3Text">Gentle support for pregnancy discomforts, postnatal recovery, and common infant issues like colic and sleep disturbances.</p>
+                        <p class="text-sm font-medium text-primary hover:underline" data-i18n="benefit3Link">Read Sarah's Story →</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="py-16 md:py-24 bg-cream">
+            <div class="container max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-10 section-heading" data-i18n="processTitle">What to Expect: Your First Session</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-4">
+                        <div class="w-12 h-12 bg-primary rounded-full text-white flex items-center justify-center mx-auto mb-3">1</div>
+                        <h4 class="font-bold mb-1" data-i18n="processStep1Heading">Consultation</h4>
+                        <p class="text-sm text-gray-700" data-i18n="processStep1Text">We discuss your history, symptoms, and goals. Wear light, loose-fitting clothing.</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="w-12 h-12 bg-primary rounded-full text-white flex items-center justify-center mx-auto mb-3">2</div>
+                        <h4 class="font-bold mb-1" data-i18n="processStep2Heading">The Moves & The Pause</h4>
+                        <p class="text-sm text-gray-700" data-i18n="processStep2Text">Gentle moves are followed by crucial 2-5 minute pauses for your body to integrate signals.</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="w-12 h-12 bg-primary rounded-full text-white flex items-center justify-center mx-auto mb-3">3</div>
+                        <h4 class="font-bold mb-1" data-i18n="processStep3Heading">Aftercare</h4>
+                        <p class="text-sm text-gray-700" data-i18n="processStep3Text">Stay hydrated and lightly mobile. Avoid other therapies for 5-7 days for maximum benefit.</p>
+                    </div>
+                </div>
+                <a href="#booking" class="cta-button mt-10" data-i18n="processCta">Start Your Healing Journey</a>
+            </div>
+        </section>
+
+        <section id="testimonials" class="py-16 md:py-24 bg-section-accent">
+            <div class="container text-center">
+                <h2 class="text-3xl font-bold mb-10 section-heading text-section-accent" data-i18n="testimonialsTitle">Trusted Results: What Our Clients Say</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    <blockquote class="card-new">
+                        <p class="italic mb-3 text-gray-700" data-i18n="quote1">"My chronic neck stiffness is gone, and I finally sleep soundly. The relief was almost immediate."</p>
+                        <footer class="text-sm font-semibold text-charcoal" data-i18n="quote1Author">— Emily R., Stress Relief</footer>
+                    </blockquote>
+                    <blockquote class="card-new">
+                        <p class="italic mb-3 text-gray-700" data-i18n="quote2">"After years of debilitating back pain and sciatica, Bowen Therapy provided lasting relief and significantly improved my mobility."</p>
+                        <footer class="text-sm font-semibold text-charcoal" data-i18n="quote2Author">— Alexandru, Chronic Pain</footer>
+                    </blockquote>
+                    <blockquote class="card-new md:col-span-2 lg:col-span-1">
+                        <p class="italic mb-3 text-gray-700" data-i18n="quote3">"The support during my pregnancy was incredible. It helped ease my pelvic pain and sped up my postnatal recovery."</p>
+                        <footer class="text-sm font-semibold text-charcoal" data-i18n="quote3Author">— New Mother, Maternity Support</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <section id="booking" class="py-16 md:py-24 bg-cream">
+            <div class="container max-w-xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4 section-heading" data-i18n="bookingTitle">Ready for Your Healing Touch?</h2>
+                <p class="mb-8 text-lg text-gray-600" data-i18n="bookingSubText">Schedule your session online or call us today to discuss how Bowen Therapy can help you achieve your wellness goals.</p>
+
+                <div class="card-new p-6">
+                    <form action="#" method="POST" class="space-y-4">
+                        <input type="text" placeholder="Your Full Name" required class="w-full p-3 border border-gray-300 rounded-md" data-i18n-placeholder="placeholderName">
+                        <input type="email" placeholder="Email Address" required class="w-full p-3 border border-gray-300 rounded-md" data-i18n-placeholder="placeholderEmail">
+                        <input type="tel" placeholder="Phone Number (Optional)" class="w-full p-3 border border-gray-300 rounded-md" data-i18n-placeholder="placeholderPhone">
+                        <textarea placeholder="Tell us briefly about your main concern (e.g., Sciatica, Insomnia, Stress)" rows="3" class="w-full p-3 border border-gray-300 rounded-md" data-i18n-placeholder="placeholderConcern"></textarea>
+                        
+                        <a href="#" class="cta-button w-full inline-block mt-4 text-lg" data-i18n="bookingCta">Request Appointment Time</a>
+                    </form>
+                    
+                    <p class="text-sm text-gray-700 mt-4" data-i18n="contactHours">We are open Monday to Friday, 9:00 AM - 6:00 PM. All sessions are by appointment only.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-charcoal text-gray-300 py-8">
+        <div class="container text-center text-sm">
+            <p data-i18n="footerCopyright">&copy; 2025 The Healing Touch Clinic. All rights reserved.</p>
+            <p class="mt-2 text-xs text-gray-400" data-i18n="footerDisclaimer">Bowen Therapy is a complementary therapy and does not replace medical diagnosis or treatment. Consult your doctor for all health concerns.</p>
+            <p class="text-sm mt-2" data-i18n="footerMassMade">Made by <a href="https://www.massict.com/" rel="noreferrer noopener" target="_blank" class="text-gray-200 hover:text-primary">Mass</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // --- TRANSLATION DATA ---
+        let translations = {
+            "en": {
+                "appTitle": "The Healing Touch Clinic | Bowen Therapy & Stress Relief",
+                "logoTitle": "The Healing Touch",
+                "logoSubTitle": "Bowen Therapy Clinic",
+                "navTherapist": "The Therapist",
+                "navBenefits": "Benefits",
+                "navProcess": "Process",
+                "navTestimonials": "Testimonials",
+                "navBookSession": "Book Session",
+                "ctaBookMobile": "Book Your Session Today",
+                "heroPreTitle": "Bowen Therapy for Lasting Relief",
+                "heroTitleMain": "Find Your Balance. Ease Your Pain. Live Freely.",
+                "heroSubText": "Discover the gentle, non-invasive bodywork technique that helps your body reset itself from chronic pain, stress, and injury. Start your journey to self-healing.",
+                "heroCta": "Book Your Introductory Session",
+                "therapistTitle": "Meet Anca, Certified Bowen Practitioner",
+                "therapistQuote": "\"My mission is to listen not just with my hands, but with my whole presence, providing the gentle stimulus your body needs to remember its state of balance.\"",
+                "therapistBio": "Anca is a fully certified Bowtech practitioner with 10 years of experience, specializing in chronic stress relief and women's health support. She is registered with the American Bowen Academy and committed to continuous professional development (CPD).",
+                "certBowtech": "Certified Bowtech",
+                "certExperience": "10 Years Experience",
+                "benefitsTitle": "How Bowen Therapy Can Transform Your Health",
+                "benefit1Heading": "Deep Stress & ANS Reset",
+                "benefit1Text": "Shifts your body from 'fight or flight' to 'rest and repair', tackling anxiety, fatigue, and burnout at the core level.",
+                "benefit1Link": "Learn about the Pause →",
+                "benefit2Heading": "Lasting Pain Management",
+                "benefit2Text": "Effective relief for chronic back pain, sciatica, TMJ, and neck stiffness by releasing deep fascial tension.",
+                "benefit2Link": "See Conditions →",
+                "benefit3Heading": "Mother & Child Support",
+                "benefit3Text": "Gentle support for pregnancy discomforts, postnatal recovery, and common infant issues like colic and sleep disturbances.",
+                "benefit3Link": "Read Sarah's Story →",
+                "processTitle": "What to Expect: Your First Session",
+                "processStep1Heading": "Consultation",
+                "processStep1Text": "We discuss your history, symptoms, and goals. Wear light, loose-fitting clothing.",
+                "processStep2Heading": "The Moves & The Pause",
+                "processStep2Text": "Gentle moves are followed by crucial 2-5 minute pauses for your body to integrate signals.",
+                "processStep3Heading": "Aftercare",
+                "processStep3Text": "Stay hydrated and lightly mobile. Avoid other therapies for 5-7 days for maximum benefit.",
+                "processCta": "Start Your Healing Journey",
+                "testimonialsTitle": "Trusted Results: What Our Clients Say",
+                "quote1": "\"My chronic neck stiffness is gone, and I finally sleep soundly. The relief was almost immediate.\"",
+                "quote1Author": "— Emily R., Stress Relief",
+                "quote2": "\"After years of debilitating back pain and sciatica, Bowen Therapy provided lasting relief and significantly improved my mobility.\"",
+                "quote2Author": "— Alexandru, Chronic Pain",
+                "quote3": "\"The support during my pregnancy was incredible. It helped ease my pelvic pain and sped up my postnatal recovery.\"",
+                "quote3Author": "— New Mother, Maternity Support",
+                "bookingTitle": "Ready for Your Healing Touch?",
+                "bookingSubText": "Schedule your session online or call us today to discuss how Bowen Therapy can help you achieve your wellness goals.",
+                "bookingCta": "Request Appointment Time",
+                "contactHours": "We are open Monday to Friday, 9:00 AM - 6:00 PM. All sessions are by appointment only.",
+                "footerCopyright": "&copy; 2025 The Healing Touch Clinic. All rights reserved.",
+                "footerDisclaimer": "Bowen Therapy is a complementary therapy and does not replace medical diagnosis or treatment. Consult your doctor for all health concerns.",
+                "footerMassMade": "Made by Mass",
+                "placeholderName": "Your Full Name",
+                "placeholderEmail": "Email Address",
+                "placeholderPhone": "Phone Number (Optional)",
+                "placeholderConcern": "Tell us briefly about your main concern (e.g., Sciatica, Insomnia, Stress)"
+            },
+            "nl": {
+                "appTitle": "The Healing Touch Kliniek | Bowen Therapie & Stressverlichting",
+                "logoTitle": "The Healing Touch",
+                "logoSubTitle": "Bowen Therapie Kliniek",
+                "navTherapist": "De Therapeut",
+                "navBenefits": "Voordelen",
+                "navProcess": "Werkwijze",
+                "navTestimonials": "Getuigenissen",
+                "navBookSession": "Boek Sessie",
+                "ctaBookMobile": "Boek Uw Sessie Vandaag",
+                "heroPreTitle": "Bowen Therapie voor Blijvende Verlichting",
+                "heroTitleMain": "Vind Uw Balans. Verlicht Uw Pijn. <span style='color: var(--color-primary);'>Leef Vrij.</span>",
+                "heroSubText": "Ontdek de zachte, niet-invasieve lichaamswerktechniek die uw lichaam helpt zichzelf te resetten van chronische pijn, stress en blessures. Start uw reis naar zelfgenezing.",
+                "heroCta": "Boek Uw Kennismakingssessie",
+                "therapistTitle": "Maak Kennis met Anca, Gecertificeerd Bowen Therapeut",
+                "therapistQuote": "\"Mijn missie is om niet alleen met mijn handen te luisteren, maar met mijn hele aanwezigheid, en de zachte stimulus te bieden die uw lichaam nodig heeft om zijn staat van balans te herinneren.\"",
+                "therapistBio": "Anca is een volledig gecertificeerde Bowtech therapeut met 10 jaar ervaring, gespecialiseerd in chronische stressverlichting en ondersteuning van de gezondheid van vrouwen. Ze is geregistreerd bij de American Bowen Academy en toegewijd aan continue professionele ontwikkeling (CPD).",
+                "certBowtech": "Gecertificeerd Bowtech",
+                "certExperience": "10 Jaar Ervaring",
+                "benefitsTitle": "Hoe Bowen Therapie Uw Gezondheid Kan Transformeren",
+                "benefit1Heading": "Diepe Stress & AZS Reset",
+                "benefit1Text": "Verschuift uw lichaam van 'vecht- of vlucht' naar 'rust en herstel', en pakt angst, vermoeidheid en burn-out op kernniveau aan.",
+                "benefit1Link": "Leer over de Pauze →",
+                "benefit2Heading": "Blijvende Pijnbeheersing",
+                "benefit2Text": "Effectieve verlichting bij chronische rugpijn, ischias, kaakpijn (TMJ) en nekstijfheid door diepe fasciale spanning los te laten.",
+                "benefit2Link": "Bekijk Aandoeningen →",
+                "benefit3Heading": "Ondersteuning Moeder & Kind",
+                "benefit3Text": "Zachte ondersteuning bij zwangerschapsklachten, postnataal herstel, en veelvoorkomende babyproblemen zoals koliek en slaapstoornissen.",
+                "benefit3Link": "Lees Sarah's Verhaal →",
+                "processTitle": "Wat U Kunt Verwachten: Uw Eerste Sessie",
+                "processStep1Heading": "Consultatie",
+                "processStep1Text": "We bespreken uw geschiedenis, symptomen en doelen. Draag lichte, loszittende kleding.",
+                "processStep2Heading": "De Bewegingen & De Pauze",
+                "processStep2Text": "Zachte bewegingen worden gevolgd door cruciale pauzes van 2-5 minuten om uw lichaam signalen te laten integreren.",
+                "processStep3Heading": "Nazorg",
+                "processStep3Text": "Blijf gehydrateerd en licht mobiel. Vermijd andere therapieën gedurende 5-7 dagen voor maximaal voordeel.",
+                "processCta": "Start Uw Genezingsreis",
+                "testimonialsTitle": "Betrouwbare Resultaten: Wat Onze Cliënten Zeggen",
+                "quote1": "\"Mijn chronische nekstijfheid is verdwenen en ik slaap eindelijk rustig. De verlichting was bijna onmiddellijk.\"",
+                "quote1Author": "— Emily R., Stressverlichting",
+                "quote2": "\"Na jaren van slopende rugpijn en ischias, bood Bowen Therapie blijvende verlichting en verbeterde mijn mobiliteit aanzienlijk.\"",
+                "quote2Author": "— Alexandru, Chronische Pijn",
+                "quote3": "\"De ondersteuning tijdens mijn zwangerschap was ongelooflijk. Het hielp mijn bekkenpijn te verlichten en versnelde mijn postnataal herstel.\"",
+                "quote3Author": "— Nieuwe Moeder, Kraamzorg",
+                "bookingTitle": "Klaar voor Uw Helende Aanraking?",
+                "bookingSubText": "Plan uw sessie online of bel ons vandaag om te bespreken hoe Bowen Therapie u kan helpen uw welzijnsdoelen te bereiken.",
+                "bookingCta": "Vraag Afspraaktijd Aan",
+                "contactHours": "Wij zijn geopend van maandag tot vrijdag, 9:00 - 18:00 uur. Alle sessies zijn uitsluitend op afspraak.",
+                "footerCopyright": "&copy; 2025 The Healing Touch Kliniek. Alle rechten voorbehouden.",
+                "footerDisclaimer": "Bowen Therapie is een complementaire modaliteit en vervangt geen medische diagnose of behandeling. Raadpleeg uw arts voor alle gezondheidsproblemen.",
+                "footerMassMade": "Gemaakt door Mass",
+                "placeholderName": "Uw Volledige Naam",
+                "placeholderEmail": "E-mailadres",
+                "placeholderPhone": "Telefoonnummer (Optioneel)",
+                "placeholderConcern": "Beschrijf kort uw belangrijkste klacht (bv. Ischias, Slapeloosheid, Stress)"
+            }
+        };
+        // --- JAVASCRIPT FOR MOBILE MENU AND SCROLL LOCK ---
+        // Language switching must happen before DOMContentLoaded to populate static HTML immediately
+        
+        function applyTranslation(lang) {
+            const currentLangTrans = translations[lang] || translations.en;
+            
+            // 1. Update text content
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.dataset.i18n;
+                if (currentLangTrans[key]) {
+                    element.innerHTML = currentLangTrans[key]; // Use innerHTML for text that contains HTML (like heroTitleMain span)
+                }
+            });
+            
+            // 2. Update placeholder text
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.dataset.i18nPlaceholder;
+                if (currentLangTrans[key]) {
+                    element.placeholder = currentLangTrans[key];
+                }
+            });
+            
+            // 3. Update Title
+            document.getElementById('app-title').textContent = currentLangTrans['appTitle'];
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const langSelect = document.getElementById('language-select');
+            
+            // Set initial language based on selector or default to 'en'
+            const initialLang = langSelect.value;
+            applyTranslation(initialLang);
+
+            // Language selector change event
+            langSelect.addEventListener('change', (event) => {
+                applyTranslation(event.target.value);
+                // No need to re-render complex components since this simplified design doesn't use them
+            });
+            
+            const mobileMenuOpen = document.getElementById('mobile-menu-open');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu-new');
+            const mobileNavLinks = mobileMenu.querySelectorAll('a');
+            const body = document.body;
+            const header = document.querySelector('header');
+
+            const lockBodyScroll = () => {
+                body.style.overflow = 'hidden';
+                body.style.height = '100vh';
+            };
+
+            const unlockBodyScroll = () => {
+                body.style.overflow = '';
+                body.style.height = '';
+            };
+
+            // Open Menu
+            mobileMenuOpen.addEventListener('click', () => {
+                mobileMenu.style.display = 'flex';
+                lockBodyScroll();
+            });
+
+            // Close Menu
+            const closeMenu = () => {
+                mobileMenu.style.display = 'none';
+                unlockBodyScroll();
+            };
+
+            mobileMenuClose.addEventListener('click', closeMenu);
+
+            // Close menu on link click (and navigate/scroll smoothly)
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    closeMenu();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offset = header.offsetHeight || 60; // Use header height for offset
+                        setTimeout(() => {
+                             window.scrollTo({
+                                top: targetElement.offsetTop - offset,
+                                behavior: 'smooth'
+                            });
+                        }, 50); // Small delay to ensure menu closes before scroll animation starts
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
